@@ -5,6 +5,7 @@ export const metadata = {
   title: 'Schilders aanvragen — vandaag geregeld',
   description:
     'Vraag flexibele schilderscapaciteit aan voor uw project of onderhoudsstroom in Noord-Nederland. Vertel wat er moet gebeuren — wij plannen de juiste vakmensen in.',
+  alternates: { canonical: '/aanvraag' },
 };
 
 export default function Aanvraag() {

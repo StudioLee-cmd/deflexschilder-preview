@@ -662,6 +662,32 @@ a.kaartje:hover { transform: translateY(-2px); box-shadow: var(--schaduw); }
 .prose blockquote { border-left: 3px solid var(--oranje); padding: 6px 16px; background: var(--vlak); border-radius: 0 var(--radius-klein) var(--radius-klein) 0; font-size: 15.5px; }
 .artikelhero { border-radius: var(--radius); overflow: hidden; box-shadow: var(--schaduw); margin: 22px 0; position: relative; }
 .artikelhero img { display: block; width: 100%; }
+/* ---------- kerndata-box ("In het kort" — zichtbare data) ---------- */
+.kerndata {
+  background: var(--vlak);
+  border-left: 4px solid var(--oranje);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 18px 22px;
+  margin-top: 20px;
+}
+.kerndata strong { color: var(--ink); }
+.kerndata dl { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; margin-top: 10px; }
+.kerndata dl div { display: flex; gap: 10px; font-size: 14.5px; }
+.kerndata dt { color: var(--tekst-licht); font-weight: 700; min-width: 76px; }
+.kerndata dd { margin: 0; }
+@media (max-width: 640px) { .kerndata dl { grid-template-columns: 1fr; } }
+
+/* ---------- auteursblok (zichtbare E-E-A-T-samenvatting) ---------- */
+.auteursblok {
+  background: var(--vlak);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  display: grid;
+  gap: 10px;
+}
+.auteursblok__kop { display: flex; align-items: center; gap: 14px; }
+.auteursblok__logo { margin-left: auto; height: 32px; width: auto; }
+
 .bronnen { font-size: 14px; color: var(--tekst-licht); border-top: 1px solid var(--lijn); padding-top: 14px; }
 .bronnen a { color: var(--oranje-donker); text-decoration: underline; }
 

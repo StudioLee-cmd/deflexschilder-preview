@@ -7,6 +7,7 @@ export const metadata = {
   title: 'Vastgoedonderhoud & RGS — resultaatgericht samenwerken',
   description:
     'RGS, planmatig onderhoud, NEN 2767 en MJOP: hoe De Flexschilder als langjarige onderhoudspartner werkt voor woningcorporaties, vastgoedbeheerders en VvE’s in Noord-Nederland.',
+  alternates: { canonical: '/vastgoedonderhoud-en-rgs' },
 };
 
 // PILLAR — cluster 4 (autoriteit/specialisme; AI-search). Wordt gevoed met

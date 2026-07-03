@@ -6,6 +6,7 @@ export const metadata = {
   title: 'Nieuws & vakkennis — voor opdrachtgevers en schilders',
   description:
     'Nieuws en vakkennis van De Flexschilder: regelgeving, salaris en reiskosten, vastgoedonderhoud en RGS — geschreven door vakmensen uit Noord-Nederland.',
+  alternates: { canonical: '/blog' },
 };
 
 // Blog-hub: de 4 cluster-categorieën uit de contentstructuur. Elk artikel hangt

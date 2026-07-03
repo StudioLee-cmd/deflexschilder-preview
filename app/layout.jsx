@@ -2,6 +2,7 @@ import { Assistant } from 'next/font/google';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import { getAtsAdapter } from '@/lib/ats';
+import { BASIS, SITE_GRAPH, jsonLd } from '@/lib/schema';
 import './globals.css';
 
 // Zelfde font als de huidige site (Assistant).
@@ -11,8 +12,6 @@ const assistant = Assistant({
   display: 'swap',
 });
 
-const BASIS = 'https://deflexschilder-preview.vercel.app';
-
 export const metadata = {
   metadataBase: new URL(BASIS),
   title: {
@@ -21,37 +20,20 @@ export const metadata = {
   },
   description:
     'Schilders inhuren of aan het werk als schilder in Groningen, Friesland, Drenthe en de kop van Overijssel. Detachering, uitzenden en werving & selectie — vakmensen door vakmensen.',
+  applicationName: 'De Flexschilder',
+  openGraph: {
+    type: 'website',
+    siteName: 'De Flexschilder',
+    locale: 'nl_NL',
+    images: [{ url: `${BASIS}/img/hero-steiger.jpg`, width: 1024, height: 576, alt: 'De Flexschilder — vakmensen door vakmensen' }],
+  },
+  twitter: { card: 'summary_large_image' },
   // PREVIEW — nooit indexeren.
   robots: { index: false, follow: false },
 };
 
-// Organization-schema — het site-brede E-E-A-T-anker (elke pagina erft dit).
-const ORGANISATIE = {
-  '@context': 'https://schema.org',
-  '@type': 'EmploymentAgency',
-  '@id': `${BASIS}#organisatie`,
-  name: 'De Flexschilder',
-  description:
-    'Specialist in schilders-detachering, uitzenden en werving & selectie in Noord-Nederland. Vakmensen door vakmensen.',
-  url: BASIS,
-  logo: `${BASIS}/branding_flexschilder.svg`,
-  telephone: '+31613718172',
-  email: 'andre@deflexschilder.nl',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Oldemarktseweg 74',
-    postalCode: '8341 SH',
-    addressLocality: 'Steenwijkerwold',
-    addressCountry: 'NL',
-  },
-  areaServed: ['Groningen', 'Friesland', 'Drenthe', 'Overijssel'],
-  founder: { '@id': `${BASIS}/auteur/andre#persoon` },
-  knowsAbout: [
-    'schilderwerk',
-    'vastgoedonderhoud',
-    'resultaatgericht samenwerken (RGS)',
-    'detachering van schilders',
-  ],
+export const viewport = {
+  themeColor: '#fb8500',
 };
 
 export default async function RootLayout({ children }) {
@@ -70,7 +52,7 @@ export default async function RootLayout({ children }) {
         <SiteFooter />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANISATIE) }}
+          dangerouslySetInnerHTML={{ __html: jsonLd(SITE_GRAPH) }}
         />
       </body>
     </html>

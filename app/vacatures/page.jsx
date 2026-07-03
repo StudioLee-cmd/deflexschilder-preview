@@ -10,6 +10,7 @@ export const metadata = {
   title: 'Vacatures voor schilders in Noord-Nederland',
   description:
     'Vacature schilder gezocht? Structureel werk via De Flexschilder: vacatures voor schilders in Groningen, Friesland, Drenthe en de kop van Overijssel — met marktconforme salarissen.',
+  alternates: { canonical: '/vacatures' },
 };
 
 // PILLAR — cluster 2 (kandidaatkant; "vacature schilder", "schilder gezocht").

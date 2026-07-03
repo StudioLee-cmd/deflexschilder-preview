@@ -1,35 +1,28 @@
 import Link from 'next/link';
 import Kruimel from '@/components/Kruimel';
 import { ARTIKELEN } from '@/lib/blog';
-
-const BASIS = 'https://deflexschilder-preview.vercel.app';
+import { BASIS, PERSOON_ID, jsonLd } from '@/lib/schema';
 
 export const metadata = {
   title: 'André van der Hoogen — eigenaar De Flexschilder, 23 jaar vakervaring',
   description:
     'André van der Hoogen is eigenaar van De Flexschilder: 23 jaar technische expertise in verf en onderhoud, kennis van RGS en planmatig onderhoud, en een sterk netwerk in Noord-Nederland.',
+  alternates: { canonical: '/auteur/andre' },
+  openGraph: {
+    title: 'André van der Hoogen — De Flexschilder',
+    description: '23 jaar technische expertise in verf en onderhoud.',
+  },
 };
 
-// Author-pagina (E-E-A-T-anker): eerst alleen de eigenaar (Tim 03-07).
-// Elke artikel-byline linkt hierheen; Person-schema koppelt aan Organization.
-const PERSOON = {
+// Author-pagina (E-E-A-T-anker): ProfilePage-schema verwijst naar het centrale
+// Person-@id in de site-graph (lib/schema.js) — één bron, geen dubbele data.
+const PROFIEL_SCHEMA = {
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  '@id': `${BASIS}/auteur/andre#persoon`,
-  name: 'André van der Hoogen',
-  jobTitle: 'Eigenaar & vakschilder',
-  worksFor: { '@id': `${BASIS}#organisatie` },
-  telephone: '+31613718172',
-  email: 'andre@deflexschilder.nl',
-  knowsAbout: [
-    'schilderwerk en verftechniek',
-    'planmatig vastgoedonderhoud',
-    'resultaatgericht samenwerken (RGS)',
-    'NEN 2767-conditiemeting',
-    'detachering en werving van schilders',
-  ],
-  description:
-    '23 jaar technische expertise in verf en onderhoud; sparringpartner voor ondernemers, corporaties en beheerders in Noord-Nederland.',
+  '@type': 'ProfilePage',
+  '@id': `${BASIS}/auteur/andre#profiel`,
+  mainEntity: { '@id': PERSOON_ID },
+  inLanguage: 'nl',
+  dateModified: '2026-07-03',
 };
 
 export default function AuteurAndre() {
@@ -91,18 +84,22 @@ export default function AuteurAndre() {
 
           <div style={{ display: 'grid', gap: 18 }}>
             <div className="kaartje">
-              <span className="byline__avatar" style={{ width: 64, height: 64, fontSize: 26 }}>
-                A
-              </span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+                <span className="byline__avatar" style={{ width: 64, height: 64, fontSize: 26 }}>
+                  A
+                </span>
+                <img src="/branding_flexschilder.svg" alt="De Flexschilder" width={130} height={38} style={{ marginLeft: 'auto', height: 36, width: 'auto' }} />
+              </div>
               <h3 style={{ marginTop: 8 }}>André van der Hoogen</h3>
               <p className="meta">Eigenaar &amp; vakschilder · De Flexschilder</p>
-              <p style={{ fontSize: 14.5 }}>
-                ☎ <a href="tel:+31613718172" style={{ fontWeight: 700 }}>06 - 137 181 72</a>
-                <br />✉{' '}
-                <a href="mailto:andre@deflexschilder.nl" style={{ fontWeight: 700 }}>
-                  andre@deflexschilder.nl
-                </a>
-              </p>
+              {/* Feiten zichtbaar — dezelfde data als het Person-schema */}
+              <dl style={{ display: 'grid', gap: 6, fontSize: 14.5, marginTop: 4 }}>
+                <div style={{ display: 'flex', gap: 8 }}><dt style={{ fontWeight: 700, minWidth: 110, color: 'var(--tekst-licht)' }}>Vakervaring</dt><dd style={{ margin: 0 }}><strong>23 jaar</strong> (verf &amp; onderhoud)</dd></div>
+                <div style={{ display: 'flex', gap: 8 }}><dt style={{ fontWeight: 700, minWidth: 110, color: 'var(--tekst-licht)' }}>Specialisme</dt><dd style={{ margin: 0 }}>RGS · NEN 2767 · verfsystemen</dd></div>
+                <div style={{ display: 'flex', gap: 8 }}><dt style={{ fontWeight: 700, minWidth: 110, color: 'var(--tekst-licht)' }}>Regio</dt><dd style={{ margin: 0 }}>Noord-Nederland</dd></div>
+                <div style={{ display: 'flex', gap: 8 }}><dt style={{ fontWeight: 700, minWidth: 110, color: 'var(--tekst-licht)' }}>Telefoon</dt><dd style={{ margin: 0 }}><a href="tel:+31613718172" style={{ fontWeight: 700 }}>06 - 137 181 72</a></dd></div>
+                <div style={{ display: 'flex', gap: 8 }}><dt style={{ fontWeight: 700, minWidth: 110, color: 'var(--tekst-licht)' }}>E-mail</dt><dd style={{ margin: 0 }}><a href="mailto:andre@deflexschilder.nl" style={{ fontWeight: 700 }}>andre@deflexschilder.nl</a></dd></div>
+              </dl>
               <p className="meta" style={{ fontSize: 12.5 }}>
                 Profielfoto volgt — aan te leveren door André.
               </p>
@@ -118,7 +115,7 @@ export default function AuteurAndre() {
         </div>
       </section>
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSOON) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(PROFIEL_SCHEMA) }} />
     </>
   );
 }

@@ -4,14 +4,23 @@ import Byline from '@/components/Byline';
 import BeeldAI from '@/components/BeeldAI';
 import KmCalculator from '@/components/KmCalculator';
 import StaafDiagram from '@/components/StaafDiagram';
+import { BASIS, ORG_ID, PERSOON_ID, WEBSITE_ID } from '@/lib/schema';
 
-const BASIS = 'https://deflexschilder-preview.vercel.app';
 const URL_ARTIKEL = `${BASIS}/blog/kilometervergoeding-2026-25-cent`;
 
 export const metadata = {
   title: 'Kilometervergoeding 2026: van 23 naar 25 cent — wat betekent dat voor schilders?',
   description:
     'De maximale onbelaste reiskostenvergoeding stijgt in 2026 van € 0,23 naar € 0,25 per km, met terugwerkende kracht tot 1 januari. Wat het besluit inhoudt, wat het níet is, en wat het een schilder per jaar scheelt — met rekentool.',
+  alternates: { canonical: '/blog/kilometervergoeding-2026-25-cent' },
+  openGraph: {
+    type: 'article',
+    title: 'Kilometervergoeding 2026: van 23 naar 25 cent',
+    description: 'Wat de verhoging naar € 0,25/km betekent voor schilders — met rekentool en bronnen.',
+    images: [{ url: `${BASIS}/img/bus-onderweg.jpg`, width: 1024, height: 576 }],
+    publishedTime: '2026-07-03',
+    authors: [`${BASIS}/auteur/andre`],
+  },
 };
 
 // Artikel volgens de vaste schrijfworkflow: één zoekintentie (long-tail
@@ -45,10 +54,21 @@ const ARTIKEL_SCHEMA = {
   inLanguage: 'nl',
   datePublished: '2026-07-03',
   dateModified: '2026-07-03',
-  author: { '@id': `${BASIS}/auteur/andre#persoon` },
-  publisher: { '@id': `${BASIS}#organisatie` },
+  author: { '@id': PERSOON_ID },
+  publisher: { '@id': ORG_ID },
+  isPartOf: { '@id': WEBSITE_ID },
   mainEntityOfPage: URL_ARTIKEL,
-  image: `${BASIS}/img/bus-onderweg.jpg`,
+  articleSection: 'Voor schilders',
+  image: {
+    '@type': 'ImageObject',
+    url: `${BASIS}/img/bus-onderweg.jpg`,
+    width: 1024,
+    height: 576,
+  },
+  about: [
+    { '@type': 'Thing', name: 'onbelaste reiskostenvergoeding' },
+    { '@type': 'Thing', name: 'kilometervergoeding 2026' },
+  ],
   citation: [
     'https://zoek.officielebekendmakingen.nl/stcrt-2026-18302.html',
     'https://www.rijksoverheid.nl/vraag-en-antwoord/inkomstenbelasting/wat-is-de-maximale-kilometervergoeding-die-ik-van-mijn-werkgever-kan-ontvangen',
@@ -91,6 +111,19 @@ export default function KmArtikel() {
             <Byline gepubliceerd="3 juli 2026" />
           </div>
         </header>
+
+        {/* Kerndata zichtbaar — feiten-box voor lezers, Google én AI-search */}
+        <div className="kerndata" style={{ maxWidth: 820 }}>
+          <strong>In het kort</strong>
+          <dl>
+            <div><dt>Was</dt><dd>€ 0,23 per km</dd></div>
+            <div><dt>Wordt</dt><dd><strong>€ 0,25 per km</strong></dd></div>
+            <div><dt>Ingang</dt><dd>22 mei 2026, terugwerkend tot 1 januari 2026</dd></div>
+            <div><dt>Verplicht?</dt><dd>Nee — werkgevers <em>mogen</em>, niet moeten</dd></div>
+            <div><dt>Voor wie</dt><dd>Alle vervoer (auto, fiets, OV); ook zzp-aftrek omhoog</dd></div>
+            <div><dt>Bron</dt><dd>Besluit 17-05-2026, nr. 2026-8260 (Stcrt. 2026-18302)</dd></div>
+          </dl>
+        </div>
 
         <div className="artikelhero" style={{ maxWidth: 820 }}>
           <BeeldAI
@@ -209,6 +242,31 @@ export default function KmArtikel() {
               <p>{f.a}</p>
             </div>
           ))}
+
+          {/* Over de auteur — zichtbare E-E-A-T-samenvatting met beeldmerk */}
+          <div className="auteursblok">
+            <div className="auteursblok__kop">
+              <span className="byline__avatar" aria-hidden>A</span>
+              <div>
+                <strong>Over de auteur — André van der Hoogen</strong>
+                <div style={{ fontSize: 13.5, color: 'var(--tekst-licht)' }}>
+                  Eigenaar De Flexschilder · 23 jaar in verf en onderhoud
+                </div>
+              </div>
+              <img src="/branding_flexschilder.svg" alt="De Flexschilder" width={120} height={35} className="auteursblok__logo" />
+            </div>
+            <p style={{ fontSize: 14.5 }}>
+              André begon 23 jaar geleden als technisch adviseur in de verfindustrie
+              en leidt vandaag De Flexschilder: dé schildersspecialist van
+              Noord-Nederland. Hij adviseert opdrachtgevers over verfsystemen,
+              onderhoudscycli en RGS — en zorgt dat vakmensen eerlijk werk met
+              eerlijke voorwaarden krijgen. &ldquo;Ik plaats niet alleen schilders,
+              ik begrijp hun werk.&rdquo;
+            </p>
+            <Link href="/auteur/andre" className="verder" style={{ color: 'var(--oranje-donker)', fontWeight: 700, fontSize: 14.5 }}>
+              Volledig profiel &amp; alle artikelen →
+            </Link>
+          </div>
 
           <div className="bronnen">
             <strong>Bronnen</strong>

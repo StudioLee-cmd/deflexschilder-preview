@@ -4,6 +4,7 @@ import Kruimel from '@/components/Kruimel';
 import ResolutieBanner from '@/components/ResolutieBanner';
 import { CITIES, getCity, nearbyCities } from '@/lib/geo';
 import { getAtsAdapter, vacaturesBinnenStraal } from '@/lib/ats';
+import { ORG_ID } from '@/lib/schema';
 
 // STAD-HOOFDPAGINA (opdrachtgeverkant) — de URL volgt de locatie:
 // /schilders-inhuren/<stad>. Eén template, lokaal ingevuld (Tier-1-recept),
@@ -18,6 +19,7 @@ export function generateMetadata({ params }) {
   return {
     title: `Schilders inhuren in ${stad.name} — flexibele capaciteit in ${stad.provincie}`,
     description: `Schilders inhuren in ${stad.name}? De Flexschilder levert flexibele, vakbekwame schilders in ${stad.name} en omgeving — detachering, uitzenden en werving & selectie.`,
+    alternates: { canonical: `/schilders-inhuren/${stad.slug}` },
   };
 }
 
@@ -33,9 +35,14 @@ export default async function StadPagina({ params }) {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: `Schilders inhuren in ${stad.name}`,
-    provider: { '@type': 'Organization', name: 'De Flexschilder', sameAs: 'https://deflexschilder.nl' },
-    areaServed: { '@type': 'City', name: stad.name },
+    provider: { '@id': ORG_ID },
+    areaServed: {
+      '@type': 'City',
+      name: stad.name,
+      geo: { '@type': 'GeoCoordinates', latitude: stad.lat, longitude: stad.lng },
+    },
     serviceType: 'Schilders-detachering, uitzenden en werving & selectie',
+    audience: { '@type': 'BusinessAudience', name: 'Woningcorporaties, vastgoedbeheerders, aannemers en RGS-opdrachtgevers' },
   };
 
   return (

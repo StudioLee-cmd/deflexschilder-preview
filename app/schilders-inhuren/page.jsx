@@ -9,6 +9,7 @@ export const metadata = {
   title: 'Schilders inhuren — flexibele schilderscapaciteit in Noord-Nederland',
   description:
     'Schilders inhuren zonder vaste loonkosten: detachering, uitzenden en werving & selectie voor woningcorporaties, vastgoedbeheerders, aannemers en RGS-opdrachtgevers in Noord-Nederland.',
+  alternates: { canonical: '/schilders-inhuren' },
 };
 
 // PILLAR — cluster 1 (opdrachtgeverkant; kernkeyword "schilder(s) inhuren").

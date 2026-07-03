@@ -6,6 +6,7 @@ import VacatureCard from '@/components/VacatureCard';
 import DemoForm from '@/components/DemoForm';
 import { CITIES, getCity, nearbyCities } from '@/lib/geo';
 import { getAtsAdapter, vacaturesBinnenStraal } from '@/lib/ats';
+import { ORG_ID } from '@/lib/schema';
 
 // Deze route bedient TWEE templates (Strikt-engine, maar schilder-specialist):
 //   /vacatures/schilder-<stad>  → stad-vacaturepagina (werkzoekende-kant, radius)
@@ -24,6 +25,7 @@ export async function generateMetadata({ params }) {
     return {
       title: `Vacatures schilder ${stad.name} — schilder gezocht in ${stad.name}`,
       description: `Schilder gezocht in ${stad.name}? Bekijk schildersvacatures in en rond ${stad.name} (${stad.provincie}) en werk structureel via De Flexschilder.`,
+      alternates: { canonical: `/vacatures/${params.slug}` },
     };
   }
   const v = (await getAtsAdapter().getVacatures()).find((x) => x.slug === params.slug);
@@ -31,6 +33,7 @@ export async function generateMetadata({ params }) {
   return {
     title: `${v.titel} — ${v.plaats}`,
     description: v.beschrijving.slice(0, 150),
+    alternates: { canonical: `/vacatures/${params.slug}` },
   };
 }
 
@@ -110,7 +113,9 @@ export default async function VacatureOfStad({ params }) {
   if (!v) notFound();
   const stad = CITIES.find((c) => c.name === v.plaats);
 
-  // JobPosting-schema (Pad A: herbouwt Google-for-Jobs-vindbaarheid op eigen pagina's)
+  // JobPosting-schema (Pad A: herbouwt Google-for-Jobs-vindbaarheid op eigen
+  // pagina's). hiringOrganization = @id-verwijzing naar de site-graph;
+  // baseSalary uit de vacaturedata waar numeriek beschikbaar.
   const jobPosting = {
     '@context': 'https://schema.org',
     '@type': 'JobPosting',
@@ -118,12 +123,24 @@ export default async function VacatureOfStad({ params }) {
     description: v.beschrijving,
     datePosted: v.datePosted,
     validThrough: v.validThrough,
-    employmentType: 'TEMPORARY',
-    hiringOrganization: {
-      '@type': 'Organization',
-      name: 'De Flexschilder',
-      sameAs: 'https://deflexschilder.nl',
-    },
+    employmentType: ['TEMPORARY', 'FULL_TIME'],
+    industry: 'Schilderwerk en vastgoedonderhoud',
+    hiringOrganization: { '@id': ORG_ID },
+    directApply: true,
+    ...(v.salarisMin && v.salarisMax
+      ? {
+          baseSalary: {
+            '@type': 'MonetaryAmount',
+            currency: 'EUR',
+            value: {
+              '@type': 'QuantitativeValue',
+              minValue: v.salarisMin,
+              maxValue: v.salarisMax,
+              unitText: 'MONTH',
+            },
+          },
+        }
+      : {}),
     jobLocation: {
       '@type': 'Place',
       address: {

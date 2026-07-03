@@ -5,6 +5,7 @@ export const metadata = {
   title: 'Over ons — vakmensen door vakmensen',
   description:
     'De Flexschilder wordt geleid en bemenst door echte schilders. 23 jaar vakkennis in verf, onderhoud en RGS — dé schildersspecialist van Noord-Nederland.',
+  alternates: { canonical: '/over-ons' },
 };
 
 // E-E-A-T-laag: author-pagina (André) + verhalen. In de volledige site worden de

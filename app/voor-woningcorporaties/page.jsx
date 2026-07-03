@@ -6,6 +6,7 @@ export const metadata = {
   title: 'Schilders voor woningcorporaties — planmatig en mutatie-onderhoud',
   description:
     'Schilderscapaciteit voor woningcorporaties in Noord-Nederland: planmatig onderhoud, mutatie-onderhoud en RGS-trajecten — schaalbaar zonder vaste formatie, conditiegericht gewerkt.',
+  alternates: { canonical: '/voor-woningcorporaties' },
 };
 
 // Opdrachtgeverpagina (kennisbank §A) — één intent: corporatie zoekt schilderscapaciteit.

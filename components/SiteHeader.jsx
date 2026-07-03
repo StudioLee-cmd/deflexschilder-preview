@@ -52,6 +52,7 @@ export default function SiteHeader({ vacatureCount = 0 }) {
               <div className="drop__kop">Ik zoek werk</div>
               <Link href="/vacatures">Vacatures</Link>
               <Link href="/soorten-schilders">Soorten schilders</Link>
+              <Link href="/tools">Rekentools (salaris &amp; netto)</Link>
               <Link href="/inschrijven">Inschrijven</Link>
               <a href="http://deflexschilder.onlineuur.nl/" target="_blank" rel="noreferrer">
                 Uren doorgeven
@@ -122,6 +123,7 @@ export default function SiteHeader({ vacatureCount = 0 }) {
         <div className="drop__kop">Voor schilders — ik zoek werk</div>
         <Link href="/vacatures">Vacatures {vacatureCount > 0 ? `(${vacatureCount})` : ''}</Link>
         <Link href="/soorten-schilders">Soorten schilders</Link>
+        <Link href="/tools">Rekentools (salaris &amp; netto)</Link>
         <Link href="/inschrijven">Inschrijven</Link>
         <a href="http://deflexschilder.onlineuur.nl/" target="_blank" rel="noreferrer">
           Uren doorgeven

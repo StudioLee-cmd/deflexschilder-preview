@@ -11,6 +11,7 @@ export const metadata = {
   title: 'Uitzendbureau voor schilders Noord-Nederland — De Flexschilder',
   description:
     'Schilders inhuren of aan het werk als schilder in Groningen, Friesland, Drenthe en de kop van Overijssel. Detachering, uitzenden en werving & selectie — vakmensen door vakmensen.',
+  alternates: { canonical: '/' },
 };
 
 export default async function Home() {
