@@ -757,7 +757,7 @@ a.kaartje:hover { transform: translateY(-2px); box-shadow: var(--schaduw); }
 /* ---------- paginakop met verf-accent (subpagina's minder template-achtig) ---------- */
 .paginakop { padding: 38px 0 8px; position: relative; }
 .paginakop .lead { margin-top: 14px; }
-.paginakop h1 { position: relative; display: inline-block; padding-bottom: 10px; }
+.paginakop h1 { position: relative; display: block; padding-bottom: 12px; }
 .paginakop h1::after {
   content: '';
   position: absolute;
