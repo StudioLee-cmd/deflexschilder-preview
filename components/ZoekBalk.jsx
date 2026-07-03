@@ -21,7 +21,9 @@ function norm(s) {
   return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 }
 
-export default function ZoekBalk({ mode: startMode = 'inhuren', toonTabs = true }) {
+// DEFAULT = "Ik zoek werk" (Tim 03-07). De opdrachtgever-kant is GEEN kies-lijst
+// maar een aanvraag: die route gaat naar het formulier, met de plaats voorgevuld.
+export default function ZoekBalk({ mode: startMode = 'werk', toonTabs = true }) {
   const router = useRouter();
   const [mode, setMode] = useState(startMode);
   const [q, setQ] = useState('');
@@ -41,10 +43,14 @@ export default function ZoekBalk({ mode: startMode = 'inhuren', toonTabs = true 
   const exact = useMemo(() => ALLES.find((p) => norm(p.naam) === norm(q)) || null, [q]);
 
   function ga(plek, straal) {
-    const basis =
-      mode === 'inhuren'
-        ? `/schilders-inhuren/${plek.city.slug}`
-        : `/vacatures/schilder-${plek.city.slug}`;
+    if (mode === 'inhuren') {
+      // Opdrachtgever → aanvraagFORMULIER met plaats voorgevuld (geen kies-lijst).
+      const params = new URLSearchParams({ plaats: plek.naam, stad: plek.city.name });
+      if (plek.type === 'dorp') params.set('km', String(plek.km));
+      router.push(`/aanvraag?${params.toString()}`);
+      return;
+    }
+    const basis = `/vacatures/schilder-${plek.city.slug}`;
     if (plek.type === 'dorp') {
       const params = new URLSearchParams({ van: plek.naam, km: String(plek.km), straal });
       router.push(`${basis}?${params.toString()}`);
@@ -58,7 +64,9 @@ export default function ZoekBalk({ mode: startMode = 'inhuren', toonTabs = true 
     const straal = e.target.straal?.value || '20';
     const keuze = suggesties[hl] || exact || suggesties[0];
     if (!keuze) {
-      setMelding('Deze plaats kennen we (nog) niet — kies een plaats uit de lijst of een stad op de kaart.');
+      setMelding(
+        'Binnen Noord-Nederland werken we overal — deze plaats staat alleen nog niet in ons lijstje. Kies de dichtstbijzijnde stad op de kaart, of bel ons: 06 - 137 181 72.'
+      );
       return;
     }
     setMelding('');
@@ -85,20 +93,20 @@ export default function ZoekBalk({ mode: startMode = 'inhuren', toonTabs = true 
           <button
             type="button"
             role="tab"
-            aria-selected={mode === 'inhuren'}
-            className={`zoek__tab${mode === 'inhuren' ? ' actief' : ''}`}
-            onClick={() => setMode('inhuren')}
-          >
-            Ik zoek schilders
-          </button>
-          <button
-            type="button"
-            role="tab"
             aria-selected={mode === 'werk'}
             className={`zoek__tab${mode === 'werk' ? ' actief' : ''}`}
             onClick={() => setMode('werk')}
           >
             Ik zoek werk
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={mode === 'inhuren'}
+            className={`zoek__tab${mode === 'inhuren' ? ' actief' : ''}`}
+            onClick={() => setMode('inhuren')}
+          >
+            Ik zoek schilders
           </button>
         </div>
       )}
@@ -157,7 +165,7 @@ export default function ZoekBalk({ mode: startMode = 'inhuren', toonTabs = true 
         </div>
 
         <button type="submit" className="btn btn--primair">
-          {mode === 'inhuren' ? 'Zoek schilders' : 'Zoek vacatures'}
+          {mode === 'inhuren' ? 'Schilders aanvragen' : 'Zoek vacatures'}
         </button>
       </form>
 

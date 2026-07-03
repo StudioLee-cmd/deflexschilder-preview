@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import ZoekBalk from '@/components/ZoekBalk';
 import NoordMap from '@/components/NoordMap';
+import PlaatsenLijst from '@/components/PlaatsenLijst';
 import BeeldAI from '@/components/BeeldAI';
 import { CITIES } from '@/lib/geo';
 import { getAtsAdapter } from '@/lib/ats';
@@ -40,11 +41,11 @@ export default async function Home() {
               persoonlijk gematcht door mensen die het vak zelf kennen.
             </p>
             <div className="hero__paden">
-              <Link href="/schilders-inhuren" className="hero__pad">
-                Ik zoek schilders →
-              </Link>
               <Link href="/vacatures" className="hero__pad">
                 Ik zoek werk →
+              </Link>
+              <Link href="/aanvraag" className="hero__pad">
+                Ik zoek schilders →
               </Link>
             </div>
             <ZoekBalk />
@@ -105,6 +106,9 @@ export default async function Home() {
               ))}
             </div>
           </div>
+        </div>
+        <div className="container" style={{ marginTop: 44 }}>
+          <PlaatsenLijst />
         </div>
       </section>
 

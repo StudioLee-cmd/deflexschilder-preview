@@ -20,7 +20,12 @@ export default function DemoForm({ velden, knop }) {
         veld.type === 'textarea' ? (
           <label key={veld.naam}>
             {veld.naam}
-            <textarea rows={4} placeholder={veld.placeholder} required={veld.verplicht} />
+            <textarea
+              rows={4}
+              placeholder={veld.placeholder}
+              required={veld.verplicht}
+              defaultValue={veld.standaard}
+            />
           </label>
         ) : (
           <label key={veld.naam}>
@@ -29,6 +34,7 @@ export default function DemoForm({ velden, knop }) {
               type={veld.type || 'text'}
               placeholder={veld.placeholder}
               required={veld.verplicht}
+              defaultValue={veld.standaard}
             />
           </label>
         )

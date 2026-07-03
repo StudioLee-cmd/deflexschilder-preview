@@ -716,3 +716,33 @@ a.kaartje:hover { transform: translateY(-2px); box-shadow: var(--schaduw); }
 
 .paginakop { padding: 34px 0 6px; }
 .paginakop .lead { margin-top: 12px; }
+
+/* ---------- plaatsenlijst (volledige dekking per stad) ---------- */
+.plaatsen__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 22px; margin-top: 20px; }
+@media (max-width: 800px) { .plaatsen__grid { grid-template-columns: 1fr; } }
+.plaatsen__stad {
+  background: var(--wit);
+  border: 1px solid var(--lijn);
+  border-radius: var(--radius);
+  padding: 0;
+  overflow: hidden;
+}
+.plaatsen__stad summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 14px 18px;
+  cursor: pointer;
+  font-size: 16px;
+  list-style: none;
+}
+.plaatsen__stad summary::-webkit-details-marker { display: none; }
+.plaatsen__stad summary::after { content: '▾'; color: var(--oranje); font-size: 12px; }
+.plaatsen__stad[open] summary { border-bottom: 1px solid var(--vlak); }
+.plaatsen__stad summary .meta { font-size: 13px; color: var(--tekst-licht); margin-left: auto; }
+.plaatsen__stad summary:hover strong { color: var(--oranje-donker); }
+.plaatsen__dorpen { display: flex; flex-wrap: wrap; gap: 7px; padding: 14px 18px 18px; }
+.plaatsen__dorpen .chip { font-size: 13px; padding: 5px 11px; }
+.chip--stad { background: var(--oranje); color: var(--wit); border-color: var(--oranje); }
+.chip--stad:hover { background: var(--oranje-donker); color: var(--wit); }

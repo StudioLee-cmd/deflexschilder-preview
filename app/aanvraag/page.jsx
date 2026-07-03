@@ -1,6 +1,5 @@
-import Link from 'next/link';
 import Kruimel from '@/components/Kruimel';
-import DemoForm from '@/components/DemoForm';
+import AanvraagForm from '@/components/AanvraagForm';
 
 export const metadata = {
   title: 'Schilders aanvragen — vandaag geregeld',
@@ -25,22 +24,7 @@ export default function Aanvraag() {
 
       <section className="sectie" style={{ paddingTop: 28 }}>
         <div className="container kaartwrap" style={{ alignItems: 'start' }}>
-          <DemoForm
-            velden={[
-              { naam: 'Bedrijf / organisatie', placeholder: 'Naam van uw organisatie', verplicht: true },
-              { naam: 'Contactpersoon', placeholder: 'Uw naam', verplicht: true },
-              { naam: 'Telefoon', type: 'tel', placeholder: '06 …', verplicht: true },
-              { naam: 'E-mail', type: 'email', placeholder: 'naam@bedrijf.nl', verplicht: false },
-              { naam: 'Plaats van het werk', placeholder: 'Bijv. Groningen', verplicht: true },
-              {
-                naam: 'Wat moet er gebeuren?',
-                type: 'textarea',
-                placeholder: 'Soort werk, aantal schilders, periode…',
-                verplicht: true,
-              },
-            ]}
-            knop="Verstuur aanvraag"
-          />
+          <AanvraagForm />
           <div className="kaartje" style={{ padding: 26 }}>
             <h3>Wat u van ons kunt verwachten</h3>
             <ul className="checklijst" style={{ marginTop: 10 }}>
