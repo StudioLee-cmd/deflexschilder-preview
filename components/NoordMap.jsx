@@ -1,9 +1,10 @@
+import Link from 'next/link';
 import { CITIES } from '@/lib/geo';
 
 // Klikbare Noord-NL-kaart: alléén het noorden (Zwolle en noordelijker) is
-// ingekleurd en klikbaar. Vereenvoudigde omtrek (Waddenkust · Duitse grens ·
-// zuidgrens bij Zwolle/Vechtdal · IJsselmeerkust), stippen = de 15 stadspagina's.
-// Coördinaten worden 1-op-1 uit lat/lng geprojecteerd — geen externe geo-API.
+// ingekleurd. De SVG tekent de vorm; de stad-markers zijn ECHTE HTML-links
+// (absoluut gepositioneerd op dezelfde projectie) — betrouwbaar klikbaar en
+// toegankelijk, geen SVG-anchor-gedoe. Geen externe geo-API.
 
 const LON_MIN = 5.25;
 const LON_MAX = 7.30;
@@ -51,35 +52,35 @@ export default function NoordMap() {
     ' Z';
 
   return (
-    <div className="kaart">
-      <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-label="Werkgebied Noord-Nederland — klik een stad">
-        {/* water/achtergrond */}
+    <div className="kaart" role="navigation" aria-label="Werkgebied Noord-Nederland — kies een stad">
+      <svg viewBox={`0 0 ${W} ${H}`} aria-hidden="true">
         <rect x="0" y="0" width={W} height={H} fill="#eef4f8" rx="12" />
-        {/* het noorden — ingekleurd en klikbaar */}
         <path d={pad} fill="#fde8cc" stroke="#fb8500" strokeWidth="3" strokeLinejoin="round" />
-        {/* zuidgrens-label */}
         <text x={px(5.62)} y={py(52.52)} fontSize="13" fill="#7a716e" fontStyle="italic">
           zuidgrens: Zwolle
         </text>
         <text x={px(5.44)} y={py(53.47)} fontSize="13" fill="#7a716e" fontStyle="italic">
           Waddenzee
         </text>
-        {CITIES.map((c) => {
-          const x = px(c.lng);
-          const y = py(c.lat);
-          // labelpositie: rechts van de stip, tenzij dicht bij de oostrand
-          const links = x > W - 150;
-          return (
-            // native SVG-<a> (geen next/link) — veilig binnen de svg-namespace
-            <a key={c.slug} href={`/schilders-inhuren/${c.slug}`} className="kaart__stip" aria-label={`Schilders inhuren in ${c.name}`}>
-              <circle cx={x} cy={y} r="9" />
-              <text x={links ? x - 14 : x + 14} y={y + 5} textAnchor={links ? 'end' : 'start'}>
-                {c.name}
-              </text>
-            </a>
-          );
-        })}
       </svg>
+
+      {CITIES.map((c) => {
+        const x = (px(c.lng) / W) * 100;
+        const y = (py(c.lat) / H) * 100;
+        const rechtsUit = px(c.lng) > W - 150; // label links van de stip bij de oostrand
+        return (
+          <Link
+            key={c.slug}
+            href={`/schilders-inhuren/${c.slug}`}
+            className={`kaart__marker${rechtsUit ? ' kaart__marker--links' : ''}`}
+            style={{ left: `${x}%`, top: `${y}%` }}
+            aria-label={`Schilders inhuren in ${c.name}`}
+          >
+            <span className="stip" aria-hidden />
+            <span className="naam">{c.name}</span>
+          </Link>
+        );
+      })}
     </div>
   );
 }

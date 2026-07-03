@@ -70,6 +70,8 @@ img { max-width: 100%; height: auto; }
   cursor: pointer;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
   font-family: inherit;
+  white-space: nowrap;
+  line-height: 1.2;
 }
 .btn--primair { background: var(--oranje); color: var(--wit); }
 .btn--primair:hover { background: var(--oranje-donker); }
@@ -210,6 +212,12 @@ img { max-width: 100%; height: auto; }
 .mobielmenu__kolommen { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
 .mobielmenu__acties { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
 
+@media (max-width: 1360px) {
+  .header__acties .header__tel { display: none; }
+}
+@media (max-width: 1200px) {
+  .header__acties .btn--secundair { display: none; }
+}
 @media (max-width: 1080px) {
   .nav { display: none; }
   .header__acties .btn, .header__acties .header__tel { display: none; }
@@ -383,18 +391,39 @@ img { max-width: 100%; height: auto; }
 
 /* ---------- kaart ---------- */
 .kaartwrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; }
+.kaart { position: relative; }
 .kaart svg { width: 100%; height: auto; display: block; }
-.kaart__stip { cursor: pointer; }
-.kaart__stip circle { fill: var(--oranje); stroke: var(--wit); stroke-width: 2; }
-.kaart__stip text {
-  font-size: 15px;
+.kaart__marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: clamp(11px, 1.5vw, 14.5px);
   font-weight: 700;
-  fill: var(--ink);
-  paint-order: stroke;
-  stroke: rgba(255, 255, 255, 0.9);
-  stroke-width: 3px;
+  color: var(--ink);
+  text-shadow:
+    -1px -1px 0 rgba(255, 255, 255, 0.9),
+    1px -1px 0 rgba(255, 255, 255, 0.9),
+    -1px 1px 0 rgba(255, 255, 255, 0.9),
+    1px 1px 0 rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+  z-index: 2;
+  padding: 3px;
 }
-.kaart__stip:hover circle, .kaart__stip:hover text { fill: var(--oranje-donker); }
+.kaart__marker .stip {
+  flex: 0 0 13px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--oranje);
+  border: 2px solid var(--wit);
+  box-shadow: 0 1px 4px rgba(51, 45, 45, 0.35);
+  transition: transform 0.12s;
+}
+.kaart__marker:hover { color: var(--oranje-donker); }
+.kaart__marker:hover .stip { transform: scale(1.25); background: var(--oranje-donker); }
+.kaart__marker--links { flex-direction: row-reverse; }
 .stedenchips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 .chip {
   display: inline-block;
