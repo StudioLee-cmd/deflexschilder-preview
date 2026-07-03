@@ -339,6 +339,20 @@ img { max-width: 100%; height: auto; }
 .zoek__suggestie .via { font-size: 13px; color: var(--tekst-licht); white-space: nowrap; }
 .zoek__suggestie.hl, .zoek__suggestie:hover { background: var(--oranje-zacht); }
 .zoek__resolutie { margin-top: 8px; font-size: 14px; color: var(--oranje-donker); font-weight: 600; }
+.zoek__form { display: grid; gap: 12px; }
+.zoek__formgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.zoek__form textarea {
+  font-family: inherit;
+  font-size: 16px;
+  padding: 12px 14px;
+  border: 1.5px solid var(--lijn);
+  border-radius: var(--radius-klein);
+  width: 100%;
+  color: var(--ink);
+}
+.zoek__form textarea:focus { outline: none; border-color: var(--oranje); box-shadow: 0 0 0 3px rgba(251, 133, 0, 0.18); }
+@media (max-width: 720px) { .zoek__formgrid { grid-template-columns: 1fr; } }
+
 .zoek__onder {
   display: flex;
   justify-content: space-between;
