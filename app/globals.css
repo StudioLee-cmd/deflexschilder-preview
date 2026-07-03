@@ -153,6 +153,7 @@ img { max-width: 100%; height: auto; }
   font-weight: 600;
   color: var(--ink);
   border-radius: var(--radius-klein);
+  white-space: nowrap;
 }
 .nav__link:hover { color: var(--oranje); }
 .nav__link .pijl { font-size: 10px; color: var(--tekst-licht); }
@@ -311,6 +312,7 @@ img { max-width: 100%; height: auto; }
 }
 .pad:hover { border-color: var(--oranje); transform: translateY(-2px); }
 .pad__label {
+  display: block;
   font-size: 13px;
   font-weight: 700;
   text-transform: uppercase;
@@ -318,6 +320,7 @@ img { max-width: 100%; height: auto; }
   color: var(--tekst-licht);
 }
 .pad__titel {
+  display: block;
   font-size: 19px;
   font-weight: 800;
   color: var(--ink);
