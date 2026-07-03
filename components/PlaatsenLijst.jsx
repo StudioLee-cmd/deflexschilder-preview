@@ -12,13 +12,16 @@ export default function PlaatsenLijst() {
   }
 
   return (
-    <div className="plaatsen">
-      <h2 style={{ fontSize: 24 }}>Alle plaatsen in ons werkgebied</h2>
-      <p className="lead" style={{ marginTop: 8, fontSize: 15.5 }}>
-        Elk dorp valt onder de dichtstbijzijnde grote stad — klik je plaats en je
-        komt op de juiste regiopagina, met de afstand er eerlijk bij. In totaal{' '}
-        {PLACES.length} kernen onder {CITIES.length} steden.
-      </p>
+    // Eén compacte uitklapper (Tim 03-07: sectie was te groot op de home) —
+    // dichtgeklapt is dit één regel; open toont de volledige dekking.
+    <details className="plaatsen">
+      <summary className="plaatsen__hoofdknop">
+        <strong>Alle plaatsen in ons werkgebied</strong>
+        <span className="meta">
+          {PLACES.length} kernen onder {CITIES.length} steden — klik je dorp, elke
+          plaats valt onder de dichtstbijzijnde stad
+        </span>
+      </summary>
       <div className="plaatsen__grid">
         {CITIES.map((c) => {
           const dorpen = groepen.get(c.slug).sort((a, b) => a.km - b.km);
@@ -48,6 +51,6 @@ export default function PlaatsenLijst() {
           );
         })}
       </div>
-    </div>
+    </details>
   );
 }
