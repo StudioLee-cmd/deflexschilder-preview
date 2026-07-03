@@ -304,13 +304,24 @@ img { max-width: 100%; height: auto; }
 .zoek input, .zoek select {
   font-family: inherit;
   font-size: 16px;
-  padding: 12px 14px;
+  height: 50px;
+  padding: 0 14px;
   border: 1.5px solid var(--lijn);
   border-radius: var(--radius-klein);
   background: var(--wit);
   color: var(--ink);
   width: 100%;
+  box-sizing: border-box;
 }
+.zoek select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 36px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23fb8500' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+}
+.zoek .btn { height: 50px; }
 .zoek input:focus, .zoek select:focus { outline: none; border-color: var(--oranje); box-shadow: 0 0 0 3px rgba(251, 133, 0, 0.18); }
 
 .zoek__suggesties {

@@ -167,8 +167,14 @@ export default function ZoekBalk({ mode: startMode = 'werk', toonTabs = true }) 
             <div className="zoek__veld">
               <label htmlFor="straal">Afstand</label>
               <select id="straal" name="straal" defaultValue="20">
+                <option value="5">5 km</option>
                 <option value="10">10 km</option>
+                <option value="15">15 km</option>
                 <option value="20">20 km</option>
+                <option value="25">25 km</option>
+                <option value="30">30 km</option>
+                <option value="40">40 km</option>
+                <option value="50">50 km</option>
               </select>
             </div>
             <button type="submit" className="btn btn--primair">
