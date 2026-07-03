@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import Kruimel from '@/components/Kruimel';
 import ResolutieBanner from '@/components/ResolutieBanner';
 import VacatureCard from '@/components/VacatureCard';
 import DemoForm from '@/components/DemoForm';
@@ -46,9 +47,7 @@ export default async function VacatureOfStad({ params }) {
 
     return (
       <>
-        <div className="container kruimel">
-          <Link href="/">Home</Link> › <Link href="/vacatures">Vacatures</Link> › {stad.name}
-        </div>
+        <Kruimel items={[{ naam: 'Vacatures', href: '/vacatures' }, { naam: stad.name }]} />
 
         <section className="paginakop container">
           <ResolutieBanner stadNaam={stad.name} />
@@ -138,9 +137,7 @@ export default async function VacatureOfStad({ params }) {
 
   return (
     <>
-      <div className="container kruimel">
-        <Link href="/">Home</Link> › <Link href="/vacatures">Vacatures</Link> › {v.titel}
-      </div>
+      <Kruimel items={[{ naam: 'Vacatures', href: '/vacatures' }, { naam: v.titel }]} />
 
       <section className="paginakop container">
         <span className="kicker">

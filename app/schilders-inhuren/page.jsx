@@ -1,5 +1,8 @@
 import Link from 'next/link';
-import SearchBar from '@/components/SearchBar';
+import Kruimel from '@/components/Kruimel';
+import ZoekBalk from '@/components/ZoekBalk';
+import ClusterBlok from '@/components/ClusterBlok';
+import BeeldAI from '@/components/BeeldAI';
 import { CITIES } from '@/lib/geo';
 
 export const metadata = {
@@ -8,17 +11,39 @@ export const metadata = {
     'Schilders inhuren zonder vaste loonkosten: detachering, uitzenden en werving & selectie voor woningcorporaties, vastgoedbeheerders, aannemers en RGS-opdrachtgevers in Noord-Nederland.',
 };
 
-// PILLAR — cluster 1 (opdrachtgeverkant, hoogste waarde). Kernkeyword:
-// "schilder(s) inhuren"; ondersteunend "uitzendbureau schilders".
+// PILLAR — cluster 1 (opdrachtgeverkant; kernkeyword "schilder(s) inhuren").
+const FAQ = [
+  {
+    v: 'Wat kost een schilder inhuren?',
+    a: 'Dat hangt af van specialisme, duur en type opdracht. We rekenen transparante tarieven zonder verborgen kosten — u weet vooraf precies waar u aan toe bent. Vraag een vrijblijvende offerte aan voor uw situatie.',
+  },
+  {
+    v: 'Hoe snel kan een schilder starten?',
+    a: 'Bij piekdrukte schakelen we vaak binnen enkele dagen. Voor grotere of planmatige trajecten plannen we de capaciteit ruim vooraf in op uw planning.',
+  },
+  {
+    v: 'Doen jullie ook losse klussen voor particulieren?',
+    a: 'Nee. De Flexschilder werkt uitsluitend zakelijk (B2B): structurele detachering en grotere opdrachten voor corporaties, beheerders, aannemers en RGS-opdrachtgevers.',
+  },
+];
+
+const FAQ_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ.map((f) => ({
+    '@type': 'Question',
+    name: f.v,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
 export default function SchildersInhuren() {
   return (
     <>
-      <div className="container kruimel">
-        <Link href="/">Home</Link> › Schilders inhuren
-      </div>
+      <Kruimel items={[{ naam: 'Schilders inhuren' }]} />
 
       <section className="paginakop container">
-        <span className="kicker">Voor opdrachtgevers</span>
+        <span className="kicker">Voor opdrachtgevers · pillar</span>
         <h1>Schilders inhuren in Noord-Nederland</h1>
         <p className="lead">
           Flexibele schilderscapaciteit van échte vakmensen — zonder vaste
@@ -27,82 +52,82 @@ export default function SchildersInhuren() {
         </p>
       </section>
 
-      <section className="sectie" style={{ paddingTop: 32 }}>
+      <section className="sectie" style={{ paddingTop: 28 }}>
         <div className="container">
-          <SearchBar mode="inhuren" compact />
+          <ZoekBalk mode="inhuren" toonTabs={false} />
         </div>
       </section>
 
       {/* Diensten — de drie vormen (menu-ankers) */}
-      <section className="sectie sectie--vlak">
+      <section className="sectie sectie--vlak" style={{ paddingTop: 44 }}>
         <div className="container">
-          <h2>Drie manieren om schilders in te huren</h2>
+          <h2>
+            Drie manieren om <span className="accent">schilders in te huren</span>
+          </h2>
           <div className="grid grid--3" style={{ marginTop: 24 }}>
             <div className="kaartje" id="detachering">
               <h3>Detachering</h3>
-              <p>
-                Vakmensen voor langere tijd op uw project of in uw onderhoudsploeg.
-                Volledige flexibiliteit, wij blijven werkgever — u stuurt aan op het
-                werk, niet op de administratie.
+              <p style={{ fontSize: 14.5 }}>
+                Vakmensen voor langere tijd op uw project of in uw onderhoudsploeg. U
+                stuurt aan op het werk, wij blijven werkgever — geen administratie,
+                geen risico.
               </p>
             </div>
             <div className="kaartje" id="uitzenden">
               <h3>Uitzenden</h3>
-              <p>
-                Pieken opvangen zonder risico: extra schilders precies in de weken dat
-                het nodig is. Vandaag opschalen, morgen weer terug — u betaalt alleen
-                de gewerkte uren.
+              <p style={{ fontSize: 14.5 }}>
+                Pieken opvangen zonder verplichtingen: extra schilders precies in de
+                weken dat het nodig is. U betaalt alleen de gewerkte uren.
               </p>
             </div>
             <div className="kaartje" id="werving-selectie">
               <h3>Werving &amp; selectie</h3>
-              <p>
-                Zoekt u een schilder in vaste dienst? Wij kennen de vakmensen in het
-                Noorden persoonlijk en selecteren de juiste kandidaat — vakmanschap
-                eerst.
+              <p style={{ fontSize: 14.5 }}>
+                Een schilder in vaste dienst? Wij kennen de vakmensen in het Noorden
+                persoonlijk en selecteren op vakmanschap — niet op cv-woorden.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Voor wie */}
+      {/* Voor wie + beeld */}
       <section className="sectie">
-        <div className="container">
-          <h2>Voor wie wij werken</h2>
-          <div className="grid grid--4" style={{ marginTop: 24 }}>
-            <div className="kaartje">
-              <h3>Woningcorporaties</h3>
-              <p>
-                Planmatig en mutatie-onderhoud over uw hele bezit — schaalbare
-                capaciteit zonder vaste formatie.
-              </p>
-            </div>
-            <div className="kaartje">
-              <h3>Aannemers &amp; onderhoudsbedrijven</h3>
-              <p>
-                Betrouwbare flex-schil bij piekdrukte en onderaanneming van
-                schilderwerk, op locatie geregeld.
-              </p>
-            </div>
-            <div className="kaartje">
-              <h3>RGS-opdrachtgevers</h3>
-              <p>
-                Langjarige onderhoudspartner in resultaatgericht samenwerken —{' '}
-                <Link href="/vastgoedonderhoud-en-rgs" style={{ color: 'var(--oranje-donker)', fontWeight: 700 }}>
-                  ons specialisme
-                </Link>
-                .
-              </p>
-            </div>
-            <div className="kaartje">
-              <h3>VvE- &amp; vastgoedbeheerders</h3>
-              <p>
-                Terugkerend binnen- en buitenschilderwerk over een portefeuille panden,
-                netjes gepland en netjes opgeleverd.
-              </p>
+        <div className="container kaartwrap">
+          <div>
+            <h2>Voor wie wij werken</h2>
+            <div className="grid grid--2" style={{ marginTop: 20 }}>
+              <Link href="/voor-woningcorporaties" className="kaartje">
+                <h3>Woningcorporaties</h3>
+                <p style={{ fontSize: 14 }}>Planmatig en mutatie-onderhoud, schaalbaar.</p>
+                <span className="verder">Eigen pagina →</span>
+              </Link>
+              <Link href="/voor-aannemers" className="kaartje">
+                <h3>Aannemers &amp; onderhoud</h3>
+                <p style={{ fontSize: 14 }}>Pieken opvangen, onderaanneming schilderwerk.</p>
+                <span className="verder">Eigen pagina →</span>
+              </Link>
+              <Link href="/vastgoedonderhoud-en-rgs" className="kaartje">
+                <h3>RGS-opdrachtgevers</h3>
+                <p style={{ fontSize: 14 }}>Langjarige onderhoudspartner, conditiegericht.</p>
+                <span className="verder">Ons specialisme →</span>
+              </Link>
+              <div className="kaartje">
+                <h3>VvE- &amp; vastgoedbeheerders</h3>
+                <p style={{ fontSize: 14 }}>
+                  Terugkerend schilderwerk over een portefeuille panden.
+                </p>
+                <span className="verder" style={{ color: 'var(--tekst-licht)' }}>
+                  Pagina volgt in de uitbouw
+                </span>
+              </div>
             </div>
           </div>
+          <BeeldAI
+            src="/img/rgs-inspectie.jpg"
+            alt="Schilder en vastgoedbeheerder inspecteren samen de conditie van een kozijn"
+            ratio="3 / 2"
+          />
         </div>
       </section>
 
@@ -110,32 +135,61 @@ export default function SchildersInhuren() {
       <section className="sectie sectie--vlak">
         <div className="container">
           <h2>Zo werkt het</h2>
-          <div className="stappen" style={{ marginTop: 24, maxWidth: 760 }}>
+          <div className="stappen" style={{ marginTop: 22, maxWidth: 740 }}>
             <div className="stap">
               <p>
-                <strong>Vertel wat er moet gebeuren.</strong> Project, periode, locatie
-                en het soort schilderwerk — een belletje of het aanvraagformulier is
-                genoeg.
+                <strong>Vertel wat er moet gebeuren.</strong> Project, periode,
+                locatie en het soort schilderwerk — een belletje of het
+                aanvraagformulier is genoeg.
               </p>
             </div>
             <div className="stap">
               <p>
-                <strong>Wij plannen de juiste vakmensen in.</strong> Op specialisme
-                gematcht: onderhouds-, industrieel of allround. U weet vooraf wie er
-                komt en wat het kost.
+                <strong>Wij plannen de juiste vakmensen in.</strong> Gematcht op
+                specialisme; u weet vooraf wie er komt en wat het kost.
               </p>
             </div>
             <div className="stap">
               <p>
                 <strong>Op- en afschalen wanneer u wilt.</strong> Meer werk? Extra
-                capaciteit. Project klaar? Geen verplichtingen. Kwaliteit geborgd door
-                vakmensen die het vak zelf kennen.
+                capaciteit. Project klaar? Geen verplichtingen.
               </p>
             </div>
           </div>
-          <Link href="/aanvraag" className="btn btn--primair" style={{ marginTop: 26 }}>
+          <Link href="/aanvraag" className="btn btn--primair" style={{ marginTop: 24 }}>
             Schilders aanvragen
           </Link>
+        </div>
+      </section>
+
+      {/* Cluster-template: zo groeit dit cluster */}
+      <section className="sectie">
+        <div className="container">
+          <ClusterBlok
+            titel="Cluster: schilders inhuren (pillar + ondersteunende artikelen)"
+            intro="Elke ondersteunende pagina beantwoordt één vraag van een opdrachtgever en linkt terug naar deze pillar — het hub-and-spoke-model waarmee de winnende concurrenten ranken."
+            items={[
+              { titel: 'Wat kost een schilder inhuren?' },
+              { titel: 'Inhuren vs. zelf in dienst nemen' },
+              { titel: 'Flexibele capaciteit bij piekdrukte' },
+              { titel: 'Schilders inhuren voor woningcorporaties', href: '/voor-woningcorporaties' },
+              { titel: 'Inhuren voor vastgoedonderhoud & RGS', href: '/vastgoedonderhoud-en-rgs' },
+              { titel: 'Kwaliteit borgen bij ingehuurde schilders' },
+            ]}
+          />
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="sectie sectie--vlak">
+        <div className="container prose">
+          <h2>Veelgestelde vragen</h2>
+          {FAQ.map((f) => (
+            <div key={f.v}>
+              <h3>{f.v}</h3>
+              <p>{f.a}</p>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -143,10 +197,7 @@ export default function SchildersInhuren() {
       <section className="sectie">
         <div className="container">
           <h2>Schilders inhuren per stad</h2>
-          <p className="lead" style={{ marginTop: 10 }}>
-            Lokaal aanwezig in heel Noord-Nederland — kies uw regio.
-          </p>
-          <div className="stedenchips" style={{ marginTop: 18 }}>
+          <div className="stedenchips" style={{ marginTop: 16 }}>
             {CITIES.map((c) => (
               <Link key={c.slug} href={`/schilders-inhuren/${c.slug}`} className="chip">
                 Schilders inhuren {c.name}
@@ -155,6 +206,8 @@ export default function SchildersInhuren() {
           </div>
         </div>
       </section>
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }} />
     </>
   );
 }

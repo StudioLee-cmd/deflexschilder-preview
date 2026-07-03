@@ -1,9 +1,10 @@
 import Link from 'next/link';
-import SearchBar from '@/components/SearchBar';
+import ZoekBalk from '@/components/ZoekBalk';
 import NoordMap from '@/components/NoordMap';
-import VacatureCard from '@/components/VacatureCard';
+import BeeldAI from '@/components/BeeldAI';
 import { CITIES } from '@/lib/geo';
 import { getAtsAdapter } from '@/lib/ats';
+import { ARTIKELEN } from '@/lib/blog';
 
 export const metadata = {
   title: 'Uitzendbureau voor schilders Noord-Nederland — De Flexschilder',
@@ -13,58 +14,73 @@ export const metadata = {
 
 export default async function Home() {
   const vacatures = await getAtsAdapter().getVacatures();
+  const artikel = ARTIKELEN[0];
 
   return (
     <>
-      {/* HERO — zelfde look als huidig (foto + wit), met de twee duidelijke paden */}
+      {/* HERO — oranje gradient + schilder + witte zoek-card, zoals live */}
       <section className="hero">
-        <div className="container hero__grid">
-          <div>
-            <span className="kicker">Uitzendbureau voor schilders · Noord-Nederland</span>
-            <h1>Vakmensen door vakmensen</h1>
-            <p className="lead" style={{ marginTop: 14 }}>
-              De Flexschilder is dé schildersspecialist van het Noorden. Opdrachtgevers
-              huren flexibel echte vakmensen in; schilders vinden structureel werk —
-              geleid door schilders die het vak zelf kennen.
+        <img
+          src="/schilderfoto.png"
+          alt=""
+          aria-hidden
+          className="hero__schilder"
+          width={960}
+          height={360}
+        />
+        <div className="container">
+          <div className="hero__inner">
+            <span className="kicker" style={{ color: '#ffd9a8' }}>
+              Vakmensen door vakmensen · Noord-Nederland
+            </span>
+            <h1>Uitzendbureau voor schilders</h1>
+            <p className="hero__sub">
+              Dé schildersspecialist van het Noorden: opdrachtgevers huren flexibel
+              échte vakmensen in, schilders vinden structureel werk — geleid door
+              schilders die het vak zelf kennen.
             </p>
-
             <div className="hero__paden">
-              <Link href="/schilders-inhuren" className="pad pad--oranje">
-                <span className="pad__label">Voor opdrachtgevers</span>
-                <span className="pad__titel">Ik zoek schilders</span>
-                <p className="pad__sub">
-                  Flexibele capaciteit voor corporaties, vastgoedbeheer, aannemers en
-                  RGS-projecten.
-                </p>
-                <span className="pad__pijl">→</span>
+              <Link href="/schilders-inhuren" className="hero__pad">
+                Ik zoek schilders →
               </Link>
-              <Link href="/vacatures" className="pad">
-                <span className="pad__label">Voor schilders</span>
-                <span className="pad__titel">Ik zoek werk</span>
-                <p className="pad__sub">
-                  Structurele opdrachten en vacatures bij goede opdrachtgevers in
-                  Noord-Nederland.
-                </p>
-                <span className="pad__pijl">→</span>
+              <Link href="/vacatures" className="hero__pad">
+                Ik zoek werk →
               </Link>
             </div>
-          </div>
-
-          <div className="hero__foto">
-            <img
-              src="/schilderfoto.png"
-              alt="Schilder van De Flexschilder aan het werk"
-              width={960}
-              height={720}
-            />
+            <ZoekBalk />
           </div>
         </div>
       </section>
 
-      {/* ZOEKEN — plaats + straal, twee doelgroepen */}
-      <section className="sectie sectie--vlak" style={{ paddingTop: 40, paddingBottom: 40 }}>
+      {/* LAATSTE VACATURES — grijs, oranje accentwoord, zoals live */}
+      <section className="sectie sectie--vlak">
         <div className="container">
-          <SearchBar />
+          <h2>
+            Laatste <span className="accent">vacatures</span>
+          </h2>
+          <div className="grid grid--3" style={{ marginTop: 24 }}>
+            {vacatures.slice(0, 3).map((v) => (
+              <div key={v.slug} className="vacature">
+                <span className="vacature__titel">
+                  {v.titel} {v.demo && <span className="demolabel">demo</span>}
+                </span>
+                <div className="vacature__meta">
+                  <span className="m">{v.plaats}</span>
+                  <span className="m">{v.dienstverband}</span>
+                  <span className="m">{v.salarisIndicatie}</span>
+                </div>
+                <p style={{ fontSize: 14.5 }}>{v.beschrijving.slice(0, 110)}…</p>
+                <Link href={`/vacatures/${v.slug}`} className="btn btn--primair btn--klein">
+                  Bekijk vacature
+                </Link>
+              </div>
+            ))}
+          </div>
+          <p style={{ marginTop: 18 }}>
+            <Link href="/vacatures" className="tekstlink">
+              Alle vacatures
+            </Link>
+          </p>
         </div>
       </section>
 
@@ -73,13 +89,13 @@ export default async function Home() {
         <div className="container kaartwrap">
           <NoordMap />
           <div>
-            <span className="kicker">Werkgebied</span>
-            <h2>Noord-Nederland, van Zwolle tot de Waddenkust</h2>
+            <span className="kicker">Locaties</span>
+            <h2>Werkgebied: Noord-Nederland, van Zwolle tot de Waddenkust</h2>
             <p className="lead" style={{ marginTop: 12 }}>
-              We werken in Groningen, Friesland, Drenthe en de kop van Overijssel —
-              Zwolle is onze zuidgrens. Klik een stad op de kaart, of typ je eigen
-              plaats in de zoekbalk: kleinere plaatsen vallen automatisch onder de
-              dichtstbijzijnde grote stad, met de afstand er eerlijk bij.
+              Groningen, Friesland, Drenthe en de kop van Overijssel — Zwolle is onze
+              zuidgrens. Klik een stad op de kaart of typ je eigen plaats in de
+              zoekbalk: kleinere plaatsen vallen automatisch onder de dichtstbijzijnde
+              grote stad, met de afstand er eerlijk bij.
             </p>
             <div className="stedenchips">
               {CITIES.map((c) => (
@@ -92,45 +108,46 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* DIENSTEN — de 4 clusters, klikbaar */}
+      {/* TWEE KANTEN — de 4 clusters, duidelijk gesplitst */}
       <section className="sectie sectie--vlak">
         <div className="container">
-          <span className="kicker">Wat we doen</span>
-          <h2>Eén specialist, twee kanten van het vak</h2>
-          <div className="grid grid--4" style={{ marginTop: 26 }}>
+          <h2>
+            Eén specialist, <span className="accent">twee kanten</span> van het vak
+          </h2>
+          <div className="grid grid--4" style={{ marginTop: 24 }}>
             <Link href="/schilders-inhuren" className="kaartje">
+              <span className="meta">Voor opdrachtgevers</span>
               <h3>Schilders inhuren</h3>
-              <p className="meta">Voor opdrachtgevers</p>
-              <p>
-                Flexibele schilderscapaciteit — detachering, uitzenden en werving &amp;
-                selectie. Schaalbaar zonder vaste loonkosten.
+              <p style={{ fontSize: 14.5 }}>
+                Detachering, uitzenden en werving &amp; selectie — schaalbaar zonder
+                vaste loonkosten.
               </p>
               <span className="verder">Bekijk →</span>
             </Link>
             <Link href="/vacatures" className="kaartje">
+              <span className="meta">Voor schilders</span>
               <h3>Vacatures &amp; werken</h3>
-              <p className="meta">Voor schilders</p>
-              <p>
-                Structureel werk bij goede opdrachtgevers, eerlijke voorwaarden en
-                begeleiding door vakmensen.
+              <p style={{ fontSize: 14.5 }}>
+                Structureel werk bij goede opdrachtgevers, met marktconform salaris en
+                begeleiding.
               </p>
               <span className="verder">Bekijk →</span>
             </Link>
             <Link href="/soorten-schilders" className="kaartje">
+              <span className="meta">Specialisaties</span>
               <h3>Soorten schilders</h3>
-              <p className="meta">Specialisaties</p>
-              <p>
-                Van onderhoudsschilder tot industrieel schilder en spuiter — het juiste
-                specialisme op de juiste klus.
+              <p style={{ fontSize: 14.5 }}>
+                Onderhouds-, industrieel, allround, spuiter — het juiste specialisme op
+                de juiste klus.
               </p>
               <span className="verder">Bekijk →</span>
             </Link>
             <Link href="/vastgoedonderhoud-en-rgs" className="kaartje">
+              <span className="meta">Ons specialisme</span>
               <h3>Vastgoedonderhoud &amp; RGS</h3>
-              <p className="meta">Ons specialisme</p>
-              <p>
-                Resultaatgericht samenwerken, planmatig onderhoud en NEN 2767 — de
-                langjarige onderhoudspartner.
+              <p style={{ fontSize: 14.5 }}>
+                Resultaatgericht samenwerken, NEN 2767 en MJOP — de langjarige
+                onderhoudspartner.
               </p>
               <span className="verder">Bekijk →</span>
             </Link>
@@ -138,28 +155,8 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* LAATSTE VACATURES — zoals huidig, uit de ATS-adapter */}
+      {/* OVER — copy van live + AI-voorbeeldbeeld */}
       <section className="sectie">
-        <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 16, flexWrap: 'wrap' }}>
-            <div>
-              <span className="kicker">Voor schilders</span>
-              <h2>Laatste vacatures</h2>
-            </div>
-            <Link href="/vacatures" className="btn btn--secundair">
-              Alle vacatures
-            </Link>
-          </div>
-          <div className="grid grid--3" style={{ marginTop: 26 }}>
-            {vacatures.slice(0, 3).map((v) => (
-              <VacatureCard key={v.slug} v={v} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* OVER — copy van de huidige site, zelfde beeld */}
-      <section className="sectie sectie--vlak">
         <div className="container kaartwrap">
           <div>
             <span className="kicker">Over De Flexschilder</span>
@@ -179,47 +176,69 @@ export default async function Home() {
                 als in praktijk — inclusief coaching en begeleiding.
               </p>
             </div>
-            <div style={{ display: 'flex', gap: 12, marginTop: 22, flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: 14, marginTop: 22, flexWrap: 'wrap', alignItems: 'center' }}>
               <Link href="/over-ons" className="btn btn--primair">
                 Meer informatie
               </Link>
-              <Link href="/aanvraag" className="btn btn--secundair">
+              <Link href="/aanvraag" className="tekstlink">
                 Contact opnemen
               </Link>
             </div>
           </div>
-          <div className="hero__foto">
-            <img src="/shilder2-1024x683.jpg" alt="Schilderwerk in uitvoering" width={1024} height={683} />
-          </div>
+          <BeeldAI
+            src="/img/corporatie-rijwoningen.jpg"
+            alt="Schilders van De Flexschilder bereiden buitenschilderwerk voor aan een rij corporatiewoningen"
+            ratio="3 / 2"
+          />
         </div>
       </section>
 
-      {/* CTA-BAND — beide doelgroepen, duidelijk gescheiden */}
-      <section className="sectie sectie--donker ctaband">
-        <div className="container">
-          <div className="ctaband__grid">
-            <div className="ctaband__kaart">
-              <span className="kicker">Voor opdrachtgevers</span>
-              <h3 style={{ fontSize: 24 }}>Schilderscapaciteit nodig?</h3>
-              <p>
-                Vertel ons wat er geschilderd moet worden en waar — wij plannen de
-                juiste vakmensen in. Vandaag aangevraagd, snel geregeld.
-              </p>
-              <Link href="/aanvraag" className="btn btn--primair" style={{ alignSelf: 'flex-start' }}>
-                Schilders aanvragen
+      {/* LAATSTE NIEUWS — oranje band zoals live, gevoed door de blog */}
+      <section className="sectie oranjeband">
+        <div className="container oranjeband__grid">
+          <div>
+            <h2>Laatste nieuws</h2>
+            <p style={{ marginTop: 8, fontSize: 15.5 }}>
+              Vakkennis en nieuws voor opdrachtgevers én schilders — geschreven door
+              vakmensen, niet door een marketingbureau.
+            </p>
+            <p style={{ marginTop: 14 }}>
+              <Link href="/blog" className="tekstlink">
+                Alle nieuwsberichten
               </Link>
-            </div>
-            <div className="ctaband__kaart">
-              <span className="kicker">Voor schilders</span>
-              <h3 style={{ fontSize: 24 }}>Op zoek naar een nieuwe baan?</h3>
-              <p>
-                Kom je er niet helemaal uit? Zet ons eerst aan het werk door je in te
-                schrijven — dan zoeken wij voor jou de juiste opdracht.
-              </p>
-              <Link href="/inschrijven" className="btn btn--ghost" style={{ alignSelf: 'flex-start' }}>
-                Schrijf je in
-              </Link>
-            </div>
+            </p>
+          </div>
+          <Link href={`/blog/${artikel.slug}`} className="nieuwskaart">
+            <span className="meta" style={{ fontSize: 13, color: 'var(--tekst-licht)' }}>
+              {artikel.categorie} · {artikel.gepubliceerdLabel} · {artikel.leestijd} lezen
+            </span>
+            <h3 style={{ fontSize: 18 }}>{artikel.titel}</h3>
+            <p style={{ fontSize: 14.5 }}>{artikel.excerpt.slice(0, 150)}…</p>
+            <span className="verder" style={{ color: 'var(--oranje-donker)', fontWeight: 700 }}>
+              Lees het artikel →
+            </span>
+          </Link>
+        </div>
+      </section>
+
+      {/* FOTO-CTA — zoals live: foto + oranje kaart */}
+      <section className="fotocta">
+        <img className="fotocta__bg" src="/img/cta-roller.jpg" alt="" aria-hidden />
+        <div className="fotocta__scrim" aria-hidden />
+        <div className="container fotocta__inner">
+          <div className="fotocta__kaart">
+            <h2>Ben jij op zoek naar een nieuwe baan?</h2>
+            <p>
+              Op zoek naar een nieuwe baan als schilder, maar kom je er niet helemaal
+              uit? Zet ons eerst aan het werk door je in te schrijven. Dan gaan wij
+              voor jou op zoek naar jouw nieuwe baan.
+            </p>
+            <Link href="/inschrijven" className="btn btn--donker">
+              Schrijf je in
+            </Link>
+            <p className="fotocta__wissel">
+              Opdrachtgever? <Link href="/aanvraag">Vraag hier schilders aan →</Link>
+            </p>
           </div>
         </div>
       </section>

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Kruimel from '@/components/Kruimel';
 import DemoForm from '@/components/DemoForm';
 
 export const metadata = {
@@ -10,9 +11,7 @@ export const metadata = {
 export default function Inschrijven() {
   return (
     <>
-      <div className="container kruimel">
-        <Link href="/">Home</Link> › Inschrijven
-      </div>
+      <Kruimel items={[{ naam: 'Inschrijven' }]} />
 
       <section className="paginakop container">
         <span className="kicker">Voor schilders</span>

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import Kruimel from '@/components/Kruimel';
 import ResolutieBanner from '@/components/ResolutieBanner';
 import { CITIES, getCity, nearbyCities } from '@/lib/geo';
 import { getAtsAdapter, vacaturesBinnenStraal } from '@/lib/ats';
@@ -39,9 +40,12 @@ export default async function StadPagina({ params }) {
 
   return (
     <>
-      <div className="container kruimel">
-        <Link href="/">Home</Link> › <Link href="/schilders-inhuren">Schilders inhuren</Link> › {stad.name}
-      </div>
+      <Kruimel
+        items={[
+          { naam: 'Schilders inhuren', href: '/schilders-inhuren' },
+          { naam: stad.name },
+        ]}
+      />
 
       <section className="paginakop container">
         <ResolutieBanner stadNaam={stad.name} />

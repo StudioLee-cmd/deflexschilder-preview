@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import Kruimel from '@/components/Kruimel';
 
 export const metadata = {
   title: 'Over ons — vakmensen door vakmensen',
   description:
-    'De Flexschilder wordt geleid en bemenst door echte schilders. Ruim twintig jaar vakkennis in verf, onderhoud en RGS — dé schildersspecialist van Noord-Nederland.',
+    'De Flexschilder wordt geleid en bemenst door echte schilders. 23 jaar vakkennis in verf, onderhoud en RGS — dé schildersspecialist van Noord-Nederland.',
 };
 
 // E-E-A-T-laag: author-pagina (André) + verhalen. In de volledige site worden de
@@ -11,9 +12,7 @@ export const metadata = {
 export default function OverOns() {
   return (
     <>
-      <div className="container kruimel">
-        <Link href="/">Home</Link> › Over ons
-      </div>
+      <Kruimel items={[{ naam: 'Over ons' }]} />
 
       <section className="paginakop container">
         <span className="kicker">Over De Flexschilder</span>
@@ -30,7 +29,7 @@ export default function OverOns() {
           <div className="prose">
             <h2>André van der Hoogen</h2>
             <p>
-              Ruim <strong>twintig jaar technische expertise</strong> in verf en
+              <strong>23 jaar technische expertise</strong> in verf en
               onderhoud, diepgaande kennis van <strong>RGS en planmatig onderhoud</strong>,
               en een sterk regionaal netwerk in Noord-Nederland. André is
               sparringpartner voor ondernemers, corporaties en beheerders — iemand die

@@ -1,5 +1,7 @@
 import Link from 'next/link';
-import SearchBar from '@/components/SearchBar';
+import Kruimel from '@/components/Kruimel';
+import ZoekBalk from '@/components/ZoekBalk';
+import ClusterBlok from '@/components/ClusterBlok';
 import VacatureCard from '@/components/VacatureCard';
 import { CITIES } from '@/lib/geo';
 import { getAtsAdapter } from '@/lib/ats';
@@ -10,33 +12,33 @@ export const metadata = {
     'Vacature schilder gezocht? Structureel werk via De Flexschilder: vacatures voor schilders in Groningen, Friesland, Drenthe en de kop van Overijssel — met marktconforme salarissen.',
 };
 
-// PILLAR — cluster 2 (kandidaatkant, volume: "vacature schilder", "schilder gezocht").
+// PILLAR — cluster 2 (kandidaatkant; "vacature schilder", "schilder gezocht").
 export default async function Vacatures() {
   const vacatures = await getAtsAdapter().getVacatures();
 
   return (
     <>
-      <div className="container kruimel">
-        <Link href="/">Home</Link> › Vacatures
-      </div>
+      <Kruimel items={[{ naam: 'Vacatures' }]} />
 
       <section className="paginakop container">
-        <span className="kicker">Voor schilders</span>
-        <h1>Vacatures voor schilders</h1>
+        <span className="kicker">Voor schilders · pillar</span>
+        <h1>
+          Vacatures voor <span className="accent">schilders</span>
+        </h1>
         <p className="lead">
           Structureel werk bij goede opdrachtgevers in heel Noord-Nederland — geen
-          losse klusjes, maar plaatsingen waar je wat aan hebt. Marktconform salaris,
-          eerlijke voorwaarden en begeleiding door vakmensen die het vak zelf kennen.
+          losse klusjes. Marktconform salaris, eerlijke voorwaarden en begeleiding
+          door vakmensen die het vak zelf kennen.
         </p>
       </section>
 
-      <section className="sectie" style={{ paddingTop: 32 }}>
+      <section className="sectie" style={{ paddingTop: 28 }}>
         <div className="container">
-          <SearchBar mode="werk" compact />
+          <ZoekBalk mode="werk" toonTabs={false} />
         </div>
       </section>
 
-      <section className="sectie" style={{ paddingTop: 0 }}>
+      <section className="sectie sectie--vlak" style={{ paddingTop: 44 }}>
         <div className="container">
           <h2>
             Alle vacatures{' '}
@@ -52,7 +54,7 @@ export default async function Vacatures() {
         </div>
       </section>
 
-      <section className="sectie sectie--vlak">
+      <section className="sectie">
         <div className="container">
           <h2>Vacatures per stad</h2>
           <div className="stedenchips" style={{ marginTop: 16 }}>
@@ -65,7 +67,7 @@ export default async function Vacatures() {
         </div>
       </section>
 
-      <section className="sectie">
+      <section className="sectie sectie--vlak">
         <div className="container kaartwrap">
           <div>
             <h2>Zo werkt werken via De Flexschilder</h2>
@@ -78,28 +80,50 @@ export default async function Vacatures() {
               </div>
               <div className="stap">
                 <p>
-                  <strong>Wij matchen je op vakmanschap</strong> — het juiste werk op
-                  het juiste niveau, met marktconform salaris.
+                  <strong>Wij matchen op vakmanschap</strong> — het juiste werk op het
+                  juiste niveau, met marktconform salaris.
                 </p>
               </div>
               <div className="stap">
                 <p>
-                  <strong>Aan de slag, met begeleiding</strong> — coaching en de kans om
-                  je vak te verdiepen, in theorie én praktijk.
+                  <strong>Aan de slag, met begeleiding</strong> — coaching en de kans
+                  om je vak te verdiepen, in theorie én praktijk.
                 </p>
               </div>
             </div>
           </div>
-          <div className="kaartje" style={{ padding: 28 }}>
+          <div className="kaartje" style={{ padding: 28, alignSelf: 'start' }}>
             <h3>Niet gevonden wat je zoekt?</h3>
-            <p>
+            <p style={{ fontSize: 14.5 }}>
               Zet ons aan het werk: schrijf je in en wij zoeken voor jou de juiste
               opdracht — vakmensen door vakmensen.
             </p>
             <Link href="/inschrijven" className="btn btn--primair" style={{ alignSelf: 'flex-start', marginTop: 8 }}>
               Schrijf je in
             </Link>
+            <p style={{ fontSize: 14, marginTop: 10 }}>
+              <Link href="/blog/kilometervergoeding-2026-25-cent" className="tekstlink">
+                Nieuw: kilometervergoeding 2026 omhoog
+              </Link>
+            </p>
           </div>
+        </div>
+      </section>
+
+      <section className="sectie">
+        <div className="container">
+          <ClusterBlok
+            titel="Cluster: werken als schilder (pillar + ondersteunende artikelen)"
+            intro="De vragen die werkzoekende schilders googelen — elk artikel linkt terug naar dit vacature-overzicht."
+            items={[
+              { titel: 'Kilometervergoeding 2026: wat scheelt het jou?', href: '/blog/kilometervergoeding-2026-25-cent' },
+              { titel: 'Salaris van een schilder (per specialisme)', href: '/soorten-schilders' },
+              { titel: 'Leerling of BBL-schilder worden' },
+              { titel: 'Als zzp-schilder aan de slag' },
+              { titel: 'Doorgroeien als schilder' },
+              { titel: 'Hoe werken via De Flexschilder werkt' },
+            ]}
+          />
         </div>
       </section>
     </>
