@@ -454,10 +454,22 @@ img { max-width: 100%; height: auto; }
 }
 .kaart__marker:hover { color: var(--oranje-donker); }
 .kaart__marker:hover .stip { transform: scale(1.25); background: var(--oranje-donker); }
-.kaart__marker--links {
+/* label-richtingen — de stip ligt altijd exact op de stadslocatie */
+.kaart__marker--l {
   flex-direction: row-reverse;
-  /* label links van de stip → stip zit aan de rechterkant van de marker */
   transform: translate(calc(-100% + 12px), -50%);
+}
+.kaart__marker--b {
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  transform: translate(-50%, -12px);
+}
+.kaart__marker--t {
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 1px;
+  transform: translate(-50%, calc(-100% + 12px));
 }
 .stedenchips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
 .chip {

@@ -15,6 +15,26 @@ function py(lat) {
   return ((LAT_MAX - lat) / (LAT_MAX - LAT_MIN)) * VIEW_H;
 }
 
+// Label-richting per stad — met de hand gekozen zodat niets overlapt in het
+// drukke oosten (r = rechts van de stip · l = links · b = onder · t = boven).
+const LABEL_ZIJDE = {
+  groningen: 't',
+  leeuwarden: 'l',
+  assen: 'l',
+  emmen: 'r',
+  zwolle: 'b',
+  drachten: 'b',
+  heerenveen: 'b',
+  hoogeveen: 'r',
+  meppel: 'l',
+  sneek: 'l',
+  kampen: 'l',
+  stadskanaal: 'r',
+  hardenberg: 'r',
+  veendam: 'b',
+  winschoten: 't',
+};
+
 const KLEUR = {
   noord: { fill: '#fde8cc', stroke: '#fb8500', width: 2 },
   kop: { fill: '#fff4e6', stroke: '#fb8500', width: 1.5 },
@@ -43,12 +63,12 @@ export default function NoordMap() {
       {CITIES.map((c) => {
         const x = (px(c.lng) / VIEW_W) * 100;
         const y = (py(c.lat) / VIEW_H) * 100;
-        const rechtsUit = px(c.lng) > VIEW_W - 120;
+        const zijde = LABEL_ZIJDE[c.slug] || 'r';
         return (
           <Link
             key={c.slug}
             href={`/schilders-inhuren/${c.slug}`}
-            className={`kaart__marker${rechtsUit ? ' kaart__marker--links' : ''}`}
+            className={`kaart__marker kaart__marker--${zijde}`}
             style={{ left: `${x}%`, top: `${y}%` }}
             aria-label={`Schilders inhuren in ${c.name}`}
           >
