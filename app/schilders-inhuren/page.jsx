@@ -12,10 +12,12 @@ export const metadata = {
 };
 
 // PILLAR — cluster 1 (opdrachtgeverkant; kernkeyword "schilder(s) inhuren").
+// NB (Tim 03-07): klus-intent-keywords ("schilder inhuren" enkelvoud = Werkspot-publiek)
+// worden bewust vermeden — alle copy stuurt op capaciteit/B2B (meervoud, detacheren).
 const FAQ = [
   {
-    v: 'Wat kost een schilder inhuren?',
-    a: 'Dat hangt af van specialisme, duur en type opdracht. We rekenen transparante tarieven zonder verborgen kosten — u weet vooraf precies waar u aan toe bent. Vraag een vrijblijvende offerte aan voor uw situatie.',
+    v: 'Wat kost het inhuren van schilders?',
+    a: 'Dat hangt af van specialisme, aantal vakmensen, duur en type opdracht. We rekenen transparante tarieven zonder verborgen kosten — u weet vooraf precies waar u aan toe bent. Vraag een vrijblijvende offerte aan voor uw situatie.',
   },
   {
     v: 'Hoe snel kan een schilder starten?',
@@ -131,8 +133,66 @@ export default function SchildersInhuren() {
         </div>
       </section>
 
-      {/* Werkwijze */}
+      {/* Waarom — André's eigen tekst (steekwoorden-docx 03-07) */}
       <section className="sectie sectie--vlak">
+        <div className="container kaartwrap" style={{ alignItems: 'start' }}>
+          <div className="prose">
+            <span className="kicker">Meer dan bemiddeling, verstand van schilderwerk</span>
+            <h2>Waarom opdrachtgevers voor ons kiezen</h2>
+            <p>
+              Met 23 jaar ervaring als technisch adviseur binnen de verf- en
+              onderhoudsbranche begrijpen wij het schildersvak als geen ander. Wij
+              leveren niet alleen vakmensen, maar denken mee over kwaliteit,
+              onderhoud en uitvoering.
+            </p>
+            <p>
+              Dankzij onze kennis van RGS, vastgoedonderhoud en schildertechniek
+              spreken wij dezelfde taal als opdrachtgevers én schilders. Vanuit
+              Noord-Nederland bouwen wij aan langdurige relaties, gebaseerd op
+              vakmanschap, betrouwbaarheid en persoonlijk contact.
+            </p>
+            <ul className="checklijst" style={{ paddingLeft: 0 }}>
+              <li>23 jaar technische expertise in verf en onderhoud</li>
+              <li>Specialist in schilders en vastgoedonderhoud</li>
+              <li>Kennis van RGS en planmatig onderhoud</li>
+              <li>Sterk netwerk in Noord-Nederland</li>
+              <li>Persoonlijke begeleiding en selectie</li>
+              <li>Vakmensen door vakmensen</li>
+            </ul>
+          </div>
+          <div style={{ display: 'grid', gap: 18 }}>
+            <div className="kaartje">
+              <h3>Geen cv-schuiver, maar een vakinhoudelijke matchmaker</h3>
+              <p style={{ fontSize: 14.5 }}>
+                Wij beoordelen schilders op vakkennis, werkhouding, ervaring,
+                communicatie en geschiktheid voor uw specifieke project. Dat leidt
+                tot betere matches en minder uitval — de juiste schilder op het
+                juiste project.
+              </p>
+            </div>
+            <div className="kaartje">
+              <h3>Sparringpartner voor ondernemers</h3>
+              <p style={{ fontSize: 14.5 }}>
+                Meedenken over personeelsbeleid, cao-vraagstukken, duurzame
+                inzetbaarheid en het binden en behouden van vakmensen — één
+                aanspreekpunt met praktijkervaring, geen accountmanager zonder
+                technische achtergrond.
+              </p>
+            </div>
+            <div className="kaartje">
+              <h3>Technisch advies inbegrepen</h3>
+              <p style={{ fontSize: 14.5 }}>
+                Verfsystemen, ondergrondbeoordeling, onderhoudscycli, kwaliteitseisen
+                en uitvoeringsrisico&rsquo;s — wij plaatsen niet alleen schilders, wij
+                begrijpen hun werk.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Werkwijze */}
+      <section className="sectie">
         <div className="container">
           <h2>Zo werkt het</h2>
           <div className="stappen" style={{ marginTop: 22, maxWidth: 740 }}>
@@ -169,7 +229,7 @@ export default function SchildersInhuren() {
             titel="Cluster: schilders inhuren (pillar + ondersteunende artikelen)"
             intro="Elke ondersteunende pagina beantwoordt één vraag van een opdrachtgever en linkt terug naar deze pillar — het hub-and-spoke-model waarmee de winnende concurrenten ranken."
             items={[
-              { titel: 'Wat kost een schilder inhuren?' },
+              { titel: 'Wat kost het inhuren van schilders?' },
               { titel: 'Inhuren vs. zelf in dienst nemen' },
               { titel: 'Flexibele capaciteit bij piekdrukte' },
               { titel: 'Schilders inhuren voor woningcorporaties', href: '/voor-woningcorporaties' },

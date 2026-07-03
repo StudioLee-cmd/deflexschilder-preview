@@ -110,7 +110,39 @@ export default async function Vacatures() {
         </div>
       </section>
 
+      {/* Maatwerk — André's steekwoorden: uitzenden is maatwerk, de juiste match */}
       <section className="sectie">
+        <div className="container kaartwrap">
+          <div className="prose">
+            <span className="kicker">Uitzenden is maatwerk</span>
+            <h2>Niet de snelste match, maar de juiste match</h2>
+            <p>
+              Elke vakman heeft andere behoeftes: vrijheid, het soort werk dat je
+              leuk vindt, reistijd, ontwikkeling. Wij peilen eerst wat jíj wilt — en
+              zoeken daar een passende opdrachtgever bij. Geen cv-schuiven, maar een
+              vakinhoudelijke match door mensen die je werk kunnen beoordelen.
+            </p>
+            <p>
+              En we kijken verder dan de plaatsing: wij investeren in mensen en
+              helpen je groeien binnen het vak — van zij-instromer tot allround
+              vakman.
+            </p>
+          </div>
+          <div className="kaartje" style={{ alignSelf: 'center' }}>
+            <h3>Verhalen van vakmensen</h3>
+            <p style={{ fontSize: 14.5 }}>
+              Hoe dat uitpakt? Dat vertellen onze mensen straks zelf: het verhaal van
+              zij-instromers Tieme en Jordy, en waarom Julia bewust voor werken via De
+              Flexschilder kiest.
+            </p>
+            <Link href="/over-ons" className="verder">
+              Lees over ons team →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="sectie sectie--vlak">
         <div className="container">
           <ClusterBlok
             titel="Cluster: werken als schilder (pillar + ondersteunende artikelen)"

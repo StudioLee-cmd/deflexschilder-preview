@@ -35,9 +35,9 @@ export default async function Home() {
             </span>
             <h1>Uitzendbureau voor schilders</h1>
             <p className="hero__sub">
-              Dé schildersspecialist van het Noorden: opdrachtgevers huren flexibel
-              échte vakmensen in, schilders vinden structureel werk — geleid door
-              schilders die het vak zelf kennen.
+              Meer dan bemiddeling, verstand van schilderwerk. Opdrachtgevers huren
+              flexibel échte vakmensen in, schilders vinden werk dat bij ze past —
+              persoonlijk gematcht door mensen die het vak zelf kennen.
             </p>
             <div className="hero__paden">
               <Link href="/schilders-inhuren" className="hero__pad">

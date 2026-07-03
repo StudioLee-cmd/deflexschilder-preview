@@ -61,11 +61,21 @@ export default function AuteurAndre() {
             </p>
             <h2>Expertise</h2>
             <ul className="checklijst" style={{ paddingLeft: 0 }}>
-              <li>Verftechniek en ondergronden — 23 jaar praktijkervaring</li>
+              <li>
+                Technisch advies: verfsystemen · ondergrondbeoordeling ·
+                onderhoudscycli · kwaliteitseisen · uitvoeringsrisico&rsquo;s
+              </li>
               <li>Planmatig en mutatie-onderhoud voor corporatiebezit</li>
               <li>Resultaatgericht samenwerken (RGS) en NEN 2767-conditiemeting</li>
-              <li>Selectie en begeleiding van vakmensen — vakmensen door vakmensen</li>
+              <li>
+                Sparringpartner voor ondernemers: personeelsbeleid, cao en het binden
+                en behouden van vakmensen
+              </li>
+              <li>Persoonlijke selectie — geen cv-schuiver, maar een vakinhoudelijke matchmaker</li>
             </ul>
+            <blockquote>
+              &ldquo;Ik plaats niet alleen schilders, ik begrijp hun werk.&rdquo;
+            </blockquote>
             <h2>Artikelen van André</h2>
             <ul>
               {ARTIKELEN.map((a) => (

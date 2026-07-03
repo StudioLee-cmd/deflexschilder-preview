@@ -19,8 +19,10 @@ export default function OverOns() {
         <h1>Vakmensen door vakmensen</h1>
         <p className="lead">
           De Flexschilder is geen kantoor-uitzender die schilders alleen op papier
-          kent. Wij worden geleid en bemenst door échte schilders — en dat merk je in
-          alles: de matches, de planning en de kwaliteit op de steiger.
+          kent, maar een <strong>ketenpartner in vaklieden</strong>: geleid en bemenst
+          door échte schilders, lokaal betrokken, en we spreken de taal van de
+          schilder én de ondernemer. Dat merk je in alles — de matches, de planning
+          en de kwaliteit op de steiger.
         </p>
       </section>
 
@@ -53,10 +55,14 @@ export default function OverOns() {
           <div style={{ display: 'grid', gap: 18 }}>
             <div className="kaartje" style={{ padding: 26 }}>
               <span className="kicker">Verhalen van vakmensen</span>
-              <h3>Tieme · Jordy · Julia</h3>
-              <p style={{ fontSize: 15 }}>
-                Hoe is het om via De Flexschilder te werken? De verhalen van onze
-                vakmensen krijgen hier hun plek. <em>(Content volgt — preview.)</em>
+              <h3>De bewijslaag: echte verhalen</h3>
+              <ul style={{ paddingLeft: 18, fontSize: 14.5, display: 'grid', gap: 6 }}>
+                <li>&ldquo;Van zij-instromer naar vakman: het verhaal van Tieme&rdquo;</li>
+                <li>&ldquo;Hoe Jordy zijn plek vond binnen het schildersvak&rdquo;</li>
+                <li>&ldquo;Waarom Julia bewust kiest voor werken via De Flexschilder&rdquo;</li>
+              </ul>
+              <p style={{ fontSize: 13.5, color: 'var(--tekst-licht)' }}>
+                Interviews volgen — verhalen overtuigen meer dan een lijst kenmerken.
               </p>
             </div>
             <div className="kaartje" style={{ padding: 26 }}>
