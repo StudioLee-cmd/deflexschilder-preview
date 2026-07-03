@@ -128,6 +128,12 @@ export default async function Vacatures() {
               helpen je groeien binnen het vak — van zij-instromer tot allround
               vakman.
             </p>
+            <p>
+              Het verschil zit in het netwerk: André kent na 23 jaar in de branche
+              de beste schildersbedrijven en opdrachtgevers van het Noorden
+              persoonlijk. Via De Flexschilder kom je binnen bij{' '}
+              <strong>bedrijven waar je écht graag wilt werken</strong>.
+            </p>
           </div>
           <div className="kaartje" style={{ alignSelf: 'center' }}>
             <h3>Verhalen van vakmensen</h3>

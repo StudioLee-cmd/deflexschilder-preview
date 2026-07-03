@@ -1,6 +1,18 @@
 import Link from 'next/link';
 import Kruimel from '@/components/Kruimel';
 import StatStrip from '@/components/StatStrip';
+import { BASIS, ORG_ID, jsonLd } from '@/lib/schema';
+
+// AboutPage-schema: koppelt deze pagina expliciet aan de Organization in de
+// site-graph — samen met het entiteit-blok hieronder is dit de pagina waar
+// AI-zoekmachines het hele bedrijf uit begrijpen.
+const ABOUT_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'AboutPage',
+  '@id': `${BASIS}/over-ons#about`,
+  mainEntity: { '@id': ORG_ID },
+  inLanguage: 'nl',
+};
 
 export const metadata = {
   title: 'Over ons — vakmensen door vakmensen',
@@ -26,6 +38,19 @@ export default function OverOns() {
           schilder én de ondernemer. Dat merk je in alles — de matches, de planning
           en de kwaliteit op de steiger.
         </p>
+        {/* Entiteit-blok: in één alinea alles wat mens én AI over dit bedrijf
+            moeten weten (wie · wat · waar · sinds · bewijs). */}
+        <div className="kerndata" style={{ maxWidth: 820 }}>
+          <strong>De Flexschilder in het kort</strong>
+          <dl>
+            <div><dt>Wat</dt><dd>Specialistische partner in schilders: detachering, uitzenden en werving &amp; selectie — B2B, geen losse klussen</dd></div>
+            <div><dt>Wie</dt><dd>André van der Hoogen, eigenaar — 23 jaar technisch adviseur in de verf- en onderhoudsbranche</dd></div>
+            <div><dt>Werkgebied</dt><dd>Noord-Nederland: Groningen, Friesland, Drenthe en de kop van Overijssel (zuidgrens Zwolle)</dd></div>
+            <div><dt>Specialisme</dt><dd>Vastgoedonderhoud &amp; RGS, NEN 2767-conditiemeting, verfsystemen en onderhoudscycli</dd></div>
+            <div><dt>Netwerk</dt><dd>Jarenlang opgebouwde connecties met de beste schildersbedrijven en opdrachtgevers in het Noorden</dd></div>
+            <div><dt>Bewijs</dt><dd>SNA-keurmerk · VCU-gecertificeerd · ABU-lid · KvK 83856323 · Steenwijkerwold</dd></div>
+          </dl>
+        </div>
       </section>
 
       <section className="container" style={{ paddingTop: 26 }}>
@@ -62,6 +87,15 @@ export default function OverOns() {
               We bieden de vakmensen in ons netwerk de mogelijkheid om hun kennis te
               vergroten, in theorie én praktijk — van techniek tot klantgerichtheid,
               met coaching en begeleiding.
+            </p>
+            <h2>Een netwerk waar je wat aan hebt</h2>
+            <p>
+              In 23 jaar bouw je wat op. André kent de schildersbedrijven,
+              onderhoudsbedrijven en opdrachtgevers in het Noorden persoonlijk — en
+              dat netwerk werkt twee kanten op: opdrachtgevers krijgen snel de juiste
+              vakmensen, en schilders komen via De Flexschilder binnen bij{' '}
+              <strong>bedrijven waar je écht graag wilt werken</strong> — niet zomaar
+              de eerstvolgende klus.
             </p>
           </div>
 
@@ -123,6 +157,8 @@ export default function OverOns() {
           </div>
         </div>
       </section>
+
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(ABOUT_SCHEMA) }} />
     </>
   );
 }
