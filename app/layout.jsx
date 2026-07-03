@@ -1,6 +1,7 @@
 import { Assistant } from 'next/font/google';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
+import ScrollReveal from '@/components/ScrollReveal';
 import { getAtsAdapter } from '@/lib/ats';
 import { BASIS, SITE_GRAPH, jsonLd } from '@/lib/schema';
 import './globals.css';
@@ -50,6 +51,7 @@ export default async function RootLayout({ children }) {
         <SiteHeader vacatureCount={vacatures.length} />
         <main>{children}</main>
         <SiteFooter />
+        <ScrollReveal />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: jsonLd(SITE_GRAPH) }}

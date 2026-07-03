@@ -2,7 +2,8 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Kruimel from '@/components/Kruimel';
 import ResolutieBanner from '@/components/ResolutieBanner';
-import { CITIES, getCity, nearbyCities } from '@/lib/geo';
+import StatStrip from '@/components/StatStrip';
+import { CITIES, PLACES, getCity, nearbyCities, nearestCity } from '@/lib/geo';
 import { getAtsAdapter, vacaturesBinnenStraal } from '@/lib/ats';
 import { ORG_ID } from '@/lib/schema';
 
@@ -72,6 +73,17 @@ export default async function StadPagina({ params }) {
             ☎ 06 - 137 181 72
           </a>
         </div>
+      </section>
+
+      <section className="container" style={{ paddingTop: 26 }}>
+        <StatStrip
+          items={[
+            { tot: 23, label: 'jaar technische vakkennis' },
+            { tot: PLACES.filter((p) => nearestCity(p).city.slug === stad.slug).length, label: `plaatsen onder ${stad.name}` },
+            { tot: lokaalWerk.length, label: 'vacatures binnen 20 km (demo)' },
+            { vast: stad.provincie, label: 'provincie' },
+          ]}
+        />
       </section>
 
       <section className="sectie">

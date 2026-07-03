@@ -3,7 +3,8 @@ import Kruimel from '@/components/Kruimel';
 import ZoekBalk from '@/components/ZoekBalk';
 import ClusterBlok from '@/components/ClusterBlok';
 import BeeldAI from '@/components/BeeldAI';
-import { CITIES } from '@/lib/geo';
+import StatStrip from '@/components/StatStrip';
+import { CITIES, PLACES } from '@/lib/geo';
 
 export const metadata = {
   title: 'Schilders inhuren — flexibele schilderscapaciteit in Noord-Nederland',
@@ -59,6 +60,17 @@ export default function SchildersInhuren() {
         <div className="container">
           <ZoekBalk mode="inhuren" toonTabs={false} />
         </div>
+      </section>
+
+      <section className="container" style={{ paddingBottom: 8 }}>
+        <StatStrip
+          items={[
+            { tot: 23, label: 'jaar technische vakkennis' },
+            { tot: CITIES.length, label: 'stadspagina’s in Noord-NL' },
+            { tot: PLACES.length, suffix: '+', label: 'plaatsen gedekt' },
+            { vast: 'SNA · VCU · ABU', label: 'gecertificeerd & aangesloten' },
+          ]}
+        />
       </section>
 
       {/* Diensten — de drie vormen (menu-ankers) */}

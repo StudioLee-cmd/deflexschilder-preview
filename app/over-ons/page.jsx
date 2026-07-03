@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Kruimel from '@/components/Kruimel';
+import StatStrip from '@/components/StatStrip';
 
 export const metadata = {
   title: 'Over ons — vakmensen door vakmensen',
@@ -25,6 +26,17 @@ export default function OverOns() {
           schilder én de ondernemer. Dat merk je in alles — de matches, de planning
           en de kwaliteit op de steiger.
         </p>
+      </section>
+
+      <section className="container" style={{ paddingTop: 26 }}>
+        <StatStrip
+          items={[
+            { tot: 23, label: 'jaar in verf en onderhoud' },
+            { tot: 4, label: 'provincies werkgebied' },
+            { tot: 3, label: 'certificeringen (SNA · VCU · ABU)' },
+            { vast: '1', label: 'aanspreekpunt uit het vak' },
+          ]}
+        />
       </section>
 
       <section className="sectie">
