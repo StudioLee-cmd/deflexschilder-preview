@@ -740,6 +740,87 @@ a.kaartje:hover { transform: translateY(-2px); box-shadow: var(--schaduw); }
   border-radius: 5px;
 }
 
+/* ---------- team & verhalen (over-ons) ---------- */
+.team { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 26px; }
+@media (max-width: 900px) { .team { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .team { grid-template-columns: 1fr; } }
+
+.teamlid {
+  background: var(--wit);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 1px 4px rgba(51, 45, 45, 0.06);
+  display: flex;
+  flex-direction: column;
+}
+.teamlid__body { padding: 15px 18px 20px; display: grid; gap: 3px; }
+.teamlid__naam { font-size: 17px; font-weight: 800; color: var(--ink); }
+.teamlid__rol {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--oranje-donker);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.teamlid__intro { font-size: 14px; color: var(--tekst); margin-top: 6px; }
+
+/* foto met nette "foto volgt"-placeholder — 1-op-1 vervangbaar via lib/team.js */
+.teamfoto { position: relative; aspect-ratio: 4 / 5; background: var(--vlak); overflow: hidden; }
+.teamfoto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.teamfoto--leeg {
+  display: grid;
+  place-items: center;
+  background: linear-gradient(155deg, var(--oranje-zacht), var(--vlak));
+}
+.teamfoto__initiaal { font-size: 52px; font-weight: 800; color: var(--oranje); opacity: 0.5; }
+.teamfoto__badge {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  background: rgba(51, 45, 45, 0.82);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 4px 9px;
+  border-radius: 5px;
+}
+
+.verhalen { margin-top: 4px; }
+.verhaal {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 30px;
+  align-items: start;
+  padding: 30px 0;
+  border-top: 1px solid var(--lijn);
+}
+.verhaal:first-child { border-top: 0; padding-top: 4px; }
+@media (max-width: 720px) { .verhaal { grid-template-columns: 1fr; gap: 16px; } }
+.verhaal__foto { border-radius: var(--radius); overflow: hidden; box-shadow: var(--schaduw); max-width: 240px; }
+.verhaal__body { display: grid; gap: 12px; }
+.verhaal__titel { font-size: 20px; margin-top: 2px; }
+.verhaal__quote {
+  border-left: 3px solid var(--oranje);
+  padding: 8px 16px;
+  background: var(--vlak);
+  border-radius: 0 var(--radius-klein) var(--radius-klein) 0;
+  font-size: 16.5px;
+  font-style: italic;
+  color: var(--ink);
+  margin: 0;
+}
+.verhaal__alinea { font-size: 16px; margin: 0; }
+.verhaal__wacht {
+  font-size: 14px;
+  color: var(--tekst-licht);
+  background: var(--vlak);
+  border: 1px dashed var(--lijn);
+  border-radius: var(--radius-klein);
+  padding: 13px 15px;
+  margin: 0;
+}
+
 /* ---------- formulieren ---------- */
 .formulier { display: grid; gap: 14px; max-width: 560px; }
 .formulier label { font-size: 13.5px; font-weight: 700; color: var(--ink); display: grid; gap: 5px; }

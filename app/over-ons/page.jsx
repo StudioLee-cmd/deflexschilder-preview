@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import Kruimel from '@/components/Kruimel';
 import StatStrip from '@/components/StatStrip';
+import TeamSectie from '@/components/TeamSectie';
+import VerhaalLijst from '@/components/VerhaalLijst';
 import { BASIS, ORG_ID, jsonLd } from '@/lib/schema';
+import { teamPersonSchema } from '@/lib/team';
 
 // AboutPage-schema: koppelt deze pagina expliciet aan de Organization in de
 // site-graph — samen met het entiteit-blok hieronder is dit de pagina waar
@@ -21,9 +24,17 @@ export const metadata = {
   alternates: { canonical: '/over-ons' },
 };
 
-// E-E-A-T-laag: author-pagina (André) + verhalen. In de volledige site worden de
-// verhalen (Tieme · Jordy · Julia) eigen content; toestemming bevestigen met André.
+// E-E-A-T-laag: author (André) + team + verhalen. Team en verhalen lezen uit
+// lib/team.js; foto's en interviews zijn placeholders die 1-op-1 invallen zodra
+// André ze aanlevert (eigen fotoshoot + opgenomen gesprekken, 22-07).
 export default function OverOns() {
+  // Person-schema voor de teamleden — alleen voor wie een gepubliceerd verhaal
+  // heeft (geen lege entiteiten in de graph). Nu leeg; vult zichzelf als de
+  // interviews landen.
+  const teamPersonen = teamPersonSchema(BASIS, ORG_ID);
+  const teamSchema = teamPersonen.length
+    ? { '@context': 'https://schema.org', '@graph': teamPersonen }
+    : null;
   return (
     <>
       <Kruimel items={[{ naam: 'Over ons' }]} />
@@ -103,14 +114,12 @@ export default function OverOns() {
             <div className="kaartje" style={{ padding: 26 }}>
               <span className="kicker">Verhalen van vakmensen</span>
               <h3>De bewijslaag: echte verhalen</h3>
-              <ul style={{ paddingLeft: 18, fontSize: 14.5, display: 'grid', gap: 6 }}>
-                <li>&ldquo;Van zij-instromer naar vakman: het verhaal van Tieme&rdquo;</li>
-                <li>&ldquo;Hoe Jordy zijn plek vond binnen het schildersvak&rdquo;</li>
-                <li>&ldquo;Waarom Julia bewust kiest voor werken via De Flexschilder&rdquo;</li>
-              </ul>
-              <p style={{ fontSize: 13.5, color: 'var(--tekst-licht)' }}>
-                Interviews volgen — verhalen overtuigen meer dan een lijst kenmerken.
+              <p style={{ fontSize: 14.5 }}>
+                &ldquo;Vakmensen door vakmensen&rdquo; is geen slogan. Hieronder
+                stellen Tieme, Joryd, Jermaine en Julia zich voor — elk met een
+                eigen verhaal over werken via De Flexschilder.
               </p>
+              <a href="#team" className="verder">Ontmoet het team →</a>
             </div>
             <div className="kaartje" style={{ padding: 26 }}>
               <h3>Gecertificeerd &amp; aangesloten</h3>
@@ -137,6 +146,41 @@ export default function OverOns() {
         </div>
       </section>
 
+      {/* Team — de vakmensen achter het merk. Foto's zijn placeholders tot Andrés
+          eigen fotoshoot binnen is; 1-op-1 vervangbaar via lib/team.js. */}
+      <section className="sectie sectie--vlak" id="team">
+        <div className="container">
+          <span className="kicker">Ons team</span>
+          <h2>De vakmensen achter De Flexschilder</h2>
+          <p className="lead" style={{ maxWidth: 760 }}>
+            Geleid en bemenst door échte schilders. Dit zijn de mensen die het vak
+            van binnenuit kennen — de basis onder &ldquo;vakmensen door
+            vakmensen&rdquo;.
+          </p>
+          <TeamSectie />
+          <p style={{ fontSize: 13.5, color: 'var(--tekst-licht)', marginTop: 16 }}>
+            Foto&rsquo;s volgen — André verzorgt een eigen fotoshoot van het team.
+          </p>
+        </div>
+      </section>
+
+      {/* Verhalen — per vakmens een verhaal-blok; interviews landen 1-op-1 vanuit
+          lib/team.js zodra André ze aanlevert. */}
+      <section className="sectie">
+        <div className="container">
+          <span className="kicker">Verhalen van vakmensen</span>
+          <h2>Echte verhalen, geen lijstje kenmerken</h2>
+          <p className="lead" style={{ maxWidth: 760 }}>
+            Waarom vakmensen bewust voor De Flexschilder kiezen, vertellen ze het
+            liefst zelf. André legt hun verhalen vast — hieronder verschijnen ze
+            zodra ze klaar zijn.
+          </p>
+          <div style={{ marginTop: 26 }}>
+            <VerhaalLijst />
+          </div>
+        </div>
+      </section>
+
       <section className="sectie sectie--donker ctaband">
         <div className="container ctaband__grid">
           <div className="ctaband__kaart">
@@ -159,6 +203,9 @@ export default function OverOns() {
       </section>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(ABOUT_SCHEMA) }} />
+      {teamSchema ? (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(teamSchema) }} />
+      ) : null}
     </>
   );
 }

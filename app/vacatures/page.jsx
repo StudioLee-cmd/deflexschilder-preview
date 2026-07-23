@@ -138,9 +138,9 @@ export default async function Vacatures() {
           <div className="kaartje" style={{ alignSelf: 'center' }}>
             <h3>Verhalen van vakmensen</h3>
             <p style={{ fontSize: 14.5 }}>
-              Hoe dat uitpakt? Dat vertellen onze mensen straks zelf: het verhaal van
-              zij-instromers Tieme en Jordy, en waarom Julia bewust voor werken via De
-              Flexschilder kiest.
+              Hoe dat uitpakt? Dat vertellen onze mensen straks zelf: de verhalen van
+              zij-instromers Tieme en Joryd, van Jermaine, en waarom Julia bewust voor
+              werken via De Flexschilder kiest.
             </p>
             <Link href="/over-ons" className="verder">
               Lees over ons team →
