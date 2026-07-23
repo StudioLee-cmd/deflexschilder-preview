@@ -9,7 +9,7 @@ import { CITIES, PLACES } from '@/lib/geo';
 export const metadata = {
   title: 'Schilders inhuren — flexibele schilderscapaciteit in Noord-Nederland',
   description:
-    'Schilders inhuren zonder vaste loonkosten: detachering, uitzenden en werving & selectie voor woningcorporaties, vastgoedbeheerders, aannemers en RGS-opdrachtgevers in Noord-Nederland.',
+    'Schilders inhuren zonder vaste loonkosten: detachering, uitzenden en werving & selectie voor bedrijven zonder vaste schilder, vastgoedbeheerders, aannemers en RGS-opdrachtgevers in Noord-Nederland.',
   alternates: { canonical: '/schilders-inhuren' },
 };
 
@@ -27,7 +27,7 @@ const FAQ = [
   },
   {
     v: 'Doen jullie ook losse klussen voor particulieren?',
-    a: 'Nee. De Flexschilder werkt uitsluitend zakelijk (B2B): structurele detachering en grotere opdrachten voor corporaties, beheerders, aannemers en RGS-opdrachtgevers.',
+    a: 'Nee. De Flexschilder werkt uitsluitend zakelijk (B2B): van kleinere bedrijven die flexibel schilders inhuren zonder vaste loonlijst tot vastgoedbeheerders, aannemers en RGS-opdrachtgevers — geen losse klussen voor particulieren.',
   },
 ];
 
@@ -112,11 +112,11 @@ export default function SchildersInhuren() {
           <div>
             <h2>Voor wie wij werken</h2>
             <div className="grid grid--2" style={{ marginTop: 20 }}>
-              <Link href="/voor-woningcorporaties" className="kaartje">
-                <h3>Woningcorporaties</h3>
-                <p style={{ fontSize: 14 }}>Planmatig en mutatie-onderhoud, schaalbaar.</p>
-                <span className="verder">Eigen pagina →</span>
-              </Link>
+              <div className="kaartje">
+                <h3>Bedrijven die flexibel inhuren</h3>
+                <p style={{ fontSize: 14 }}>Een schilder nodig zonder vaste loonlijst — ons zwaartepunt.</p>
+                <span className="verder" style={{ color: 'var(--tekst-licht)' }}>Pagina volgt in de uitbouw</span>
+              </div>
               <Link href="/voor-aannemers" className="kaartje">
                 <h3>Aannemers &amp; onderhoud</h3>
                 <p style={{ fontSize: 14 }}>Pieken opvangen, onderaanneming schilderwerk.</p>
@@ -245,7 +245,7 @@ export default function SchildersInhuren() {
               { titel: 'Wat kost het inhuren van schilders?' },
               { titel: 'Inhuren vs. zelf in dienst nemen' },
               { titel: 'Flexibele capaciteit bij piekdrukte' },
-              { titel: 'Schilders inhuren voor woningcorporaties', href: '/voor-woningcorporaties' },
+              { titel: 'Schilders inhuren zonder vaste loonlijst (voor het kleinbedrijf)' },
               { titel: 'Inhuren voor vastgoedonderhoud & RGS', href: '/vastgoedonderhoud-en-rgs' },
               { titel: 'Kwaliteit borgen bij ingehuurde schilders' },
             ]}

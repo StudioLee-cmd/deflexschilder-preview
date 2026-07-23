@@ -101,7 +101,7 @@ export default function KmArtikel() {
           <span className="kicker">Voor schilders · regelgeving</span>
           <h1>Kilometervergoeding 2026: van 23 naar 25 cent — wat betekent dat voor schilders?</h1>
           <p className="lead" style={{ marginTop: 12 }}>
-            Wie schildert, rijdt. De ene week een corporatieproject in Meppel, de
+            Wie schildert, rijdt. De ene week een onderhoudsproject in Meppel, de
             andere week een klus in Drachten. Juist daarom is dit nieuws voor
             vakmensen relevant: de maximale <strong>onbelaste reiskostenvergoeding</strong>{' '}
             gaat in 2026 van € 0,23 naar <strong>€ 0,25 per kilometer</strong> — met

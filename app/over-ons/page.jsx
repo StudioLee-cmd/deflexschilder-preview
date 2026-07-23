@@ -83,7 +83,7 @@ export default function OverOns() {
               <strong>23 jaar technische expertise</strong> in verf en
               onderhoud, diepgaande kennis van <strong>RGS en planmatig onderhoud</strong>,
               en een sterk regionaal netwerk in Noord-Nederland. André is
-              sparringpartner voor ondernemers, corporaties en beheerders — iemand die
+              sparringpartner voor ondernemers en beheerders — iemand die
               het vak van binnenuit kent en er eerlijk over adviseert.
             </p>
             <p>

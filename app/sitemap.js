@@ -15,7 +15,6 @@ export default async function sitemap() {
     '/vacatures',
     '/soorten-schilders',
     '/vastgoedonderhoud-en-rgs',
-    '/voor-woningcorporaties',
     '/voor-aannemers',
     '/tools',
     '/blog',

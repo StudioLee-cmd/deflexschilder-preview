@@ -35,7 +35,6 @@ export default function SiteHeader({ vacatureCount = 0 }) {
               <Link href="/schilders-inhuren#uitzenden">Uitzenden</Link>
               <Link href="/schilders-inhuren#werving-selectie">Werving &amp; selectie</Link>
               <div className="drop__kop">Voor uw organisatie</div>
-              <Link href="/voor-woningcorporaties">Woningcorporaties</Link>
               <Link href="/voor-aannemers">Aannemers &amp; onderhoudsbedrijven</Link>
               <Link href="/vastgoedonderhoud-en-rgs">Vastgoedonderhoud &amp; RGS</Link>
               <Link href="/aanvraag">Schilders aanvragen</Link>
@@ -116,7 +115,6 @@ export default function SiteHeader({ vacatureCount = 0 }) {
       <div className={`mobielmenu${open ? ' open' : ''}`}>
         <div className="drop__kop">Voor opdrachtgevers — ik zoek schilders</div>
         <Link href="/schilders-inhuren">Schilders inhuren</Link>
-        <Link href="/voor-woningcorporaties">Woningcorporaties</Link>
         <Link href="/voor-aannemers">Aannemers &amp; onderhoudsbedrijven</Link>
         <Link href="/vastgoedonderhoud-en-rgs">Vastgoedonderhoud &amp; RGS</Link>
 

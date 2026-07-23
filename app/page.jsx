@@ -191,8 +191,8 @@ export default async function Home() {
             </div>
           </div>
           <BeeldAI
-            src="/img/corporatie-rijwoningen.jpg"
-            alt="Schilders van De Flexschilder bereiden buitenschilderwerk voor aan een rij corporatiewoningen"
+            src="/img/leerling-leermeester.jpg"
+            alt="Ervaren schilder begeleidt een leerling op de werkvloer"
             ratio="3 / 2"
           />
         </div>

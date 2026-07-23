@@ -34,7 +34,6 @@ export default function SiteFooter() {
             <h4>Voor opdrachtgevers</h4>
             <ul>
               <li><Link href="/schilders-inhuren">Schilders inhuren</Link></li>
-              <li><Link href="/voor-woningcorporaties">Woningcorporaties</Link></li>
               <li><Link href="/voor-aannemers">Aannemers &amp; onderhoud</Link></li>
               <li><Link href="/vastgoedonderhoud-en-rgs">Vastgoedonderhoud &amp; RGS</Link></li>
               <li><Link href="/aanvraag">Schilders aanvragen</Link></li>

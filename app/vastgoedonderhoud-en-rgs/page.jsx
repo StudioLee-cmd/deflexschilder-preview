@@ -6,7 +6,7 @@ import BeeldAI from '@/components/BeeldAI';
 export const metadata = {
   title: 'Vastgoedonderhoud & RGS — resultaatgericht samenwerken',
   description:
-    'RGS, planmatig onderhoud, NEN 2767 en MJOP: hoe De Flexschilder als langjarige onderhoudspartner werkt voor woningcorporaties, vastgoedbeheerders en VvE’s in Noord-Nederland.',
+    'RGS, planmatig onderhoud, NEN 2767 en MJOP: hoe De Flexschilder als langjarige onderhoudspartner werkt voor vastgoedbeheerders, VvE’s en aannemers in Noord-Nederland.',
   alternates: { canonical: '/vastgoedonderhoud-en-rgs' },
 };
 
@@ -81,7 +81,7 @@ export default function VastgoedRgs() {
               <p style={{ fontSize: 14.5 }}>
                 23 jaar technische expertise in verf en onderhoud, kennis van RGS en
                 planmatig onderhoud, sterk regionaal netwerk. Sparringpartner voor
-                ondernemers en corporaties.
+                ondernemers en vastgoedbeheerders.
               </p>
               <Link href="/auteur/andre" className="verder">
                 Bekijk zijn profiel →
@@ -99,7 +99,7 @@ export default function VastgoedRgs() {
             items={[
               { titel: 'Wat is RGS? (uitgebreide uitleg)' },
               { titel: 'Planmatig onderhoud uitgelegd' },
-              { titel: 'Vastgoedonderhoud voor woningcorporaties', href: '/voor-woningcorporaties' },
+              { titel: 'Vastgoedonderhoud uitbesteden aan een flex-schilderspartner' },
               { titel: 'De rol van de schilder in onderhoudsplanning' },
               { titel: 'Duurzaam onderhoud & levensduur van verfsystemen' },
               { titel: 'NEN 2767-conditiemeting in de praktijk' },
@@ -109,8 +109,8 @@ export default function VastgoedRgs() {
             <Link href="/aanvraag" className="btn btn--primair">
               Praten over uw onderhoudsopgave
             </Link>
-            <Link href="/voor-woningcorporaties" className="tekstlink">
-              Voor woningcorporaties
+            <Link href="/voor-aannemers" className="tekstlink">
+              Voor aannemers &amp; onderhoudsbedrijven
             </Link>
           </div>
         </div>

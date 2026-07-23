@@ -49,8 +49,7 @@ export default function AuteurAndre() {
               Google en AI-zoekmachines wegen steeds zwaarder wie er achter een tekst
               zit: echte ervaring, aantoonbare expertise, een herkenbare auteur. Bij
               De Flexschilder is dat simpel geregeld — de eigenaar ís de vakman. André
-              begon 23 jaar geleden op de steiger en adviseert vandaag corporaties en
-              ondernemers over onderhoud, RGS en capaciteit.
+              begon 23 jaar geleden op de steiger en adviseert vandaag ondernemers en vastgoedbeheerders over onderhoud, RGS en capaciteit.
             </p>
             <h2>Expertise</h2>
             <ul className="checklijst" style={{ paddingLeft: 0 }}>
@@ -58,7 +57,7 @@ export default function AuteurAndre() {
                 Technisch advies: verfsystemen · ondergrondbeoordeling ·
                 onderhoudscycli · kwaliteitseisen · uitvoeringsrisico&rsquo;s
               </li>
-              <li>Planmatig en mutatie-onderhoud voor corporatiebezit</li>
+              <li>Planmatig en mutatie-onderhoud voor vastgoedbeheerders en VvE’s</li>
               <li>Resultaatgericht samenwerken (RGS) en NEN 2767-conditiemeting</li>
               <li>
                 Sparringpartner voor ondernemers: personeelsbeleid, cao en het binden

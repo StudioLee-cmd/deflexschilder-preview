@@ -43,7 +43,7 @@ export default async function StadPagina({ params }) {
       geo: { '@type': 'GeoCoordinates', latitude: stad.lat, longitude: stad.lng },
     },
     serviceType: 'Schilders-detachering, uitzenden en werving & selectie',
-    audience: { '@type': 'BusinessAudience', name: 'Woningcorporaties, vastgoedbeheerders, aannemers en RGS-opdrachtgevers' },
+    audience: { '@type': 'BusinessAudience', name: 'Vastgoedbeheerders, aannemers, RGS-opdrachtgevers en bedrijven die flexibel schilders inhuren' },
   };
 
   return (

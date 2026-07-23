@@ -81,9 +81,9 @@ export default function VoorAannemers() {
               <p style={{ fontSize: 14.5 }}>Detachering, uitzenden en werving &amp; selectie.</p>
               <span className="verder">Bekijk →</span>
             </Link>
-            <Link href="/voor-woningcorporaties" className="kaartje">
-              <h3>Woningcorporaties</h3>
-              <p style={{ fontSize: 14.5 }}>Planmatig en mutatie-onderhoud in series.</p>
+            <Link href="/vastgoedonderhoud-en-rgs" className="kaartje">
+              <h3>Vastgoedonderhoud &amp; RGS</h3>
+              <p style={{ fontSize: 14.5 }}>Langjarig onderhoud, conditiegericht — ons specialisme.</p>
               <span className="verder">Bekijk →</span>
             </Link>
             <Link href="/#werkgebied" className="kaartje">
