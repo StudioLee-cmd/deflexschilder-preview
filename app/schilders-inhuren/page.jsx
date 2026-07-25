@@ -139,7 +139,7 @@ export default function SchildersInhuren() {
             </div>
           </div>
           <BeeldAI
-            src="/img/rgs-inspectie.jpg"
+            src="/img/rgs-inspectie.webp"
             alt="Schilder en vastgoedbeheerder inspecteren samen de conditie van een kozijn"
             ratio="3 / 2"
           />

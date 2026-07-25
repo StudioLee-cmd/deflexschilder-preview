@@ -33,7 +33,7 @@ export default function VoorAannemers() {
       <section className="sectie" style={{ paddingTop: 32 }}>
         <div className="container kaartwrap">
           <BeeldAI
-            src="/img/spuiter-industrieel.jpg"
+            src="/img/spuiter-industrieel.webp"
             alt="Spuiter brengt coating aan op staalconstructie in een werkplaats"
             ratio="3 / 2"
           />

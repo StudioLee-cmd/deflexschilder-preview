@@ -71,7 +71,7 @@ export default function VastgoedRgs() {
 
           <div style={{ display: 'grid', gap: 18 }}>
             <BeeldAI
-              src="/img/rgs-inspectie.jpg"
+              src="/img/rgs-inspectie.webp"
               alt="Schilder en beheerder beoordelen samen de conditie van het schilderwerk"
               ratio="16 / 10"
             />

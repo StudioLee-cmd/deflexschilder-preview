@@ -127,7 +127,7 @@ export default function KmArtikel() {
 
         <div className="artikelhero" style={{ maxWidth: 820 }}>
           <BeeldAI
-            src="/img/bus-onderweg.jpg"
+            src="/img/bus-onderweg.webp"
             alt="Werkbus met ladder onderweg over een weg in Noord-Nederland"
           />
         </div>

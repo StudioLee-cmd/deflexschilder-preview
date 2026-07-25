@@ -44,6 +44,7 @@ export default function Blog() {
                 <img
                   src={a.hero}
                   alt=""
+                  loading="lazy"
                   style={{ borderRadius: 8, aspectRatio: '16/9', objectFit: 'cover' }}
                 />
                 <span className="meta">

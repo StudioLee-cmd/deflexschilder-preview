@@ -20,16 +20,10 @@ export default async function Home() {
 
   return (
     <>
-      {/* HERO — oranje gradient + schilder + witte zoek-card, zoals live */}
+      {/* HERO — oranje gradient + schilder + witte zoek-card, zoals live.
+          Het schilder-beeld is decoratief en zit in globals.css als .hero::before,
+          binnen de desktop-query: mobiel verbergt 'm toch en hoeft 'm dus niet te laden. */}
       <section className="hero">
-        <img
-          src="/schilderfoto.png"
-          alt=""
-          aria-hidden
-          className="hero__schilder"
-          width={960}
-          height={360}
-        />
         <div className="container">
           <div className="hero__inner">
             <span className="kicker" style={{ color: '#ffd9a8' }}>
@@ -191,7 +185,7 @@ export default async function Home() {
             </div>
           </div>
           <BeeldAI
-            src="/img/leerling-leermeester.jpg"
+            src="/img/leerling-leermeester.webp"
             alt="Ervaren schilder begeleidt een leerling op de werkvloer"
             ratio="3 / 2"
           />
@@ -228,7 +222,7 @@ export default async function Home() {
 
       {/* FOTO-CTA — zoals live: foto + oranje kaart */}
       <section className="fotocta">
-        <img className="fotocta__bg" src="/img/cta-roller.jpg" alt="" aria-hidden />
+        <img className="fotocta__bg" src="/img/cta-roller.webp" alt="" aria-hidden loading="lazy" />
         <div className="fotocta__scrim" aria-hidden />
         <div className="container fotocta__inner">
           <div className="fotocta__kaart">

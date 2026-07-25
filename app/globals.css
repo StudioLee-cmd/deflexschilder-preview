@@ -237,14 +237,18 @@ img { max-width: 100%; height: auto; }
   overflow: hidden;
   color: var(--wit);
 }
-.hero__schilder {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: right center;
-  pointer-events: none;
+/* Het hero-beeld is puur decoratief (stond in de markup al als aria-hidden) en werd <=900px
+   toch al verborgen. Maar een <img src> DOWNLOADT ook wat 'ie niet toont: mobiel haalde
+   1,96 MB op voor een beeld dat nooit in beeld kwam, en dat was de hele mobiele LCP.
+   Als achtergrond BINNEN de desktop-query vraagt mobiel het bestand niet eens op. */
+@media (min-width: 901px) {
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('/schilderfoto.webp') right center / cover no-repeat;
+    pointer-events: none;
+  }
 }
 .hero::after {
   content: '';
@@ -269,7 +273,6 @@ img { max-width: 100%; height: auto; }
 .hero__pad { color: var(--wit); font-weight: 700; font-size: 15px; border-bottom: 2px solid rgba(255,255,255,0.45); padding-bottom: 2px; }
 .hero__pad:hover { border-color: var(--wit); }
 @media (max-width: 900px) {
-  .hero__schilder { display: none; }
   .hero__inner { max-width: none; padding: 44px 0 52px; }
 }
 
