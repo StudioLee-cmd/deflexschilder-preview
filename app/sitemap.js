@@ -22,6 +22,7 @@ export default async function sitemap() {
     '/auteur/andre',
     '/aanvraag',
     '/inschrijven',
+    '/privacy',
   ];
 
   return [
