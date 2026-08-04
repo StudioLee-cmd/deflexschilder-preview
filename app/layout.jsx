@@ -2,8 +2,10 @@ import { Assistant } from 'next/font/google';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import ScrollReveal from '@/components/ScrollReveal';
+import CookieBanner from '@/components/CookieBanner';
 import { getAtsAdapter } from '@/lib/ats';
 import { BASIS, SITE_GRAPH, jsonLd } from '@/lib/schema';
+import { FLAGS, CHAT_WIDGET_ID } from '@/lib/site';
 import './globals.css';
 
 // Zelfde font als de huidige site (Assistant).
@@ -56,6 +58,13 @@ export default async function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: jsonLd(SITE_GRAPH) }}
         />
+        {/* De cookie-deur. Hangt aan FLAGS.chatbot EN aan een gevulde widget-id, en is
+            bewust NIET hardcoded gemount met een lege prop: een banner die toestemming vraagt
+            voor een cookie die niemand zet, is een leugen in de andere richting. Vandaag zet
+            deze site niets — geen analytics, geen chat, next/font host de letters zelf — dus
+            rendert hier niets. Zet de chat aan in lib/site.js (lees daar eerst de drie
+            voorwaarden) en de deur staat er meteen, vóór de widget laadt. */}
+        {FLAGS.chatbot && CHAT_WIDGET_ID && <CookieBanner widgetId={CHAT_WIDGET_ID} />}
       </body>
     </html>
   );
