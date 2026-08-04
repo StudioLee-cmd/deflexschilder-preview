@@ -11,6 +11,11 @@ import { ORG_ID } from '@/lib/schema';
 // Deze route bedient TWEE templates (Strikt-engine, maar schilder-specialist):
 //   /vacatures/schilder-<stad>  → stad-vacaturepagina (werkzoekende-kant, radius)
 //   /vacatures/<vacature-slug>  → vacature-detail met JobPosting-schema
+// ISR: de vacatures komen sinds 04-08 óók uit de eigen-invoer-route (André's telefoon),
+// dus deze pagina mag niet één keer bij de build bevriezen. 300s + een revalidatePath()
+// vanuit /api/vacature-opgeven, zodat een nieuwe vacature er meteen op staat.
+export const revalidate = 300;
+
 export async function generateStaticParams() {
   const vacatures = await getAtsAdapter().getVacatures();
   return [

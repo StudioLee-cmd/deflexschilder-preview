@@ -13,6 +13,11 @@ export const metadata = {
   alternates: { canonical: '/vacatures' },
 };
 
+
+// ISR: de vacatures komen sinds 04-08 óók uit de eigen-invoer-route (André's telefoon),
+// dus deze pagina mag niet één keer bij de build bevriezen. 300s + een revalidatePath()
+// vanuit /api/vacature-opgeven, zodat een nieuwe vacature er meteen op staat.
+export const revalidate = 300;
 // PILLAR — cluster 2 (kandidaatkant; "vacature schilder", "schilder gezocht").
 export default async function Vacatures() {
   const vacatures = await getAtsAdapter().getVacatures();
@@ -44,7 +49,8 @@ export default async function Vacatures() {
           <h2>
             Alle vacatures{' '}
             <span style={{ fontSize: 15, fontWeight: 600, color: 'var(--tekst-licht)' }}>
-              ({vacatures.length}) — demo-data tot de ATS-koppeling live is
+              ({vacatures.length})
+              {vacatures.some((v) => v.demo) && ' — demo-data tot de ATS-koppeling live is'}
             </span>
           </h2>
           <div className="grid grid--2" style={{ marginTop: 22 }}>
