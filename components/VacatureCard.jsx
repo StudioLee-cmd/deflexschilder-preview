@@ -1,6 +1,10 @@
 import Link from 'next/link';
 
 export default function VacatureCard({ v }) {
+  // Vangnet op de tekst: de omschrijving komt uit een externe bron (het ATS, of de
+  // eigen-invoer-tabel). Een rij zonder omschrijving hoort één kaartje zonder tekst te
+  // geven, niet de hele vacaturepagina te laten crashen.
+  const tekst = v.beschrijving || '';
   return (
     <Link href={`/vacatures/${v.slug}`} className="vacature">
       <div className="vacature__kop">
@@ -15,11 +19,11 @@ export default function VacatureCard({ v }) {
         <span>
           📍 <strong>{v.plaats}</strong>
         </span>
-        <span>{v.dienstverband}</span>
-        <span>{v.uren}</span>
-        <span>{v.salarisIndicatie}</span>
+        {v.dienstverband && <span>{v.dienstverband}</span>}
+        {v.uren && <span>{v.uren}</span>}
+        {v.salarisIndicatie && <span>{v.salarisIndicatie}</span>}
       </div>
-      <p style={{ fontSize: 15 }}>{v.beschrijving.slice(0, 130)}…</p>
+      {tekst && <p style={{ fontSize: 15 }}>{tekst.slice(0, 130)}…</p>}
       <span className="verder">Bekijk vacature →</span>
     </Link>
   );
