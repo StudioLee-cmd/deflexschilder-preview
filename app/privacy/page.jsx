@@ -129,11 +129,11 @@ export default function Privacy() {
             </p>
           </article>
           <article className="kaartje">
-            <h3>Het vacaturesysteem</h3>
+            <h3>Flexsoftware B.V.</h3>
             <p>
-              Het systeem waarin we onze vacatures en sollicitaties bijhouden. Solliciteer je op een vacature, dan komt die daar binnen bij de mensen die je terugbellen.
+              De leverancier van Uitzendplaats, het systeem waarin wij onze vacatures bijhouden. De vacatures die je op deze site ziet, komen daaruit.
               <br />
-              <span className="meta">Dit systeem is nog niet aangesloten. Zodra dat zo is, staat hier welk systeem het is en waar het je gegevens bewaart.</span>
+              <span className="meta">Het verkeer loopt maar één kant op: deze site haalt de vacatures daar op, en er gaat niets van jou naartoe. Het sollicitatieformulier verstuurt op dit moment nog niets. Zodra dat verandert, komt je sollicitatie daar binnen en staat hier ook waar je gegevens dan bewaard worden.</span>
             </p>
           </article>
         </div>
