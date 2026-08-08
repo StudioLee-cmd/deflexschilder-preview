@@ -19,6 +19,15 @@ const nextConfig = {
     ];
   },
   async headers() {
+    // SLOT 3 VAN 3 — de X-Robots-Tag-header. Deze dekt wat een robots-meta niet kán dekken:
+    // sitemap.xml, de afbeeldingen en de API-routes dragen geen HTML en dus geen meta-tag.
+    // Zolang NEXT_PUBLIC_INDEXEERBAAR niet op '1' staat krijgt élk antwoord de noindex.
+    //
+    // Op de livegang-dag VALT DE HEADER WEG in plaats van op 'index' te gaan staan. Dat is
+    // bewust: geen X-Robots-Tag is de normale toestand van een indexeerbare site, en een
+    // expliciete index-header zou een tweede uitspraak zijn naast de robots-meta uit
+    // app/layout.jsx — twee bronnen die kunnen gaan afwijken (RULE 3).
+    if (process.env.NEXT_PUBLIC_INDEXEERBAAR === '1') return [];
     return [
       {
         source: '/:path*',
