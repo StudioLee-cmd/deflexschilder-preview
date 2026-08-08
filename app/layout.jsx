@@ -31,8 +31,18 @@ export const metadata = {
     images: [{ url: `${BASIS}/img/hero-steiger.jpg`, width: 1024, height: 576, alt: 'De Flexschilder — vakmensen door vakmensen' }],
   },
   twitter: { card: 'summary_large_image' },
-  // PREVIEW — nooit indexeren.
-  robots: { index: false, follow: false },
+  // SLOT 2 VAN 3 — de robots-meta. Zolang NEXT_PUBLIC_INDEXEERBAAR niet op '1' staat blijft
+  // de preview op noindex; op de livegang-dag zet `livegang_klantsite.py deflexschilder
+  // --live` de vlag en gaan alle drie de sloten tegelijk open (hier + de X-Robots-Tag-header
+  // in next.config.mjs + app/robots.js). Ze delen bewust één schakelaar: driedubbel gezet
+  // betekent driedubbel eraf, en een vergeten plek houdt de hele site uit de index.
+  // ⚑ Dit is de SITE-BREDE stand. Een pagina die zichzelf noindex geeft, blijft dat —
+  //   page-metadata wint van layout-metadata. Dat is precies wat /vacature-opgeven nodig
+  //   heeft: die hoort ook na de livegang onvindbaar te blijven.
+  robots:
+    process.env.NEXT_PUBLIC_INDEXEERBAAR === '1'
+      ? { index: true, follow: true }
+      : { index: false, follow: false },
 };
 
 export const viewport = {
