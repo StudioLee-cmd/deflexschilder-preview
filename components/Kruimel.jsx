@@ -1,6 +1,11 @@
 import Link from 'next/link';
+import { BASIS } from '@/lib/schema';
 
-const BASIS = 'https://deflexschilder-preview.vercel.app';
+// ⚑ Geen eigen BASIS-constante hier. Tot 08-08 stond het domein in dit bestand een tweede
+//   keer hardcoded, en die kopie zou op de livegang-dag op de preview-URL zijn blijven
+//   staan: de env-var verhuist lib/schema.js, niet een handkopie ernaast. Elke
+//   BreadcrumbList op de site zou dan naar een ander domein wijzen dan de canonical op
+//   diezelfde pagina. Eén bron, geïmporteerd (RULE 3).
 
 // Zichtbare breadcrumbs + BreadcrumbList-schema (E-E-A-T/SEO-basis, op elke pagina).
 // items = [{ naam, href }] — de laatste is de huidige pagina (geen link).
