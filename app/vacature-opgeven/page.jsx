@@ -7,8 +7,15 @@ import VacatureOpgeefForm from '@/components/VacatureOpgeefForm';
 // ⛔ DE CODE-CHECK STAAT HIER ÉN IN DE n8n-FLOW. Deze pagina is maar een formulier;
 //    de webhook is de echte deur. Een gate op één van twee deuren is geen gate.
 //
-// De pagina draagt zelf `noindex` (de hele preview doet dat al via next.config), en
-// staat bewust niet in de sitemap of in een menu: 'ie is alleen te vinden via de link.
+// ⛔ DEZE PAGINA BLIJFT NOINDEX, OOK NA DE LIVEGANG — en dat is de reden dat 'ie hier
+//    apart staat opgeschreven. Sinds 08-08 hangen de drie site-brede noindex-sloten
+//    (next.config.mjs · app/layout.jsx · app/robots.js) aan één env-var
+//    NEXT_PUBLIC_INDEXEERBAAR, die op de flip-dag alle drie tegelijk opent. Het `robots`
+//    hieronder hangt daar met opzet NIET aan: page-metadata wint van layout-metadata, dus
+//    deze route blijft noindex terwijl de rest van de site indexeerbaar wordt.
+//    Wie op de flip-dag 'alle noindex eruit' leest en ook deze weghaalt, zet Andrés
+//    ongeauthenticeerde opgeef-formulier publiek in Google. Niet doen.
+//    De pagina staat bewust ook niet in de sitemap of in een menu: alleen via de link.
 export const dynamic = 'force-dynamic';
 
 export const metadata = {
