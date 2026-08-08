@@ -16,6 +16,26 @@ const nextConfig = {
       { source: '/vacatures/vacature/solliciteren', destination: '/vacatures', permanent: true },
       { source: '/vacatures/glaszetter/11815', destination: '/vacatures', permanent: true },
       { source: '/vacatures/vakman-schilder/11814', destination: '/vacatures', permanent: true },
+
+      // ⚑ DE ENGELSE VARIANTEN VAN DE VACATURE-ALERT (08-08). De Flexsoftware-template droeg van
+      //   elke alert-pagina een NL en een EN versie; de site is eentalig Nederlands, dus de
+      //   Engelse URL's krijgen geen eigen pagina maar wijzen naar hun Nederlandse tegenhanger.
+      //   Ze stonden tot vandaag als gedeclareerde pariteit-uitzondering in managed.json met de
+      //   reden "de nieuwe build heeft die alert nog niet". Die alert bestaat nu, dus de
+      //   uitzondering is vervangen door deze twee echte bestemmingen.
+      //   ⚠️ De query-string reist mee (Next doet dat standaard), en dát is hier het punt: het
+      //      uitschrijf-token zit in `?token=…` en een redirect die 'm laat vallen levert een
+      //      uitschrijf-pagina op die niemand kan uitschrijven.
+      {
+        source: '/unsubscribe-from-vacancy-alert',
+        destination: '/afmelden-voor-vacature-alert',
+        permanent: true,
+      },
+      {
+        source: '/thank-you-for-registering',
+        destination: '/bedankt-voor-het-registreren',
+        permanent: true,
+      },
     ];
   },
   async headers() {

@@ -4,11 +4,17 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { CITIES, PLACES, nearestCity } from '@/lib/geo';
+import { TOESTEMMING } from '@/lib/toestemming';
 
 // Zoek-card met twee gezichten (Tim 03-07):
 //   • default-tab "Ik zoek werk"  → plaats+afstand-zoeker → vacature-lijst per stad
 //   • tab "Ik zoek schilders"     → DIRECT een aanvraagformulier IN de card
-//     (geen kies-lijst; plaats met dezelfde dorp→stad-resolutie, demo-verzending)
+//     (geen kies-lijst; plaats met dezelfde dorp→stad-resolutie)
+//
+// Beide formulieren in deze card posten sinds 08-08 ECHT: de aanvraag naar /api/aanvraag en de
+// vacature-alert naar /api/vacature-alert. Tot die dag deden ze allebei `preventDefault()` en
+// toonden ze een preview-zin — de zichtbaarste voordeur van de site nam gegevens aan en gooide
+// ze weg.
 const ALLES = [
   ...CITIES.map((c) => ({ naam: c.name, type: 'stad', city: c, km: 0 })),
   ...PLACES.map((p) => {
@@ -106,6 +112,10 @@ export default function ZoekBalk({ mode: startMode = 'werk', toonTabs = true }) 
   const [gekozen, setGekozen] = useState(null);
   const [melding, setMelding] = useState('');
   const [verzonden, setVerzonden] = useState(false);
+  const [bezig, setBezig] = useState(false);
+  const [fout, setFout] = useState(null);
+  const [alertBezig, setAlertBezig] = useState(false);
+  const [alertFout, setAlertFout] = useState(null);
 
   const exact = useMemo(() => ALLES.find((p) => norm(p.naam) === norm(q)) || null, [q]);
   const plek = gekozen && norm(gekozen.naam) === norm(q) ? gekozen : exact;
@@ -130,9 +140,77 @@ export default function ZoekBalk({ mode: startMode = 'werk', toonTabs = true }) 
     }
   }
 
-  function verstuurAanvraag(e) {
+  // ⚑ DEZE TWEE HANDLERS DEDEN TOT 08-08 ALLEBEI NIETS. `verstuurAanvraag` was
+  //   `e.preventDefault(); setVerzonden(true)` — een preview-melding, geen verzending. Dat is
+  //   ernstiger dan hetzelfde gat op /aanvraag, want DIT formulier staat in de zoek-card op de
+  //   homepage: het is de eerste voordeur die een opdrachtgever ziet.
+  async function verstuurAanvraag(e) {
     e.preventDefault();
-    setVerzonden(true);
+    setBezig(true);
+    setFout(null);
+    const fd = new FormData(e.currentTarget);
+    try {
+      const res = await fetch('/api/aanvraag', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          onderwerp: fd.get('onderwerp'),
+          naam: fd.get('naam'),
+          telefoon: fd.get('telefoon'),
+          // De plaats komt uit de dorp→stad-resolutie van PlaatsVeld, niet uit een los tekstveld:
+          // dat is precies wat deze card toevoegt boven het formulier op /aanvraag.
+          plaats: plek ? plek.naam : q,
+          bericht: fd.get('bericht'),
+          website: fd.get('website'), // honeypot
+          consent_contact: fd.get('consent_contact') === 'on',
+          consent_promotie: fd.get('consent_promotie') === 'on',
+          consent_versie: TOESTEMMING.versie,
+          consent_tekst: { contact: TOESTEMMING.contact, promotie: TOESTEMMING.promotie },
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        setFout(data.error || 'Er ging iets mis bij het versturen. Probeer het zo nog eens.');
+      } else {
+        setVerzonden(true);
+      }
+    } catch {
+      setFout('Geen verbinding. Check je internet en probeer het nog eens.');
+    } finally {
+      setBezig(false);
+    }
+  }
+
+  // De vacature-alert. Stond hier als de tekst "(volgt bij livegang)" — een belofte aan de
+  // bezoeker waar geen enkel mechanisme achter zat.
+  async function meldAanVoorAlert(e) {
+    e.preventDefault();
+    setAlertBezig(true);
+    setAlertFout(null);
+    const fd = new FormData(e.currentTarget);
+    try {
+      const res = await fetch('/api/vacature-alert', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: fd.get('email'),
+          website: fd.get('website'), // honeypot
+          consent_contact: fd.get('alert_consent') === 'on',
+          consent_versie: TOESTEMMING.versie,
+          consent_tekst: { alert: TOESTEMMING.alert },
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        setAlertFout(data.error || 'Aanmelden lukte niet. Probeer het zo nog eens.');
+      } else {
+        router.push('/bedankt-voor-het-registreren');
+      }
+    } catch {
+      setAlertFout('Geen verbinding. Check je internet en probeer het nog eens.');
+    } finally {
+      setAlertBezig(false);
+    }
   }
 
   return (
@@ -191,13 +269,52 @@ export default function ZoekBalk({ mode: startMode = 'werk', toonTabs = true }) 
 
           <div className="zoek__onder">
             <span className="zoek__alert">
-              <span className="bol" aria-hidden /> Registreer voor onze vacature-alert!{' '}
-              <em style={{ fontWeight: 400 }}>(volgt bij livegang)</em>
+              <span className="bol" aria-hidden /> Nieuwe vacature in je mailbox?
             </span>
             <Link href="/vacatures" className="tekstlink">
               Alle vacatures
             </Link>
           </div>
+
+          <form className="zoek__form" onSubmit={meldAanVoorAlert} style={{ marginTop: 4 }}>
+            <div className="zoek__formgrid">
+              <div className="zoek__veld">
+                <label htmlFor="alert-email">Je e-mailadres</label>
+                <input
+                  id="alert-email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder="uw@email.nl"
+                  maxLength={160}
+                />
+              </div>
+              <div className="zoek__veld" style={{ alignSelf: 'end' }}>
+                <button type="submit" className="btn btn--primair" disabled={alertBezig}>
+                  {alertBezig ? 'Aanmelden…' : 'Alerts ontvangen'}
+                </button>
+              </div>
+            </div>
+
+            {/* Spam-val — onzichtbaar voor een bezoeker, ingevuld door een bot. */}
+            <div aria-hidden style={{ position: 'absolute', left: '-9999px' }}>
+              <label>
+                Laat dit veld leeg
+                <input name="website" tabIndex={-1} autoComplete="off" />
+              </label>
+            </div>
+
+            <label style={{ display: 'flex', gap: 10, alignItems: 'flex-start', fontSize: 13.5 }}>
+              <input name="alert_consent" type="checkbox" required style={{ marginTop: 3 }} />
+              <span>{TOESTEMMING.alert}</span>
+            </label>
+
+            {alertFout && (
+              <p className="zoek__resolutie" role="alert">
+                {alertFout}
+              </p>
+            )}
+          </form>
         </>
       ) : (
         <>
@@ -206,15 +323,28 @@ export default function ZoekBalk({ mode: startMode = 'werk', toonTabs = true }) 
             <div className="zoek__formgrid">
               <div className="zoek__veld">
                 <label htmlFor="bedrijf">Bedrijf / organisatie</label>
-                <input id="bedrijf" placeholder="Naam van uw organisatie" required />
+                <input
+                  id="bedrijf"
+                  name="onderwerp"
+                  placeholder="Naam van uw organisatie"
+                  required
+                  maxLength={80}
+                />
               </div>
               <div className="zoek__veld">
                 <label htmlFor="contact">Contactpersoon</label>
-                <input id="contact" placeholder="Uw naam" required />
+                <input id="contact" name="naam" placeholder="Uw naam" required maxLength={120} />
               </div>
               <div className="zoek__veld">
                 <label htmlFor="tel">Telefoon</label>
-                <input id="tel" type="tel" placeholder="06 …" required />
+                <input
+                  id="tel"
+                  name="telefoon"
+                  type="tel"
+                  placeholder="06 …"
+                  required
+                  maxLength={40}
+                />
               </div>
               <PlaatsVeld q={q} setQ={setQ} onKies={setGekozen} label="Plaats van het werk" />
             </div>
@@ -226,11 +356,47 @@ export default function ZoekBalk({ mode: startMode = 'werk', toonTabs = true }) 
             )}
             <div className="zoek__veld">
               <label htmlFor="wat">Wat moet er gebeuren?</label>
-              <textarea id="wat" rows={3} placeholder="Soort werk, aantal schilders, periode…" required />
+              <textarea
+                id="wat"
+                name="bericht"
+                rows={3}
+                placeholder="Soort werk, aantal schilders, periode…"
+                required
+                maxLength={2000}
+              />
             </div>
+
+            {/* Spam-val — onzichtbaar voor een bezoeker, ingevuld door een bot. */}
+            <div aria-hidden style={{ position: 'absolute', left: '-9999px' }}>
+              <label>
+                Laat dit veld leeg
+                <input name="website" tabIndex={-1} autoComplete="off" />
+              </label>
+            </div>
+
+            {/* ⚑ TOESTEMMING IS DE VOORWAARDE, GEEN BIJLAGE — en de server weigert zonder het
+                eerste vinkje, dus dit is geen decoratie maar de enige manier waarop deze card een
+                aanvraag door de gate krijgt. Zelfde tekst als /aanvraag en /privacy: één bron. */}
+            <label
+              style={{ display: 'flex', gap: 10, alignItems: 'flex-start', fontSize: 13.5, marginTop: 6 }}
+            >
+              <input name="consent_contact" type="checkbox" required style={{ marginTop: 3 }} />
+              <span>{TOESTEMMING.contact}</span>
+            </label>
+            <label style={{ display: 'flex', gap: 10, alignItems: 'flex-start', fontSize: 13.5 }}>
+              <input name="consent_promotie" type="checkbox" style={{ marginTop: 3 }} />
+              <span>{TOESTEMMING.promotie}</span>
+            </label>
+
+            {fout && (
+              <p className="zoek__resolutie" role="alert">
+                {fout}
+              </p>
+            )}
+
             <div className="zoek__onder" style={{ marginTop: 4 }}>
-              <button type="submit" className="btn btn--primair">
-                Verstuur aanvraag
+              <button type="submit" className="btn btn--primair" disabled={bezig}>
+                {bezig ? 'Versturen…' : 'Verstuur aanvraag'}
               </button>
               <span style={{ fontSize: 13.5 }}>
                 Liever bellen? <a href="tel:+31613718172" style={{ fontWeight: 700 }}>06 - 137 181 72</a>
@@ -242,8 +408,7 @@ export default function ZoekBalk({ mode: startMode = 'werk', toonTabs = true }) 
             </div>
             {verzonden && (
               <p className="zoek__resolutie">
-                Preview: bij livegang gaat uw aanvraag rechtstreeks naar André — er wordt nu
-                nog niets verzonden.
+                Uw aanvraag is binnen — we nemen snel persoonlijk contact met u op.
               </p>
             )}
           </form>
