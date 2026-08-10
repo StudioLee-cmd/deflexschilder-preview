@@ -9,9 +9,24 @@ import { FLAGS, CHAT_WIDGET_ID } from '@/lib/site';
 import './globals.css';
 
 // Zelfde font als de huidige site (Assistant).
+//
+// ⚑ GEEN `weight`-lijst: Assistant is een VARIABEL lettertype (fvar-as wght 200-800), en zonder
+//   lijst emit next/font per subset één @font-face met het hele bereik (`font-weight: 200 800`).
+//   Gemeten 10-08 op de Google-Fonts-CSS die next/font ophaalt: mét de lijst 12 @font-face-blokken
+//   (4 gewichten x 3 subsets) die per subset alle vier naar HETZELFDE woff2 wijzen, zonder de lijst
+//   3 blokken naar exact diezelfde drie bestanden. Zelfde bytes over de lijn, minder CSS.
+//
+// ⚠️ EN WAT HET NIET WAS, zodat de volgende lezer die weg niet opnieuw loopt: de vier vaste blokken
+//   lieten de browser NIET faux-bolden. Gemeten 10-08 met `font-synthesis: none` naast een positieve
+//   controle (een familie met alleen een 400-face, die wél synthetiseert): 600/700/800 renderden
+//   pixel-identiek aan de echte as, verschil 0. De font-weight-descriptor klemt de as namelijk op
+//   de gedeclareerde waarde, dus vier stops = vier échte gewichten. Wat vier stops WEL doen is de as
+//   QUANTISEREN: een gewicht dat niet op een stop ligt snapt naar de dichtstbijzijnde, dus
+//   `font-weight: 500` rendert dan als 400. Deze site gebruikt vandaag alleen 400/600/700/800 (geteld
+//   in globals.css én op de gerenderde pagina), dus dat viel niet op -- de eerstvolgende `font-medium`
+//   wel. Dáárom staat de as er nu, en niet omdat er iets zichtbaar stuk was.
 const assistant = Assistant({
   subsets: ['latin'],
-  weight: ['400', '600', '700', '800'],
   display: 'swap',
 });
 
