@@ -839,6 +839,51 @@ a.kaartje:hover { transform: translateY(-2px); box-shadow: var(--schaduw); }
 .formulier__notitie { font-size: 13.5px; color: var(--tekst-licht); }
 .zoek__melding, .formulier .zoek__melding { margin-top: 4px; font-size: 14.5px; color: var(--oranje-donker); font-weight: 600; }
 
+/* ---------- vinkjes — een checkbox is GEEN tekstveld ----------
+   `.zoek input` (regel 311) en `.formulier input` (regel 830) zetten width:100%,
+   een hoogte/padding en een border. Beide selectors raken óók input[type=checkbox],
+   en dan rendert een vinkje als een vol, 50px hoog omkaderd vlak met de tekst
+   ernaast weggeduwd. Gemeten 10-08 op alle vijf de vinkjes van deze site
+   (ZoekBalk ×3 — alert-consent + de twee van de aanvraag-card — en AanvraagForm ×2).
+   De type-selector wint op specificiteit (0,2,1 tegen 0,1,1), dus geen !important. */
+.zoek input[type='checkbox'], .zoek input[type='radio'],
+.formulier input[type='checkbox'], .formulier input[type='radio'] {
+  width: 18px;
+  min-width: 18px;
+  height: 18px;
+  min-height: 18px;
+  flex: 0 0 auto;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-sizing: border-box;
+  accent-color: var(--oranje);
+  cursor: pointer;
+}
+.zoek input[type='checkbox']:focus, .zoek input[type='radio']:focus,
+.formulier input[type='checkbox']:focus, .formulier input[type='radio']:focus {
+  outline: 2px solid var(--oranje);
+  outline-offset: 2px;
+  border-color: transparent;
+  box-shadow: none;
+}
+/* `.vinkje` stond wél in AanvraagForm.jsx maar nergens in deze CSS: de layout zat
+   als inline style op elk label, dus vijf keer dezelfde regels naast elkaar. Hier
+   krijgt 'ie z'n huis — mét de twee scopes erbij, omdat `.formulier label` (0,1,1)
+   display:grid zet en een kale `.vinkje` (0,1,0) daar anders van verliest. */
+.vinkje, .zoek .vinkje, .formulier .vinkje {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--tekst);
+}
+.vinkje span { font-weight: 400; }
+
 /* ---------- footer — LICHT zoals live ---------- */
 .footer { background: var(--vlak); color: var(--tekst); margin-top: 72px; border-top: 1px solid var(--lijn); }
 .footer a:hover { color: var(--oranje-donker); }
