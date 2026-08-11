@@ -4,7 +4,7 @@ import ClusterBlok from '@/components/ClusterBlok';
 import BeeldAI from '@/components/BeeldAI';
 
 export const metadata = {
-  title: 'Soorten schilders | specialisaties en salarisindicaties',
+  title: 'Soorten schilders: specialisaties en salarisindicaties',
   description:
     'Van onderhoudsschilder tot industrieel schilder, spuiter en gevelschilder: alle specialisaties, wat ze doen en marktconforme salarisindicaties met visuele ranges.',
   alternates: { canonical: '/soorten-schilders' },

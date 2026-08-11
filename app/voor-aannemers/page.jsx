@@ -3,7 +3,7 @@ import Kruimel from '@/components/Kruimel';
 import BeeldAI from '@/components/BeeldAI';
 
 export const metadata = {
-  title: 'Schilders voor aannemers & onderhoudsbedrijven | pieken opvangen',
+  title: 'Schilders voor aannemers & onderhoudsbedrijven: pieken opvangen',
   description:
     'Onderaanneming schilderwerk en flexibele schilders voor aannemers en onderhoudsbedrijven in Noord-Nederland: pieken opvangen zonder risico, vakwerk dat gewoon doorloopt.',
   alternates: { canonical: '/voor-aannemers' },

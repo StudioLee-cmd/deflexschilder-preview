@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
     // juist de omliggende plaatsen zijn waarop een schilder zoekt ("werk in Hoogkerk").
     const omheen = placesWithin(stad, 20).slice(0, 3).map((p) => p.name);
     return {
-      title: `Vacatures schilder ${stad.name} | schilder gezocht in ${stad.name}`,
+      title: `Vacatures schilder ${stad.name}: schilder gezocht in ${stad.name}`,
       description: omheen.length
         ? `Schilder gezocht in ${stad.name}? Bekijk het werk binnen 20 km van ${stad.name}, ook in ${omheen.slice(0, -1).join(', ')} en ${omheen[omheen.length - 1]}. Structureel werk via De Flexschilder.`
         : `Schilder gezocht in ${stad.name}? Bekijk schildersvacatures in en rond ${stad.name} (${stad.provincie}) en werk structureel via De Flexschilder.`,

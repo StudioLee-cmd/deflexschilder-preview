@@ -6,7 +6,7 @@ import KmCalculator from '@/components/KmCalculator';
 import { BASIS, ORG_ID, jsonLd } from '@/lib/schema';
 
 export const metadata = {
-  title: 'Rekentools voor schilders | salarischecker, bruto-netto en km-vergoeding',
+  title: 'Rekentools voor schilders: salarischecker, bruto-netto en km-vergoeding',
   description:
     'Gratis rekentools voor schilders: check je marktconforme salaris per specialisme, reken bruto naar netto en bereken wat de kilometervergoeding 2026 jou scheelt.',
   alternates: { canonical: '/tools' },

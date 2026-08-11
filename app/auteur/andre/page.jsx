@@ -4,7 +4,7 @@ import { ARTIKELEN } from '@/lib/blog';
 import { BASIS, PERSOON_ID, jsonLd } from '@/lib/schema';
 
 export const metadata = {
-  title: 'André van der Hoogen | eigenaar De Flexschilder, 23 jaar vakervaring',
+  title: 'André van der Hoogen: eigenaar De Flexschilder, 23 jaar vakervaring',
   description:
     'André van der Hoogen is eigenaar van De Flexschilder: 23 jaar technische expertise in verf en onderhoud, kennis van RGS en planmatig onderhoud, en een sterk netwerk in Noord-Nederland.',
   alternates: { canonical: '/auteur/andre' },

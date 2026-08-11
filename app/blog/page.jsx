@@ -3,7 +3,7 @@ import Kruimel from '@/components/Kruimel';
 import { ARTIKELEN, CATEGORIEEN } from '@/lib/blog';
 
 export const metadata = {
-  title: 'Nieuws & vakkennis | voor opdrachtgevers en schilders',
+  title: 'Nieuws & vakkennis: voor opdrachtgevers en schilders',
   description:
     'Nieuws en vakkennis van De Flexschilder: regelgeving, salaris en reiskosten, vastgoedonderhoud en RGS. Geschreven door vakmensen uit Noord-Nederland.',
   alternates: { canonical: '/blog' },

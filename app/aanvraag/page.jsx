@@ -2,7 +2,7 @@ import Kruimel from '@/components/Kruimel';
 import AanvraagForm from '@/components/AanvraagForm';
 
 export const metadata = {
-  title: 'Schilders aanvragen | vandaag geregeld',
+  title: 'Schilders aanvragen: vandaag geregeld',
   description:
     'Vraag flexibele schilderscapaciteit aan voor uw project of onderhoudsstroom in Noord-Nederland. Vertel wat er moet gebeuren. Wij plannen de juiste vakmensen in.',
   alternates: { canonical: '/aanvraag' },

@@ -18,7 +18,7 @@ export function generateMetadata({ params }) {
   const stad = getCity(params.stad);
   if (!stad) return {};
   return {
-    title: `Schilders inhuren in ${stad.name} | flexibele capaciteit in ${stad.provincie}`,
+    title: `Schilders inhuren in ${stad.name}: flexibele capaciteit in ${stad.provincie}`,
     description: `Schilders inhuren in ${stad.name}? De Flexschilder levert flexibele, vakbekwame schilders in ${stad.name} en omgeving: detachering, uitzenden en werving & selectie.`,
     alternates: { canonical: `/schilders-inhuren/${stad.slug}` },
   };

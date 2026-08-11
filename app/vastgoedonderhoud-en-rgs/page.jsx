@@ -4,7 +4,7 @@ import ClusterBlok from '@/components/ClusterBlok';
 import BeeldAI from '@/components/BeeldAI';
 
 export const metadata = {
-  title: 'Vastgoedonderhoud & RGS | resultaatgericht samenwerken',
+  title: 'Vastgoedonderhoud & RGS: resultaatgericht samenwerken',
   description:
     'RGS, planmatig onderhoud, NEN 2767 en MJOP: hoe De Flexschilder als langjarige onderhoudspartner werkt voor vastgoedbeheerders, VvE’s en aannemers in Noord-Nederland.',
   alternates: { canonical: '/vastgoedonderhoud-en-rgs' },

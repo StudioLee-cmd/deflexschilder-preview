@@ -7,7 +7,7 @@ import StatStrip from '@/components/StatStrip';
 import { CITIES, PLACES } from '@/lib/geo';
 
 export const metadata = {
-  title: 'Schilders inhuren | flexibele schilderscapaciteit in Noord-Nederland',
+  title: 'Schilders inhuren: flexibele schilderscapaciteit in Noord-Nederland',
   description:
     'Schilders inhuren zonder vaste loonkosten: detachering, uitzenden en werving & selectie voor bedrijven zonder vaste schilder, vastgoedbeheerders, aannemers en RGS-opdrachtgevers in Noord-Nederland.',
   alternates: { canonical: '/schilders-inhuren' },
