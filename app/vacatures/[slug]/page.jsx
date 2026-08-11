@@ -4,7 +4,8 @@ import Kruimel from '@/components/Kruimel';
 import ResolutieBanner from '@/components/ResolutieBanner';
 import VacatureCard from '@/components/VacatureCard';
 import DemoForm from '@/components/DemoForm';
-import { CITIES, getCity, nearbyCities, resolvePlace } from '@/lib/geo';
+import WerkgebiedRond from '@/components/WerkgebiedRond';
+import { CITIES, getCity, nearbyCities, placesWithin, resolvePlace } from '@/lib/geo';
 import { getAtsAdapter, vacaturesBinnenStraal } from '@/lib/ats';
 import { ORG_ID } from '@/lib/schema';
 
@@ -36,9 +37,15 @@ function stadBij(v) {
 export async function generateMetadata({ params }) {
   const stad = params.slug.startsWith('schilder-') ? getCity(params.slug.slice('schilder-'.length)) : null;
   if (stad) {
+    // De description noemt de dichtstbijzijnde kernen, niet alleen de stad. Zonder dat
+    // verschilden de 15 descriptions alleen in de stads- en provincienaam, terwijl het
+    // juist de omliggende plaatsen zijn waarop een schilder zoekt ("werk in Hoogkerk").
+    const omheen = placesWithin(stad, 20).slice(0, 3).map((p) => p.name);
     return {
       title: `Vacatures schilder ${stad.name} — schilder gezocht in ${stad.name}`,
-      description: `Schilder gezocht in ${stad.name}? Bekijk schildersvacatures in en rond ${stad.name} (${stad.provincie}) en werk structureel via De Flexschilder.`,
+      description: omheen.length
+        ? `Schilder gezocht in ${stad.name}? Bekijk het werk binnen 20 km van ${stad.name}, ook in ${omheen.slice(0, -1).join(', ')} en ${omheen[omheen.length - 1]}. Structureel werk via De Flexschilder.`
+        : `Schilder gezocht in ${stad.name}? Bekijk schildersvacatures in en rond ${stad.name} (${stad.provincie}) en werk structureel via De Flexschilder.`,
       alternates: { canonical: `/vacatures/${params.slug}` },
     };
   }
@@ -61,6 +68,7 @@ export default async function VacatureOfStad({ params }) {
     const straal = 20;
     const lokaal = vacaturesBinnenStraal(vacatures, stad, straal);
     const buren = nearbyCities(stad, 4);
+    const kernen = placesWithin(stad, straal);
 
     return (
       <>
@@ -70,10 +78,13 @@ export default async function VacatureOfStad({ params }) {
           <ResolutieBanner stadNaam={stad.name} />
           <span className="kicker">Voor schilders · {stad.provincie}</span>
           <h1>Vacatures schilder in {stad.name}</h1>
+          {/* De em dash die hier stond is eruit (writing-style.md: geen em dashes in
+              klant-facing copy), en de lead noemt nu het aantal kernen. Dat aantal is
+              per stad anders en zegt een schilder meteen hoe ver deze pagina reikt. */}
           <p className="lead">
-            Schilder gezocht in {stad.name}? Hieronder staan de opdrachten binnen{' '}
-            {straal} km. Zit jouw plaats er niet tussen — wij werken in de hele regio
-            en plannen het werk zoveel mogelijk dicht bij huis.
+            Schilder gezocht in {stad.name}? Hieronder staat het werk binnen {straal} km,
+            in {stad.name} zelf en in {kernen.length} kernen eromheen. Wij plannen het
+            werk zoveel mogelijk dicht bij huis.
           </p>
         </section>
 
@@ -89,8 +100,9 @@ export default async function VacatureOfStad({ params }) {
               <div className="kaartje" style={{ maxWidth: 640 }}>
                 <h3>Nu geen open vacature rond {stad.name}</h3>
                 <p>
-                  Er komt hier doorlopend werk bij. Schrijf je in en we bellen zodra er
-                  een passende opdracht in jouw regio is.
+                  Er komt hier doorlopend werk bij, in {stad.name} en in de{' '}
+                  {kernen.length} kernen eromheen. Schrijf je in en we bellen zodra er
+                  een passende opdracht in {stad.provincie} is.
                 </p>
                 <Link href="/inschrijven" className="btn btn--primair" style={{ alignSelf: 'flex-start', marginTop: 8 }}>
                   Schrijf je in
@@ -99,6 +111,11 @@ export default async function VacatureOfStad({ params }) {
             )}
           </div>
         </section>
+
+        {/* De eigen inhoud van deze pagina: het werkgebied. Staat er nu niets open, dan
+            is dit wat de pagina alsnog beantwoordt — en dat is de normale toestand, want
+            12 van de 15 steden hadden op 11-08 geen enkele vacature. */}
+        <WerkgebiedRond stad={stad} straal={straal} />
 
         <section className="sectie sectie--vlak">
           <div className="container">

@@ -1020,3 +1020,8 @@ a.kaartje:hover .verder, .vacature:hover .verder { color: var(--oranje); }
 .plaatsen__dorpen .chip { font-size: 13px; padding: 5px 11px; }
 .chip--stad { background: var(--oranje); color: var(--wit); border-color: var(--oranje); }
 .chip--stad:hover { background: var(--oranje-donker); color: var(--wit); }
+/* Een kern zonder eigen pagina is een FEIT, geen link (het werkgebied op
+   /vacatures/schilder-<stad>). Zonder deze regel erft 'ie de hover van .chip en
+   belooft 'ie een klik die er niet is. */
+.chip--plaats { background: var(--vlak); cursor: default; font-weight: 600; }
+.chip--plaats:hover { border-color: var(--lijn); color: var(--ink); }
