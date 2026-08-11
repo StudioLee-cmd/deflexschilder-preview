@@ -126,7 +126,7 @@ export default function ZoekBalk({ mode: startMode = 'werk', toonTabs = true }) 
     const keuze = plek || ALLES.find((p) => norm(p.naam).startsWith(norm(q)) && norm(q).length >= 3);
     if (!keuze) {
       setMelding(
-        'Binnen Noord-Nederland werken we overal — deze plaats staat alleen nog niet in ons lijstje. Kies de dichtstbijzijnde stad op de kaart, of bel ons: 06 - 137 181 72.'
+        'Binnen Noord-Nederland werken we overal. Deze plaats staat alleen nog niet in ons lijstje. Kies de dichtstbijzijnde stad op de kaart, of bel ons: 06 - 137 181 72.'
       );
       return;
     }
@@ -262,7 +262,7 @@ export default function ZoekBalk({ mode: startMode = 'werk', toonTabs = true }) 
 
           {plek && plek.type === 'dorp' && (
             <p className="zoek__resolutie">
-              {plek.naam} valt onder <strong>{plek.city.name}</strong> — {plek.km} km verderop.
+              {plek.naam} valt onder <strong>{plek.city.name}</strong>, {plek.km} km verderop.
             </p>
           )}
           {melding && <p className="zoek__resolutie">{melding}</p>}
@@ -350,7 +350,7 @@ export default function ZoekBalk({ mode: startMode = 'werk', toonTabs = true }) 
             </div>
             {plek && plek.type === 'dorp' && (
               <p className="zoek__resolutie">
-                {plek.naam} — regio <strong>{plek.city.name}</strong> ({plek.km} km). Wij werken
+                {plek.naam}, regio <strong>{plek.city.name}</strong> ({plek.km} km). Wij werken
                 in uw omgeving.
               </p>
             )}
@@ -408,7 +408,7 @@ export default function ZoekBalk({ mode: startMode = 'werk', toonTabs = true }) 
             </div>
             {verzonden && (
               <p className="zoek__resolutie">
-                Uw aanvraag is binnen — we nemen snel persoonlijk contact met u op.
+                Uw aanvraag is binnen. We nemen snel persoonlijk contact met u op.
               </p>
             )}
           </form>

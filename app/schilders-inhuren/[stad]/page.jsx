@@ -18,8 +18,8 @@ export function generateMetadata({ params }) {
   const stad = getCity(params.stad);
   if (!stad) return {};
   return {
-    title: `Schilders inhuren in ${stad.name} — flexibele capaciteit in ${stad.provincie}`,
-    description: `Schilders inhuren in ${stad.name}? De Flexschilder levert flexibele, vakbekwame schilders in ${stad.name} en omgeving — detachering, uitzenden en werving & selectie.`,
+    title: `Schilders inhuren in ${stad.name} | flexibele capaciteit in ${stad.provincie}`,
+    description: `Schilders inhuren in ${stad.name}? De Flexschilder levert flexibele, vakbekwame schilders in ${stad.name} en omgeving: detachering, uitzenden en werving & selectie.`,
     alternates: { canonical: `/schilders-inhuren/${stad.slug}` },
   };
 }
@@ -62,7 +62,7 @@ export default async function StadPagina({ params }) {
         <p className="lead">{stad.blurb}</p>
         <p className="lead" style={{ marginTop: 10 }}>
           De Flexschilder levert in {stad.name} en omgeving flexibele, vakbekwame
-          schilders — voor structurele detachering en grotere opdrachten, zonder vaste
+          schilders voor structurele detachering en grotere opdrachten, zonder vaste
           loonkosten. Vakmensen door vakmensen.
         </p>
         <div style={{ display: 'flex', gap: 12, marginTop: 20, flexWrap: 'wrap' }}>
@@ -91,7 +91,7 @@ export default async function StadPagina({ params }) {
           <div className="kaartje">
             <h3>Detachering in {stad.name}</h3>
             <p>
-              Vakmensen voor langere tijd op uw project of in uw onderhoudsploeg —
+              Vakmensen voor langere tijd op uw project of in uw onderhoudsploeg,
               van mutatiewoningen tot planmatig onderhoud.
             </p>
             <Link href="/schilders-inhuren#detachering" className="verder">Meer over detachering →</Link>
@@ -108,7 +108,7 @@ export default async function StadPagina({ params }) {
             <h3>RGS &amp; vastgoedonderhoud</h3>
             <p>
               Langjarige onderhoudsstromen in {stad.provincie}? Wij draaien mee als
-              serieuze RGS-partner — conditiegericht en gepland.
+              serieuze RGS-partner: conditiegericht en gepland.
             </p>
             <Link href="/vastgoedonderhoud-en-rgs" className="verder">Ons specialisme →</Link>
           </div>
@@ -119,9 +119,9 @@ export default async function StadPagina({ params }) {
         <div className="container">
           <h2 style={{ fontSize: 24 }}>Waarom opdrachtgevers in {stad.name} voor ons kiezen</h2>
           <ul className="checklijst" style={{ marginTop: 18, maxWidth: 640 }}>
-            <li>Geleid en bemenst door échte schilders — wij kennen het vak én de planning</li>
+            <li>Geleid en bemenst door échte schilders: wij kennen het vak én de planning</li>
             <li>Schaalbaar zonder vaste loonkosten: op- en afschalen per week</li>
-            <li>Lokaal netwerk in {stad.provincie} — korte lijnen, snel geregeld</li>
+            <li>Lokaal netwerk in {stad.provincie}: korte lijnen, snel geregeld</li>
             <li>RGS-waardig: conditiegericht werken, kwaliteit geborgd</li>
           </ul>
         </div>
@@ -136,7 +136,7 @@ export default async function StadPagina({ params }) {
             <p className="lead" style={{ marginTop: 10 }}>
               {lokaalWerk.length > 0
                 ? `Er ${lokaalWerk.length === 1 ? 'staat nu 1 vacature' : `staan nu ${lokaalWerk.length} vacatures`} open binnen 20 km van ${stad.name}.`
-                : `Er komt doorlopend werk bij rond ${stad.name} — schrijf je in en we bellen je bij een passende opdracht.`}
+                : `Er komt doorlopend werk bij rond ${stad.name}. Schrijf je in en we bellen je bij een passende opdracht.`}
             </p>
             <Link href={`/vacatures/schilder-${stad.slug}`} className="btn btn--secundair" style={{ marginTop: 16 }}>
               Vacatures schilder {stad.name} →

@@ -33,17 +33,17 @@ const assistant = Assistant({
 export const metadata = {
   metadataBase: new URL(BASIS),
   title: {
-    default: 'Uitzendbureau voor schilders Noord-Nederland — De Flexschilder',
-    template: '%s — De Flexschilder',
+    default: 'Uitzendbureau voor schilders Noord-Nederland | De Flexschilder',
+    template: '%s | De Flexschilder',
   },
   description:
-    'Schilders inhuren of aan het werk als schilder in Groningen, Friesland, Drenthe en de kop van Overijssel. Detachering, uitzenden en werving & selectie — vakmensen door vakmensen.',
+    'Schilders inhuren of aan het werk als schilder in Groningen, Friesland, Drenthe en de kop van Overijssel. Detachering, uitzenden en werving & selectie. Vakmensen door vakmensen.',
   applicationName: 'De Flexschilder',
   openGraph: {
     type: 'website',
     siteName: 'De Flexschilder',
     locale: 'nl_NL',
-    images: [{ url: `${BASIS}/img/hero-steiger.jpg`, width: 1024, height: 576, alt: 'De Flexschilder — vakmensen door vakmensen' }],
+    images: [{ url: `${BASIS}/img/hero-steiger.jpg`, width: 1024, height: 576, alt: 'De Flexschilder, vakmensen door vakmensen' }],
   },
   twitter: { card: 'summary_large_image' },
   // SLOT 2 VAN 3 — de robots-meta. Zolang NEXT_PUBLIC_INDEXEERBAAR niet op '1' staat blijft
@@ -71,7 +71,7 @@ export default async function RootLayout({ children }) {
     <html lang="nl" className={assistant.className}>
       <body>
         <div className="previewlint">
-          <strong>PREVIEW</strong> — voorbeeldweergave met demo-content en
+          <strong>PREVIEW</strong>: voorbeeldweergave met demo-content en
           AI-voorbeeldbeelden (geen definitieve teksten). Review-object voor De
           Flexschilder × StudioLee.
         </div>

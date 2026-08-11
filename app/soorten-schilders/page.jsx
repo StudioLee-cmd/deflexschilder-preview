@@ -4,7 +4,7 @@ import ClusterBlok from '@/components/ClusterBlok';
 import BeeldAI from '@/components/BeeldAI';
 
 export const metadata = {
-  title: 'Soorten schilders — specialisaties en salarisindicaties',
+  title: 'Soorten schilders | specialisaties en salarisindicaties',
   description:
     'Van onderhoudsschilder tot industrieel schilder, spuiter en gevelschilder: alle specialisaties, wat ze doen en marktconforme salarisindicaties met visuele ranges.',
   alternates: { canonical: '/soorten-schilders' },
@@ -46,8 +46,8 @@ export default function SoortenSchilders() {
         <p className="lead">
           Schilder is geen eenheidsworst: elk specialisme vraagt eigen vakkennis. Als
           opdrachtgever huurt u precies het juiste type in; als schilder zie je waar
-          jouw vak naartoe kan groeien. Salarisranges zijn marktconforme indicaties —
-          definitieve ranges volgen bij livegang.
+          jouw vak naartoe kan groeien. Salarisranges zijn marktconforme indicaties.
+          Definitieve ranges volgen bij livegang.
         </p>
       </section>
 
@@ -88,7 +88,7 @@ export default function SoortenSchilders() {
           <div>
             <h2 style={{ fontSize: 24 }}>Vakmanschap wordt doorgegeven</h2>
             <p className="lead" style={{ marginTop: 10 }}>
-              Van leerling tot leermeester: onze vakmensen leren het vak van elkaar —
+              Van leerling tot leermeester: onze vakmensen leren het vak van elkaar,
               in de praktijk, op echte projecten. Daarom durven we &ldquo;vakmensen
               door vakmensen&rdquo; te beloven.
             </p>
@@ -108,8 +108,8 @@ export default function SoortenSchilders() {
         <div className="container">
           <ClusterBlok
             titel="Cluster: soorten schilders (pillar + typepagina's)"
-            intro="In de volledige site krijgt elk specialisme een eigen typepagina met salarisrange, werkzaamheden en doorgroeipad — onderling gelinkt met de inhuren- en vacature-clusters."
-            items={TYPES.map((t) => ({ titel: `${t.naam} — eigen typepagina` }))}
+            intro="In de volledige site krijgt elk specialisme een eigen typepagina met salarisrange, werkzaamheden en doorgroeipad, onderling gelinkt met de inhuren- en vacature-clusters."
+            items={TYPES.map((t) => ({ titel: `${t.naam}: eigen typepagina` }))}
           />
         </div>
       </section>

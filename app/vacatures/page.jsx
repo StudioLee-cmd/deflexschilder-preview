@@ -9,7 +9,7 @@ import { getAtsAdapter } from '@/lib/ats';
 export const metadata = {
   title: 'Vacatures voor schilders in Noord-Nederland',
   description:
-    'Vacature schilder gezocht? Structureel werk via De Flexschilder: vacatures voor schilders in Groningen, Friesland, Drenthe en de kop van Overijssel — met marktconforme salarissen.',
+    'Vacature schilder gezocht? Structureel werk via De Flexschilder: vacatures voor schilders in Groningen, Friesland, Drenthe en de kop van Overijssel, met marktconforme salarissen.',
   alternates: { canonical: '/vacatures' },
 };
 
@@ -32,7 +32,7 @@ export default async function Vacatures() {
           Vacatures voor <span className="accent">schilders</span>
         </h1>
         <p className="lead">
-          Structureel werk bij goede opdrachtgevers in heel Noord-Nederland — geen
+          Structureel werk bij goede opdrachtgevers in heel Noord-Nederland, geen
           losse klusjes. Marktconform salaris, eerlijke voorwaarden en begeleiding
           door vakmensen die het vak zelf kennen.
         </p>
@@ -50,7 +50,7 @@ export default async function Vacatures() {
             Alle vacatures{' '}
             <span style={{ fontSize: 15, fontWeight: 600, color: 'var(--tekst-licht)' }}>
               ({vacatures.length})
-              {vacatures.some((v) => v.demo) && ' — demo-data tot de ATS-koppeling live is'}
+              {vacatures.some((v) => v.demo) && ', demo-data tot de ATS-koppeling live is'}
             </span>
           </h2>
           <div className="grid grid--2" style={{ marginTop: 22 }}>
@@ -81,19 +81,19 @@ export default async function Vacatures() {
             <div className="stappen" style={{ marginTop: 20 }}>
               <div className="stap">
                 <p>
-                  <strong>Schrijf je in</strong> — vertel wat je kunt en wat je zoekt.
+                  <strong>Schrijf je in</strong>: vertel wat je kunt en wat je zoekt.
                   Wij kennen de opdrachtgevers in het Noorden persoonlijk.
                 </p>
               </div>
               <div className="stap">
                 <p>
-                  <strong>Wij matchen op vakmanschap</strong> — het juiste werk op het
+                  <strong>Wij matchen op vakmanschap</strong>: het juiste werk op het
                   juiste niveau, met marktconform salaris.
                 </p>
               </div>
               <div className="stap">
                 <p>
-                  <strong>Aan de slag, met begeleiding</strong> — coaching en de kans
+                  <strong>Aan de slag, met begeleiding</strong>: coaching en de kans
                   om je vak te verdiepen, in theorie én praktijk.
                 </p>
               </div>
@@ -103,7 +103,7 @@ export default async function Vacatures() {
             <h3>Niet gevonden wat je zoekt?</h3>
             <p style={{ fontSize: 14.5 }}>
               Zet ons aan het werk: schrijf je in en wij zoeken voor jou de juiste
-              opdracht — vakmensen door vakmensen.
+              opdracht. Vakmensen door vakmensen.
             </p>
             <Link href="/inschrijven" className="btn btn--primair" style={{ alignSelf: 'flex-start', marginTop: 8 }}>
               Schrijf je in
@@ -125,13 +125,13 @@ export default async function Vacatures() {
             <h2>Niet de snelste match, maar de juiste match</h2>
             <p>
               Elke vakman heeft andere behoeftes: vrijheid, het soort werk dat je
-              leuk vindt, reistijd, ontwikkeling. Wij peilen eerst wat jíj wilt — en
+              leuk vindt, reistijd, ontwikkeling. Wij peilen eerst wat jíj wilt, en
               zoeken daar een passende opdrachtgever bij. Geen cv-schuiven, maar een
               vakinhoudelijke match door mensen die je werk kunnen beoordelen.
             </p>
             <p>
               En we kijken verder dan de plaatsing: wij investeren in mensen en
-              helpen je groeien binnen het vak — van zij-instromer tot allround
+              helpen je groeien binnen het vak, van zij-instromer tot allround
               vakman.
             </p>
             <p>
@@ -159,7 +159,7 @@ export default async function Vacatures() {
         <div className="container">
           <ClusterBlok
             titel="Cluster: werken als schilder (pillar + ondersteunende artikelen)"
-            intro="De vragen die werkzoekende schilders googelen — elk artikel linkt terug naar dit vacature-overzicht."
+            intro="De vragen die werkzoekende schilders googelen. Elk artikel linkt terug naar dit vacature-overzicht."
             items={[
               { titel: 'Kilometervergoeding 2026: wat scheelt het jou?', href: '/blog/kilometervergoeding-2026-25-cent' },
               { titel: 'Salaris van een schilder (per specialisme)', href: '/soorten-schilders' },

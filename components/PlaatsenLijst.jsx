@@ -18,7 +18,7 @@ export default function PlaatsenLijst() {
       <summary className="plaatsen__hoofdknop">
         <strong>Alle plaatsen in ons werkgebied</strong>
         <span className="meta">
-          {PLACES.length} kernen onder {CITIES.length} steden — klik je dorp, elke
+          {PLACES.length} kernen onder {CITIES.length} steden. Klik je dorp, elke
           plaats valt onder de dichtstbijzijnde stad
         </span>
       </summary>

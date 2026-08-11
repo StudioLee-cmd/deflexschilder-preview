@@ -43,7 +43,7 @@ const KLEUR = {
 
 export default function NoordMap() {
   return (
-    <div className="kaart" role="navigation" aria-label="Werkgebied Noord-Nederland — kies een stad">
+    <div className="kaart" role="navigation" aria-label="Werkgebied Noord-Nederland, kies een stad">
       <svg viewBox={`0 0 ${VIEW_W} ${VIEW_H}`} aria-hidden="true">
         {/* eerst de rest van NL, dan het werkgebied er bovenop (nette randen) */}
         {PROVINCIES.filter((p) => p.zone === 'rest').map((p) => (

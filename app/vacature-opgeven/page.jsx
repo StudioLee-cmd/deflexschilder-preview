@@ -47,7 +47,7 @@ export default function VacatureOpgeven({ searchParams }) {
           Nieuwe <span className="accent">vacature</span>
         </h1>
         <p className="lead">
-          Vul in wat je kwijt wilt en druk op verzenden — de vacature staat er dan meteen
+          Vul in wat je kwijt wilt en druk op verzenden. De vacature staat er dan meteen
           op, ook op de stadspagina&apos;s in de buurt. Drie velden is genoeg.
         </p>
       </section>

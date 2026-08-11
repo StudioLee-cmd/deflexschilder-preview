@@ -65,7 +65,7 @@ export default function SalarisChecker() {
           <div className="reken__tegel reken__tegel--accent">
             <div className="label">Marktconforme range</div>
             <div className="bedrag" style={{ fontSize: 17 }}>
-              {toon(t.min)} – {toon(t.max)}
+              {toon(t.min)} - {toon(t.max)}
             </div>
           </div>
           <div className="reken__tegel">
@@ -75,7 +75,7 @@ export default function SalarisChecker() {
         </div>
       ) : (
         <p style={{ fontWeight: 700, color: 'var(--oranje-donker)' }}>
-          {t.salaris} <em style={{ fontWeight: 400 }}>(indicatie — bespreken we persoonlijk)</em>
+          {t.salaris} <em style={{ fontWeight: 400 }}>(indicatie, bespreken we persoonlijk)</em>
         </p>
       )}
 

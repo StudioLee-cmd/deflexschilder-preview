@@ -28,7 +28,7 @@ export default function BedanktVoorHetRegistreren() {
 
       <section className="paginakop container">
         <span className="kicker">Vacature-alert</span>
-        <h1>Gelukt — je staat op de lijst</h1>
+        <h1>Gelukt, je staat op de lijst</h1>
         <p className="lead">
           Je krijgt vanaf nu een bericht zodra er een nieuwe vacature bij komt. In dat bericht staat
           onderaan altijd een link waarmee je je met één klik weer kunt uitschrijven.
@@ -40,7 +40,7 @@ export default function BedanktVoorHetRegistreren() {
           <div className="kaartje" style={{ padding: 26 }}>
             <h3 style={{ marginTop: 0 }}>Niet wachten?</h3>
             <p style={{ fontSize: 15.5 }}>
-              We hebben nu al vacatures staan. Bel gerust als er iets tussen zit —{' '}
+              We hebben nu al vacatures staan. Bel gerust als er iets tussen zit:{' '}
               <a href="tel:+31613718172" style={{ fontWeight: 700, color: 'var(--oranje-donker)' }}>
                 06 - 137 181 72
               </a>
@@ -53,7 +53,7 @@ export default function BedanktVoorHetRegistreren() {
           <div className="kaartje" style={{ padding: 26 }}>
             <h3 style={{ marginTop: 0 }}>Meteen inschrijven?</h3>
             <p style={{ fontSize: 15.5 }}>
-              Wil je liever dat wij je bellen zodra er passend werk is? Schrijf je dan in — dan
+              Wil je liever dat wij je bellen zodra er passend werk is? Schrijf je dan in, dan
               kennen we je vak en je werkgebied.
             </p>
             <Link href="/inschrijven" className="btn btn--secundair" style={{ marginTop: 6 }}>

@@ -52,7 +52,7 @@ export default function VacatureOpgeefForm({ code }) {
         </h3>
         <p style={{ fontSize: 15.5 }}>
           <strong>{klaar.titel}</strong> in {klaar.plaats} staat nu op de site.
-          {!klaar.nieuw && ' Deze vacature stond er al — die is bijgewerkt, dus hij staat er niet twee keer op.'}
+          {!klaar.nieuw && ' Deze vacature stond er al: die is bijgewerkt, dus hij staat er niet twee keer op.'}
         </p>
         <a
           href={`/vacatures/${klaar.slug}`}
@@ -131,17 +131,17 @@ export default function VacatureOpgeefForm({ code }) {
         <>
           <label>
             Dienstverband
-            <input name="dienstverband" placeholder="Bijv. Detachering — langere opdracht" maxLength={120} />
+            <input name="dienstverband" placeholder="Bijv. Detachering, langere opdracht" maxLength={120} />
           </label>
           <label>
             Uren
-            <input name="uren" placeholder="Bijv. 32–40 uur" maxLength={60} />
+            <input name="uren" placeholder="Bijv. 32-40 uur" maxLength={60} />
           </label>
           <label>
             Salaris-indicatie
             <input
               name="salaris_indicatie"
-              placeholder="Bijv. €2.600 – €3.400 bruto p/m"
+              placeholder="Bijv. €2.600 - €3.400 bruto p/m"
               maxLength={120}
             />
           </label>

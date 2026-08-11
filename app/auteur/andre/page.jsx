@@ -4,12 +4,12 @@ import { ARTIKELEN } from '@/lib/blog';
 import { BASIS, PERSOON_ID, jsonLd } from '@/lib/schema';
 
 export const metadata = {
-  title: 'André van der Hoogen — eigenaar De Flexschilder, 23 jaar vakervaring',
+  title: 'André van der Hoogen | eigenaar De Flexschilder, 23 jaar vakervaring',
   description:
     'André van der Hoogen is eigenaar van De Flexschilder: 23 jaar technische expertise in verf en onderhoud, kennis van RGS en planmatig onderhoud, en een sterk netwerk in Noord-Nederland.',
   alternates: { canonical: '/auteur/andre' },
   openGraph: {
-    title: 'André van der Hoogen — De Flexschilder',
+    title: 'André van der Hoogen | De Flexschilder',
     description: '23 jaar technische expertise in verf en onderhoud.',
   },
 };
@@ -48,7 +48,7 @@ export default function AuteurAndre() {
             <p>
               Google en AI-zoekmachines wegen steeds zwaarder wie er achter een tekst
               zit: echte ervaring, aantoonbare expertise, een herkenbare auteur. Bij
-              De Flexschilder is dat simpel geregeld — de eigenaar ís de vakman. André
+              De Flexschilder is dat simpel geregeld: de eigenaar ís de vakman. André
               begon 23 jaar geleden op de steiger en adviseert vandaag ondernemers en vastgoedbeheerders over onderhoud, RGS en capaciteit.
             </p>
             <h2>Expertise</h2>
@@ -63,7 +63,7 @@ export default function AuteurAndre() {
                 Sparringpartner voor ondernemers: personeelsbeleid, cao en het binden
                 en behouden van vakmensen
               </li>
-              <li>Persoonlijke selectie — geen cv-schuiver, maar een vakinhoudelijke matchmaker</li>
+              <li>Persoonlijke selectie: geen cv-schuiver, maar een vakinhoudelijke matchmaker</li>
             </ul>
             <blockquote>
               &ldquo;Ik plaats niet alleen schilders, ik begrijp hun werk.&rdquo;
@@ -100,14 +100,14 @@ export default function AuteurAndre() {
                 <div style={{ display: 'flex', gap: 8 }}><dt style={{ fontWeight: 700, minWidth: 110, color: 'var(--tekst-licht)' }}>E-mail</dt><dd style={{ margin: 0 }}><a href="mailto:andre@deflexschilder.nl" style={{ fontWeight: 700 }}>andre@deflexschilder.nl</a></dd></div>
               </dl>
               <p className="meta" style={{ fontSize: 12.5 }}>
-                Profielfoto volgt — aan te leveren door André.
+                Profielfoto volgt, aan te leveren door André.
               </p>
             </div>
             <div className="kaartje">
               <h3>Verhalen van vakmensen</h3>
               <p style={{ fontSize: 14.5 }}>
                 Na André volgen de verhalen van de vakmensen zelf (Tieme · Jordy ·
-                Julia) — zodra de toestemming en content rond zijn.
+                Julia), zodra de toestemming en content rond zijn.
               </p>
             </div>
           </div>

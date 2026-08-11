@@ -3,9 +3,9 @@ import Kruimel from '@/components/Kruimel';
 import { ARTIKELEN, CATEGORIEEN } from '@/lib/blog';
 
 export const metadata = {
-  title: 'Nieuws & vakkennis — voor opdrachtgevers en schilders',
+  title: 'Nieuws & vakkennis | voor opdrachtgevers en schilders',
   description:
-    'Nieuws en vakkennis van De Flexschilder: regelgeving, salaris en reiskosten, vastgoedonderhoud en RGS — geschreven door vakmensen uit Noord-Nederland.',
+    'Nieuws en vakkennis van De Flexschilder: regelgeving, salaris en reiskosten, vastgoedonderhoud en RGS. Geschreven door vakmensen uit Noord-Nederland.',
   alternates: { canonical: '/blog' },
 };
 
@@ -60,7 +60,7 @@ export default function Blog() {
               <span className="meta">Contentplan</span>
               <h3>Hier groeit het cluster</h3>
               <p style={{ fontSize: 14.5 }}>
-                In de contentfase vullen de vier categorieën zich wekelijks — elk
+                In de contentfase vullen de vier categorieën zich wekelijks, elk
                 artikel met André's vakinzicht van die week, gekoppeld aan zijn
                 pillar-pagina. Voorbeelden uit het plan: <em>wat kost een schilder
                 inhuren</em>, <em>salaris van een schilder</em>, <em>wat is RGS</em> en{' '}

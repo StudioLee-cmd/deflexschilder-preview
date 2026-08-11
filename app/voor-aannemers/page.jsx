@@ -3,7 +3,7 @@ import Kruimel from '@/components/Kruimel';
 import BeeldAI from '@/components/BeeldAI';
 
 export const metadata = {
-  title: 'Schilders voor aannemers & onderhoudsbedrijven — pieken opvangen',
+  title: 'Schilders voor aannemers & onderhoudsbedrijven | pieken opvangen',
   description:
     'Onderaanneming schilderwerk en flexibele schilders voor aannemers en onderhoudsbedrijven in Noord-Nederland: pieken opvangen zonder risico, vakwerk dat gewoon doorloopt.',
   alternates: { canonical: '/voor-aannemers' },
@@ -24,7 +24,7 @@ export default function VoorAannemers() {
         <span className="kicker">Voor opdrachtgevers · aannemers &amp; onderhoudsbedrijven</span>
         <h1>De flexibele schil voor aannemers en onderhoudsbedrijven</h1>
         <p className="lead">
-          Deadline naar voren, oplevering vertraagd, twee man ziek — de planning van
+          Deadline naar voren, oplevering vertraagd, twee man ziek: de planning van
           een bouwer is nooit rustig. De Flexschilder levert per week op te schalen
           schilderscapaciteit: vakmensen die direct meedraaien in uw ploeg.
         </p>
@@ -41,15 +41,15 @@ export default function VoorAannemers() {
             <h2>Waarvoor bouwers ons bellen</h2>
             <ul className="checklijst" style={{ paddingLeft: 0 }}>
               <li>
-                <strong>Pieken opvangen</strong> — extra schilders precies in de weken
+                <strong>Pieken opvangen</strong>: extra schilders precies in de weken
                 dat de planning knelt; daarna weer terug.
               </li>
               <li>
-                <strong>Onderaanneming schilderwerk</strong> — wij nemen het
+                <strong>Onderaanneming schilderwerk</strong>: wij nemen het
                 schilderdeel van uw project aan, inclusief planning en kwaliteit.
               </li>
               <li>
-                <strong>Specialistisch werk</strong> — van{' '}
+                <strong>Specialistisch werk</strong>: van{' '}
                 <Link href="/soorten-schilders">spuiters en industrieel schilders</Link>{' '}
                 tot afwerking op niveau bij oplevering.
               </li>
@@ -60,7 +60,7 @@ export default function VoorAannemers() {
             </ul>
             <h2>Vakwerk zonder gedoe</h2>
             <p>
-              U stuurt aan op het werk, wij regelen de rest — contracten, uren,
+              U stuurt aan op het werk, wij regelen de rest: contracten, uren,
               vervanging. En omdat wij zelf schilders zijn, sturen we geen
               &ldquo;handjes&rdquo; maar vakmensen die uw kwaliteitsniveau snappen.
               VCU-gecertificeerd, SNA-keurmerk, ABU-lid.
@@ -83,12 +83,12 @@ export default function VoorAannemers() {
             </Link>
             <Link href="/vastgoedonderhoud-en-rgs" className="kaartje">
               <h3>Vastgoedonderhoud &amp; RGS</h3>
-              <p style={{ fontSize: 14.5 }}>Langjarig onderhoud, conditiegericht — ons specialisme.</p>
+              <p style={{ fontSize: 14.5 }}>Langjarig onderhoud, conditiegericht: ons specialisme.</p>
               <span className="verder">Bekijk →</span>
             </Link>
             <Link href="/#werkgebied" className="kaartje">
               <h3>Werkgebied</h3>
-              <p style={{ fontSize: 14.5 }}>Van Zwolle tot de Waddenkust — bekijk de kaart.</p>
+              <p style={{ fontSize: 14.5 }}>Van Zwolle tot de Waddenkust. Bekijk de kaart.</p>
               <span className="verder">Bekijk →</span>
             </Link>
           </div>

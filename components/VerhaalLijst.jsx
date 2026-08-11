@@ -31,7 +31,7 @@ export default function VerhaalLijst() {
               ) : (
                 <p className="verhaal__wacht">
                   Interview volgt. André legt de verhalen van zijn vakmensen zelf
-                  vast — opname, uitwerking én eigen foto&rsquo;s. Zodra het klaar
+                  vast: opname, uitwerking én eigen foto&rsquo;s. Zodra het klaar
                   is, verschijnt {lid.naam}&rsquo;s verhaal hier.
                 </p>
               )}

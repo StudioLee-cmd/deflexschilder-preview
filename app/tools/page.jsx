@@ -6,7 +6,7 @@ import KmCalculator from '@/components/KmCalculator';
 import { BASIS, ORG_ID, jsonLd } from '@/lib/schema';
 
 export const metadata = {
-  title: 'Rekentools voor schilders — salarischecker, bruto-netto en km-vergoeding',
+  title: 'Rekentools voor schilders | salarischecker, bruto-netto en km-vergoeding',
   description:
     'Gratis rekentools voor schilders: check je marktconforme salaris per specialisme, reken bruto naar netto en bereken wat de kilometervergoeding 2026 jou scheelt.',
   alternates: { canonical: '/tools' },
@@ -61,7 +61,7 @@ export default function Tools() {
           Rekentools voor <span className="accent">schilders</span>
         </h1>
         <p className="lead">
-          Weten waar je aan toe bent — zonder gedoe. Check je marktconforme salaris
+          Weten waar je aan toe bent, zonder gedoe. Check je marktconforme salaris
           per specialisme, reken je brutoloon om naar netto en bereken wat de nieuwe
           kilometervergoeding jou per jaar scheelt.
         </p>
@@ -92,7 +92,7 @@ export default function Tools() {
           <div>
             <h2 style={{ fontSize: 22 }}>Klopt jouw salaris niet met de markt?</h2>
             <p className="lead" style={{ fontSize: 15.5 }}>
-              Wij matchen op vakmanschap én eerlijke voorwaarden — niet de snelste
+              Wij matchen op vakmanschap én eerlijke voorwaarden: niet de snelste
               match, maar de juiste.
             </p>
           </div>

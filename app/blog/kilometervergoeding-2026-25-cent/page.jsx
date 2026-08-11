@@ -9,14 +9,14 @@ import { BASIS, ORG_ID, PERSOON_ID, WEBSITE_ID } from '@/lib/schema';
 const URL_ARTIKEL = `${BASIS}/blog/kilometervergoeding-2026-25-cent`;
 
 export const metadata = {
-  title: 'Kilometervergoeding 2026: van 23 naar 25 cent — wat betekent dat voor schilders?',
+  title: 'Kilometervergoeding 2026: van 23 naar 25 cent. Wat betekent dat voor schilders?',
   description:
-    'De maximale onbelaste reiskostenvergoeding stijgt in 2026 van € 0,23 naar € 0,25 per km, met terugwerkende kracht tot 1 januari. Wat het besluit inhoudt, wat het níet is, en wat het een schilder per jaar scheelt — met rekentool.',
+    'De maximale onbelaste reiskostenvergoeding stijgt in 2026 van € 0,23 naar € 0,25 per km, met terugwerkende kracht tot 1 januari. Wat het besluit inhoudt, wat het níet is, en wat het een schilder per jaar scheelt, met rekentool.',
   alternates: { canonical: '/blog/kilometervergoeding-2026-25-cent' },
   openGraph: {
     type: 'article',
     title: 'Kilometervergoeding 2026: van 23 naar 25 cent',
-    description: 'Wat de verhoging naar € 0,25/km betekent voor schilders — met rekentool en bronnen.',
+    description: 'Wat de verhoging naar € 0,25/km betekent voor schilders, met rekentool en bronnen.',
     images: [{ url: `${BASIS}/img/bus-onderweg.jpg`, width: 1024, height: 576 }],
     publishedTime: '2026-07-03',
     authors: [`${BASIS}/auteur/andre`],
@@ -38,10 +38,10 @@ const FAQ = [
   },
   {
     v: 'Geldt het verhoogde bedrag ook als ik met de fiets of het OV naar het werk ga?',
-    a: 'Ja. De wet kent één vast onbelast bedrag per kilometer voor alle vormen van vervoer — auto, motor, fiets, openbaar vervoer of lopend.',
+    a: 'Ja. De wet kent één vast onbelast bedrag per kilometer voor alle vormen van vervoer: auto, motor, fiets, openbaar vervoer of lopend.',
   },
   {
-    v: 'Ik werk als zzp-schilder — heb ik hier iets aan?',
+    v: 'Ik werk als zzp-schilder, heb ik hier iets aan?',
     a: 'Ja. In hetzelfde besluit worden ook de aftrekbare reiskosten voor IB-ondernemers en resultaatgenieters structureel en met terugwerkende kracht verhoogd. Als zzp’er mag je dus met het hogere bedrag rekenen in je aangifte.',
   },
 ];
@@ -50,7 +50,7 @@ const ARTIKEL_SCHEMA = {
   '@context': 'https://schema.org',
   '@type': 'Article',
   '@id': `${URL_ARTIKEL}#artikel`,
-  headline: 'Kilometervergoeding 2026: van 23 naar 25 cent — wat betekent dat voor schilders?',
+  headline: 'Kilometervergoeding 2026: van 23 naar 25 cent. Wat betekent dat voor schilders?',
   inLanguage: 'nl',
   datePublished: '2026-07-03',
   dateModified: '2026-07-03',
@@ -99,12 +99,12 @@ export default function KmArtikel() {
       <article className="container" style={{ paddingBottom: 60 }}>
         <header className="paginakop" style={{ maxWidth: 820 }}>
           <span className="kicker">Voor schilders · regelgeving</span>
-          <h1>Kilometervergoeding 2026: van 23 naar 25 cent — wat betekent dat voor schilders?</h1>
+          <h1>Kilometervergoeding 2026: van 23 naar 25 cent. Wat betekent dat voor schilders?</h1>
           <p className="lead" style={{ marginTop: 12 }}>
             Wie schildert, rijdt. De ene week een onderhoudsproject in Meppel, de
             andere week een klus in Drachten. Juist daarom is dit nieuws voor
             vakmensen relevant: de maximale <strong>onbelaste reiskostenvergoeding</strong>{' '}
-            gaat in 2026 van € 0,23 naar <strong>€ 0,25 per kilometer</strong> — met
+            gaat in 2026 van € 0,23 naar <strong>€ 0,25 per kilometer</strong>, met
             terugwerkende kracht tot 1 januari.
           </p>
           <div style={{ marginTop: 18 }}>
@@ -119,7 +119,7 @@ export default function KmArtikel() {
             <div><dt>Was</dt><dd>€ 0,23 per km</dd></div>
             <div><dt>Wordt</dt><dd><strong>€ 0,25 per km</strong></dd></div>
             <div><dt>Ingang</dt><dd>22 mei 2026, terugwerkend tot 1 januari 2026</dd></div>
-            <div><dt>Verplicht?</dt><dd>Nee — werkgevers <em>mogen</em>, niet moeten</dd></div>
+            <div><dt>Verplicht?</dt><dd>Nee: werkgevers <em>mogen</em>, niet moeten</dd></div>
             <div><dt>Voor wie</dt><dd>Alle vervoer (auto, fiets, OV); ook zzp-aftrek omhoog</dd></div>
             <div><dt>Bron</dt><dd>Besluit 17-05-2026, nr. 2026-8260 (Stcrt. 2026-18302)</dd></div>
           </dl>
@@ -145,7 +145,7 @@ export default function KmArtikel() {
           <ul>
             <li>
               Het onbelaste maximum stijgt van <strong>€ 0,23</strong> naar{' '}
-              <strong>€ 0,25 per kilometer</strong> — voor zakelijke kilometers{' '}
+              <strong>€ 0,25 per kilometer</strong>, voor zakelijke kilometers{' '}
               <em>inclusief woon-werkverkeer</em>.
             </li>
             <li>
@@ -180,7 +180,7 @@ export default function KmArtikel() {
             Het besluit verplicht werkgevers <strong>niet</strong> om meer te betalen.
             Het verhoogt alleen het bedrag dat zij <em>onbelast mogen</em> vergoeden.
             Wat jij daadwerkelijk per kilometer krijgt, staat in je
-            arbeidsvoorwaarden of cao — en in de meeste cao&rsquo;s stond in mei 2026
+            arbeidsvoorwaarden of cao, en in de meeste cao&rsquo;s stond in mei 2026
             nog 23 cent per kilometer. Verwacht dus niet automatisch een hogere
             vergoeding op je loonstrook, maar wéét dat de fiscale ruimte er nu wel is.
             Een goed moment om ernaar te vragen.
@@ -211,27 +211,27 @@ export default function KmArtikel() {
 
           <h2>Voor opdrachtgevers en werkgevers</h2>
           <p>
-            Wie schilders in dienst heeft, kan de hogere vergoeding onbelast aanbieden
-            — een concreet arbeidsvoorwaarden-voordeel in een krappe markt, zonder
+            Wie schilders in dienst heeft, kan de hogere vergoeding onbelast aanbieden: een concreet arbeidsvoorwaarden-voordeel in een krappe markt, zonder
             loonheffing. De verwerking kan met terugwerkende kracht via
             correctieberichten in de loonaangifte. Huurt u capaciteit in via een
             detacheringspartner, dan zit dit in de voorwaarden van die partner
             verwerkt; bij <Link href="/schilders-inhuren">het inhuren van schilders</Link>{' '}
             via De Flexschilder zijn reiskosten onderdeel van de afspraken die we
-            vooraf gewoon helder maken — geen verborgen kosten.
+            vooraf gewoon helder maken: geen verborgen kosten.
           </p>
 
           <h2>Hoe wij ermee omgaan</h2>
           <blockquote>
-            &ldquo;Onze vakmensen rijden het hele Noorden door — van Zwolle tot de
+            &ldquo;Onze vakmensen rijden het hele Noorden door, van Zwolle tot de
             Waddenkust. Eerlijke reiskostenafspraken horen bij eerlijk werk. Wij
             informeren onze schilders actief over wat er verandert, en bij de intake
-            nemen we de vergoeding gewoon met je door.&rdquo; — André, De Flexschilder
+            nemen we de vergoeding gewoon met je door.&rdquo;{' '}
+            <cite>André, De Flexschilder</cite>
           </blockquote>
           <p>
             Werk zoeken waar reiskosten en voorwaarden vooraf duidelijk zijn? Bekijk
             de <Link href="/vacatures">actuele vacatures voor schilders</Link> of{' '}
-            <Link href="/inschrijven">schrijf je vrijblijvend in</Link> — dan zoeken
+            <Link href="/inschrijven">schrijf je vrijblijvend in</Link>, dan zoeken
             wij werk dat qua reistijd bij je past: zoveel mogelijk dicht bij huis.
           </p>
 
@@ -248,7 +248,7 @@ export default function KmArtikel() {
             <div className="auteursblok__kop">
               <span className="byline__avatar" aria-hidden>A</span>
               <div>
-                <strong>Over de auteur — André van der Hoogen</strong>
+                <strong>Over de auteur: André van der Hoogen</strong>
                 <div style={{ fontSize: 13.5, color: 'var(--tekst-licht)' }}>
                   Eigenaar De Flexschilder · 23 jaar in verf en onderhoud
                 </div>
@@ -259,7 +259,7 @@ export default function KmArtikel() {
               André begon 23 jaar geleden als technisch adviseur in de verfindustrie
               en leidt vandaag De Flexschilder: dé schildersspecialist van
               Noord-Nederland. Hij adviseert opdrachtgevers over verfsystemen,
-              onderhoudscycli en RGS — en zorgt dat vakmensen eerlijk werk met
+              onderhoudscycli en RGS, en zorgt dat vakmensen eerlijk werk met
               eerlijke voorwaarden krijgen. &ldquo;Ik plaats niet alleen schilders,
               ik begrijp hun werk.&rdquo;
             </p>
@@ -278,12 +278,12 @@ export default function KmArtikel() {
               </li>
               <li>
                 <a href="https://www.rijksoverheid.nl/vraag-en-antwoord/inkomstenbelasting/wat-is-de-maximale-kilometervergoeding-die-ik-van-mijn-werkgever-kan-ontvangen" target="_blank" rel="noreferrer">
-                  Rijksoverheid — maximale kilometervergoeding
+                  Rijksoverheid: maximale kilometervergoeding
                 </a>
               </li>
               <li>
                 <a href="https://www.salarisvanmorgen.nl/2026/05/21/besluit-met-goedkeuring-verhoging-onbelaste-reiskostenvergoeding-in-2026-gepubliceerd/" target="_blank" rel="noreferrer">
-                  Salaris Vanmorgen — besluit verhoging onbelaste reiskostenvergoeding 2026
+                  Salaris Vanmorgen: besluit verhoging onbelaste reiskostenvergoeding 2026
                 </a>
               </li>
             </ul>

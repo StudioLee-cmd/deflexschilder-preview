@@ -2,9 +2,9 @@ import Kruimel from '@/components/Kruimel';
 import AanvraagForm from '@/components/AanvraagForm';
 
 export const metadata = {
-  title: 'Schilders aanvragen — vandaag geregeld',
+  title: 'Schilders aanvragen | vandaag geregeld',
   description:
-    'Vraag flexibele schilderscapaciteit aan voor uw project of onderhoudsstroom in Noord-Nederland. Vertel wat er moet gebeuren — wij plannen de juiste vakmensen in.',
+    'Vraag flexibele schilderscapaciteit aan voor uw project of onderhoudsstroom in Noord-Nederland. Vertel wat er moet gebeuren. Wij plannen de juiste vakmensen in.',
   alternates: { canonical: '/aanvraag' },
 };
 
@@ -17,7 +17,7 @@ export default function Aanvraag() {
         <span className="kicker">Voor opdrachtgevers</span>
         <h1>Schilders aanvragen</h1>
         <p className="lead">
-          Vertel ons wat er geschilderd moet worden, waar en wanneer — wij komen snel
+          Vertel ons wat er geschilderd moet worden, waar en wanneer. Wij komen snel
           terug met de juiste vakmensen en een duidelijke afspraak. Liever direct
           contact? Bel <a href="tel:+31613718172" style={{ fontWeight: 700, color: 'var(--oranje-donker)' }}>06 - 137 181 72</a>.
         </p>

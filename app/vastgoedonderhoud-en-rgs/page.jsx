@@ -4,7 +4,7 @@ import ClusterBlok from '@/components/ClusterBlok';
 import BeeldAI from '@/components/BeeldAI';
 
 export const metadata = {
-  title: 'Vastgoedonderhoud & RGS — resultaatgericht samenwerken',
+  title: 'Vastgoedonderhoud & RGS | resultaatgericht samenwerken',
   description:
     'RGS, planmatig onderhoud, NEN 2767 en MJOP: hoe De Flexschilder als langjarige onderhoudspartner werkt voor vastgoedbeheerders, VvE’s en aannemers in Noord-Nederland.',
   alternates: { canonical: '/vastgoedonderhoud-en-rgs' },
@@ -39,24 +39,24 @@ export default function VastgoedRgs() {
               onderhoudspartner niet per klus af wat er gebeurt, maar leggen ze het{' '}
               <strong>resultaat</strong> vast: welk conditieniveau moet het vastgoed
               over de hele looptijd houden? De partner plant en bewaakt het onderhoud
-              zelf — dat scheelt de opdrachtgever regie, faalkosten en verrassingen.
+              zelf. Dat scheelt de opdrachtgever regie, faalkosten en verrassingen.
             </p>
             <h2>De taal van de opdrachtgever</h2>
             <ul>
               <li>
-                <strong>NEN 2767-conditiemeting</strong> — de objectieve meetlat voor
+                <strong>NEN 2767-conditiemeting</strong>: de objectieve meetlat voor
                 de staat van het vastgoed; wij werken en rapporteren conditiegericht.
               </li>
               <li>
-                <strong>MJOP</strong> — schilderwerk als planbare, begrote stroom in
+                <strong>MJOP</strong>: schilderwerk als planbare, begrote stroom in
                 plaats van ad-hoc kosten.
               </li>
               <li>
-                <strong>Ketensamenwerking</strong> — één team met beheerder, aannemer
+                <strong>Ketensamenwerking</strong>: één team met beheerder, aannemer
                 en schilders; korte lijnen, geen dubbel werk.
               </li>
               <li>
-                <strong>Ontzorgen</strong> — bewonerscommunicatie, planning en
+                <strong>Ontzorgen</strong>: bewonerscommunicatie, planning en
                 kwaliteit geregeld door mensen die het vak kennen.
               </li>
             </ul>
@@ -64,7 +64,7 @@ export default function VastgoedRgs() {
             <p>
               Voor opdrachtgevers betekent RGS met De Flexschilder:
               schilderscapaciteit die meegroeit met uw MJOP, geleverd door vakmensen
-              die conditiegericht denken — geleid door een specialist met{' '}
+              die conditiegericht denken, geleid door een specialist met{' '}
               <Link href="/auteur/andre">23 jaar ervaring in verf en planmatig onderhoud</Link>.
             </p>
           </div>
@@ -95,7 +95,7 @@ export default function VastgoedRgs() {
         <div className="container">
           <ClusterBlok
             titel="Cluster: vastgoedonderhoud & RGS (autoriteits-pillar)"
-            intro="Weinig volume, maximale overtuigingskracht: dit cluster maakt De Flexschilder dé vindbare autoriteit in Google én AI-zoekmachines — gevoed met André's wekelijkse inzichten."
+            intro="Weinig volume, maximale overtuigingskracht: dit cluster maakt De Flexschilder dé vindbare autoriteit in Google én AI-zoekmachines, gevoed met André's wekelijkse inzichten."
             items={[
               { titel: 'Wat is RGS? (uitgebreide uitleg)' },
               { titel: 'Planmatig onderhoud uitgelegd' },

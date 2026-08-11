@@ -18,11 +18,11 @@ function BannerInner({ stadNaam }) {
 
   return (
     <div className="resolutie">
-      <strong>{van}</strong> heeft geen eigen pagina — je kijkt naar de dichtstbijzijnde
+      <strong>{van}</strong> heeft geen eigen pagina. Je kijkt naar de dichtstbijzijnde
       grote stad: <strong>{stadNaam}</strong> · {km} km
       {binnen
         ? ` (binnen je straal van ${straalNum} km)`
-        : ` (buiten je straal van ${straalNum} km — dit is de dichtstbijzijnde stad)`}
+        : ` (buiten je straal van ${straalNum} km: dit is de dichtstbijzijnde stad)`}
       .
     </div>
   );

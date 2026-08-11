@@ -42,7 +42,7 @@ export async function generateMetadata({ params }) {
     // juist de omliggende plaatsen zijn waarop een schilder zoekt ("werk in Hoogkerk").
     const omheen = placesWithin(stad, 20).slice(0, 3).map((p) => p.name);
     return {
-      title: `Vacatures schilder ${stad.name} — schilder gezocht in ${stad.name}`,
+      title: `Vacatures schilder ${stad.name} | schilder gezocht in ${stad.name}`,
       description: omheen.length
         ? `Schilder gezocht in ${stad.name}? Bekijk het werk binnen 20 km van ${stad.name}, ook in ${omheen.slice(0, -1).join(', ')} en ${omheen[omheen.length - 1]}. Structureel werk via De Flexschilder.`
         : `Schilder gezocht in ${stad.name}? Bekijk schildersvacatures in en rond ${stad.name} (${stad.provincie}) en werk structureel via De Flexschilder.`,
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }) {
   const v = (await getAtsAdapter().getVacatures()).find((x) => x.slug === params.slug);
   if (!v) return {};
   return {
-    title: `${v.titel} — ${v.plaats}`,
+    title: `${v.titel} | ${v.plaats}`,
     description: (v.beschrijving || '').slice(0, 150),
     alternates: { canonical: `/vacatures/${params.slug}` },
   };
@@ -239,7 +239,7 @@ export default async function VacatureOfStad({ params }) {
             <h2 style={{ fontSize: 20 }}>Wat je van ons krijgt</h2>
             <ul className="checklijst" style={{ paddingLeft: 0 }}>
               <li>Marktconform salaris en eerlijke voorwaarden</li>
-              <li>Structureel werk — geen losse klusjes</li>
+              <li>Structureel werk, geen losse klusjes</li>
               <li>Begeleiding en coaching door vakmensen</li>
               <li>Werk zoveel mogelijk dicht bij huis</li>
             </ul>

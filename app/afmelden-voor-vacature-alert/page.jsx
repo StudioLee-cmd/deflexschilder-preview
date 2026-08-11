@@ -41,7 +41,7 @@ export default async function Afmelden({ searchParams }) {
         <p className="lead">
           {token
             ? 'Je staat op het punt je uit te schrijven voor de vacature-alert. Daarna krijg je geen bericht meer als er een nieuwe vacature bij komt.'
-            : 'Deze link is niet compleet — het uitschrijf-kenmerk ontbreekt. Gebruik de link onderaan de mail die je van ons kreeg, of mail ons en we halen je er met de hand af.'}
+            : 'Deze link is niet compleet: het uitschrijf-kenmerk ontbreekt. Gebruik de link onderaan de mail die je van ons kreeg, of mail ons en we halen je er met de hand af.'}
         </p>
       </section>
 

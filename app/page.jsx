@@ -8,9 +8,9 @@ import { getAtsAdapter } from '@/lib/ats';
 import { ARTIKELEN } from '@/lib/blog';
 
 export const metadata = {
-  title: 'Uitzendbureau voor schilders Noord-Nederland — De Flexschilder',
+  title: 'Uitzendbureau voor schilders Noord-Nederland | De Flexschilder',
   description:
-    'Schilders inhuren of aan het werk als schilder in Groningen, Friesland, Drenthe en de kop van Overijssel. Detachering, uitzenden en werving & selectie — vakmensen door vakmensen.',
+    'Schilders inhuren of aan het werk als schilder in Groningen, Friesland, Drenthe en de kop van Overijssel. Detachering, uitzenden en werving & selectie. Vakmensen door vakmensen.',
   alternates: { canonical: '/' },
 };
 
@@ -32,7 +32,7 @@ export default async function Home() {
             <h1>Uitzendbureau voor schilders</h1>
             <p className="hero__sub">
               Meer dan bemiddeling, verstand van schilderwerk. Opdrachtgevers huren
-              flexibel échte vakmensen in, schilders vinden werk dat bij ze past —
+              flexibel échte vakmensen in, schilders vinden werk dat bij ze past,
               persoonlijk gematcht door mensen die het vak zelf kennen.
             </p>
             <div className="hero__paden">
@@ -88,7 +88,7 @@ export default async function Home() {
             <span className="kicker">Locaties</span>
             <h2>Werkgebied: Noord-Nederland, van Zwolle tot de Waddenkust</h2>
             <p className="lead" style={{ marginTop: 12 }}>
-              Groningen, Friesland, Drenthe en de kop van Overijssel — Zwolle is onze
+              Groningen, Friesland, Drenthe en de kop van Overijssel. Zwolle is onze
               zuidgrens. Klik een stad op de kaart of typ je eigen plaats in de
               zoekbalk: kleinere plaatsen vallen automatisch onder de dichtstbijzijnde
               grote stad, met de afstand er eerlijk bij.
@@ -118,7 +118,7 @@ export default async function Home() {
               <span className="meta">Voor opdrachtgevers</span>
               <h3>Schilders inhuren</h3>
               <p style={{ fontSize: 14.5 }}>
-                Detachering, uitzenden en werving &amp; selectie — schaalbaar zonder
+                Detachering, uitzenden en werving &amp; selectie: schaalbaar zonder
                 vaste loonkosten.
               </p>
               <span className="verder">Bekijk →</span>
@@ -136,7 +136,7 @@ export default async function Home() {
               <span className="meta">Specialisaties</span>
               <h3>Soorten schilders</h3>
               <p style={{ fontSize: 14.5 }}>
-                Onderhouds-, industrieel, allround, spuiter — het juiste specialisme op
+                Onderhouds-, industrieel, allround, spuiter: het juiste specialisme op
                 de juiste klus.
               </p>
               <span className="verder">Bekijk →</span>
@@ -145,7 +145,7 @@ export default async function Home() {
               <span className="meta">Ons specialisme</span>
               <h3>Vastgoedonderhoud &amp; RGS</h3>
               <p style={{ fontSize: 14.5 }}>
-                Resultaatgericht samenwerken, NEN 2767 en MJOP — de langjarige
+                Resultaatgericht samenwerken, NEN 2767 en MJOP: de langjarige
                 onderhoudspartner.
               </p>
               <span className="verder">Bekijk →</span>
@@ -172,7 +172,7 @@ export default async function Home() {
               <p>
                 Kwaliteit is voor ons van groot belang. We bieden de vakmensen in ons
                 netwerk de mogelijkheid om hun kennis te vergroten, zowel in theorie
-                als in praktijk — inclusief coaching en begeleiding.
+                als in praktijk, inclusief coaching en begeleiding.
               </p>
             </div>
             <div style={{ display: 'flex', gap: 14, marginTop: 22, flexWrap: 'wrap', alignItems: 'center' }}>
@@ -198,7 +198,7 @@ export default async function Home() {
           <div>
             <h2>Laatste nieuws</h2>
             <p style={{ marginTop: 8, fontSize: 15.5 }}>
-              Vakkennis en nieuws voor opdrachtgevers én schilders — geschreven door
+              Vakkennis en nieuws voor opdrachtgevers én schilders. Geschreven door
               vakmensen, niet door een marketingbureau.
             </p>
             <p style={{ marginTop: 14 }}>

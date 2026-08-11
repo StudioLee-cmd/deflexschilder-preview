@@ -10,8 +10,8 @@ export default function Byline({ gepubliceerd, bijgewerkt }) {
       <div>
         <strong>
           Door <Link href="/auteur/andre">André van der Hoogen</Link>
-        </strong>{' '}
-        — eigenaar De Flexschilder, 23 jaar schilder- en onderhoudservaring
+        </strong>
+        , eigenaar De Flexschilder, 23 jaar schilder- en onderhoudservaring
         <div className="datums">
           Gepubliceerd {gepubliceerd}
           {bijgewerkt ? ` · laatst bijgewerkt ${bijgewerkt}` : ''}

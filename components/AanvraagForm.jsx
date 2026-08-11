@@ -84,12 +84,11 @@ function FormInner() {
           Aanvraag voor <strong>{plaatsUitUrl}</strong>
           {stad && stad !== plaatsUitUrl ? (
             <>
-              {' '}
-              — regio <strong>{stad}</strong>
+              , regio <strong>{stad}</strong>
               {km ? ` (${km} km)` : ''}. Wij werken in uw omgeving.
             </>
           ) : (
-            <> — wij werken in uw omgeving.</>
+            <>. Wij werken in uw omgeving.</>
           )}
         </div>
       )}

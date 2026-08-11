@@ -7,7 +7,7 @@ import StatStrip from '@/components/StatStrip';
 import { CITIES, PLACES } from '@/lib/geo';
 
 export const metadata = {
-  title: 'Schilders inhuren — flexibele schilderscapaciteit in Noord-Nederland',
+  title: 'Schilders inhuren | flexibele schilderscapaciteit in Noord-Nederland',
   description:
     'Schilders inhuren zonder vaste loonkosten: detachering, uitzenden en werving & selectie voor bedrijven zonder vaste schilder, vastgoedbeheerders, aannemers en RGS-opdrachtgevers in Noord-Nederland.',
   alternates: { canonical: '/schilders-inhuren' },
@@ -19,7 +19,7 @@ export const metadata = {
 const FAQ = [
   {
     v: 'Wat kost het inhuren van schilders?',
-    a: 'Dat hangt af van specialisme, aantal vakmensen, duur en type opdracht. We rekenen transparante tarieven zonder verborgen kosten — u weet vooraf precies waar u aan toe bent. Vraag een vrijblijvende offerte aan voor uw situatie.',
+    a: 'Dat hangt af van specialisme, aantal vakmensen, duur en type opdracht. We rekenen transparante tarieven zonder verborgen kosten: u weet vooraf precies waar u aan toe bent. Vraag een vrijblijvende offerte aan voor uw situatie.',
   },
   {
     v: 'Hoe snel kan een schilder starten?',
@@ -27,7 +27,7 @@ const FAQ = [
   },
   {
     v: 'Doen jullie ook losse klussen voor particulieren?',
-    a: 'Nee. De Flexschilder werkt uitsluitend zakelijk (B2B): van kleinere bedrijven die flexibel schilders inhuren zonder vaste loonlijst tot vastgoedbeheerders, aannemers en RGS-opdrachtgevers — geen losse klussen voor particulieren.',
+    a: 'Nee. De Flexschilder werkt uitsluitend zakelijk (B2B): van kleinere bedrijven die flexibel schilders inhuren zonder vaste loonlijst tot vastgoedbeheerders, aannemers en RGS-opdrachtgevers, geen losse klussen voor particulieren.',
   },
 ];
 
@@ -50,7 +50,7 @@ export default function SchildersInhuren() {
         <span className="kicker">Voor opdrachtgevers · pillar</span>
         <h1>Schilders inhuren in Noord-Nederland</h1>
         <p className="lead">
-          Flexibele schilderscapaciteit van échte vakmensen — zonder vaste
+          Flexibele schilderscapaciteit van échte vakmensen, zonder vaste
           loonkosten. Voor structurele detachering en grotere opdrachten; geen losse
           klusjes. Geleid door schilders, dus wij snappen het vak én de planning.
         </p>
@@ -84,7 +84,7 @@ export default function SchildersInhuren() {
               <h3>Detachering</h3>
               <p style={{ fontSize: 14.5 }}>
                 Vakmensen voor langere tijd op uw project of in uw onderhoudsploeg. U
-                stuurt aan op het werk, wij blijven werkgever — geen administratie,
+                stuurt aan op het werk, wij blijven werkgever: geen administratie,
                 geen risico.
               </p>
             </div>
@@ -99,7 +99,7 @@ export default function SchildersInhuren() {
               <h3>Werving &amp; selectie</h3>
               <p style={{ fontSize: 14.5 }}>
                 Een schilder in vaste dienst? Wij kennen de vakmensen in het Noorden
-                persoonlijk en selecteren op vakmanschap — niet op cv-woorden.
+                persoonlijk en selecteren op vakmanschap, niet op cv-woorden.
               </p>
             </div>
           </div>
@@ -114,7 +114,7 @@ export default function SchildersInhuren() {
             <div className="grid grid--2" style={{ marginTop: 20 }}>
               <div className="kaartje">
                 <h3>Bedrijven die flexibel inhuren</h3>
-                <p style={{ fontSize: 14 }}>Een schilder nodig zonder vaste loonlijst — ons zwaartepunt.</p>
+                <p style={{ fontSize: 14 }}>Een schilder nodig zonder vaste loonlijst: ons zwaartepunt.</p>
                 <span className="verder" style={{ color: 'var(--tekst-licht)' }}>Pagina volgt in de uitbouw</span>
               </div>
               <Link href="/voor-aannemers" className="kaartje">
@@ -179,7 +179,7 @@ export default function SchildersInhuren() {
               <p style={{ fontSize: 14.5 }}>
                 Wij beoordelen schilders op vakkennis, werkhouding, ervaring,
                 communicatie en geschiktheid voor uw specifieke project. Dat leidt
-                tot betere matches en minder uitval — de juiste schilder op het
+                tot betere matches en minder uitval: de juiste schilder op het
                 juiste project.
               </p>
             </div>
@@ -187,7 +187,7 @@ export default function SchildersInhuren() {
               <h3>Sparringpartner voor ondernemers</h3>
               <p style={{ fontSize: 14.5 }}>
                 Meedenken over personeelsbeleid, cao-vraagstukken, duurzame
-                inzetbaarheid en het binden en behouden van vakmensen — één
+                inzetbaarheid en het binden en behouden van vakmensen: één
                 aanspreekpunt met praktijkervaring, geen accountmanager zonder
                 technische achtergrond.
               </p>
@@ -196,7 +196,7 @@ export default function SchildersInhuren() {
               <h3>Technisch advies inbegrepen</h3>
               <p style={{ fontSize: 14.5 }}>
                 Verfsystemen, ondergrondbeoordeling, onderhoudscycli, kwaliteitseisen
-                en uitvoeringsrisico&rsquo;s — wij plaatsen niet alleen schilders, wij
+                en uitvoeringsrisico&rsquo;s. Wij plaatsen niet alleen schilders, wij
                 begrijpen hun werk.
               </p>
             </div>
@@ -212,7 +212,7 @@ export default function SchildersInhuren() {
             <div className="stap">
               <p>
                 <strong>Vertel wat er moet gebeuren.</strong> Project, periode,
-                locatie en het soort schilderwerk — een belletje of het
+                locatie en het soort schilderwerk: een belletje of het
                 aanvraagformulier is genoeg.
               </p>
             </div>
@@ -240,7 +240,7 @@ export default function SchildersInhuren() {
         <div className="container">
           <ClusterBlok
             titel="Cluster: schilders inhuren (pillar + ondersteunende artikelen)"
-            intro="Elke ondersteunende pagina beantwoordt één vraag van een opdrachtgever en linkt terug naar deze pillar — het hub-and-spoke-model waarmee de winnende concurrenten ranken."
+            intro="Elke ondersteunende pagina beantwoordt één vraag van een opdrachtgever en linkt terug naar deze pillar: het hub-and-spoke-model waarmee de winnende concurrenten ranken."
             items={[
               { titel: 'Wat kost het inhuren van schilders?' },
               { titel: 'Inhuren vs. zelf in dienst nemen' },

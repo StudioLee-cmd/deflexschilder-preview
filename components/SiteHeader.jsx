@@ -19,7 +19,7 @@ export default function SiteHeader({ vacatureCount = 0 }) {
   return (
     <header className="header">
       <div className="container header__inner">
-        <Link href="/" className="header__logo" aria-label="De Flexschilder — home">
+        <Link href="/" className="header__logo" aria-label="De Flexschilder, home">
           <img src="/branding_flexschilder.svg" alt="De Flexschilder" width={180} height={52} />
         </Link>
 
@@ -113,12 +113,12 @@ export default function SiteHeader({ vacatureCount = 0 }) {
       </div>
 
       <div className={`mobielmenu${open ? ' open' : ''}`}>
-        <div className="drop__kop">Voor opdrachtgevers — ik zoek schilders</div>
+        <div className="drop__kop">Voor opdrachtgevers: ik zoek schilders</div>
         <Link href="/schilders-inhuren">Schilders inhuren</Link>
         <Link href="/voor-aannemers">Aannemers &amp; onderhoudsbedrijven</Link>
         <Link href="/vastgoedonderhoud-en-rgs">Vastgoedonderhoud &amp; RGS</Link>
 
-        <div className="drop__kop">Voor schilders — ik zoek werk</div>
+        <div className="drop__kop">Voor schilders: ik zoek werk</div>
         <Link href="/vacatures">Vacatures {vacatureCount > 0 ? `(${vacatureCount})` : ''}</Link>
         <Link href="/soorten-schilders">Soorten schilders</Link>
         <Link href="/tools">Rekentools (salaris &amp; netto)</Link>
@@ -127,7 +127,7 @@ export default function SiteHeader({ vacatureCount = 0 }) {
           Uren doorgeven
         </a>
 
-        <div className="drop__kop">Locaties — Noord-Nederland</div>
+        <div className="drop__kop">Locaties: Noord-Nederland</div>
         <div className="mobielmenu__kolommen">
           {CITIES.map((c) => (
             <Link key={c.slug} href={`/schilders-inhuren/${c.slug}`}>
