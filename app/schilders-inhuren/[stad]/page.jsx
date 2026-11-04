@@ -6,6 +6,10 @@ import StatStrip from '@/components/StatStrip';
 import { CITIES, PLACES, getCity, nearbyCities, nearestCity } from '@/lib/geo';
 import { getAtsAdapter, vacaturesBinnenStraal } from '@/lib/ats';
 import { ORG_ID } from '@/lib/schema';
+import VacatureCard from '@/components/VacatureCard';
+
+// Vacatures veranderen; zonder dit bevroor het aantal op het moment van de build.
+export const revalidate = 300;
 
 // STAD-HOOFDPAGINA (opdrachtgeverkant) — de URL volgt de locatie:
 // /schilders-inhuren/<stad>. Eén template, lokaal ingevuld (Tier-1-recept),
@@ -78,7 +82,7 @@ export default async function StadPagina({ params }) {
           items={[
             { tot: 23, label: 'jaar technische vakkennis' },
             { tot: PLACES.filter((p) => nearestCity(p).city.slug === stad.slug).length, label: `plaatsen onder ${stad.name}` },
-            { tot: lokaalWerk.length, label: 'vacatures binnen 20 km (demo)' },
+            { tot: lokaalWerk.length, label: 'open vacatures binnen 20 km' },
             { vast: stad.provincie, label: 'provincie' },
           ]}
         />
@@ -123,20 +127,41 @@ export default async function StadPagina({ params }) {
         </div>
       </section>
 
-      {/* Werkzoekende-kant: bewust een LINK naar de eigen intent-pagina (one-page-per-intent) */}
+      {/* Werkzoekende-kant: de open vacatures rond deze stad (zelfde straal-logica als
+          /vacatures/schilder-<stad>), met de volledige lijst op die eigen pagina. */}
       <section className="sectie">
+        <div className="container">
+          <span className="kicker">Voor schilders</span>
+          <h2 style={{ fontSize: 24 }}>Werk als schilder rond {stad.name}</h2>
+          <p className="lead" style={{ marginTop: 10, maxWidth: 760 }}>
+            {lokaalWerk.length > 0
+              ? `Er ${lokaalWerk.length === 1 ? 'staat nu 1 vacature' : `staan nu ${lokaalWerk.length} vacatures`} open binnen 20 km van ${stad.name}.`
+              : `Op dit moment staat er geen vacature open binnen 20 km van ${stad.name}. Er komt doorlopend werk bij: schrijf je in, dan neemt André contact met je op bij een passende opdracht.`}
+          </p>
+          {lokaalWerk.length > 0 && (
+            <div className="grid grid--3" style={{ marginTop: 22 }}>
+              {lokaalWerk.slice(0, 3).map((v) => (
+                <VacatureCard key={v.slug} v={v} />
+              ))}
+            </div>
+          )}
+          <p style={{ marginTop: 18, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+            <Link href={`/vacatures/schilder-${stad.slug}`} className="btn btn--secundair">
+              Alle vacatures rond {stad.name}
+            </Link>
+            <Link href="/inschrijven" className="btn btn--primair">Inschrijven als schilder</Link>
+          </p>
+        </div>
+      </section>
+
+      <section className="sectie" style={{ paddingTop: 0 }}>
         <div className="container kaartwrap">
           <div>
-            <span className="kicker">Voor schilders</span>
-            <h2 style={{ fontSize: 24 }}>Werk zoeken in {stad.name}?</h2>
+            <span className="kicker">Regio</span>
+            <h2 style={{ fontSize: 24 }}>Rond {stad.name}</h2>
             <p className="lead" style={{ marginTop: 10 }}>
-              {lokaalWerk.length > 0
-                ? `Er ${lokaalWerk.length === 1 ? 'staat nu 1 vacature' : `staan nu ${lokaalWerk.length} vacatures`} open binnen 20 km van ${stad.name}.`
-                : `Er komt doorlopend werk bij rond ${stad.name}. Schrijf je in en we bellen je bij een passende opdracht.`}
+              De Flexschilder werkt in heel Noord-Nederland. Dit zijn de steden in de buurt van {stad.name}.
             </p>
-            <Link href={`/vacatures/schilder-${stad.slug}`} className="btn btn--secundair" style={{ marginTop: 16 }}>
-              Vacatures schilder {stad.name} →
-            </Link>
           </div>
           <div className="kaartje" style={{ padding: 26 }}>
             <h3>Ook actief in de regio</h3>
