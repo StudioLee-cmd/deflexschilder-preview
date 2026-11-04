@@ -31,8 +31,9 @@ export default function VoorAannemers() {
       <section className="sectie" style={{ paddingTop: 32 }}>
         <div className="container kaartwrap">
           <BeeldAI
-            src="/img/spuiter-industrieel.webp"
-            alt="Spuiter brengt coating aan op staalconstructie in een werkplaats"
+            src="/img/werk/ploeg-kozijn.jpg"
+            alt="Twee schilders werken samen aan een geel kozijn"
+            badge={null}
             ratio="3 / 2"
           />
           <div className="prose">

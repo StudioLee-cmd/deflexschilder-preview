@@ -17,7 +17,7 @@ export const metadata = {
     type: 'article',
     title: 'Kilometervergoeding 2026: van 23 naar 25 cent',
     description: 'Wat de verhoging naar € 0,25/km betekent voor schilders, met rekentool en bronnen.',
-    images: [{ url: `${BASIS}/img/bus-onderweg.jpg`, width: 1024, height: 576 }],
+    images: [{ url: `${BASIS}/img/werk/bus-glasrek.jpg`, width: 1600, height: 900 }],
     publishedTime: '2026-07-03',
     authors: [`${BASIS}/auteur/andre`],
   },
@@ -61,9 +61,9 @@ const ARTIKEL_SCHEMA = {
   articleSection: 'Voor schilders',
   image: {
     '@type': 'ImageObject',
-    url: `${BASIS}/img/bus-onderweg.jpg`,
-    width: 1024,
-    height: 576,
+    url: `${BASIS}/img/werk/bus-glasrek.jpg`,
+    width: 1600,
+    height: 900,
   },
   about: [
     { '@type': 'Thing', name: 'onbelaste reiskostenvergoeding' },
@@ -127,8 +127,9 @@ export default function KmArtikel() {
 
         <div className="artikelhero" style={{ maxWidth: 820 }}>
           <BeeldAI
-            src="/img/bus-onderweg.webp"
-            alt="Werkbus met ladder onderweg over een weg in Noord-Nederland"
+            src="/img/werk/bus-glasrek.jpg"
+            alt="Werkbus met glasrek bij Schildersbedrijf Van de Maar"
+            badge={null}
           />
         </div>
 

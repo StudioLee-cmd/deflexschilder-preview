@@ -107,14 +107,40 @@ export default async function Home() {
           </h2>
           <div className="grid grid--4" style={{ marginTop: 24 }}>
             {TEAM.filter((l) => l.video).map((lid) => (
-              <Link key={lid.slug} href={`/over-ons#verhaal-${lid.slug}`} className="kaartje verhaalkaart">
-                <img src={lid.foto} alt={lid.fotoAlt} loading="lazy" className="verhaalkaart__beeld" />
+              <article key={lid.slug} className="kaartje verhaalkaart">
+                {/* De video speelt hier af; preload="none" houdt de homepage licht. */}
+                <video
+                  className="verhaalkaart__beeld"
+                  controls
+                  preload="none"
+                  playsInline
+                  poster={lid.foto}
+                  aria-label={`Video: ${lid.naam} over werken via De Flexschilder`}
+                >
+                  <source src={lid.video} type="video/mp4" />
+                </video>
                 <p className="verhaalkaart__quote">&ldquo;{lid.quote}&rdquo;</p>
                 <span className="meta">{lid.naam} · {lid.rol}</span>
-                <span className="verder">Bekijk de video →</span>
-              </Link>
+                <Link href={`/over-ons#verhaal-${lid.slug}`} className="verder">
+                  Lees het hele verhaal →
+                </Link>
+              </article>
             ))}
           </div>
+          <div className="verhaalcta">
+            <div>
+              <strong>Ook aan de slag als schilder?</strong>
+              <span>Schrijf je in, dan neemt André contact met je op.</span>
+            </div>
+            <div className="verhaalcta__knoppen">
+              <Link href="/inschrijven" className="btn btn--primair">Inschrijven als schilder</Link>
+              <Link href="/vacatures" className="btn btn--secundair">Bekijk vacatures</Link>
+            </div>
+          </div>
+          <p style={{ marginTop: 12, fontSize: 14.5 }}>
+            Zoek je zulke vakmensen voor je bedrijf?{' '}
+            <Link href="/aanvraag" className="tekstlink">Schilders aanvragen</Link>
+          </p>
         </div>
       </section>
 
@@ -246,8 +272,9 @@ export default async function Home() {
             </div>
           </div>
           <BeeldAI
-            src="/img/leerling-leermeester.webp"
-            alt="Ervaren schilder begeleidt een leerling op de werkvloer"
+            src="/img/werk/tieme-ploeg.jpg"
+            alt="Tieme Smook overlegt met een collega bij de bus van Erik Pit Schilderwerken"
+            badge={null}
             ratio="3 / 2"
           />
         </div>

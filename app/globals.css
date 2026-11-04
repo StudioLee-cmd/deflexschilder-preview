@@ -802,8 +802,17 @@ a.kaartje:hover { transform: translateY(-2px); box-shadow: var(--schaduw); }
 
 .verhalen { margin-top: 4px; }
 .verhaalkaart { display: flex; flex-direction: column; gap: 10px; padding: 0 0 18px; overflow: hidden; }
-.verhaalkaart > :not(img) { margin-left: 18px; margin-right: 18px; }
-.verhaalkaart__beeld { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.verhaalkaart > :not(img):not(video) { margin-left: 18px; margin-right: 18px; }
+.verhaalkaart__beeld { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; background: #111; }
+.verhaalcta {
+  display: flex; flex-wrap: wrap; gap: 14px 24px; align-items: center; justify-content: space-between;
+  margin-top: 26px; padding: 20px 22px; background: var(--wit); border-radius: var(--radius);
+  box-shadow: 0 1px 4px rgba(51, 45, 45, 0.06);
+}
+.verhaalcta > div:first-child { display: grid; gap: 2px; }
+.verhaalcta strong { font-size: 17px; color: var(--ink); }
+.verhaalcta span { font-size: 15px; color: var(--tekst); }
+.verhaalcta__knoppen { display: flex; gap: 10px; flex-wrap: wrap; }
 .verhaalkaart__quote { font-size: 15.5px; font-style: italic; color: var(--ink); margin: 4px 0 0; flex: 1; }
 .verhaal {
   display: grid;

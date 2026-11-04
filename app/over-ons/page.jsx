@@ -158,6 +158,17 @@ export default function OverOns() {
           <div style={{ marginTop: 26 }}>
             <VerhaalLijst />
           </div>
+          <div className="verhaalcta" style={{ marginTop: 10 }}>
+            <div>
+              <strong>Ook aan de slag als schilder?</strong>
+              <span>Schrijf je in, dan neemt André contact met je op.</span>
+            </div>
+            <div className="verhaalcta__knoppen">
+              <Link href="/inschrijven" className="btn btn--primair">Inschrijven als schilder</Link>
+              <Link href="/vacatures" className="btn btn--secundair">Bekijk vacatures</Link>
+              <Link href="/aanvraag" className="btn btn--secundair">Schilders aanvragen</Link>
+            </div>
+          </div>
         </div>
       </section>
 

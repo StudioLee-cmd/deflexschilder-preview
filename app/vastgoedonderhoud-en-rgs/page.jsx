@@ -65,8 +65,9 @@ export default function VastgoedRgs() {
 
           <div style={{ display: 'grid', gap: 18 }}>
             <BeeldAI
-              src="/img/rgs-inspectie.webp"
-              alt="Schilder en beheerder beoordelen samen de conditie van het schilderwerk"
+              src="/img/werk/julia-onderhoud.jpg"
+              alt="Julia di Martino schildert het kozijn van een woning, met steiger ernaast"
+              badge={null}
               ratio="16 / 10"
             />
             <div className="kaartje">

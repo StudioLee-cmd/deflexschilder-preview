@@ -78,8 +78,9 @@ export default function SoortenSchilders() {
       <section className="sectie sectie--vlak">
         <div className="container kaartwrap">
           <BeeldAI
-            src="/img/leerling-leermeester.webp"
-            alt="Leermeester leert een leerling-schilder strak afkitten langs een kozijn"
+            src="/img/werk/tieme-kozijn.jpg"
+            alt="Tieme Smook werkt een kozijn af"
+            badge={null}
             ratio="3 / 2"
           />
           <div>

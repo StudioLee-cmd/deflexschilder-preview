@@ -4,7 +4,7 @@ export default function BeeldAI({ src, alt, ratio, badge = 'AI-voorbeeldbeeld, t
   return (
     <figure className="aibeeld" style={ratio ? { aspectRatio: ratio } : undefined}>
       <img src={src} alt={alt} loading="lazy" />
-      <figcaption className="aibeeld__badge">{badge}</figcaption>
+      {badge ? <figcaption className="aibeeld__badge">{badge}</figcaption> : null}
     </figure>
   );
 }
