@@ -53,7 +53,7 @@ export default function SiteHeader({ vacatureCount = 0 }) {
               <Link href="/soorten-schilders">Soorten schilders</Link>
               <Link href="/tools">Rekentools (salaris &amp; netto)</Link>
               <Link href="/inschrijven">Inschrijven</Link>
-              <a href="http://deflexschilder.onlineuur.nl/" target="_blank" rel="noreferrer">
+              <a href="https://deflexschilder.onlineuur.nl/" target="_blank" rel="noreferrer">
                 Uren doorgeven
               </a>
             </div>
@@ -123,7 +123,7 @@ export default function SiteHeader({ vacatureCount = 0 }) {
         <Link href="/soorten-schilders">Soorten schilders</Link>
         <Link href="/tools">Rekentools (salaris &amp; netto)</Link>
         <Link href="/inschrijven">Inschrijven</Link>
-        <a href="http://deflexschilder.onlineuur.nl/" target="_blank" rel="noreferrer">
+        <a href="https://deflexschilder.onlineuur.nl/" target="_blank" rel="noreferrer">
           Uren doorgeven
         </a>
 

@@ -9,7 +9,7 @@ export default function VacatureCard({ v }) {
     <Link href={`/vacatures/${v.slug}`} className="vacature">
       <div className="vacature__kop">
         <span className="vacature__titel">
-          {v.titel} {v.demo && <span className="demolabel">demo</span>}
+          {v.titel} {(v.demo || v.voorbeeld) && <span className="demolabel">{v.voorbeeld ? 'voorbeeld' : 'demo'}</span>}
         </span>
         {v.afstandKm != null && v.afstandKm > 0 && (
           <span className="vacature__afstand">{v.afstandKm} km</span>

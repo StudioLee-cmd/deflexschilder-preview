@@ -128,7 +128,7 @@ export default async function Home() {
             {vacatures.slice(0, 3).map((v) => (
               <div key={v.slug} className="vacature">
                 <span className="vacature__titel">
-                  {v.titel} {v.demo && <span className="demolabel">demo</span>}
+                  {v.titel} {(v.demo || v.voorbeeld) && <span className="demolabel">{v.voorbeeld ? 'voorbeeld' : 'demo'}</span>}
                 </span>
                 <div className="vacature__meta">
                   <span className="m">{v.plaats}</span>

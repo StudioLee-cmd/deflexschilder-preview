@@ -245,8 +245,16 @@ img { max-width: 100%; height: auto; }
   .hero::before {
     content: '';
     position: absolute;
-    inset: 0;
+    /* Vaste hoogte i.p.v. inset: 0. De zoek-card is per tab anders hoog (werk ~340px,
+       inhuren ~560px); met 'cover' op de hele hero zoomde de foto bij elke tabwissel.
+       Nu staat de foto stil en loopt de hero eronder door in dezelfde bruintint. */
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 820px;
     background: url('/schilderfoto.webp') right center / cover no-repeat;
+    -webkit-mask-image: linear-gradient(#000 78%, transparent);
+    mask-image: linear-gradient(#000 78%, transparent);
     pointer-events: none;
   }
 }

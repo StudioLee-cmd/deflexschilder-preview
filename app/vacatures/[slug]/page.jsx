@@ -208,7 +208,7 @@ export default async function VacatureOfStad({ params }) {
 
       <section className="paginakop container">
         <span className="kicker">
-          Vacature · {v.plaats} {v.demo && <span className="demolabel">demo</span>}
+          Vacature · {v.plaats} {(v.demo || v.voorbeeld) && <span className="demolabel">{v.voorbeeld ? 'voorbeeld' : 'demo'}</span>}
         </span>
         <h1>{v.titel}</h1>
         <div className="vacature__meta" style={{ marginTop: 12, fontSize: 15.5 }}>
