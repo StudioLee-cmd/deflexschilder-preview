@@ -44,7 +44,7 @@ a { color: inherit; text-decoration: none; }
 img { max-width: 100%; height: auto; }
 
 .container { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
-.sectie { padding: 60px 0; }
+.sectie { padding-top: 60px; padding-bottom: 60px; }
 .sectie--vlak { background: var(--vlak); }
 .accent { color: var(--oranje); }
 
@@ -415,7 +415,7 @@ img { max-width: 100%; height: auto; }
 .resolutie strong { color: var(--oranje-donker); }
 
 /* ---------- breadcrumbs ---------- */
-.kruimel { font-size: 13.5px; color: var(--tekst-licht); padding: 14px 0 0; }
+.kruimel { font-size: 13.5px; color: var(--tekst-licht); padding-top: 14px; }
 .kruimel ol { list-style: none; display: flex; flex-wrap: wrap; gap: 6px; }
 .kruimel li + li::before { content: '›'; margin-right: 6px; color: var(--lijn); }
 .kruimel a:hover { color: var(--oranje); }
@@ -564,7 +564,7 @@ a.kaartje:hover { transform: translateY(-2px); box-shadow: var(--schaduw); }
 .fotocta { position: relative; overflow: hidden; }
 .fotocta__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .fotocta__scrim { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(51,45,45,0.35), rgba(51,45,45,0.05)); }
-.fotocta__inner { position: relative; z-index: 2; padding: 84px 0; }
+.fotocta__inner { position: relative; z-index: 2; padding-top: 84px; padding-bottom: 84px; }
 .fotocta__kaart {
   background: var(--oranje);
   color: var(--ink);
@@ -926,7 +926,7 @@ a.kaartje:hover { transform: translateY(-2px); box-shadow: var(--schaduw); }
 @media (max-width: 620px) { .footer__grid { grid-template-columns: 1fr; } }
 
 /* ---------- paginakop met verf-accent (subpagina's minder template-achtig) ---------- */
-.paginakop { padding: 38px 0 8px; position: relative; }
+.paginakop { padding-top: 38px; padding-bottom: 8px; position: relative; }
 .paginakop .lead { margin-top: 14px; }
 .paginakop h1 { position: relative; display: block; padding-bottom: 12px; }
 .paginakop h1::after {
