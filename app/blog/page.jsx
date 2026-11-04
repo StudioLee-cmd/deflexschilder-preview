@@ -57,18 +57,17 @@ export default function Blog() {
             ))}
 
             <div className="kaartje" style={{ justifyContent: 'center', alignItems: 'flex-start' }}>
-              <span className="meta">Contentplan</span>
-              <h3>Hier groeit het cluster</h3>
+              <span className="meta">Elke week nieuw</span>
+              <h3>Een vraag voor het volgende artikel?</h3>
               <p style={{ fontSize: 14.5 }}>
-                In de contentfase vullen de vier categorieën zich wekelijks, elk
-                artikel met André's vakinzicht van die week, gekoppeld aan zijn
-                pillar-pagina. Voorbeelden uit het plan: <em>wat kost een schilder
-                inhuren</em>, <em>salaris van een schilder</em>, <em>wat is RGS</em> en{' '}
-                <em>doorgroeien als schilder</em>.
+                Elke week schrijven we over een vraag die opdrachtgevers of
+                schilders aan André stellen. Over inhuren, salaris, cao,
+                onderhoud of doorgroeien in het vak. Heb je een vraag die hier
+                thuishoort? Laat het André weten.
               </p>
-              <Link href="/schilders-inhuren" className="verder">
-                Bekijk een pillar-voorbeeld →
-              </Link>
+              <a href="tel:+31613718172" className="verder">
+                Bel André: 06 - 137 181 72 →
+              </a>
             </div>
           </div>
         </div>

@@ -431,7 +431,10 @@ img { max-width: 100%; height: auto; }
 
 /* ---------- kaart ---------- */
 .kaartwrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; }
-.kaart { position: relative; }
+.kaart { position: relative; overflow-x: clip; }
+/* Mobiel: één element dat ook maar 1px buiten beeld steekt laat de telefoon de hele pagina
+   uitzoomen (smalle marges, kleine tekst). 'clip' i.p.v. 'hidden' houdt de sticky header heel. */
+html, body { overflow-x: clip; }
 .kaart svg { width: 100%; height: auto; display: block; }
 .kaart__marker {
   position: absolute;
