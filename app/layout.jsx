@@ -71,9 +71,9 @@ export default async function RootLayout({ children }) {
     <html lang="nl" className={assistant.className}>
       <body>
         <div className="previewlint">
-          <strong>PREVIEW</strong>: voorbeeldweergave met demo-content en
-          AI-voorbeeldbeelden (geen definitieve teksten). Review-object voor De
-          Flexschilder × StudioLee.
+          <strong>PREVIEW</strong>: nieuwe website van De Flexschilder, nog niet
+          live op deflexschilder.nl. Beelden met een label zijn tijdelijk en
+          worden vervangen door eigen foto&apos;s.
         </div>
         <SiteHeader vacatureCount={vacatures.length} />
         <main>{children}</main>

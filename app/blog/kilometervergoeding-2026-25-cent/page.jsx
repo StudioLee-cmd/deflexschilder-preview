@@ -257,11 +257,10 @@ export default function KmArtikel() {
             </div>
             <p style={{ fontSize: 14.5 }}>
               André begon 23 jaar geleden als technisch adviseur in de verfindustrie
-              en leidt vandaag De Flexschilder: dé schildersspecialist van
+              en leidt vandaag De Flexschilder, uitzendbureau voor schilders in
               Noord-Nederland. Hij adviseert opdrachtgevers over verfsystemen,
               onderhoudscycli en RGS, en zorgt dat vakmensen eerlijk werk met
-              eerlijke voorwaarden krijgen. &ldquo;Ik plaats niet alleen schilders,
-              ik begrijp hun werk.&rdquo;
+              eerlijke voorwaarden krijgen.
             </p>
             <Link href="/auteur/andre" className="verder" style={{ color: 'var(--oranje-donker)', fontWeight: 700, fontSize: 14.5 }}>
               Volledig profiel &amp; alle artikelen →

@@ -128,7 +128,7 @@ export default async function VacatureOfStad({ params }) {
               ))}
             </div>
             <p style={{ marginTop: 22, fontSize: 15 }}>
-              Bent u opdrachtgever in {stad.name}?{' '}
+              Zoek je schilders voor je bedrijf in {stad.name}?{' '}
               <Link href={`/schilders-inhuren/${stad.slug}`} style={{ color: 'var(--oranje-donker)', fontWeight: 700 }}>
                 Schilders inhuren in {stad.name} →
               </Link>
@@ -256,8 +256,7 @@ export default async function VacatureOfStad({ params }) {
           <div className="kaartje" style={{ padding: 26 }}>
             <h3>Solliciteer direct</h3>
             <p style={{ fontSize: 14.5, color: 'var(--tekst-licht)' }}>
-              Bij livegang gaat je sollicitatie rechtstreeks het vacaturesysteem van De
-              Flexschilder in.
+              Wil je reageren op deze vacature? Je kunt De Flexschilder bellen op 06 - 137 181 72. Het formulier hieronder is in deze preview nog niet aangesloten.
             </p>
             <DemoForm
               velden={[

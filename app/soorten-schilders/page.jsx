@@ -39,15 +39,12 @@ export default function SoortenSchilders() {
       <Kruimel items={[{ naam: 'Soorten schilders' }]} />
 
       <section className="paginakop container">
-        <span className="kicker">Specialisaties · pillar</span>
+        <span className="kicker">Specialisaties</span>
         <h1>
           Soorten <span className="accent">schilders</span>
         </h1>
         <p className="lead">
-          Schilder is geen eenheidsworst: elk specialisme vraagt eigen vakkennis. Als
-          opdrachtgever huurt u precies het juiste type in; als schilder zie je waar
-          jouw vak naartoe kan groeien. Salarisranges zijn marktconforme indicaties.
-          Definitieve ranges volgen bij livegang.
+          Onderhoud, industrieel werk en spuitwerk vragen elk om andere ervaring. Bekijk welke werkzaamheden bij de specialismen horen. De salarisbedragen zijn indicaties; ervaring, functie en voorwaarden bepalen het concrete aanbod.
         </p>
       </section>
 
@@ -56,7 +53,7 @@ export default function SoortenSchilders() {
           {TYPES.map((t) => (
             <div key={t.naam} className="kaartje">
               <h3>{t.naam}</h3>
-              <p className="meta">Zoekvolume {t.zoek}</p>
+              <p className="meta">Werkzaamheden en salarisindicatie</p>
               <p style={{ fontSize: 14.5 }}>{t.tekst}</p>
               {t.min ? (
                 <RangeBar min={t.min} max={t.max} />
@@ -107,9 +104,13 @@ export default function SoortenSchilders() {
       <section className="sectie">
         <div className="container">
           <ClusterBlok
-            titel="Cluster: soorten schilders (pillar + typepagina's)"
-            intro="In de volledige site krijgt elk specialisme een eigen typepagina met salarisrange, werkzaamheden en doorgroeipad, onderling gelinkt met de inhuren- en vacature-clusters."
-            items={TYPES.map((t) => ({ titel: `${t.naam}: eigen typepagina` }))}
+            titel="Van specialisme naar passend werk"
+            intro="Zoek je vakmensen voor je bedrijf, of zoek je zelf werk als schilder? Kies de ingang die bij je past."
+            items={[
+              { titel: 'Schilders voor je bedrijf', href: '/schilders-inhuren' },
+              { titel: 'Vacatures voor schilders', href: '/vacatures' },
+              { titel: 'Inschrijven als schilder', href: '/inschrijven' },
+            ]}
           />
         </div>
       </section>

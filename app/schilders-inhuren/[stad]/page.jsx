@@ -61,9 +61,7 @@ export default async function StadPagina({ params }) {
         <h1>Schilders inhuren in {stad.name}</h1>
         <p className="lead">{stad.blurb}</p>
         <p className="lead" style={{ marginTop: 10 }}>
-          De Flexschilder levert in {stad.name} en omgeving flexibele, vakbekwame
-          schilders voor structurele detachering en grotere opdrachten, zonder vaste
-          loonkosten. Vakmensen door vakmensen.
+          Zoek je voor je bedrijf in {stad.name} en omgeving structureel schilderscapaciteit? André brengt je in contact met vakmensen die passen bij het werk. Bespreek de gewenste ervaring, periode en planning.
         </p>
         <div style={{ display: 'flex', gap: 12, marginTop: 20, flexWrap: 'wrap' }}>
           <Link href="/aanvraag" className="btn btn--primair">
@@ -91,7 +89,7 @@ export default async function StadPagina({ params }) {
           <div className="kaartje">
             <h3>Detachering in {stad.name}</h3>
             <p>
-              Vakmensen voor langere tijd op uw project of in uw onderhoudsploeg,
+              Vakmensen voor langere tijd op je project of in je onderhoudsploeg,
               van mutatiewoningen tot planmatig onderhoud.
             </p>
             <Link href="/schilders-inhuren#detachering" className="verder">Meer over detachering →</Link>
@@ -99,16 +97,14 @@ export default async function StadPagina({ params }) {
           <div className="kaartje">
             <h3>Pieken opvangen</h3>
             <p>
-              Extra schilders precies in de weken dat het nodig is. Vandaag opschalen,
-              morgen weer terug.
+              Extra vakmensen nodig voor een langere projectperiode of terugkerend werk? Bespreek de gewenste inzet en beschikbaarheid.
             </p>
             <Link href="/schilders-inhuren#uitzenden" className="verder">Meer over uitzenden →</Link>
           </div>
           <div className="kaartje">
             <h3>RGS &amp; vastgoedonderhoud</h3>
             <p>
-              Langjarige onderhoudsstromen in {stad.provincie}? Wij draaien mee als
-              serieuze RGS-partner: conditiegericht en gepland.
+              Planmatig onderhoud in {stad.provincie} vraagt passende ervaring. André gebruikt zijn kennis van onderhoud en verfsystemen bij de match.
             </p>
             <Link href="/vastgoedonderhoud-en-rgs" className="verder">Ons specialisme →</Link>
           </div>
@@ -117,12 +113,12 @@ export default async function StadPagina({ params }) {
 
       <section className="sectie sectie--vlak">
         <div className="container">
-          <h2 style={{ fontSize: 24 }}>Waarom opdrachtgevers in {stad.name} voor ons kiezen</h2>
+          <h2 style={{ fontSize: 24 }}>Schilders zoeken voor je bedrijf in {stad.name}</h2>
           <ul className="checklijst" style={{ marginTop: 18, maxWidth: 640 }}>
-            <li>Geleid en bemenst door échte schilders: wij kennen het vak én de planning</li>
-            <li>Schaalbaar zonder vaste loonkosten: op- en afschalen per week</li>
-            <li>Lokaal netwerk in {stad.provincie}: korte lijnen, snel geregeld</li>
-            <li>RGS-waardig: conditiegericht werken, kwaliteit geborgd</li>
+            <li>Een gesprek over het schilderwerk en de ervaring die daarvoor nodig is</li>
+            <li>Bemiddeling bij structurele inzet en langere samenwerkingen</li>
+            <li>Een regionaal netwerk in Noord-Nederland</li>
+            <li>Technische kennis van verf, onderhoud en uitvoering</li>
           </ul>
         </div>
       </section>

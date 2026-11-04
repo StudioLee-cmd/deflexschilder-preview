@@ -6,9 +6,10 @@ import BeeldAI from '@/components/BeeldAI';
 import { CITIES } from '@/lib/geo';
 import { getAtsAdapter } from '@/lib/ats';
 import { ARTIKELEN } from '@/lib/blog';
+import { TEAM } from '@/lib/team';
 
 export const metadata = {
-  title: 'Uitzendbureau voor schilders Noord-Nederland | De Flexschilder',
+  title: 'Schilders inhuren in Noord-Nederland | De Flexschilder',
   description:
     'Schilders inhuren of aan het werk als schilder in Groningen, Friesland, Drenthe en de kop van Overijssel. Detachering, uitzenden en werving & selectie. Vakmensen door vakmensen.',
   alternates: { canonical: '/' },
@@ -29,11 +30,9 @@ export default async function Home() {
             <span className="kicker" style={{ color: '#ffd9a8' }}>
               Vakmensen door vakmensen · Noord-Nederland
             </span>
-            <h1>Uitzendbureau voor schilders</h1>
+            <h1>Schilders inhuren in Noord-Nederland</h1>
             <p className="hero__sub">
-              Meer dan bemiddeling, verstand van schilderwerk. Opdrachtgevers huren
-              flexibel échte vakmensen in, schilders vinden werk dat bij ze past,
-              persoonlijk gematcht door mensen die het vak zelf kennen.
+              Je zoekt schilders die passen bij het werk en bij je ploeg. De Flexschilder brengt bedrijven en vakmensen bij elkaar voor structureel schilderwerk in Noord-Nederland. Met verstand van verf, onderhoud en de mensen die het uitvoeren.
             </p>
             <div className="hero__paden">
               <Link href="/vacatures" className="hero__pad">
@@ -44,6 +43,77 @@ export default async function Home() {
               </Link>
             </div>
             <ZoekBalk />
+          </div>
+        </div>
+      </section>
+
+      {/* WAT WE DOEN — de B2B-propositie in één oogopslag (bron: brand.md,
+          writing-style.md 21-10: structureel, terugkerend, langere inzet; geen
+          losse klusdagen; geen minimumduur of werkgeversconstructie verzinnen). */}
+      <section className="sectie">
+        <div className="container">
+          <span className="kicker">Voor bedrijven</span>
+          <h2>
+            Vakmensen voor werk dat <span className="accent">blijft komen</span>
+          </h2>
+          <p className="lead" style={{ maxWidth: 780, marginTop: 10 }}>
+            De Flexschilder levert schilders aan bedrijven met een vaste of
+            terugkerende behoefte: aannemers, onderhoudsbedrijven en
+            vastgoedbeheerders in Groningen, Friesland, Drenthe en de kop van
+            Overijssel.
+          </p>
+          <div className="grid grid--3" style={{ marginTop: 24 }}>
+            <div className="kaartje">
+              <h3>Voor projecten en onderhoudsploegen</h3>
+              <p style={{ fontSize: 15 }}>
+                Een renovatie, een onderhoudsplanning over meerdere panden of een
+                drukke periode die maanden duurt. De schilder draait mee in je ploeg
+                zolang het werk er ligt. Losse klusdagen doen we niet.
+              </p>
+            </div>
+            <div className="kaartje">
+              <h3>Zonder schilder op je loonlijst</h3>
+              <p style={{ fontSize: 15 }}>
+                Je hebt het hele jaar schilderwerk, maar wilt geen eigen schilder in
+                dienst nemen. Dan werkt de schilder via De Flexschilder. De afspraken over
+                inzet, tarief en contract stem je vooraf met André af.
+              </p>
+            </div>
+            <div className="kaartje">
+              <h3>Gekozen op vakkennis</h3>
+              <p style={{ fontSize: 15 }}>
+                André van der Hoogen was 23 jaar technisch adviseur in de
+                verfindustrie. Hij weet wat onderhoud, renovatie of nieuwbouw vraagt
+                en kiest de vakman op het werk dat er ligt. Een cv zegt daar weinig over.
+              </p>
+            </div>
+          </div>
+          <p style={{ marginTop: 22, display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+            <Link href="/aanvraag" className="btn btn--primair">Schilders aanvragen</Link>
+            <Link href="/schilders-inhuren" className="tekstlink">Zo werkt schilders inhuren</Link>
+            <span style={{ fontSize: 14, color: 'var(--tekst-licht)' }}>
+              Alleen zakelijk. Geen klussen voor particulieren.
+            </span>
+          </p>
+        </div>
+      </section>
+
+      {/* VERHALEN — echte vakmensen, echte video's (interviews 28-10). */}
+      <section className="sectie sectie--vlak">
+        <div className="container">
+          <span className="kicker">Vakmensen door vakmensen</span>
+          <h2>
+            Wie er via ons <span className="accent">aan het werk</span> is
+          </h2>
+          <div className="grid grid--4" style={{ marginTop: 24 }}>
+            {TEAM.filter((l) => l.video).map((lid) => (
+              <Link key={lid.slug} href={`/over-ons#verhaal-${lid.slug}`} className="kaartje verhaalkaart">
+                <img src={lid.foto} alt={lid.fotoAlt} loading="lazy" className="verhaalkaart__beeld" />
+                <p className="verhaalkaart__quote">&ldquo;{lid.quote}&rdquo;</p>
+                <span className="meta">{lid.naam} · {lid.rol}</span>
+                <span className="verder">Bekijk de video →</span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -118,8 +188,7 @@ export default async function Home() {
               <span className="meta">Voor opdrachtgevers</span>
               <h3>Schilders inhuren</h3>
               <p style={{ fontSize: 14.5 }}>
-                Detachering, uitzenden en werving &amp; selectie: schaalbaar zonder
-                vaste loonkosten.
+                Een vaste behoefte aan extra vakmensen? Bespreek het werk, de periode en de ervaring die je zoekt.
               </p>
               <span className="verder">Bekijk →</span>
             </Link>
@@ -145,8 +214,7 @@ export default async function Home() {
               <span className="meta">Ons specialisme</span>
               <h3>Vastgoedonderhoud &amp; RGS</h3>
               <p style={{ fontSize: 14.5 }}>
-                Resultaatgericht samenwerken, NEN 2767 en MJOP: de langjarige
-                onderhoudspartner.
+                Schilderscapaciteit voor planmatig onderhoud, met kennis van verfsystemen en onderhoudsplanning.
               </p>
               <span className="verder">Bekijk →</span>
             </Link>
@@ -162,17 +230,10 @@ export default async function Home() {
             <h2>Experts in de schildersbranche</h2>
             <div className="prose" style={{ marginTop: 14 }}>
               <p>
-                De schildersbranche is de laatste jaren sterk veranderd. De wet- en
-                regelgeving zijn aangepast, en ook de verfproducten zijn vernieuwd.
-                Bovendien worden er nu andere eisen gesteld aan de opleiding en
-                kwaliteit van vakmensen. Als experts in deze branche begrijpen wij als
-                geen ander hoe de markt in elkaar steekt. Wij selecteren de juiste
-                mensen voor de juiste baan.
+                Bij een goede match telt meer dan beschikbaarheid. Wat voor ondergrond ligt er, welk verfsysteem wordt gebruikt en hoeveel zelfstandigheid vraagt het werk? André van der Hoogen neemt zijn ervaring als technisch adviseur mee in het gesprek met bedrijven en schilders.
               </p>
               <p>
-                Kwaliteit is voor ons van groot belang. We bieden de vakmensen in ons
-                netwerk de mogelijkheid om hun kennis te vergroten, zowel in theorie
-                als in praktijk, inclusief coaching en begeleiding.
+                Ook de voorkeuren van de schilder tellen mee: het soort werk, de reistijd en de mogelijkheid om verder te leren. Zo begint de samenwerking met een duidelijk beeld van beide kanten.
               </p>
             </div>
             <div style={{ display: 'flex', gap: 14, marginTop: 22, flexWrap: 'wrap', alignItems: 'center' }}>
@@ -198,8 +259,7 @@ export default async function Home() {
           <div>
             <h2>Laatste nieuws</h2>
             <p style={{ marginTop: 8, fontSize: 15.5 }}>
-              Vakkennis en nieuws voor opdrachtgevers én schilders. Geschreven door
-              vakmensen, niet door een marketingbureau.
+              Vakkennis en nieuws over schilderwerk, onderhoud en werken in de branche. Voor opdrachtgevers en schilders.
             </p>
             <p style={{ marginTop: 14 }}>
               <Link href="/blog" className="tekstlink">

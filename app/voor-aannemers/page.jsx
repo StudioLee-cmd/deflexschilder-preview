@@ -5,7 +5,7 @@ import BeeldAI from '@/components/BeeldAI';
 export const metadata = {
   title: 'Schilders voor aannemers & onderhoudsbedrijven: pieken opvangen',
   description:
-    'Onderaanneming schilderwerk en flexibele schilders voor aannemers en onderhoudsbedrijven in Noord-Nederland: pieken opvangen zonder risico, vakwerk dat gewoon doorloopt.',
+    'Onderaanneming schilderwerk en flexibele schilders voor aannemers en onderhoudsbedrijven in Noord-Nederland: bemiddeling bij structurele schilderscapaciteit en langere projecten.',
   alternates: { canonical: '/voor-aannemers' },
 };
 
@@ -24,9 +24,7 @@ export default function VoorAannemers() {
         <span className="kicker">Voor opdrachtgevers · aannemers &amp; onderhoudsbedrijven</span>
         <h1>De flexibele schil voor aannemers en onderhoudsbedrijven</h1>
         <p className="lead">
-          Deadline naar voren, oplevering vertraagd, twee man ziek: de planning van
-          een bouwer is nooit rustig. De Flexschilder levert per week op te schalen
-          schilderscapaciteit: vakmensen die direct meedraaien in uw ploeg.
+          Loopt er een langer project of heb je terugkerend extra schilders nodig? De Flexschilder brengt aannemers en onderhoudsbedrijven in contact met passende vakmensen. André bespreekt het werk, de planning en de ervaring die je in de ploeg zoekt.
         </p>
       </section>
 
@@ -41,12 +39,10 @@ export default function VoorAannemers() {
             <h2>Waarvoor bouwers ons bellen</h2>
             <ul className="checklijst" style={{ paddingLeft: 0 }}>
               <li>
-                <strong>Pieken opvangen</strong>: extra schilders precies in de weken
-                dat de planning knelt; daarna weer terug.
+                <strong>Extra capaciteit</strong>: vakmensen voor een langere projectperiode of terugkerende werkzaamheden.
               </li>
               <li>
-                <strong>Onderaanneming schilderwerk</strong>: wij nemen het
-                schilderdeel van uw project aan, inclusief planning en kwaliteit.
+                <strong>Een schilderploeg aanvullen</strong>: bespreek de benodigde vakkennis en de taakverdeling op het werk. André bemiddelt tussen je bedrijf en passende schilders.
               </li>
               <li>
                 <strong>Specialistisch werk</strong>: van{' '}
@@ -55,15 +51,12 @@ export default function VoorAannemers() {
               </li>
               <li>
                 <strong>Vaste kracht nodig?</strong> Via werving &amp; selectie vinden
-                we de schilder die bij uw bedrijf past.
+                we de schilder die bij je bedrijf past.
               </li>
             </ul>
             <h2>Vakwerk zonder gedoe</h2>
             <p>
-              U stuurt aan op het werk, wij regelen de rest: contracten, uren,
-              vervanging. En omdat wij zelf schilders zijn, sturen we geen
-              &ldquo;handjes&rdquo; maar vakmensen die uw kwaliteitsniveau snappen.
-              VCU-gecertificeerd, SNA-keurmerk, ABU-lid.
+              Welke ondergrond en verfsystemen kom je tegen? Hoe zelfstandig moet iemand werken en hoe sluit die aan bij de ploeg? Die vragen helpen André om gericht te zoeken. Voor de start worden inzet, tarief en verantwoordelijkheden afgestemd.
             </p>
             <Link href="/aanvraag" className="btn btn--primair" style={{ marginTop: 8 }}>
               Vraag capaciteit aan
@@ -74,7 +67,7 @@ export default function VoorAannemers() {
 
       <section className="sectie sectie--vlak">
         <div className="container">
-          <h2 style={{ fontSize: 24 }}>Ook interessant voor u</h2>
+          <h2 style={{ fontSize: 24 }}>Ook interessant voor je</h2>
           <div className="grid grid--3" style={{ marginTop: 20 }}>
             <Link href="/schilders-inhuren" className="kaartje">
               <h3>Alles over inhuren</h3>

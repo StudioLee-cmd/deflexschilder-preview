@@ -36,20 +36,16 @@ export default function AuteurAndre() {
         <p className="lead">
           Eigenaar van De Flexschilder. <strong>23 jaar technische expertise</strong>{' '}
           in verf en onderhoud, diepgaande kennis van RGS en planmatig onderhoud, en
-          een sterk regionaal netwerk in Noord-Nederland. Alles wat hier verschijnt,
-          is geschreven of beoordeeld door iemand die het vak zelf uitoefent.
+          een sterk regionaal netwerk in Noord-Nederland. Hij gebruikt die achtergrond bij de bemiddeling tussen bedrijven en schilders.
         </p>
       </section>
 
       <section className="sectie" style={{ paddingTop: 30 }}>
         <div className="container kaartwrap" style={{ alignItems: 'start' }}>
           <div className="prose">
-            <h2>Waarom een vakman schrijft</h2>
+            <h2>Technische kennis bij de match</h2>
             <p>
-              Google en AI-zoekmachines wegen steeds zwaarder wie er achter een tekst
-              zit: echte ervaring, aantoonbare expertise, een herkenbare auteur. Bij
-              De Flexschilder is dat simpel geregeld: de eigenaar ís de vakman. André
-              begon 23 jaar geleden op de steiger en adviseert vandaag ondernemers en vastgoedbeheerders over onderhoud, RGS en capaciteit.
+              André werkte als technisch adviseur in de verf- en onderhoudsbranche. Hij kent de vragen over ondergronden, verfsystemen, onderhoudscycli en uitvoering. Die kennis helpt om met een opdrachtgever te bespreken welke ervaring op het werk nodig is en met een schilder welk werk past.
             </p>
             <h2>Expertise</h2>
             <ul className="checklijst" style={{ paddingLeft: 0 }}>
@@ -66,7 +62,9 @@ export default function AuteurAndre() {
               <li>Persoonlijke selectie: geen cv-schuiver, maar een vakinhoudelijke matchmaker</li>
             </ul>
             <blockquote>
-              &ldquo;Ik plaats niet alleen schilders, ik begrijp hun werk.&rdquo;
+              &ldquo;Als ik de samenwerking met De Flexschilder moet omschrijven in
+              drie woorden, zijn dat daadkrachtig, loyaal en betrokken.&rdquo;
+              <br /><cite>Jordy van de Corput, schilder via De Flexschilder</cite>
             </blockquote>
             <h2>Artikelen van André</h2>
             <ul>
@@ -90,7 +88,7 @@ export default function AuteurAndre() {
                 <img src="/branding_flexschilder.svg" alt="De Flexschilder" width={130} height={38} style={{ marginLeft: 'auto', height: 36, width: 'auto' }} />
               </div>
               <h3 style={{ marginTop: 8 }}>André van der Hoogen</h3>
-              <p className="meta">Eigenaar &amp; vakschilder · De Flexschilder</p>
+              <p className="meta">Eigenaar · technische achtergrond in verf en onderhoud</p>
               {/* Feiten zichtbaar — dezelfde data als het Person-schema */}
               <dl style={{ display: 'grid', gap: 6, fontSize: 14.5, marginTop: 4 }}>
                 <div style={{ display: 'flex', gap: 8 }}><dt style={{ fontWeight: 700, minWidth: 110, color: 'var(--tekst-licht)' }}>Vakervaring</dt><dd style={{ margin: 0 }}><strong>23 jaar</strong> (verf &amp; onderhoud)</dd></div>
@@ -100,14 +98,13 @@ export default function AuteurAndre() {
                 <div style={{ display: 'flex', gap: 8 }}><dt style={{ fontWeight: 700, minWidth: 110, color: 'var(--tekst-licht)' }}>E-mail</dt><dd style={{ margin: 0 }}><a href="mailto:andre@deflexschilder.nl" style={{ fontWeight: 700 }}>andre@deflexschilder.nl</a></dd></div>
               </dl>
               <p className="meta" style={{ fontSize: 12.5 }}>
-                Profielfoto volgt, aan te leveren door André.
+                Neem contact op om je werk of personeelsvraag te bespreken.
               </p>
             </div>
             <div className="kaartje">
               <h3>Verhalen van vakmensen</h3>
               <p style={{ fontSize: 14.5 }}>
-                Na André volgen de verhalen van de vakmensen zelf (Tieme · Jordy ·
-                Julia), zodra de toestemming en content rond zijn.
+                De ervaring en wensen van de schilder horen bij de match, naast de eisen van het werk en de samenstelling van de ploeg.
               </p>
             </div>
           </div>

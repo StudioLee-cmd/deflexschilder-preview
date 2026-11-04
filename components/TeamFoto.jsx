@@ -8,7 +8,7 @@ export default function TeamFoto({ lid, badge = 'Foto volgt' }) {
   if (lid.foto) {
     return (
       <div className="teamfoto">
-        <img src={lid.foto} alt={lid.fotoAlt || lid.naam} loading="lazy" />
+        <img src={lid.foto} alt={lid.fotoAlt || lid.naam} loading="lazy" style={lid.fotoPositie ? { objectPosition: lid.fotoPositie } : undefined} />
       </div>
     );
   }

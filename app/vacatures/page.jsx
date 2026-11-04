@@ -27,7 +27,7 @@ export default async function Vacatures() {
       <Kruimel items={[{ naam: 'Vacatures' }]} />
 
       <section className="paginakop container">
-        <span className="kicker">Voor schilders · pillar</span>
+        <span className="kicker">Voor schilders</span>
         <h1>
           Vacatures voor <span className="accent">schilders</span>
         </h1>
@@ -135,18 +135,13 @@ export default async function Vacatures() {
               vakman.
             </p>
             <p>
-              Het verschil zit in het netwerk: André kent na 23 jaar in de branche
-              de beste schildersbedrijven en opdrachtgevers van het Noorden
-              persoonlijk. Via De Flexschilder kom je binnen bij{' '}
-              <strong>bedrijven waar je écht graag wilt werken</strong>.
+              André heeft een netwerk in de schilders- en onderhoudsbranche in Noord-Nederland. Hij bespreekt welk bedrijf en welk werk aansluiten bij je ervaring, wensen en reistijd.
             </p>
           </div>
           <div className="kaartje" style={{ alignSelf: 'center' }}>
             <h3>Verhalen van vakmensen</h3>
             <p style={{ fontSize: 14.5 }}>
-              Hoe dat uitpakt? Dat vertellen onze mensen straks zelf: de verhalen van
-              zij-instromers Tieme en Joryd, van Jermaine, en waarom Julia bewust voor
-              werken via De Flexschilder kiest.
+              Lees meer over de mensen achter De Flexschilder en de manier waarop André bedrijven en schilders bij elkaar brengt.
             </p>
             <Link href="/over-ons" className="verder">
               Lees over ons team →
@@ -158,15 +153,13 @@ export default async function Vacatures() {
       <section className="sectie sectie--vlak">
         <div className="container">
           <ClusterBlok
-            titel="Cluster: werken als schilder (pillar + ondersteunende artikelen)"
-            intro="De vragen die werkzoekende schilders googelen. Elk artikel linkt terug naar dit vacature-overzicht."
+            titel="Meer over werken als schilder"
+            intro="Bekijk de specialisaties, lees over De Flexschilder of vertel welk werk je zoekt."
             items={[
               { titel: 'Kilometervergoeding 2026: wat scheelt het jou?', href: '/blog/kilometervergoeding-2026-25-cent' },
               { titel: 'Salaris van een schilder (per specialisme)', href: '/soorten-schilders' },
-              { titel: 'Leerling of BBL-schilder worden' },
-              { titel: 'Als zzp-schilder aan de slag' },
-              { titel: 'Doorgroeien als schilder' },
-              { titel: 'Hoe werken via De Flexschilder werkt' },
+              { titel: 'De mensen achter De Flexschilder', href: '/over-ons' },
+              { titel: 'Vertel welk werk je zoekt', href: '/inschrijven' },
             ]}
           />
         </div>

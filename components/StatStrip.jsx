@@ -6,13 +6,15 @@ import { useEffect, useRef, useState } from 'react';
 // geen library). items = [{ tot, suffix, label, vast }] — `vast` = geen teller.
 function Teller({ tot, suffix = '' }) {
   const ref = useRef(null);
-  const [n, setN] = useState(0);
+  // Server-render het echte getal (zoekmachines en no-JS zien nooit '0');
+  // tel alleen op als de strip pas later in beeld scrolt.
+  const [n, setN] = useState(tot);
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setN(tot);
-      return;
-    }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const r = ref.current?.getBoundingClientRect();
+    if (!r || r.top < window.innerHeight) return; // al in beeld: laat het getal staan
+    setN(0);
     const io = new IntersectionObserver(
       ([e]) => {
         if (!e.isIntersecting) return;

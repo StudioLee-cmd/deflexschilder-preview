@@ -6,7 +6,7 @@ import BeeldAI from '@/components/BeeldAI';
 export const metadata = {
   title: 'Vastgoedonderhoud & RGS: resultaatgericht samenwerken',
   description:
-    'RGS, planmatig onderhoud, NEN 2767 en MJOP: hoe De Flexschilder als langjarige onderhoudspartner werkt voor vastgoedbeheerders, VvE’s en aannemers in Noord-Nederland.',
+    'RGS, planmatig onderhoud, NEN 2767 en MJOP: technische kennis bij het vinden van schilders voor vastgoedbeheerders en onderhoudsbedrijven in Noord-Nederland.',
   alternates: { canonical: '/vastgoedonderhoud-en-rgs' },
 };
 
@@ -18,15 +18,12 @@ export default function VastgoedRgs() {
       <Kruimel items={[{ naam: 'Vastgoedonderhoud & RGS' }]} />
 
       <section className="paginakop container">
-        <span className="kicker">Ons specialisme · autoriteits-pillar</span>
+        <span className="kicker">Vakkennis bij onderhoud</span>
         <h1>
           Vastgoedonderhoud &amp; <span className="accent">RGS</span>
         </h1>
         <p className="lead">
-          Resultaatgericht Samenwerken (RGS) is hoe professioneel vastgoedonderhoud
-          tegenwoordig werkt: geen losse klussen, maar een langjarige samenwerking op
-          een afgesproken kwaliteitsniveau. Precies het spel dat De Flexschilder
-          speelt.
+          Bij planmatig onderhoud moeten vakmensen passen bij het werk en de afgesproken kwaliteit. André kent de technische vragen rond verf en onderhoud. Die kennis gebruikt hij om bedrijven en schilders bij elkaar te brengen.
         </p>
       </section>
 
@@ -45,7 +42,7 @@ export default function VastgoedRgs() {
             <ul>
               <li>
                 <strong>NEN 2767-conditiemeting</strong>: de objectieve meetlat voor
-                de staat van het vastgoed; wij werken en rapporteren conditiegericht.
+                de staat van vastgoed. Kennis van deze meetmethode helpt om de onderhoudsopgave te begrijpen.
               </li>
               <li>
                 <strong>MJOP</strong>: schilderwerk als planbare, begrote stroom in
@@ -56,15 +53,12 @@ export default function VastgoedRgs() {
                 en schilders; korte lijnen, geen dubbel werk.
               </li>
               <li>
-                <strong>Ontzorgen</strong>: bewonerscommunicatie, planning en
-                kwaliteit geregeld door mensen die het vak kennen.
+                <strong>Uitvoering</strong>: bespreek vooraf wie planning, bewonerscontact en kwaliteitscontrole verzorgt. Die verantwoordelijkheden horen bij de afspraken over het werk.
               </li>
             </ul>
-            <h2>Van losse klusser naar vaste onderhoudspartner</h2>
+            <h2>Schilders die passen bij je onderhoudsplanning</h2>
             <p>
-              Voor opdrachtgevers betekent RGS met De Flexschilder:
-              schilderscapaciteit die meegroeit met uw MJOP, geleverd door vakmensen
-              die conditiegericht denken, geleid door een specialist met{' '}
+              Zoek je vakmensen voor een langere onderhoudsperiode? André bespreekt het soort werk, de ondergrond en het gevraagde niveau. Hij brengt daarvoor zijn technische achtergrond mee, met{' '}
               <Link href="/auteur/andre">23 jaar ervaring in verf en planmatig onderhoud</Link>.
             </p>
           </div>
@@ -94,20 +88,18 @@ export default function VastgoedRgs() {
       <section className="sectie sectie--vlak">
         <div className="container">
           <ClusterBlok
-            titel="Cluster: vastgoedonderhoud & RGS (autoriteits-pillar)"
-            intro="Weinig volume, maximale overtuigingskracht: dit cluster maakt De Flexschilder dé vindbare autoriteit in Google én AI-zoekmachines, gevoed met André's wekelijkse inzichten."
+            titel="Meer over vakmensen voor onderhoud"
+            intro="Bespreek de onderhoudsopgave en kijk welke ervaring in je ploeg nodig is."
             items={[
-              { titel: 'Wat is RGS? (uitgebreide uitleg)' },
-              { titel: 'Planmatig onderhoud uitgelegd' },
-              { titel: 'Vastgoedonderhoud uitbesteden aan een flex-schilderspartner' },
-              { titel: 'De rol van de schilder in onderhoudsplanning' },
-              { titel: 'Duurzaam onderhoud & levensduur van verfsystemen' },
-              { titel: 'NEN 2767-conditiemeting in de praktijk' },
+              { titel: 'Schilders voor je bedrijf', href: '/schilders-inhuren' },
+              { titel: 'Voor aannemers en onderhoudsbedrijven', href: '/voor-aannemers' },
+              { titel: 'Specialisaties van schilders', href: '/soorten-schilders' },
+              { titel: 'Technische achtergrond van André', href: '/auteur/andre' },
             ]}
           />
           <div style={{ marginTop: 26, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
             <Link href="/aanvraag" className="btn btn--primair">
-              Praten over uw onderhoudsopgave
+              Praten over je onderhoudsopgave
             </Link>
             <Link href="/voor-aannemers" className="tekstlink">
               Voor aannemers &amp; onderhoudsbedrijven

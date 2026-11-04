@@ -12,12 +12,20 @@ export default function VerhaalLijst() {
       {TEAM.map((lid) => {
         const gepubliceerd = Array.isArray(lid.verhaal) && lid.verhaal.length > 0;
         return (
-          <article key={lid.slug} id={`verhaal-${lid.slug}`} className="verhaal">
-            <div className="verhaal__foto">
-              <TeamFoto lid={lid} />
-            </div>
+          <article key={lid.slug} id={`verhaal-${lid.slug}`} className={lid.video ? 'verhaal verhaal--video' : 'verhaal'}>
+            {lid.video ? (
+              <div className="verhaal__video">
+                <video controls preload="none" playsInline poster={lid.foto || undefined} aria-label={`Video: ${lid.verhaalTitel}, ${lid.naam}`}>
+                  <source src={lid.video} type="video/mp4" />
+                </video>
+              </div>
+            ) : (
+              <div className="verhaal__foto">
+                <TeamFoto lid={lid} />
+              </div>
+            )}
             <div className="verhaal__body">
-              <span className="kicker">Verhaal van een vakmens</span>
+              <span className="kicker">{lid.naam} · {lid.rol}</span>
               <h3 className="verhaal__titel">{lid.verhaalTitel}</h3>
               {gepubliceerd ? (
                 <>
@@ -30,9 +38,7 @@ export default function VerhaalLijst() {
                 </>
               ) : (
                 <p className="verhaal__wacht">
-                  Interview volgt. André legt de verhalen van zijn vakmensen zelf
-                  vast: opname, uitwerking én eigen foto&rsquo;s. Zodra het klaar
-                  is, verschijnt {lid.naam}&rsquo;s verhaal hier.
+                  Het persoonlijke verhaal van {lid.naam} wordt hier toegevoegd zodra het gereed is.
                 </p>
               )}
             </div>

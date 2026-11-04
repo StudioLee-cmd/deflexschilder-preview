@@ -790,6 +790,10 @@ a.kaartje:hover { transform: translateY(-2px); box-shadow: var(--schaduw); }
 }
 
 .verhalen { margin-top: 4px; }
+.verhaalkaart { display: flex; flex-direction: column; gap: 10px; padding: 0 0 18px; overflow: hidden; }
+.verhaalkaart > :not(img) { margin-left: 18px; margin-right: 18px; }
+.verhaalkaart__beeld { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.verhaalkaart__quote { font-size: 15.5px; font-style: italic; color: var(--ink); margin: 4px 0 0; flex: 1; }
 .verhaal {
   display: grid;
   grid-template-columns: 240px 1fr;
@@ -802,6 +806,11 @@ a.kaartje:hover { transform: translateY(-2px); box-shadow: var(--schaduw); }
 @media (max-width: 720px) { .verhaal { grid-template-columns: 1fr; gap: 16px; } }
 .verhaal__foto { border-radius: var(--radius); overflow: hidden; box-shadow: var(--schaduw); max-width: 240px; }
 .verhaal__body { display: grid; gap: 12px; }
+.verhaal--video { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 34px; }
+@media (max-width: 900px) { .verhaal--video { grid-template-columns: 1fr; gap: 18px; } }
+.verhaal__video { border-radius: var(--radius); overflow: hidden; box-shadow: var(--schaduw); background: #111; position: sticky; top: 96px; }
+@media (max-width: 900px) { .verhaal__video { position: static; } }
+.verhaal__video video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #111; }
 .verhaal__titel { font-size: 20px; margin-top: 2px; }
 .verhaal__quote {
   border-left: 3px solid var(--oranje);

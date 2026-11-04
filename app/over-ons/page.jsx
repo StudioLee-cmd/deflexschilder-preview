@@ -43,11 +43,7 @@ export default function OverOns() {
         <span className="kicker">Over De Flexschilder</span>
         <h1>Vakmensen door vakmensen</h1>
         <p className="lead">
-          De Flexschilder is geen kantoor-uitzender die schilders alleen op papier
-          kent, maar een <strong>ketenpartner in vaklieden</strong>: geleid en bemenst
-          door échte schilders, lokaal betrokken, en we spreken de taal van de
-          schilder én de ondernemer. Dat merk je in alles: de matches, de planning
-          en de kwaliteit op de steiger.
+          De Flexschilder brengt bedrijven en schilders bij elkaar. André bespreekt welk werk er ligt, welke ervaring nodig is en wat een schilder zoekt. Zijn technische achtergrond in verf en onderhoud helpt om verder te kijken dan een cv.
         </p>
         {/* Entiteit-blok: in één alinea alles wat mens én AI over dit bedrijf
             moeten weten (wie · wat · waar · sinds · bewijs). */}
@@ -58,7 +54,7 @@ export default function OverOns() {
             <div><dt>Wie</dt><dd>André van der Hoogen, eigenaar. 23 jaar technisch adviseur in de verf- en onderhoudsbranche</dd></div>
             <div><dt>Werkgebied</dt><dd>Noord-Nederland: Groningen, Friesland, Drenthe en de kop van Overijssel (zuidgrens Zwolle)</dd></div>
             <div><dt>Specialisme</dt><dd>Vastgoedonderhoud &amp; RGS, NEN 2767-conditiemeting, verfsystemen en onderhoudscycli</dd></div>
-            <div><dt>Netwerk</dt><dd>Jarenlang opgebouwde connecties met de beste schildersbedrijven en opdrachtgevers in het Noorden</dd></div>
+            <div><dt>Netwerk</dt><dd>Een regionaal netwerk van schilders, schildersbedrijven en onderhoudsbedrijven</dd></div>
             <div><dt>Bewijs</dt><dd>SNA-keurmerk · VCU-gecertificeerd · ABU-lid · KvK 83856323 · Steenwijkerwold</dd></div>
           </dl>
         </div>
@@ -87,11 +83,7 @@ export default function OverOns() {
               het vak van binnenuit kent en er eerlijk over adviseert.
             </p>
             <p>
-              De schildersbranche is de laatste jaren sterk veranderd: nieuwe wet- en
-              regelgeving, vernieuwde verfproducten en hogere eisen aan opleiding en
-              kwaliteit. Als experts in deze branche begrijpen wij als geen ander hoe
-              de markt in elkaar steekt. Wij selecteren de juiste mensen voor de
-              juiste baan.
+              Een project vraagt bijvoorbeeld ervaring met een bepaalde ondergrond, een verfsysteem of zelfstandig werken. André neemt zulke vragen mee in het gesprek met beide partijen, zodat de eisen van het werk en de ervaring van de schilder helder zijn.
             </p>
             <h2>Kwaliteit als uitgangspunt</h2>
             <p>
@@ -101,31 +93,24 @@ export default function OverOns() {
             </p>
             <h2>Een netwerk waar je wat aan hebt</h2>
             <p>
-              In 23 jaar bouw je wat op. André kent de schildersbedrijven,
-              onderhoudsbedrijven en opdrachtgevers in het Noorden persoonlijk, en
-              dat netwerk werkt twee kanten op: opdrachtgevers krijgen snel de juiste
-              vakmensen, en schilders komen via De Flexschilder binnen bij{' '}
-              <strong>bedrijven waar je écht graag wilt werken</strong>, niet zomaar
-              de eerstvolgende klus.
+              Het netwerk werkt twee kanten op. Bedrijven bespreken hun terugkerende behoefte aan vakmensen. Schilders vertellen welk werk ze willen doen, welke reistijd past en waar ze zich in willen ontwikkelen.
             </p>
           </div>
 
           <div style={{ display: 'grid', gap: 18 }}>
             <div className="kaartje" style={{ padding: 26 }}>
               <span className="kicker">Verhalen van vakmensen</span>
-              <h3>De bewijslaag: echte verhalen</h3>
+              <h3>De mensen achter het werk</h3>
               <p style={{ fontSize: 14.5 }}>
-                &ldquo;Vakmensen door vakmensen&rdquo; is geen slogan. Hieronder
-                stellen Tieme, Joryd, Jermaine en Julia zich voor, elk met een
-                eigen verhaal over werken via De Flexschilder.
+                Jordy, Tieme, Julia en Robbin vertellen op video hoe ze via
+                De Flexschilder in het schildersvak terechtkwamen.
               </p>
-              <a href="#team" className="verder">Ontmoet het team →</a>
+              <a href="#verhalen" className="verder">Bekijk de verhalen →</a>
             </div>
             <div className="kaartje" style={{ padding: 26 }}>
               <h3>Gecertificeerd &amp; aangesloten</h3>
               <p style={{ fontSize: 15 }}>
-                SNA-keurmerk, VCU-gecertificeerd en ABU-lid: de basis op orde, zodat
-                opdrachtgevers zonder risico met ons werken.
+                SNA-keurmerk, VCU-gecertificeerd en ABU-lid: informatie over de organisatie en de samenwerking.
               </p>
               <div style={{ display: 'flex', gap: 10, marginTop: 8 }}>
                 <img src="/SNA-1-1.svg" alt="SNA" height={40} style={{ height: 40, width: 'auto' }} />
@@ -153,27 +138,22 @@ export default function OverOns() {
           <span className="kicker">Ons team</span>
           <h2>De vakmensen achter De Flexschilder</h2>
           <p className="lead" style={{ maxWidth: 760 }}>
-            Geleid en bemenst door échte schilders. Dit zijn de mensen die het vak
-            van binnenuit kennen: de basis onder &ldquo;vakmensen door
-            vakmensen&rdquo;.
+            Vier vakmensen die via De Flexschilder werken: twee zij-instromers,
+            een allround schilder en een allround glaszetter.
           </p>
           <TeamSectie />
-          <p style={{ fontSize: 13.5, color: 'var(--tekst-licht)', marginTop: 16 }}>
-            Foto&rsquo;s volgen: André verzorgt een eigen fotoshoot van het team.
-          </p>
         </div>
       </section>
 
       {/* Verhalen — per vakmens een verhaal-blok; interviews landen 1-op-1 vanuit
           lib/team.js zodra André ze aanlevert. */}
-      <section className="sectie">
+      <section className="sectie" id="verhalen">
         <div className="container">
           <span className="kicker">Verhalen van vakmensen</span>
-          <h2>Echte verhalen, geen lijstje kenmerken</h2>
+          <h2>In hun eigen woorden</h2>
           <p className="lead" style={{ maxWidth: 760 }}>
-            Waarom vakmensen bewust voor De Flexschilder kiezen, vertellen ze het
-            liefst zelf. André legt hun verhalen vast. Hieronder verschijnen ze
-            zodra ze klaar zijn.
+            Een profkeeper, een oud-medewerker van het COA, een orderpicker en een
+            steigerbouwer. Vier verschillende wegen naar het schildersvak.
           </p>
           <div style={{ marginTop: 26 }}>
             <VerhaalLijst />
@@ -186,7 +166,7 @@ export default function OverOns() {
           <div className="ctaband__kaart">
             <span className="kicker">Voor opdrachtgevers</span>
             <h3 style={{ fontSize: 22 }}>Kennismaken?</h3>
-            <p>Vertel ons over uw onderhoudsopgave of project. We denken graag mee.</p>
+            <p>Vertel ons over je onderhoudsopgave of project. We denken graag mee.</p>
             <Link href="/aanvraag" className="btn btn--primair" style={{ alignSelf: 'flex-start' }}>
               Plan een gesprek
             </Link>

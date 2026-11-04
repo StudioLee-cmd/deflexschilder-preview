@@ -9,7 +9,7 @@ export default function ClusterBlok({ titel, intro, items }) {
       <div className="cluster__kop">
         <h3 style={{ fontSize: 19 }}>{titel}</h3>
         <span className="meta" style={{ fontSize: 13, color: 'var(--tekst-licht)' }}>
-          cluster-template · pillar + ondersteunende artikelen
+          Verder lezen
         </span>
       </div>
       {intro && <p style={{ marginTop: 8, fontSize: 15 }}>{intro}</p>}

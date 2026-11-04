@@ -2,9 +2,9 @@ import Kruimel from '@/components/Kruimel';
 import AanvraagForm from '@/components/AanvraagForm';
 
 export const metadata = {
-  title: 'Schilders aanvragen: vandaag geregeld',
+  title: 'Schilders zoeken voor je bedrijf',
   description:
-    'Vraag flexibele schilderscapaciteit aan voor uw project of onderhoudsstroom in Noord-Nederland. Vertel wat er moet gebeuren. Wij plannen de juiste vakmensen in.',
+    'Vraag flexibele schilderscapaciteit aan voor je project of onderhoudsstroom in Noord-Nederland. Vertel wat er moet gebeuren. Wij plannen de juiste vakmensen in.',
   alternates: { canonical: '/aanvraag' },
 };
 
@@ -17,9 +17,7 @@ export default function Aanvraag() {
         <span className="kicker">Voor opdrachtgevers</span>
         <h1>Schilders aanvragen</h1>
         <p className="lead">
-          Vertel ons wat er geschilderd moet worden, waar en wanneer. Wij komen snel
-          terug met de juiste vakmensen en een duidelijke afspraak. Liever direct
-          contact? Bel <a href="tel:+31613718172" style={{ fontWeight: 700, color: 'var(--oranje-donker)' }}>06 - 137 181 72</a>.
+          Vertel welk werk je bedrijf uitvoert, waar en voor welke periode je schilders zoekt. André bespreekt de benodigde ervaring en de mogelijkheden voor een passende match. Liever direct contact? Bel <a href="tel:+31613718172" style={{ fontWeight: 700, color: 'var(--oranje-donker)' }}>06 - 137 181 72</a>.
         </p>
       </section>
 
@@ -27,12 +25,12 @@ export default function Aanvraag() {
         <div className="container kaartwrap" style={{ alignItems: 'start' }}>
           <AanvraagForm />
           <div className="kaartje" style={{ padding: 26 }}>
-            <h3>Wat u van ons kunt verwachten</h3>
+            <h3>Wat je van ons kunt verwachten</h3>
             <ul className="checklijst" style={{ marginTop: 10 }}>
-              <li>Snel persoonlijk contact over uw aanvraag</li>
+              <li>Persoonlijk contact over het werk en je planning</li>
               <li>De juiste specialisatie op de juiste klus</li>
               <li>Duidelijke afspraken, geen verborgen kosten</li>
-              <li>Op- en afschalen wanneer u dat wilt</li>
+              <li>Afstemming over de gewenste periode en inzet</li>
             </ul>
           </div>
         </div>

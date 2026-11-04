@@ -19,11 +19,11 @@ export const metadata = {
 const FAQ = [
   {
     v: 'Wat kost het inhuren van schilders?',
-    a: 'Dat hangt af van specialisme, aantal vakmensen, duur en type opdracht. We rekenen transparante tarieven zonder verborgen kosten: u weet vooraf precies waar u aan toe bent. Vraag een vrijblijvende offerte aan voor uw situatie.',
+    a: 'Dat hangt af van het werk, de ervaring van de schilder en de duur van de inzet. Bespreek je aanvraag met André. Het tarief en de voorwaarden worden voor de start afgestemd.',
   },
   {
     v: 'Hoe snel kan een schilder starten?',
-    a: 'Bij piekdrukte schakelen we vaak binnen enkele dagen. Voor grotere of planmatige trajecten plannen we de capaciteit ruim vooraf in op uw planning.',
+    a: 'De start hangt af van de gevraagde ervaring, de planning en de beschikbaarheid. De Flexschilder richt zich op structurele inzet en langere samenwerkingen. Geef daarom aan vanaf wanneer en voor welke periode je schilders zoekt.',
   },
   {
     v: 'Doen jullie ook losse klussen voor particulieren?',
@@ -47,12 +47,10 @@ export default function SchildersInhuren() {
       <Kruimel items={[{ naam: 'Schilders inhuren' }]} />
 
       <section className="paginakop container">
-        <span className="kicker">Voor opdrachtgevers · pillar</span>
+        <span className="kicker">Voor opdrachtgevers</span>
         <h1>Schilders inhuren in Noord-Nederland</h1>
         <p className="lead">
-          Flexibele schilderscapaciteit van échte vakmensen, zonder vaste
-          loonkosten. Voor structurele detachering en grotere opdrachten; geen losse
-          klusjes. Geleid door schilders, dus wij snappen het vak én de planning.
+          Heb je regelmatig schilders nodig, maar wil je geen eigen schilder in dienst nemen? De Flexschilder brengt je bedrijf in contact met passende vakmensen. Het werk, de ervaring die nodig is en de gewenste periode vormen het begin van de match.
         </p>
       </section>
 
@@ -83,23 +81,19 @@ export default function SchildersInhuren() {
             <div className="kaartje" id="detachering">
               <h3>Detachering</h3>
               <p style={{ fontSize: 14.5 }}>
-                Vakmensen voor langere tijd op uw project of in uw onderhoudsploeg. U
-                stuurt aan op het werk, wij blijven werkgever: geen administratie,
-                geen risico.
+                Voor langere inzet op een project of in je onderhoudsploeg. André bespreekt welke ervaring nodig is en welke vakmensen daarbij passen. De afspraken over inzet en contractvorm worden vooraf afgestemd.
               </p>
             </div>
             <div className="kaartje" id="uitzenden">
               <h3>Uitzenden</h3>
               <p style={{ fontSize: 14.5 }}>
-                Pieken opvangen zonder verplichtingen: extra schilders precies in de
-                weken dat het nodig is. U betaalt alleen de gewerkte uren.
+                Extra capaciteit voor een terugkerende behoefte of een langere projectperiode. Bespreek de planning en gewenste inzet, zodat duidelijk is welke samenwerking past.
               </p>
             </div>
             <div className="kaartje" id="werving-selectie">
               <h3>Werving &amp; selectie</h3>
               <p style={{ fontSize: 14.5 }}>
-                Een schilder in vaste dienst? Wij kennen de vakmensen in het Noorden
-                persoonlijk en selecteren op vakmanschap, niet op cv-woorden.
+                Zoek je als bedrijf een schilder voor je eigen team? André kijkt mee naar vakkennis, werkhouding en het werk dat iemand gaat doen. De passende contractvorm wordt met je besproken.
               </p>
             </div>
           </div>
@@ -115,7 +109,7 @@ export default function SchildersInhuren() {
               <div className="kaartje">
                 <h3>Bedrijven die flexibel inhuren</h3>
                 <p style={{ fontSize: 14 }}>Een schilder nodig zonder vaste loonlijst: ons zwaartepunt.</p>
-                <span className="verder" style={{ color: 'var(--tekst-licht)' }}>Pagina volgt in de uitbouw</span>
+                <span className="verder" style={{ color: 'var(--tekst-licht)' }}>Bespreek je onderhoudsplanning</span>
               </div>
               <Link href="/voor-aannemers" className="kaartje">
                 <h3>Aannemers &amp; onderhoud</h3>
@@ -124,7 +118,7 @@ export default function SchildersInhuren() {
               </Link>
               <Link href="/vastgoedonderhoud-en-rgs" className="kaartje">
                 <h3>RGS-opdrachtgevers</h3>
-                <p style={{ fontSize: 14 }}>Langjarige onderhoudspartner, conditiegericht.</p>
+                <p style={{ fontSize: 14 }}>Vakmensen voor je onderhoudsplanning.</p>
                 <span className="verder">Ons specialisme →</span>
               </Link>
               <div className="kaartje">
@@ -133,7 +127,7 @@ export default function SchildersInhuren() {
                   Terugkerend schilderwerk over een portefeuille panden.
                 </p>
                 <span className="verder" style={{ color: 'var(--tekst-licht)' }}>
-                  Pagina volgt in de uitbouw
+                  Bespreek je onderhoudsplanning
                 </span>
               </div>
             </div>
@@ -153,16 +147,10 @@ export default function SchildersInhuren() {
             <span className="kicker">Meer dan bemiddeling, verstand van schilderwerk</span>
             <h2>Waarom opdrachtgevers voor ons kiezen</h2>
             <p>
-              Met 23 jaar ervaring als technisch adviseur binnen de verf- en
-              onderhoudsbranche begrijpen wij het schildersvak als geen ander. Wij
-              leveren niet alleen vakmensen, maar denken mee over kwaliteit,
-              onderhoud en uitvoering.
+              André heeft 23 jaar ervaring als technisch adviseur in de verf- en onderhoudsbranche. Hij bespreekt de ondergrond, verfsystemen en uitvoering om te begrijpen welke ervaring je op het werk nodig hebt.
             </p>
             <p>
-              Dankzij onze kennis van RGS, vastgoedonderhoud en schildertechniek
-              spreken wij dezelfde taal als opdrachtgevers én schilders. Vanuit
-              Noord-Nederland bouwen wij aan langdurige relaties, gebaseerd op
-              vakmanschap, betrouwbaarheid en persoonlijk contact.
+              Die technische kennis helpt bij de bemiddeling. Een onderhoudsproject vraagt iets anders dan spuitwerk in een werkplaats. Daarom gaat het gesprek met zowel opdrachtgever als schilder over het werk zelf.
             </p>
             <ul className="checklijst" style={{ paddingLeft: 0 }}>
               <li>23 jaar technische expertise in verf en onderhoud</li>
@@ -175,29 +163,23 @@ export default function SchildersInhuren() {
           </div>
           <div style={{ display: 'grid', gap: 18 }}>
             <div className="kaartje">
-              <h3>Geen cv-schuiver, maar een vakinhoudelijke matchmaker</h3>
+              <h3>Selectie op het werk dat er ligt</h3>
               <p style={{ fontSize: 14.5 }}>
-                Wij beoordelen schilders op vakkennis, werkhouding, ervaring,
-                communicatie en geschiktheid voor uw specifieke project. Dat leidt
-                tot betere matches en minder uitval: de juiste schilder op het
-                juiste project.
+                Vakkennis, werkhouding, ervaring en communicatie tellen mee. André bespreekt wat je ploeg nodig heeft en welk werk bij de schilder past.
               </p>
             </div>
             <div className="kaartje">
               <h3>Sparringpartner voor ondernemers</h3>
               <p style={{ fontSize: 14.5 }}>
-                Meedenken over personeelsbeleid, cao-vraagstukken, duurzame
-                inzetbaarheid en het binden en behouden van vakmensen: één
-                aanspreekpunt met praktijkervaring, geen accountmanager zonder
-                technische achtergrond.
+                Naast de bezetting kun je vragen over personeelsbeleid, cao en het behouden van vakmensen bespreken. André verbindt die vragen aan de dagelijkse praktijk van je bedrijf.
               </p>
             </div>
             <div className="kaartje">
-              <h3>Technisch advies inbegrepen</h3>
+              <h3>Verstand van de uitvoering</h3>
               <p style={{ fontSize: 14.5 }}>
                 Verfsystemen, ondergrondbeoordeling, onderhoudscycli, kwaliteitseisen
-                en uitvoeringsrisico&rsquo;s. Wij plaatsen niet alleen schilders, wij
-                begrijpen hun werk.
+                en uitvoeringsrisico&rsquo;s. We kennen het werk van de schilders die we
+                plaatsen.
               </p>
             </div>
           </div>
@@ -218,14 +200,12 @@ export default function SchildersInhuren() {
             </div>
             <div className="stap">
               <p>
-                <strong>Wij plannen de juiste vakmensen in.</strong> Gematcht op
-                specialisme; u weet vooraf wie er komt en wat het kost.
+                <strong>André bespreekt de match.</strong> Welke ervaring is nodig, wie past bij de ploeg en welke inzet is beschikbaar? Voor de start worden het tarief en de afspraken afgestemd.
               </p>
             </div>
             <div className="stap">
               <p>
-                <strong>Op- en afschalen wanneer u wilt.</strong> Meer werk? Extra
-                capaciteit. Project klaar? Geen verplichtingen.
+                <strong>Houd contact tijdens de samenwerking.</strong> Verandert het werk of de planning? Bespreek wat er nodig is en welke aanpassing mogelijk is.
               </p>
             </div>
           </div>
@@ -239,15 +219,13 @@ export default function SchildersInhuren() {
       <section className="sectie">
         <div className="container">
           <ClusterBlok
-            titel="Cluster: schilders inhuren (pillar + ondersteunende artikelen)"
-            intro="Elke ondersteunende pagina beantwoordt één vraag van een opdrachtgever en linkt terug naar deze pillar: het hub-and-spoke-model waarmee de winnende concurrenten ranken."
+            titel="Verder lezen over schilders voor je bedrijf"
+            intro="Lees meer over de vakkennis, het onderhoudswerk en de regio die bij je aanvraag passen."
             items={[
-              { titel: 'Wat kost het inhuren van schilders?' },
-              { titel: 'Inhuren vs. zelf in dienst nemen' },
-              { titel: 'Flexibele capaciteit bij piekdrukte' },
-              { titel: 'Schilders inhuren zonder vaste loonlijst (voor het kleinbedrijf)' },
-              { titel: 'Inhuren voor vastgoedonderhoud & RGS', href: '/vastgoedonderhoud-en-rgs' },
-              { titel: 'Kwaliteit borgen bij ingehuurde schilders' },
+              { titel: 'Voor aannemers en onderhoudsbedrijven', href: '/voor-aannemers' },
+              { titel: 'Specialisaties van schilders', href: '/soorten-schilders' },
+              { titel: 'Vastgoedonderhoud en RGS', href: '/vastgoedonderhoud-en-rgs' },
+              { titel: 'André en zijn vakkennis', href: '/auteur/andre' },
             ]}
           />
         </div>
