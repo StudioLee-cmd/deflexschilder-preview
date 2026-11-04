@@ -202,6 +202,11 @@ export default async function VacatureOfStad({ params }) {
     },
   };
 
+  // Eén zin als intro, maar niet als de tekst eronder er al mee begint (ATS-vacatures).
+  const eersteZin = v.beschrijving ? `${v.beschrijving.split('. ')[0].replace(/\.$/, '')}.` : '';
+  const tekstBegin = (v.beschrijvingHtml || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+  const intro = eersteZin && !tekstBegin.startsWith(eersteZin.slice(0, 40)) ? eersteZin : '';
+
   return (
     <>
       <Kruimel items={[{ naam: 'Vacatures', href: '/vacatures' }, { naam: v.titel }]} />
@@ -211,11 +216,9 @@ export default async function VacatureOfStad({ params }) {
           Vacature · {v.plaats} {(v.demo || v.voorbeeld) && <span className="demolabel">{v.voorbeeld ? 'voorbeeld' : 'demo'}</span>}
         </span>
         <h1>{v.titel}</h1>
-        {v.beschrijving && (
-          <p className="lead vacaturekop__intro">{v.beschrijving.split('. ')[0].replace(/\.$/, '')}.</p>
-        )}
+        {intro && <p className="lead vacaturekop__intro">{intro}</p>}
         <dl className="feiten">
-          <div><dt>Plaats</dt><dd>{v.plaats}{v.regio ? `, ${v.regio}` : ''}</dd></div>
+          <div><dt>Plaats</dt><dd>{v.plaats}{v.regio && v.regio !== v.plaats ? `, ${v.regio}` : ''}</dd></div>
           {v.dienstverband && <div><dt>Dienstverband</dt><dd>{v.dienstverband}</dd></div>}
           {v.uren && <div><dt>Uren</dt><dd>{v.uren} per week</dd></div>}
           {v.salarisIndicatie && <div><dt>Salaris</dt><dd>{v.salarisIndicatie}</dd></div>}
