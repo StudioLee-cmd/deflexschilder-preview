@@ -206,45 +206,70 @@ export default async function VacatureOfStad({ params }) {
     <>
       <Kruimel items={[{ naam: 'Vacatures', href: '/vacatures' }, { naam: v.titel }]} />
 
-      <section className="paginakop container">
+      <section className="paginakop container vacaturekop">
         <span className="kicker">
           Vacature · {v.plaats} {(v.demo || v.voorbeeld) && <span className="demolabel">{v.voorbeeld ? 'voorbeeld' : 'demo'}</span>}
         </span>
         <h1>{v.titel}</h1>
-        <div className="vacature__meta" style={{ marginTop: 12, fontSize: 15.5 }}>
-          <span>📍 <strong>{v.plaats}</strong></span>
-          {v.dienstverband && <span>{v.dienstverband}</span>}
-          {v.uren && <span>{v.uren}</span>}
-          {v.opleiding && <span>{v.opleiding}</span>}
-          {v.salarisIndicatie && <span><strong>{v.salarisIndicatie}</strong></span>}
-        </div>
+        {v.beschrijving && (
+          <p className="lead vacaturekop__intro">{v.beschrijving.split('. ')[0].replace(/\.$/, '')}.</p>
+        )}
+        <dl className="feiten">
+          <div><dt>Plaats</dt><dd>{v.plaats}{v.regio ? `, ${v.regio}` : ''}</dd></div>
+          {v.dienstverband && <div><dt>Dienstverband</dt><dd>{v.dienstverband}</dd></div>}
+          {v.uren && <div><dt>Uren</dt><dd>{v.uren} per week</dd></div>}
+          {v.salarisIndicatie && <div><dt>Salaris</dt><dd>{v.salarisIndicatie}</dd></div>}
+          {v.opleiding && <div><dt>Opleiding</dt><dd>{v.opleiding}</dd></div>}
+          {v.rijbewijzen?.length > 0 && <div><dt>Rijbewijs</dt><dd>{v.rijbewijzen.join(', ')}</dd></div>}
+          {v.datePosted && <div><dt>Geplaatst</dt><dd>{datumNl(v.datePosted)}</dd></div>}
+          {v.validThrough && <div><dt>Reageren vóór</dt><dd>{datumNl(v.validThrough)}</dd></div>}
+        </dl>
       </section>
 
-      <section className="sectie" style={{ paddingTop: 28 }}>
-        <div className="container kaartwrap" style={{ alignItems: 'start' }}>
-          <div className="prose">
+      <section className="sectie" style={{ paddingTop: 30 }}>
+        <div className="container vacaturegrid">
+          <div>
             {/* De omschrijving komt als HTML uit het ATS (opsommingen, alinea's). Die
-                structuur is de inhoud voor een vakman, dus we renderen 'm — door de
+                structuur is de inhoud voor een vakman, dus we renderen 'm, door de
                 allowlist in lib/ats.js, want een ATS is invoer van meerdere mensen. */}
-            {v.beschrijvingHtml ? (
-              <div dangerouslySetInnerHTML={{ __html: v.beschrijvingHtml }} />
-            ) : (
-              <p>{v.beschrijving}</p>
-            )}
-            {v.rijbewijzen?.length > 0 && (
-              <p style={{ fontSize: 15 }}>
-                <strong>Rijbewijs:</strong> {v.rijbewijzen.join(', ')}
-              </p>
-            )}
-            <h2 style={{ fontSize: 20 }}>Wat je van ons krijgt</h2>
-            <ul className="checklijst" style={{ paddingLeft: 0 }}>
-              <li>Marktconform salaris en eerlijke voorwaarden</li>
-              <li>Structureel werk, geen losse klusjes</li>
-              <li>Begeleiding en coaching door vakmensen</li>
-              <li>Werk zoveel mogelijk dicht bij huis</li>
-            </ul>
+            <div className="vacaturetekst">
+              {v.beschrijvingHtml ? (
+                <div dangerouslySetInnerHTML={{ __html: v.beschrijvingHtml }} />
+              ) : (
+                <p>{v.beschrijving}</p>
+              )}
+            </div>
+
+            {/* Werken via De Flexschilder: alleen wat de vakmensen zelf vertellen
+                (interviews 28-10-2026), geen algemene beloftes. */}
+            <div className="viaons">
+              <h2>Werken via De Flexschilder</h2>
+              <ul>
+                <li>
+                  <strong>Meteen een contract.</strong> Je wordt gekoppeld aan een bedrijf dat past
+                  bij het werk dat je wilt doen.
+                </li>
+                <li>
+                  <strong>Eén vast aanspreekpunt.</strong> Vragen over werk of privé? Je belt of appt
+                  André.
+                </li>
+                <li>
+                  <strong>Leren naast je werk.</strong> Zij-instromers kunnen één avond per week de
+                  Schildersvakopleiding volgen.
+                </li>
+              </ul>
+              <blockquote>
+                &ldquo;Dat is een van de voordelen van De Flexschilder: je krijgt meteen een vast
+                contract en je wordt geholpen met iedere stap die je maakt.&rdquo;
+                <cite>
+                  Robbin de Jong, allround glaszetter.{' '}
+                  <Link href="/over-ons#verhaal-robbin">Bekijk zijn verhaal →</Link>
+                </cite>
+              </blockquote>
+            </div>
+
             {stad && (
-              <p style={{ fontSize: 15 }}>
+              <p style={{ fontSize: 15, marginTop: 22 }}>
                 Meer werk in de buurt:{' '}
                 <Link href={`/vacatures/schilder-${stad.slug}`} style={{ color: 'var(--oranje-donker)', fontWeight: 700 }}>
                   alle vacatures rond {stad.name} →
@@ -253,25 +278,43 @@ export default async function VacatureOfStad({ params }) {
             )}
           </div>
 
-          <div className="kaartje" style={{ padding: 26 }}>
-            <h3>Solliciteer direct</h3>
-            <p style={{ fontSize: 14.5, color: 'var(--tekst-licht)' }}>
-              Wil je reageren op deze vacature? Je kunt De Flexschilder bellen op 06 - 137 181 72. Het formulier hieronder is in deze preview nog niet aangesloten.
-            </p>
-            <DemoForm
-              velden={[
-                { naam: 'Naam', placeholder: 'Je naam', verplicht: true },
-                { naam: 'Telefoon', type: 'tel', placeholder: '06 …', verplicht: true },
-                { naam: 'E-mail', type: 'email', placeholder: 'naam@voorbeeld.nl', verplicht: false },
-                { naam: 'Korte toelichting', type: 'textarea', placeholder: 'Wat voor werk doe je nu?', verplicht: false },
-              ]}
-              knop="Solliciteer"
-            />
-          </div>
+          <aside className="solliciteer">
+            <div className="kaartje" style={{ padding: 24 }}>
+              <h2>Solliciteren</h2>
+              <p style={{ fontSize: 15 }}>Liever eerst even praten? Bel of app André.</p>
+              <div className="solliciteer__knoppen">
+                <a href="tel:+31613718172" className="btn btn--primair">Bel 06 - 137 181 72</a>
+                <a href="https://wa.me/31613718172" className="btn btn--secundair" target="_blank" rel="noreferrer">WhatsApp</a>
+              </div>
+              <div className="solliciteer__form">
+                <DemoForm
+                  velden={[
+                    { naam: 'Naam', placeholder: 'Je naam', verplicht: true },
+                    { naam: 'Telefoon', type: 'tel', placeholder: '06 …', verplicht: true },
+                    { naam: 'E-mail', type: 'email', placeholder: 'naam@voorbeeld.nl', verplicht: false },
+                    { naam: 'Korte toelichting', type: 'textarea', placeholder: 'Wat voor werk doe je nu?', verplicht: false },
+                  ]}
+                  knop="Solliciteer"
+                />
+              </div>
+              <h3>Zo gaat het verder</h3>
+              <ol className="stappen">
+                <li>André belt je voor een kennismaking: wat zoek je, wat kun je?</li>
+                <li>Past het? Dan stelt hij je voor bij de opdrachtgever.</li>
+                <li>Jullie maken samen afspraken over de start.</li>
+              </ol>
+            </div>
+          </aside>
         </div>
       </section>
 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jobPosting) }} />
     </>
   );
+}
+
+function datumNl(iso) {
+  const d = new Date(`${iso}T12:00:00`);
+  if (Number.isNaN(d.getTime())) return iso;
+  return d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
 }
