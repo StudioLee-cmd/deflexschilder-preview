@@ -7,7 +7,7 @@ import { CITIES } from '@/lib/geo';
 import { getAtsAdapter } from '@/lib/ats';
 
 export const metadata = {
-  title: 'Vacatures voor schilders in Noord-Nederland',
+  title: 'Vacatures voor schilders in Noordoost-Nederland',
   description:
     'Vacature schilder gezocht? Structureel werk via De Flexschilder: vacatures voor schilders in Groningen, Friesland, Drenthe en de kop van Overijssel, met marktconforme salarissen.',
   alternates: { canonical: '/vacatures' },
@@ -32,7 +32,7 @@ export default async function Vacatures() {
           Vacatures voor <span className="accent">schilders</span>
         </h1>
         <p className="lead">
-          Structureel werk bij goede opdrachtgevers in heel Noord-Nederland, geen
+          Structureel werk bij goede opdrachtgevers in heel Noordoost-Nederland, geen
           losse klusjes. Marktconform salaris, eerlijke voorwaarden en begeleiding
           door vakmensen die het vak zelf kennen.
         </p>
@@ -135,7 +135,7 @@ export default async function Vacatures() {
               vakman.
             </p>
             <p>
-              André heeft een netwerk in de schilders- en onderhoudsbranche in Noord-Nederland. Hij bespreekt welk bedrijf en welk werk aansluiten bij je ervaring, wensen en reistijd.
+              André heeft een netwerk in de schilders- en onderhoudsbranche in Noordoost-Nederland. Hij bespreekt welk bedrijf en welk werk aansluiten bij je ervaring, wensen en reistijd.
             </p>
           </div>
           <div className="kaartje" style={{ alignSelf: 'center' }}>

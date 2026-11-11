@@ -6,7 +6,7 @@ import { BASIS, PERSOON_ID, jsonLd } from '@/lib/schema';
 export const metadata = {
   title: 'André van der Hoogen: eigenaar De Flexschilder, 23 jaar vakervaring',
   description:
-    'André van der Hoogen is eigenaar van De Flexschilder: 23 jaar technische expertise in verf en onderhoud, kennis van RGS en planmatig onderhoud, en een sterk netwerk in Noord-Nederland.',
+    'André van der Hoogen is eigenaar van De Flexschilder: 23 jaar technische expertise in verf en onderhoud, kennis van RGS en planmatig onderhoud, en een sterk netwerk in Noordoost-Nederland.',
   alternates: { canonical: '/auteur/andre' },
   openGraph: {
     title: 'André van der Hoogen | De Flexschilder',
@@ -36,7 +36,7 @@ export default function AuteurAndre() {
         <p className="lead">
           Eigenaar van De Flexschilder. <strong>23 jaar technische expertise</strong>{' '}
           in verf en onderhoud, diepgaande kennis van RGS en planmatig onderhoud, en
-          een sterk regionaal netwerk in Noord-Nederland. Hij gebruikt die achtergrond bij de bemiddeling tussen bedrijven en schilders.
+          een sterk regionaal netwerk in Noordoost-Nederland. Hij gebruikt die achtergrond bij de bemiddeling tussen bedrijven en schilders.
         </p>
       </section>
 
@@ -93,7 +93,7 @@ export default function AuteurAndre() {
               <dl style={{ display: 'grid', gap: 6, fontSize: 14.5, marginTop: 4 }}>
                 <div style={{ display: 'flex', gap: 8 }}><dt style={{ fontWeight: 700, minWidth: 110, color: 'var(--tekst-licht)' }}>Vakervaring</dt><dd style={{ margin: 0 }}><strong>23 jaar</strong> (verf &amp; onderhoud)</dd></div>
                 <div style={{ display: 'flex', gap: 8 }}><dt style={{ fontWeight: 700, minWidth: 110, color: 'var(--tekst-licht)' }}>Specialisme</dt><dd style={{ margin: 0 }}>RGS · NEN 2767 · verfsystemen</dd></div>
-                <div style={{ display: 'flex', gap: 8 }}><dt style={{ fontWeight: 700, minWidth: 110, color: 'var(--tekst-licht)' }}>Regio</dt><dd style={{ margin: 0 }}>Noord-Nederland</dd></div>
+                <div style={{ display: 'flex', gap: 8 }}><dt style={{ fontWeight: 700, minWidth: 110, color: 'var(--tekst-licht)' }}>Regio</dt><dd style={{ margin: 0 }}>Noordoost-Nederland</dd></div>
                 <div style={{ display: 'flex', gap: 8 }}><dt style={{ fontWeight: 700, minWidth: 110, color: 'var(--tekst-licht)' }}>Telefoon</dt><dd style={{ margin: 0 }}><a href="tel:+31613718172" style={{ fontWeight: 700 }}>06 - 137 181 72</a></dd></div>
                 <div style={{ display: 'flex', gap: 8 }}><dt style={{ fontWeight: 700, minWidth: 110, color: 'var(--tekst-licht)' }}>E-mail</dt><dd style={{ margin: 0 }}><a href="mailto:andre@deflexschilder.nl" style={{ fontWeight: 700 }}>andre@deflexschilder.nl</a></dd></div>
               </dl>

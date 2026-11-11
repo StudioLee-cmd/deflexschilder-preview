@@ -20,7 +20,7 @@ const ABOUT_SCHEMA = {
 export const metadata = {
   title: 'Over ons: vakmensen door vakmensen',
   description:
-    'De Flexschilder wordt geleid en bemenst door echte schilders. 23 jaar vakkennis in verf, onderhoud en RGS. Dé schildersspecialist van Noord-Nederland.',
+    'De Flexschilder wordt geleid en bemenst door echte schilders. 23 jaar vakkennis in verf, onderhoud en RGS. Dé schildersspecialist van Noordoost-Nederland.',
   alternates: { canonical: '/over-ons' },
 };
 
@@ -52,7 +52,7 @@ export default function OverOns() {
           <dl>
             <div><dt>Wat</dt><dd>Specialistische partner in schilders: detachering, uitzenden en werving &amp; selectie. B2B, geen losse klussen</dd></div>
             <div><dt>Wie</dt><dd>André van der Hoogen, eigenaar. 23 jaar technisch adviseur in de verf- en onderhoudsbranche</dd></div>
-            <div><dt>Werkgebied</dt><dd>Noord-Nederland: Groningen, Friesland, Drenthe en de kop van Overijssel (zuidgrens Zwolle)</dd></div>
+            <div><dt>Werkgebied</dt><dd>Noordoost-Nederland: Groningen, Friesland, Drenthe en Overijssel</dd></div>
             <div><dt>Specialisme</dt><dd>Vastgoedonderhoud &amp; RGS, NEN 2767-conditiemeting, verfsystemen en onderhoudscycli</dd></div>
             <div><dt>Netwerk</dt><dd>Een regionaal netwerk van schilders, schildersbedrijven en onderhoudsbedrijven</dd></div>
             <div><dt>Bewijs</dt><dd>SNA-keurmerk · VCU-gecertificeerd · ABU-lid · KvK 83856323 · Steenwijkerwold</dd></div>
@@ -78,7 +78,7 @@ export default function OverOns() {
             <p>
               <strong>23 jaar technische expertise</strong> in verf en
               onderhoud, diepgaande kennis van <strong>RGS en planmatig onderhoud</strong>,
-              en een sterk regionaal netwerk in Noord-Nederland. André is
+              en een sterk regionaal netwerk in Noordoost-Nederland. André is
               sparringpartner voor ondernemers en beheerders: iemand die
               het vak van binnenuit kent en er eerlijk over adviseert.
             </p>

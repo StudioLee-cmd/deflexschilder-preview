@@ -159,7 +159,7 @@ export default function Artikel() {
             plek vonden.
           </p>
           <p>
-            Zoek je schilderscapaciteit voor je bedrijf in Noord-Nederland? Lees meer
+            Zoek je schilderscapaciteit voor je bedrijf in Noordoost-Nederland? Lees meer
             over <Link href="/schilders-inhuren">schilders inhuren</Link>, bekijk
             wat we doen voor <Link href="/voor-aannemers">aannemers en
             onderhoudsbedrijven</Link>, of{' '}

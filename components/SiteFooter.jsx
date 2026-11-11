@@ -48,7 +48,7 @@ export default function SiteFooter() {
               <li><Link href="/tools">Rekentools (salaris &amp; netto)</Link></li>
               <li><Link href="/inschrijven">Inschrijven</Link></li>
               <li>
-                <a href="https://deflexschilder.onlineuur.nl/" target="_blank" rel="noreferrer">
+                <a href="https://www.easyflex2go.nl/" target="_blank" rel="noreferrer">
                   Uren doorgeven
                 </a>
               </li>

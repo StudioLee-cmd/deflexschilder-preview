@@ -121,7 +121,7 @@ export default async function StadPagina({ params }) {
           <ul className="checklijst" style={{ marginTop: 18, maxWidth: 640 }}>
             <li>Een gesprek over het schilderwerk en de ervaring die daarvoor nodig is</li>
             <li>Bemiddeling bij structurele inzet en langere samenwerkingen</li>
-            <li>Een regionaal netwerk in Noord-Nederland</li>
+            <li>Een regionaal netwerk in Noordoost-Nederland</li>
             <li>Technische kennis van verf, onderhoud en uitvoering</li>
           </ul>
         </div>
@@ -160,7 +160,7 @@ export default async function StadPagina({ params }) {
             <span className="kicker">Regio</span>
             <h2 style={{ fontSize: 24 }}>Rond {stad.name}</h2>
             <p className="lead" style={{ marginTop: 10 }}>
-              De Flexschilder werkt in heel Noord-Nederland. Dit zijn de steden in de buurt van {stad.name}.
+              De Flexschilder werkt in heel Noordoost-Nederland. Dit zijn de steden in de buurt van {stad.name}.
             </p>
           </div>
           <div className="kaartje" style={{ padding: 26 }}>

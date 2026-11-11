@@ -7,9 +7,9 @@ import StatStrip from '@/components/StatStrip';
 import { CITIES, PLACES } from '@/lib/geo';
 
 export const metadata = {
-  title: 'Schilders inhuren: flexibele schilderscapaciteit in Noord-Nederland',
+  title: 'Schilders inhuren: flexibele schilderscapaciteit in Noordoost-Nederland',
   description:
-    'Schilders inhuren zonder vaste loonkosten: detachering, uitzenden en werving & selectie voor bedrijven zonder vaste schilder, vastgoedbeheerders, aannemers en RGS-opdrachtgevers in Noord-Nederland.',
+    'Schilders inhuren zonder vaste loonkosten: detachering, uitzenden en werving & selectie voor bedrijven zonder vaste schilder, vastgoedbeheerders, aannemers en RGS-opdrachtgevers in Noordoost-Nederland.',
   alternates: { canonical: '/schilders-inhuren' },
 };
 
@@ -48,7 +48,7 @@ export default function SchildersInhuren() {
 
       <section className="paginakop container">
         <span className="kicker">Voor opdrachtgevers</span>
-        <h1>Schilders inhuren in Noord-Nederland</h1>
+        <h1>Schilders inhuren in Noordoost-Nederland</h1>
         <p className="lead">
           Heb je regelmatig schilders nodig, maar wil je geen eigen schilder in dienst nemen? De Flexschilder brengt je bedrijf in contact met passende vakmensen. Het werk, de ervaring die nodig is en de gewenste periode vormen het begin van de match.
         </p>
@@ -64,7 +64,7 @@ export default function SchildersInhuren() {
         <StatStrip
           items={[
             { tot: 23, label: 'jaar technische vakkennis' },
-            { tot: CITIES.length, label: 'stadspagina’s in Noord-NL' },
+            { tot: CITIES.length, label: 'stadspagina’s in Noordoost-NL' },
             { tot: PLACES.length, suffix: '+', label: 'plaatsen gedekt' },
             { vast: 'SNA · VCU · ABU', label: 'gecertificeerd & aangesloten' },
           ]}
@@ -157,7 +157,7 @@ export default function SchildersInhuren() {
               <li>23 jaar technische expertise in verf en onderhoud</li>
               <li>Specialist in schilders en vastgoedonderhoud</li>
               <li>Kennis van RGS en planmatig onderhoud</li>
-              <li>Sterk netwerk in Noord-Nederland</li>
+              <li>Sterk netwerk in Noordoost-Nederland</li>
               <li>Persoonlijke begeleiding en selectie</li>
               <li>Vakmensen door vakmensen</li>
             </ul>

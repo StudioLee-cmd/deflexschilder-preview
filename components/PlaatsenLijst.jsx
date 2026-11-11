@@ -3,7 +3,7 @@ import { CITIES, PLACES, nearestCity } from '@/lib/geo';
 
 // Volledige dekking zichtbaar (Tim 03-07): álle dorpen/kernen gegroepeerd onder
 // hun dichtstbijzijnde stad, uitklapbaar per stad. Elke plaats linkt door naar
-// de stadspagina mét de km-afstand in beeld — nooit "kan niet" binnen Noord-NL.
+// de stadspagina mét de km-afstand in beeld — nooit "kan niet" binnen Noordoost-NL.
 export default function PlaatsenLijst() {
   const groepen = new Map(CITIES.map((c) => [c.slug, []]));
   for (const p of PLACES) {

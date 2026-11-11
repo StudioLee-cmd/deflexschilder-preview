@@ -6,7 +6,7 @@ import BeeldAI from '@/components/BeeldAI';
 export const metadata = {
   title: 'Vastgoedonderhoud & RGS: resultaatgericht samenwerken',
   description:
-    'RGS, planmatig onderhoud, NEN 2767 en MJOP: technische kennis bij het vinden van schilders voor vastgoedbeheerders en onderhoudsbedrijven in Noord-Nederland.',
+    'RGS, planmatig onderhoud, NEN 2767 en MJOP: technische kennis bij het vinden van schilders voor vastgoedbeheerders en onderhoudsbedrijven in Noordoost-Nederland.',
   alternates: { canonical: '/vastgoedonderhoud-en-rgs' },
 };
 

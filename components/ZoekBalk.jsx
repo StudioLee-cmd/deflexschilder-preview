@@ -126,7 +126,7 @@ export default function ZoekBalk({ mode: startMode = 'werk', toonTabs = true }) 
     const keuze = plek || ALLES.find((p) => norm(p.naam).startsWith(norm(q)) && norm(q).length >= 3);
     if (!keuze) {
       setMelding(
-        'Binnen Noord-Nederland werken we overal. Deze plaats staat alleen nog niet in ons lijstje. Kies de dichtstbijzijnde stad op de kaart, of bel ons: 06 - 137 181 72.'
+        'Binnen Noordoost-Nederland werken we overal. Deze plaats staat alleen nog niet in ons lijstje. Kies de dichtstbijzijnde stad op de kaart, of bel ons: 06 - 137 181 72.'
       );
       return;
     }

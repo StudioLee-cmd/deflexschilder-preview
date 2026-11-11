@@ -25,6 +25,24 @@ export default function SiteHeader({ vacatureCount = 0 }) {
 
         <nav className="nav" aria-label="Hoofdmenu">
           <div className="nav__item">
+            <Link href="/vacatures" className="nav__link">
+              Voor schilders{' '}
+              {vacatureCount > 0 && <span className="nav__badge">{vacatureCount}</span>}{' '}
+              <span className="pijl">▾</span>
+            </Link>
+            <div className="nav__drop">
+              <div className="drop__kop">Ik zoek werk</div>
+              <Link href="/vacatures">Vacatures</Link>
+              <Link href="/soorten-schilders">Soorten schilders</Link>
+              <Link href="/tools">Rekentools (salaris &amp; netto)</Link>
+              <Link href="/inschrijven">Inschrijven</Link>
+              <a href="https://www.easyflex2go.nl/" target="_blank" rel="noreferrer">
+                Uren doorgeven
+              </a>
+            </div>
+          </div>
+
+          <div className="nav__item">
             <Link href="/schilders-inhuren" className="nav__link">
               Voor opdrachtgevers <span className="pijl">▾</span>
             </Link>
@@ -42,29 +60,11 @@ export default function SiteHeader({ vacatureCount = 0 }) {
           </div>
 
           <div className="nav__item">
-            <Link href="/vacatures" className="nav__link">
-              Voor schilders{' '}
-              {vacatureCount > 0 && <span className="nav__badge">{vacatureCount}</span>}{' '}
-              <span className="pijl">▾</span>
-            </Link>
-            <div className="nav__drop">
-              <div className="drop__kop">Ik zoek werk</div>
-              <Link href="/vacatures">Vacatures</Link>
-              <Link href="/soorten-schilders">Soorten schilders</Link>
-              <Link href="/tools">Rekentools (salaris &amp; netto)</Link>
-              <Link href="/inschrijven">Inschrijven</Link>
-              <a href="https://deflexschilder.onlineuur.nl/" target="_blank" rel="noreferrer">
-                Uren doorgeven
-              </a>
-            </div>
-          </div>
-
-          <div className="nav__item">
             <Link href="/#werkgebied" className="nav__link">
               Locaties <span className="pijl">▾</span>
             </Link>
             <div className="nav__drop">
-              <div className="drop__kop">Werkgebied Noord-Nederland</div>
+              <div className="drop__kop">Werkgebied Noordoost-Nederland</div>
               {CITIES.map((c) => (
                 <Link key={c.slug} href={`/schilders-inhuren/${c.slug}`}>
                   {c.name}
@@ -93,11 +93,8 @@ export default function SiteHeader({ vacatureCount = 0 }) {
           <a className="header__tel" href="tel:+31613718172">
             ☎ 06 - 137 181 72
           </a>
-          <Link href="/inschrijven" className="btn btn--secundair btn--klein">
-            Inschrijven
-          </Link>
-          <Link href="/aanvraag" className="btn btn--primair btn--klein">
-            Schilders aanvragen
+          <Link href="/inschrijven" className="btn btn--primair btn--klein">
+            Inschrijven als schilder
           </Link>
           <button
             className="hamburger"
@@ -113,21 +110,22 @@ export default function SiteHeader({ vacatureCount = 0 }) {
       </div>
 
       <div className={`mobielmenu${open ? ' open' : ''}`}>
-        <div className="drop__kop">Voor opdrachtgevers: ik zoek schilders</div>
-        <Link href="/schilders-inhuren">Schilders inhuren</Link>
-        <Link href="/voor-aannemers">Aannemers &amp; onderhoudsbedrijven</Link>
-        <Link href="/vastgoedonderhoud-en-rgs">Vastgoedonderhoud &amp; RGS</Link>
-
         <div className="drop__kop">Voor schilders: ik zoek werk</div>
         <Link href="/vacatures">Vacatures {vacatureCount > 0 ? `(${vacatureCount})` : ''}</Link>
         <Link href="/soorten-schilders">Soorten schilders</Link>
         <Link href="/tools">Rekentools (salaris &amp; netto)</Link>
         <Link href="/inschrijven">Inschrijven</Link>
-        <a href="https://deflexschilder.onlineuur.nl/" target="_blank" rel="noreferrer">
+        <a href="https://www.easyflex2go.nl/" target="_blank" rel="noreferrer">
           Uren doorgeven
         </a>
 
-        <div className="drop__kop">Locaties: Noord-Nederland</div>
+        <div className="drop__kop">Voor opdrachtgevers: ik zoek schilders</div>
+        <Link href="/schilders-inhuren">Schilders inhuren</Link>
+        <Link href="/voor-aannemers">Aannemers &amp; onderhoudsbedrijven</Link>
+        <Link href="/vastgoedonderhoud-en-rgs">Vastgoedonderhoud &amp; RGS</Link>
+        <Link href="/aanvraag">Schilders aanvragen</Link>
+
+        <div className="drop__kop">Locaties: Noordoost-Nederland</div>
         <div className="mobielmenu__kolommen">
           {CITIES.map((c) => (
             <Link key={c.slug} href={`/schilders-inhuren/${c.slug}`}>
@@ -141,10 +139,7 @@ export default function SiteHeader({ vacatureCount = 0 }) {
         <Link href="/over-ons">Over ons</Link>
 
         <div className="mobielmenu__acties">
-          <Link href="/aanvraag" className="btn btn--primair">
-            Schilders aanvragen
-          </Link>
-          <Link href="/inschrijven" className="btn btn--secundair">
+          <Link href="/inschrijven" className="btn btn--primair">
             Inschrijven als schilder
           </Link>
           <a className="header__tel" href="tel:+31613718172" style={{ display: 'block', textAlign: 'center' }}>

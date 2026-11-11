@@ -9,7 +9,7 @@ import { ARTIKELEN } from '@/lib/blog';
 import { TEAM } from '@/lib/team';
 
 export const metadata = {
-  title: 'Schilders inhuren in Noord-Nederland | De Flexschilder',
+  title: 'Schilders inhuren in Noordoost-Nederland | De Flexschilder',
   description:
     'Schilders inhuren of aan het werk als schilder in Groningen, Friesland, Drenthe en de kop van Overijssel. Detachering, uitzenden en werving & selectie. Vakmensen door vakmensen.',
   alternates: { canonical: '/' },
@@ -28,18 +28,18 @@ export default async function Home() {
         <div className="container">
           <div className="hero__inner">
             <span className="kicker" style={{ color: '#ffd9a8' }}>
-              Vakmensen door vakmensen · Noord-Nederland
+              Vakmensen door vakmensen · Noordoost-Nederland
             </span>
-            <h1>Schilders inhuren in Noord-Nederland</h1>
+            <h1>Schilders inhuren in Noordoost-Nederland</h1>
             <p className="hero__sub">
-              Je zoekt schilders die passen bij het werk en bij je ploeg. De Flexschilder brengt bedrijven en vakmensen bij elkaar voor structureel schilderwerk in Noord-Nederland. Met verstand van verf, onderhoud en de mensen die het uitvoeren.
+              Je zoekt schilders die passen bij het werk en bij je ploeg. De Flexschilder brengt bedrijven en vakmensen bij elkaar voor structureel schilderwerk in Noordoost-Nederland. Met verstand van verf, onderhoud en de mensen die het uitvoeren.
             </p>
             <div className="hero__paden">
-              <Link href="/vacatures" className="hero__pad">
-                Ik zoek werk →
+              <Link href="/inschrijven" className="hero__pad">
+                Inschrijven als schilder →
               </Link>
-              <Link href="/aanvraag" className="hero__pad">
-                Ik zoek schilders →
+              <Link href="/vacatures" className="hero__pad">
+                Bekijk vacatures →
               </Link>
             </div>
             <ZoekBalk />
@@ -74,9 +74,10 @@ export default async function Home() {
             <div className="kaartje">
               <h3>Zonder schilder op je loonlijst</h3>
               <p style={{ fontSize: 15 }}>
-                Je hebt het hele jaar schilderwerk, maar wilt geen eigen schilder in
-                dienst nemen. Dan werkt de schilder via De Flexschilder. De afspraken over
-                inzet, tarief en contract stem je vooraf met André af.
+                Je bent zzp'er of een klein schildersbedrijf en hebt werk voor een
+                leerling of een ervaren schilder, maar het risico van iemand op je
+                loonlijst wil je niet dragen. Dan werkt hij via De Flexschilder en draagt
+                André dat risico. Inzet, tarief en contract stem je vooraf met André af.
               </p>
             </div>
             <div className="kaartje">
@@ -176,16 +177,15 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* WERKGEBIED — klikbare Noord-NL-kaart */}
+      {/* WERKGEBIED — klikbare Noordoost-NL-kaart */}
       <section className="sectie" id="werkgebied">
         <div className="container kaartwrap">
           <NoordMap />
           <div>
             <span className="kicker">Locaties</span>
-            <h2>Werkgebied: Noord-Nederland, van Zwolle tot de Waddenkust</h2>
+            <h2>Werkgebied: Noordoost-Nederland</h2>
             <p className="lead" style={{ marginTop: 12 }}>
-              Groningen, Friesland, Drenthe en de kop van Overijssel. Zwolle is onze
-              zuidgrens. Klik een stad op de kaart of typ je eigen plaats in de
+              Groningen, Friesland, Drenthe en Overijssel. Klik een stad op de kaart of typ je eigen plaats in de
               zoekbalk: kleinere plaatsen vallen automatisch onder de dichtstbijzijnde
               grote stad, met de afstand er eerlijk bij.
             </p>

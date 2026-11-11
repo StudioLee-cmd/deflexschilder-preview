@@ -5,7 +5,7 @@ import BeeldAI from '@/components/BeeldAI';
 export const metadata = {
   title: 'Schilders voor aannemers & onderhoudsbedrijven: pieken opvangen',
   description:
-    'Onderaanneming schilderwerk en flexibele schilders voor aannemers en onderhoudsbedrijven in Noord-Nederland: bemiddeling bij structurele schilderscapaciteit en langere projecten.',
+    'Onderaanneming schilderwerk en flexibele schilders voor aannemers en onderhoudsbedrijven in Noordoost-Nederland: bemiddeling bij structurele schilderscapaciteit en langere projecten.',
   alternates: { canonical: '/voor-aannemers' },
 };
 

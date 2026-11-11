@@ -191,7 +191,7 @@ export default async function VacatureOfStad({ params }) {
       address: {
         '@type': 'PostalAddress',
         addressLocality: v.plaats,
-        addressRegion: v.regio || stad?.provincie || 'Noord-Nederland',
+        addressRegion: v.regio || stad?.provincie || 'Noordoost-Nederland',
         addressCountry: v.land || 'NL',
         ...(v.postcode ? { postalCode: v.postcode } : {}),
         ...(v.straat ? { streetAddress: v.straat } : {}),

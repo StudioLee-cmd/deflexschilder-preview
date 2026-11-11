@@ -4,7 +4,7 @@ import { VIEW_W, VIEW_H, LON_MIN, LON_MAX, LAT_MIN, LAT_MAX, PROVINCIES } from '
 
 // Kaart met de ÉCHTE Nederlandse grenzen (CBS-provinciegrenzen): heel NL in
 // lichtgrijs, het werkgebied ingekleurd (Groningen/Friesland/Drenthe oranje,
-// Overijssel licht — kop van Overijssel hoort erbij, Zwolle is de zuidgrens),
+// Overijssel licht — Overijssel hoort erbij (werkgebied Noordoost-Nederland, 06-11)),
 // en de 15 steden als échte oranje knop-links er bovenop. Geen blauw vlak,
 // geen externe geo-API — zelfde projectie voor kaart én knoppen.
 
@@ -43,7 +43,7 @@ const KLEUR = {
 
 export default function NoordMap() {
   return (
-    <div className="kaart" role="navigation" aria-label="Werkgebied Noord-Nederland, kies een stad">
+    <div className="kaart" role="navigation" aria-label="Werkgebied Noordoost-Nederland, kies een stad">
       <svg viewBox={`0 0 ${VIEW_W} ${VIEW_H}`} aria-hidden="true">
         {/* eerst de rest van NL, dan het werkgebied er bovenop (nette randen) */}
         {PROVINCIES.filter((p) => p.zone === 'rest').map((p) => (

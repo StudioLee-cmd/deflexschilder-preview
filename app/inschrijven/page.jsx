@@ -5,7 +5,7 @@ import DemoForm from '@/components/DemoForm';
 export const metadata = {
   title: 'Inschrijven als schilder: wij zoeken werk dat bij je past',
   description:
-    'Schrijf je in bij De Flexschilder: structureel schilderswerk in Noord-Nederland, marktconform salaris en begeleiding door vakmensen.',
+    'Schrijf je in bij De Flexschilder: structureel schilderswerk in Noordoost-Nederland, marktconform salaris en begeleiding door vakmensen.',
   alternates: { canonical: '/inschrijven' },
 };
 

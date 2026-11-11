@@ -33,7 +33,7 @@ const assistant = Assistant({
 export const metadata = {
   metadataBase: new URL(BASIS),
   title: {
-    default: 'Uitzendbureau voor schilders Noord-Nederland | De Flexschilder',
+    default: 'Uitzendbureau voor schilders Noordoost-Nederland | De Flexschilder',
     template: '%s | De Flexschilder',
   },
   description:

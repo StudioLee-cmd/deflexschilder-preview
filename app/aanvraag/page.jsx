@@ -4,7 +4,7 @@ import AanvraagForm from '@/components/AanvraagForm';
 export const metadata = {
   title: 'Schilders zoeken voor je bedrijf',
   description:
-    'Vraag flexibele schilderscapaciteit aan voor je project of onderhoudsstroom in Noord-Nederland. Vertel wat er moet gebeuren. Wij plannen de juiste vakmensen in.',
+    'Vraag flexibele schilderscapaciteit aan voor je project of onderhoudsstroom in Noordoost-Nederland. Vertel wat er moet gebeuren. Wij plannen de juiste vakmensen in.',
   alternates: { canonical: '/aanvraag' },
 };
 
