@@ -779,7 +779,9 @@ a.kaartje:hover { transform: translateY(-2px); box-shadow: var(--schaduw); }
 .teamlid__intro { font-size: 14px; color: var(--tekst); margin-top: 6px; }
 
 /* foto met nette "foto volgt"-placeholder — 1-op-1 vervangbaar via lib/team.js */
-.teamfoto { position: relative; aspect-ratio: 4 / 5; background: var(--vlak); overflow: hidden; }
+/* 16:9 zoals de video-stills zelf: een 4:5-uitsnede liet maar 44% van de breedte zien en sneed het
+   De Flexschilder-logo rechtsboven af (gesprek 06-11). */
+.teamfoto { position: relative; aspect-ratio: 16 / 9; background: var(--vlak); overflow: hidden; }
 .teamfoto img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .teamfoto--leeg {
   display: grid;
