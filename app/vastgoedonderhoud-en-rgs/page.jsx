@@ -65,8 +65,8 @@ export default function VastgoedRgs() {
 
           <div style={{ display: 'grid', gap: 18 }}>
             <BeeldAI
-              src="/img/werk/julia-onderhoud.jpg"
-              alt="Julia di Martino schildert het kozijn van een woning, met steiger ernaast"
+              src="/img/werk/ploeg-kozijn.jpg"
+              alt="Schilders van De Flexschilder aan het werk aan een kozijn"
               badge={null}
               ratio="16 / 10"
             />

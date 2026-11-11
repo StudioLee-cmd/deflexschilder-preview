@@ -102,7 +102,7 @@ export default function OverOns() {
               <span className="kicker">Verhalen van vakmensen</span>
               <h3>De mensen achter het werk</h3>
               <p style={{ fontSize: 14.5 }}>
-                Jordy, Tieme, Julia en Robbin vertellen op video hoe ze via
+                Jordy, Tieme en Robbin vertellen op video hoe ze via
                 De Flexschilder in het schildersvak terechtkwamen.
               </p>
               <a href="#verhalen" className="verder">Bekijk de verhalen →</a>

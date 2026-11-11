@@ -154,8 +154,8 @@ export default function Artikel() {
             Bij De Flexschilder koppelen we je personeelsvraag aan kennis van het
             schilderwerk. We kijken ook naar de schilder: welk werk doet iemand graag,
             en waar komt hij of zij het best tot zijn recht? Lees hoe{' '}
-            <Link href="/over-ons#verhaal-jordy">Jordy</Link>,{' '}
-            <Link href="/over-ons#verhaal-julia">Julia</Link> en anderen via ons hun
+            <Link href="/over-ons#verhaal-jordy">Jordy</Link>{' '}
+            en anderen via ons hun
             plek vonden.
           </p>
           <p>

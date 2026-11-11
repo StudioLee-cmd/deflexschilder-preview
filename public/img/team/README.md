@@ -9,7 +9,6 @@ componenten nodig:
    - `tieme.jpg`
    - `joryd.jpg`
    - `jermaine.jpg`
-   - `julia.jpg`
 
 2. **Zet het pad in `lib/team.js`** bij het juiste lid:
    `foto: '/img/team/tieme.jpg'` (nu `foto: null`).
