@@ -45,7 +45,7 @@ export default function SiteFooter() {
             <ul>
               <li><Link href="/vacatures">Alle vacatures</Link></li>
               <li><Link href="/soorten-schilders">Soorten schilders</Link></li>
-              <li><Link href="/tools">Rekentools (salaris &amp; netto)</Link></li>
+              <li><Link href="/tools">Rekentools (salaris, netto, verf)</Link></li>
               <li><Link href="/inschrijven">Inschrijven</Link></li>
               <li>
                 <a href="https://www.easyflex2go.nl/" target="_blank" rel="noreferrer">

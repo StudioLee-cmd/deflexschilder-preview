@@ -34,7 +34,7 @@ export default function SiteHeader({ vacatureCount = 0 }) {
               <div className="drop__kop">Ik zoek werk</div>
               <Link href="/vacatures">Vacatures</Link>
               <Link href="/soorten-schilders">Soorten schilders</Link>
-              <Link href="/tools">Rekentools (salaris &amp; netto)</Link>
+              <Link href="/tools">Rekentools (salaris, netto, verf)</Link>
               <Link href="/inschrijven">Inschrijven</Link>
               <a href="https://www.easyflex2go.nl/" target="_blank" rel="noreferrer">
                 Uren doorgeven
@@ -110,10 +110,21 @@ export default function SiteHeader({ vacatureCount = 0 }) {
       </div>
 
       <div className={`mobielmenu${open ? ' open' : ''}`}>
+        {/* Gesprek 06-11: inschrijven als schilder is waar de site voor is, dus de knop staat bovenaan
+            het menu, niet onder dertig links. Bellen staat er als tweede, rustige knop naast. */}
+        <div className="mobielmenu__acties">
+          <Link href="/inschrijven" className="btn btn--primair">
+            Inschrijven als schilder
+          </Link>
+          <a className="btn btn--secundair" href="tel:+31613718172">
+            ☎ 06 - 137 181 72
+          </a>
+        </div>
+
         <div className="drop__kop">Voor schilders: ik zoek werk</div>
         <Link href="/vacatures">Vacatures {vacatureCount > 0 ? `(${vacatureCount})` : ''}</Link>
         <Link href="/soorten-schilders">Soorten schilders</Link>
-        <Link href="/tools">Rekentools (salaris &amp; netto)</Link>
+        <Link href="/tools">Rekentools (salaris, netto, verf)</Link>
         <Link href="/inschrijven">Inschrijven</Link>
         <a href="https://www.easyflex2go.nl/" target="_blank" rel="noreferrer">
           Uren doorgeven
@@ -138,14 +149,6 @@ export default function SiteHeader({ vacatureCount = 0 }) {
         <Link href="/blog">Nieuws</Link>
         <Link href="/over-ons">Over ons</Link>
 
-        <div className="mobielmenu__acties">
-          <Link href="/inschrijven" className="btn btn--primair">
-            Inschrijven als schilder
-          </Link>
-          <a className="header__tel" href="tel:+31613718172" style={{ display: 'block', textAlign: 'center' }}>
-            ☎ 06 - 137 181 72
-          </a>
-        </div>
       </div>
     </header>
   );

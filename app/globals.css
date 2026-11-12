@@ -214,7 +214,12 @@ img { max-width: 100%; height: auto; }
 .mobielmenu a { display: block; padding: 9px 0; font-weight: 600; color: var(--ink); border-bottom: 1px solid var(--vlak); }
 .mobielmenu a:hover { color: var(--oranje); }
 .mobielmenu__kolommen { display: grid; grid-template-columns: 1fr 1fr; gap: 0 24px; }
-.mobielmenu__acties { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+.mobielmenu__acties { display: flex; flex-direction: column; gap: 10px; margin: 6px 0 8px; }
+/* Een knop in het menu blijft een knop: zonder deze regel wint `.mobielmenu a` (blok, geen
+   binnenruimte, onderstreping) en staat de tekst links in een platte oranje balk (gesprek 06-11). */
+.mobielmenu a.btn { display: flex; padding: 14px 20px; font-weight: 700; border-bottom: 2px solid transparent; }
+.mobielmenu a.btn--primair, .mobielmenu a.btn--primair:hover { color: var(--wit); }
+.mobielmenu a.btn--secundair { border-color: var(--lijn); }
 
 @media (max-width: 1360px) {
   .header__acties .header__tel { display: none; }

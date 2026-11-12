@@ -47,7 +47,19 @@ const nextConfig = {
     // bewust: geen X-Robots-Tag is de normale toestand van een indexeerbare site, en een
     // expliciete index-header zou een tweede uitspraak zijn naast de robots-meta uit
     // app/layout.jsx — twee bronnen die kunnen gaan afwijken (RULE 3).
-    if (process.env.NEXT_PUBLIC_INDEXEERBAAR === '1') return [];
+    //
+    // Na de livegang blijft het vercel.app-adres (zelfde productie-build) buiten de index: een
+    // tweede vindbare kopie zou deflexschilder.nl beconcurreren. Alleen dat adres krijgt dan nog
+    // de noindex-header; het echte domein niet.
+    if (process.env.NEXT_PUBLIC_INDEXEERBAAR === '1') {
+      return [
+        {
+          source: '/:path*',
+          has: [{ type: 'host', value: '.*\\.vercel\\.app' }],
+          headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }],
+        },
+      ];
+    }
     return [
       {
         source: '/:path*',

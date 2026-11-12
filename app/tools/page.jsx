@@ -3,12 +3,13 @@ import Kruimel from '@/components/Kruimel';
 import SalarisChecker from '@/components/SalarisChecker';
 import BrutoNetto from '@/components/BrutoNetto';
 import KmCalculator from '@/components/KmCalculator';
+import VerfCalculator from '@/components/VerfCalculator';
 import { BASIS, ORG_ID, jsonLd } from '@/lib/schema';
 
 export const metadata = {
-  title: 'Rekentools voor schilders: salarischecker, bruto-netto en km-vergoeding',
+  title: 'Rekentools voor schilders: salaris, bruto-netto, km-vergoeding en verf',
   description:
-    'Gratis rekentools voor schilders: check je marktconforme salaris per specialisme, reken bruto naar netto en bereken wat de kilometervergoeding 2026 jou scheelt.',
+    'Gratis rekentools voor schilders: check je marktconforme salaris, reken bruto naar netto, bereken je kilometervergoeding 2026 en hoeveel verf een muur vraagt.',
   alternates: { canonical: '/tools' },
 };
 
@@ -47,6 +48,15 @@ const TOOLS_SCHEMA = {
       provider: { '@id': ORG_ID },
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
     },
+    {
+      '@type': 'WebApplication',
+      name: 'Verfcalculator per muur',
+      applicationCategory: 'UtilitiesApplication',
+      operatingSystem: 'Web',
+      url: `${BASIS}/tools#verfcalculator`,
+      provider: { '@id': ORG_ID },
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'EUR' },
+    },
   ],
 };
 
@@ -62,8 +72,8 @@ export default function Tools() {
         </h1>
         <p className="lead">
           Weten waar je aan toe bent, zonder gedoe. Check je marktconforme salaris
-          per specialisme, reken je brutoloon om naar netto en bereken wat de nieuwe
-          kilometervergoeding jou per jaar scheelt.
+          per specialisme, reken je brutoloon om naar netto, bereken wat de nieuwe
+          kilometervergoeding jou per jaar scheelt en hoeveel verf een muur vraagt.
         </p>
       </section>
 
@@ -83,6 +93,9 @@ export default function Tools() {
                 lees het artikel →
               </Link>
             </p>
+          </div>
+          <div id="verfcalculator">
+            <VerfCalculator />
           </div>
         </div>
       </section>

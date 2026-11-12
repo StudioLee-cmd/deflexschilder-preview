@@ -70,11 +70,16 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="nl" className={assistant.className}>
       <body>
-        <div className="previewlint">
-          <strong>PREVIEW</strong>: nieuwe website van De Flexschilder, nog niet
-          live op deflexschilder.nl. Beelden met een label zijn tijdelijk en
-          worden vervangen door eigen foto&apos;s.
-        </div>
+        {/* De preview-strook hangt aan dezelfde schakelaar als de drie robots-sloten: op de
+            livegang-dag (NEXT_PUBLIC_INDEXEERBAAR=1) verdwijnt hij in dezelfde build, zodat
+            deflexschilder.nl nooit "nog niet live" zegt. */}
+        {process.env.NEXT_PUBLIC_INDEXEERBAAR !== '1' && (
+          <div className="previewlint">
+            <strong>PREVIEW</strong>: nieuwe website van De Flexschilder, nog niet
+            live op deflexschilder.nl. Beelden met een label zijn tijdelijk en
+            worden vervangen door eigen foto&apos;s.
+          </div>
+        )}
         <SiteHeader vacatureCount={vacatures.length} />
         <main>{children}</main>
         <SiteFooter />
