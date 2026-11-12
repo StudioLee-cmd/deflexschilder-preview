@@ -72,8 +72,9 @@ export default function SiteFooter() {
         <div className="footer__onder">
           <img src="/branding_flexschilder.svg" alt="De Flexschilder" width={150} height={43} />
           <span>© 2026 De Flexschilder · vakmensen door vakmensen</span>
+          {/* "Algemene voorwaarden" stond hier als tekst zonder document erachter; het komt terug
+              als link zodra André voorwaarden heeft (open-gaps.md). */}
           <span>
-            Algemene voorwaarden ·{' '}
             <Link href="/privacy">Privacyverklaring</Link>
           </span>
         </div>

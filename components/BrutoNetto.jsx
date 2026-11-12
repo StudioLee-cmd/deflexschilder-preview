@@ -3,13 +3,14 @@
 import { useState } from 'react';
 
 // Bruto→netto-INDICATIE (Randstad-patroon: hun meest gebruikte tool).
-// Vereenvoudigd model o.b.v. IB-tarieven/kortingen 2025 (schijven + algemene
-// heffingskorting + arbeidskorting, zonder persoonlijke situaties) — bewust
-// als indicatie gelabeld; geen rechten te ontlenen.
-const SCHIJF1_GRENS = 38441;
-const SCHIJF2_GRENS = 76817;
-const T1 = 0.3582;
-const T2 = 0.3748;
+// Vereenvoudigd model o.b.v. IB-tarieven/kortingen 2026, onder de AOW-leeftijd (schijven +
+// algemene heffingskorting + arbeidskorting, zonder persoonlijke situaties), bewust als
+// indicatie gelabeld; geen rechten te ontlenen. Bron: Belastingdienst, "Voorlopige aanslag
+// 2026: gebruikte tarieven en heffingskortingen" (gelezen 12-11-2026).
+const SCHIJF1_GRENS = 38883;
+const SCHIJF2_GRENS = 78426;
+const T1 = 0.3575;
+const T2 = 0.3756;
 const T3 = 0.495;
 
 function belastingJaar(j) {
@@ -20,16 +21,16 @@ function belastingJaar(j) {
 }
 
 function algemeneHeffingskorting(j) {
-  const k = 3068 - 0.06337 * Math.max(0, j - 28406);
-  return Math.max(0, Math.min(3068, k));
+  const k = 3115 - 0.06398 * Math.max(0, j - 29736);
+  return Math.max(0, Math.min(3115, k));
 }
 
 function arbeidskorting(j) {
   let k;
-  if (j <= 12169) k = 0.08053 * j;
-  else k = 980 + 0.3003 * (j - 12169);
-  k = Math.min(5599, k);
-  if (j > 43071) k = 5599 - 0.0651 * (j - 43071);
+  if (j <= 11965) k = 0.08324 * j;
+  else if (j <= 25845) k = 996 + 0.31009 * (j - 11965);
+  else if (j <= 45592) k = 5300 + 0.0195 * (j - 25845);
+  else k = 5685 - 0.0651 * (j - 45592);
   return Math.max(0, k);
 }
 
@@ -81,7 +82,7 @@ export default function BrutoNetto() {
         </div>
       </div>
       <p className="reken__noot">
-        Indicatie op basis van de belastingtarieven en heffingskortingen 2025
+        Indicatie op basis van de belastingtarieven en heffingskortingen 2026
         (Belastingdienst); je werkelijke nettoloon hangt af van je persoonlijke
         situatie, pensioen en cao-regelingen. Hieraan kunnen geen rechten worden
         ontleend.
