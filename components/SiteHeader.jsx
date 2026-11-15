@@ -36,7 +36,7 @@ export default function SiteHeader({ vacatureCount = 0 }) {
               <Link href="/soorten-schilders">Soorten schilders</Link>
               <Link href="/tools">Rekentools (salaris, netto, verf)</Link>
               <Link href="/inschrijven">Inschrijven</Link>
-              <a href="https://www.easyflex2go.nl/" target="_blank" rel="noreferrer">
+              <a href="https://deflexschilder.easyflex2go.nl/" target="_blank" rel="noreferrer">
                 Uren doorgeven
               </a>
             </div>
@@ -126,7 +126,7 @@ export default function SiteHeader({ vacatureCount = 0 }) {
         <Link href="/soorten-schilders">Soorten schilders</Link>
         <Link href="/tools">Rekentools (salaris, netto, verf)</Link>
         <Link href="/inschrijven">Inschrijven</Link>
-        <a href="https://www.easyflex2go.nl/" target="_blank" rel="noreferrer">
+        <a href="https://deflexschilder.easyflex2go.nl/" target="_blank" rel="noreferrer">
           Uren doorgeven
         </a>
 
