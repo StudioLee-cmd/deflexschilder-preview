@@ -16,6 +16,10 @@ const nextConfig = {
       { source: '/vacatures/vacature/solliciteren', destination: '/vacatures', permanent: true },
       { source: '/vacatures/glaszetter/11815', destination: '/vacatures', permanent: true },
       { source: '/vacatures/vakman-schilder/11814', destination: '/vacatures', permanent: true },
+      // Bevestiging na het opgeven van een vacature op de oude site: staat nog in de live sitemap en
+      // geeft daar 200, dus nooit een 404. Naar waar het oude formulier ook heen gaat (/vacature-plaatsen).
+      { source: '/bedankt-voor-het-toevoegen-van-een-vacature', destination: '/aanvraag', permanent: true },
+      { source: '/thank-you-for-adding-a-vacancy', destination: '/aanvraag', permanent: true },
 
       // ⚑ DE ENGELSE VARIANTEN VAN DE VACATURE-ALERT (08-08). De Flexsoftware-template droeg van
       //   elke alert-pagina een NL en een EN versie; de site is eentalig Nederlands, dus de
