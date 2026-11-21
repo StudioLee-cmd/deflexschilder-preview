@@ -123,9 +123,8 @@ export default function OverOns() {
               <p style={{ fontSize: 15 }}>
                 ☎ <a href="tel:+31613718172" style={{ fontWeight: 700 }}>06 - 137 181 72</a>
                 <br />✉ <a href="mailto:andre@deflexschilder.nl" style={{ fontWeight: 700 }}>andre@deflexschilder.nl</a>
-                <br />
-                Oldemarktseweg 74, 8341 SH Steenwijkerwold
               </p>
+              {/* André 16-11: het adres "niet zo nadrukkelijk"; het staat klein onderaan elke pagina (SiteFooter). */}
             </div>
           </div>
         </div>

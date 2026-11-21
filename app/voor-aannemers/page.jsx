@@ -47,7 +47,7 @@ export default function VoorAannemers() {
               </li>
               <li>
                 <strong>Specialistisch werk</strong>: van{' '}
-                <Link href="/soorten-schilders">spuiters en industrieel schilders</Link>{' '}
+                <Link href="/soorten-schilders">allround en industrieel schilders</Link>{' '}
                 tot afwerking op niveau bij oplevering.
               </li>
               <li>

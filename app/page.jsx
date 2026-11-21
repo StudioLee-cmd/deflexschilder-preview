@@ -230,11 +230,11 @@ export default async function Home() {
               <span className="verder">Bekijk →</span>
             </Link>
             <Link href="/soorten-schilders" className="kaartje">
-              <span className="meta">Specialisaties</span>
+              <span className="meta">Van leerling tot voorman</span>
               <h3>Soorten schilders</h3>
               <p style={{ fontSize: 14.5 }}>
-                Onderhouds-, industrieel, allround, spuiter: het juiste specialisme op
-                de juiste klus.
+                Leerling, Schilder 1 en 2, allround, voorman en industrieel schilder:
+                wat elke functie doet en wat de cao betaalt.
               </p>
               <span className="verder">Bekijk →</span>
             </Link>
