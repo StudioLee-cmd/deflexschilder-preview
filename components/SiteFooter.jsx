@@ -3,43 +3,17 @@ import Link from 'next/link';
 // Footer zoals live (LICHT grijs, contact + wit backoffice-kaartje met certs,
 // logo onderin) — beter gestructureerd per doelgroep. Locaties zitten bewust
 // in het hoofdmenu, niet hier (Tim 03-07).
+// André 16-11: "Voor schilders, graag als eerste" → die kolom staat vooraan.
+// André 16-11: "Adres mag er van mij wel uit. Tenzij een verplichting maar dan niet zo
+// nadrukkelijk." Het is een verplichting: art. 3:15d BW wil het geografisch adres
+// gemakkelijk, rechtstreeks en permanent te vinden, en het Handelsregisterbesluit
+// (art. 49) het KvK-nummer op de website. Daarom staat het niet meer bij de
+// contactgegevens maar klein in de onderste regel, naast het KvK-nummer.
 export default function SiteFooter() {
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer__grid">
-          <div className="footer__contact">
-            <h4>Contact gegevens</h4>
-            <ul>
-              <li><a href="tel:+31613718172">☎ 06 - 137 181 72</a></li>
-              <li><a href="mailto:andre@deflexschilder.nl">✉ andre@deflexschilder.nl</a></li>
-              <li>
-                <a href="https://wa.me/31613718172" target="_blank" rel="noreferrer">
-                  Stuur een WhatsApp
-                </a>
-              </li>
-              <li style={{ marginTop: 8 }}>
-                Oldemarktseweg 74
-                <br />
-                8341 SH Steenwijkerwold
-              </li>
-              <li>KvK: 83856323</li>
-            </ul>
-            <Link href="/aanvraag" className="btn btn--primair btn--klein">
-              Contact opnemen
-            </Link>
-          </div>
-
-          <div>
-            <h4>Voor opdrachtgevers</h4>
-            <ul>
-              <li><Link href="/schilders-inhuren">Schilders inhuren</Link></li>
-              <li><Link href="/voor-aannemers">Aannemers &amp; onderhoud</Link></li>
-              <li><Link href="/vastgoedonderhoud-en-rgs">Vastgoedonderhoud &amp; RGS</Link></li>
-              <li><Link href="/aanvraag">Schilders aanvragen</Link></li>
-            </ul>
-          </div>
-
           <div>
             <h4>Voor schilders</h4>
             <ul>
@@ -56,10 +30,40 @@ export default function SiteFooter() {
             </ul>
           </div>
 
+          <div>
+            <h4>Voor opdrachtgevers</h4>
+            <ul>
+              <li><Link href="/schilders-inhuren">Schilders inhuren</Link></li>
+              <li><Link href="/voor-aannemers">Aannemers &amp; onderhoud</Link></li>
+              <li><Link href="/vastgoedonderhoud-en-rgs">Vastgoedonderhoud &amp; RGS</Link></li>
+              <li><Link href="/aanvraag">Schilders aanvragen</Link></li>
+            </ul>
+          </div>
+
+          <div className="footer__contact">
+            <h4>Contact gegevens</h4>
+            <ul>
+              <li><a href="tel:+31613718172">☎ 06 - 137 181 72</a></li>
+              <li><a href="mailto:andre@deflexschilder.nl">✉ andre@deflexschilder.nl</a></li>
+              <li>
+                <a href="https://wa.me/31613718172" target="_blank" rel="noreferrer">
+                  Stuur een WhatsApp
+                </a>
+              </li>
+            </ul>
+            <Link href="/aanvraag" className="btn btn--primair btn--klein">
+              Contact opnemen
+            </Link>
+          </div>
+
           <div className="footer__backoffice">
             <strong>Gecertificeerd &amp; aangesloten</strong>
             <p style={{ marginTop: 4 }}>
-              SNA-keurmerk · VCU-gecertificeerd · ABU-lid. Backoffice door Flexsupport.
+              SNA-keurmerk · VCU-gecertificeerd · ABU-lid. Backoffice door{' '}
+              <a href="https://www.flexsupport.nl/" target="_blank" rel="noreferrer">
+                Flexsupport
+              </a>
+              .
             </p>
             <div className="certs">
               <img src="/SNA-1-1.svg" alt="SNA-keurmerk" />
@@ -72,6 +76,9 @@ export default function SiteFooter() {
         <div className="footer__onder">
           <img src="/branding_flexschilder.svg" alt="De Flexschilder" width={150} height={43} />
           <span>© 2026 De Flexschilder · vakmensen door vakmensen</span>
+          <span className="footer__adres">
+            Oldemarktseweg 74, 8341 SH Steenwijkerwold · KvK 83856323
+          </span>
           {/* "Algemene voorwaarden" stond hier als tekst zonder document erachter; het komt terug
               als link zodra André voorwaarden heeft (open-gaps.md). */}
           <span>

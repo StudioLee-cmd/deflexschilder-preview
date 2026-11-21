@@ -9,7 +9,7 @@ import { BASIS, ORG_ID, jsonLd } from '@/lib/schema';
 export const metadata = {
   title: 'Rekentools voor schilders: salaris, bruto-netto, km-vergoeding en verf',
   description:
-    'Gratis rekentools voor schilders: check je marktconforme salaris, reken bruto naar netto, bereken je kilometervergoeding 2026 en hoeveel verf een muur vraagt.',
+    'Gratis rekentools voor schilders: check je cao-salaris, reken bruto naar netto, bereken je kilometervergoeding 2026 en hoeveel verf een muur vraagt.',
   alternates: { canonical: '/tools' },
 };
 
@@ -71,7 +71,7 @@ export default function Tools() {
           Rekentools voor <span className="accent">schilders</span>
         </h1>
         <p className="lead">
-          Weten waar je aan toe bent, zonder gedoe. Check je marktconforme salaris
+          Weten waar je aan toe bent, zonder gedoe. Check je cao-salaris
           per specialisme, reken je brutoloon om naar netto, bereken wat de nieuwe
           kilometervergoeding jou per jaar scheelt en hoeveel verf een muur vraagt.
         </p>

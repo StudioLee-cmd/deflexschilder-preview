@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { SCHILDER_TYPES, UREN_PER_MAAND } from '@/lib/salaris';
+import { SCHILDER_TYPES, UREN_PER_MAAND, CAO_BRON } from '@/lib/salaris';
 
-// Salarischecker (Randstad-patroon): kies je specialisme → marktconforme range,
+// Salarischecker (Randstad-patroon): kies je functie → de cao-range (lib/salaris.js),
 // schakelbaar per maand of per uur. Zelfde databron als /soorten-schilders.
 export default function SalarisChecker() {
   const metRange = SCHILDER_TYPES.filter((t) => t.min);
-  const [keuze, setKeuze] = useState(metRange[2]?.naam || metRange[0].naam);
+  const [keuze, setKeuze] = useState(metRange[1]?.naam || metRange[0].naam);
   const [eenheid, setEenheid] = useState('maand');
 
   const t = SCHILDER_TYPES.find((x) => x.naam === keuze);
@@ -27,7 +27,7 @@ export default function SalarisChecker() {
       <div className="reken__velden">
         <div className="reken__veld">
           <label>
-            Jouw specialisme
+            Jouw functie
             <select
               value={keuze}
               onChange={(e) => setKeuze(e.target.value)}
@@ -50,7 +50,7 @@ export default function SalarisChecker() {
               style={{ fontFamily: 'inherit', fontSize: 16, padding: '10px 12px', border: '1.5px solid #ffd9a8', borderRadius: 6, background: '#fff', width: '100%' }}
             >
               <option value="maand">per maand (bruto)</option>
-              <option value="uur">per uur (bruto, o.b.v. 40 u/wk)</option>
+              <option value="uur">per uur (bruto, cao: 37,5 u/wk)</option>
             </select>
           </label>
         </div>
@@ -63,7 +63,7 @@ export default function SalarisChecker() {
             <div className="bedrag">{toon(t.min)}</div>
           </div>
           <div className="reken__tegel reken__tegel--accent">
-            <div className="label">Marktconforme range</div>
+            <div className="label">Cao-range</div>
             <div className="bedrag" style={{ fontSize: 17 }}>
               {toon(t.min)} - {toon(t.max)}
             </div>
@@ -80,8 +80,8 @@ export default function SalarisChecker() {
       )}
 
       <p className="reken__noot">
-        Marktconforme indicatie, afhankelijk van ervaring en project (definitieve
-        ranges volgen bij livegang).{' '}
+        Bruto, uit de {CAO_BRON}: van de eerste tot de hoogste trede. Je ervaring
+        bepaalt waar je instapt.{' '}
         <Link href="/vacatures" style={{ fontWeight: 700, color: 'var(--oranje-donker)' }}>
           Bekijk de vacatures →
         </Link>

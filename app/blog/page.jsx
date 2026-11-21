@@ -57,10 +57,12 @@ export default function Blog() {
             ))}
 
             <div className="kaartje" style={{ justifyContent: 'center', alignItems: 'flex-start' }}>
-              <span className="meta">Elke week nieuw</span>
+              {/* André 16-11: "Elke twee weken doen?" Tim antwoordde hem 20-11 per mail: elke twee
+                  weken een artikel kan. Daarom geen "elke week" meer. */}
+              <span className="meta">Elke twee weken nieuw</span>
               <h3>Een vraag voor het volgende artikel?</h3>
               <p style={{ fontSize: 14.5 }}>
-                Elke week schrijven we over een vraag die opdrachtgevers of
+                Elke twee weken schrijven we over een vraag die opdrachtgevers of
                 schilders aan André stellen. Over inhuren, salaris, cao,
                 onderhoud of doorgroeien in het vak. Heb je een vraag die hier
                 thuishoort? Laat het André weten.

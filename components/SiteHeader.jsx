@@ -8,6 +8,8 @@ import { CITIES } from '@/lib/geo';
 // Zelfde look als live (logo · menu · tel · oranje knop), betere structuur:
 // werkgevers/werkzoekenden gescheiden + LOCATIES als eigen menu-item met de
 // steden onder elkaar (Strikt-patroon, maar schilder-specialist).
+const vacatureAantal = (n) => `${n} open vacature${n === 1 ? '' : 's'}`;
+
 export default function SiteHeader({ vacatureCount = 0 }) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -26,13 +28,19 @@ export default function SiteHeader({ vacatureCount = 0 }) {
         <nav className="nav" aria-label="Hoofdmenu">
           <div className="nav__item">
             <Link href="/vacatures" className="nav__link">
-              Voor schilders{' '}
-              {vacatureCount > 0 && <span className="nav__badge">{vacatureCount}</span>}{' '}
-              <span className="pijl">▾</span>
+              {/* Hier stond een los oranje getal: het aantal open vacatures. André 16-11: "Waar staat
+                  deze '1' voor?" Een bezoeker weet het ook niet, dus het aantal staat nu met uitleg
+                  bij de link Vacatures in het uitklapmenu. */}
+              Voor schilders <span className="pijl">▾</span>
             </Link>
             <div className="nav__drop">
               <div className="drop__kop">Ik zoek werk</div>
-              <Link href="/vacatures">Vacatures</Link>
+              <Link href="/vacatures">
+                Vacatures
+                {vacatureCount > 0 && (
+                  <span className="drop__aantal">{vacatureAantal(vacatureCount)}</span>
+                )}
+              </Link>
               <Link href="/soorten-schilders">Soorten schilders</Link>
               <Link href="/tools">Rekentools (salaris, netto, verf)</Link>
               <Link href="/inschrijven">Inschrijven</Link>
@@ -49,6 +57,7 @@ export default function SiteHeader({ vacatureCount = 0 }) {
             <div className="nav__drop">
               <div className="drop__kop">Ik zoek schilders</div>
               <Link href="/schilders-inhuren">Schilders inhuren</Link>
+              <Link href="/schilders-inhuren#zzp-en-kleine-bedrijven">Personeel voor zzp&apos;ers &amp; kleine bedrijven</Link>
               <Link href="/schilders-inhuren#detachering">Detachering</Link>
               <Link href="/schilders-inhuren#uitzenden">Uitzenden</Link>
               <Link href="/schilders-inhuren#werving-selectie">Werving &amp; selectie</Link>
@@ -122,7 +131,7 @@ export default function SiteHeader({ vacatureCount = 0 }) {
         </div>
 
         <div className="drop__kop">Voor schilders: ik zoek werk</div>
-        <Link href="/vacatures">Vacatures {vacatureCount > 0 ? `(${vacatureCount})` : ''}</Link>
+        <Link href="/vacatures">Vacatures {vacatureCount > 0 ? `(${vacatureAantal(vacatureCount)})` : ''}</Link>
         <Link href="/soorten-schilders">Soorten schilders</Link>
         <Link href="/tools">Rekentools (salaris, netto, verf)</Link>
         <Link href="/inschrijven">Inschrijven</Link>
@@ -132,6 +141,7 @@ export default function SiteHeader({ vacatureCount = 0 }) {
 
         <div className="drop__kop">Voor opdrachtgevers: ik zoek schilders</div>
         <Link href="/schilders-inhuren">Schilders inhuren</Link>
+        <Link href="/schilders-inhuren#zzp-en-kleine-bedrijven">Personeel voor zzp&apos;ers &amp; kleine bedrijven</Link>
         <Link href="/voor-aannemers">Aannemers &amp; onderhoudsbedrijven</Link>
         <Link href="/vastgoedonderhoud-en-rgs">Vastgoedonderhoud &amp; RGS</Link>
         <Link href="/aanvraag">Schilders aanvragen</Link>

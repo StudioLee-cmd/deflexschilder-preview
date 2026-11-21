@@ -63,21 +63,23 @@ export default async function Home() {
             Overijssel.
           </p>
           <div className="grid grid--3" style={{ marginTop: 24 }}>
+            {/* André 16-11: personeel aannemen voor zzp'ers en kleine schildersbedrijven meer op de voorgrond. */}
+            <Link href="/schilders-inhuren#zzp-en-kleine-bedrijven" className="kaartje kaartje--accent">
+              <h3>Personeel aannemen voor zzp'ers en kleine schildersbedrijven</h3>
+              <p style={{ fontSize: 15 }}>
+                Je bent zzp'er of een klein schildersbedrijf en hebt werk voor een
+                leerling of een ervaren schilder, maar liever zonder schilder op je
+                loonlijst. Dan werkt hij via De Flexschilder en draagt André het
+                risico. Inzet, tarief en contract stem je vooraf met André af.
+              </p>
+              <span className="verder">Zo werkt het →</span>
+            </Link>
             <div className="kaartje">
               <h3>Voor projecten en onderhoudsploegen</h3>
               <p style={{ fontSize: 15 }}>
                 Een renovatie, een onderhoudsplanning over meerdere panden of een
                 drukke periode die maanden duurt. De schilder draait mee in je ploeg
                 zolang het werk er ligt. Losse klusdagen doen we niet.
-              </p>
-            </div>
-            <div className="kaartje">
-              <h3>Zonder schilder op je loonlijst</h3>
-              <p style={{ fontSize: 15 }}>
-                Je bent zzp'er of een klein schildersbedrijf en hebt werk voor een
-                leerling of een ervaren schilder, maar het risico van iemand op je
-                loonlijst wil je niet dragen. Dan werkt hij via De Flexschilder en draagt
-                André dat risico. Inzet, tarief en contract stem je vooraf met André af.
               </p>
             </div>
             <div className="kaartje">

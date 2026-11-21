@@ -4,7 +4,7 @@ import StatStrip from '@/components/StatStrip';
 import TeamSectie from '@/components/TeamSectie';
 import VerhaalLijst from '@/components/VerhaalLijst';
 import { BASIS, ORG_ID, jsonLd } from '@/lib/schema';
-import { teamPersonSchema } from '@/lib/team';
+import { teamPersonSchema, TEAM_INTRO, TEAM_TELWOORD } from '@/lib/team';
 
 // AboutPage-schema: koppelt deze pagina expliciet aan de Organization in de
 // site-graph — samen met het entiteit-blok hieronder is dit de pagina waar
@@ -138,8 +138,7 @@ export default function OverOns() {
           <span className="kicker">Ons team</span>
           <h2>De vakmensen achter De Flexschilder</h2>
           <p className="lead" style={{ maxWidth: 760 }}>
-            Vier vakmensen die via De Flexschilder werken: twee zij-instromers,
-            een allround schilder en een allround glaszetter.
+            {TEAM_INTRO}
           </p>
           <TeamSectie />
         </div>
@@ -152,8 +151,8 @@ export default function OverOns() {
           <span className="kicker">Verhalen van vakmensen</span>
           <h2>In hun eigen woorden</h2>
           <p className="lead" style={{ maxWidth: 760 }}>
-            Een profkeeper, een oud-medewerker van het COA, een orderpicker en een
-            steigerbouwer. Vier verschillende wegen naar het schildersvak.
+            Een profkeeper, een oud-medewerker van het COA en een steigerbouwer.
+            {' '}{TEAM_TELWOORD[0].toUpperCase() + TEAM_TELWOORD.slice(1)} verschillende wegen naar het schildersvak.
           </p>
           <div style={{ marginTop: 26 }}>
             <VerhaalLijst />

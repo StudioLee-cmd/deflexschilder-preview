@@ -60,7 +60,42 @@ export default function SchildersInhuren() {
         </div>
       </section>
 
-      <section className="container" style={{ paddingBottom: 8 }}>
+      {/* André 16-11: "Via de flexschilder personeel aannemen voor zzp'ers en kleine
+          schildersbedrijven, iets meer op de voorgrond bijv. bij opdrachtgevers." Daarom staat dit
+          als eerste blok onder de zoekbalk, vóór de cijfers en de drie diensten. */}
+      <section className="sectie sectie--vlak" id="zzp-en-kleine-bedrijven" style={{ paddingTop: 40, paddingBottom: 40 }}>
+        <div className="container kaartwrap" style={{ alignItems: 'center' }}>
+          <div>
+            <span className="kicker">Voor zzp'ers en kleine schildersbedrijven</span>
+            <h2>
+              Personeel aannemen <span className="accent">zonder eigen loonlijst</span>
+            </h2>
+            <p className="lead" style={{ marginTop: 10 }}>
+              Je bent zzp'er of hebt een klein schildersbedrijf, en er ligt werk voor een extra
+              schilder of een leerling. Iemand zelf in dienst nemen is voor een klein bedrijf een
+              groot risico. Via De Flexschilder neem je toch personeel aan: de schilder werkt bij
+              jou op het werk, via De Flexschilder, en André draagt het werkgeversrisico.
+            </p>
+            <ul style={{ marginTop: 14, display: 'grid', gap: 6, paddingLeft: 18 }}>
+              <li>Een leerling of een ervaren schilder, voor een project of voor langere tijd</li>
+              <li>Geen schilder op je eigen loonlijst</li>
+              <li>Inzet, tarief en contract stem je vooraf met André af</li>
+            </ul>
+            <p style={{ marginTop: 18, display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+              <Link href="/aanvraag" className="btn btn--primair">Bespreek het met André</Link>
+              <a href="tel:+31613718172" className="tekstlink">Of bel: 06 - 137 181 72</a>
+            </p>
+          </div>
+          <BeeldAI
+            src="/img/werk/tieme-ploeg.jpg"
+            alt="Tieme Smook werkt via De Flexschilder bij Erik Pit Schilderwerken in Wapserveen"
+            badge={null}
+            ratio="3 / 2"
+          />
+        </div>
+      </section>
+
+      <section className="container" style={{ paddingBottom: 8, paddingTop: 28 }}>
         <StatStrip
           items={[
             { tot: 23, label: 'jaar technische vakkennis' },
@@ -106,11 +141,11 @@ export default function SchildersInhuren() {
           <div>
             <h2>Voor wie wij werken</h2>
             <div className="grid grid--2" style={{ marginTop: 20 }}>
-              <div className="kaartje">
-                <h3>Bedrijven die flexibel inhuren</h3>
-                <p style={{ fontSize: 14 }}>Een schilder nodig zonder vaste loonlijst: ons zwaartepunt.</p>
-                <span className="verder" style={{ color: 'var(--tekst-licht)' }}>Bespreek je onderhoudsplanning</span>
-              </div>
+              <Link href="#zzp-en-kleine-bedrijven" className="kaartje">
+                <h3>Zzp'ers en kleine schildersbedrijven</h3>
+                <p style={{ fontSize: 14 }}>Personeel aannemen zonder eigen loonlijst: ons zwaartepunt.</p>
+                <span className="verder">Zo werkt het →</span>
+              </Link>
               <Link href="/voor-aannemers" className="kaartje">
                 <h3>Aannemers &amp; onderhoud</h3>
                 <p style={{ fontSize: 14 }}>Pieken opvangen, onderaanneming schilderwerk.</p>

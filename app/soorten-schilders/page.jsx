@@ -4,18 +4,18 @@ import ClusterBlok from '@/components/ClusterBlok';
 import BeeldAI from '@/components/BeeldAI';
 
 export const metadata = {
-  title: 'Soorten schilders: specialisaties en salarisindicaties',
+  title: 'Soorten schilders: van leerling tot voorman, met cao-salaris',
   description:
-    'Van onderhoudsschilder tot industrieel schilder, spuiter en gevelschilder: alle specialisaties, wat ze doen en marktconforme salarisindicaties met visuele ranges.',
+    'Leerling schilder, Schilder 1 en 2, allround schilder, voorman/teamleider en industrieel schilder: wat elke functie doet en wat de cao SAVG 2026 ervoor betaalt.',
   alternates: { canonical: '/soorten-schilders' },
 };
 
-import { SCHILDER_TYPES as TYPES } from '@/lib/salaris';
+import { SCHILDER_TYPES as TYPES, CAO_BRON } from '@/lib/salaris';
 
 // PILLAR — cluster 3 (typepagina's). Salaris-range-bars = grafiek-template;
 // de ranges komen uit lib/salaris.js (één bron, gedeeld met de salarischecker).
-const S_MIN = 2300;
-const S_MAX = 3700;
+const S_MIN = 2800;
+const S_MAX = 4700;
 
 function RangeBar({ min, max }) {
   const links = ((min - S_MIN) / (S_MAX - S_MIN)) * 100;
@@ -27,7 +27,7 @@ function RangeBar({ min, max }) {
       </div>
       <div className="range__labels">
         <span>€ {min.toLocaleString('nl-NL')}</span>
-        <span>€ {max.toLocaleString('nl-NL')} bruto p/m (indicatie)</span>
+        <span>€ {max.toLocaleString('nl-NL')} bruto p/m</span>
       </div>
     </div>
   );
@@ -39,12 +39,15 @@ export default function SoortenSchilders() {
       <Kruimel items={[{ naam: 'Soorten schilders' }]} />
 
       <section className="paginakop container">
-        <span className="kicker">Specialisaties</span>
+        <span className="kicker">Van leerling tot voorman</span>
         <h1>
           Soorten <span className="accent">schilders</span>
         </h1>
         <p className="lead">
-          Onderhoud, industrieel werk en spuitwerk vragen elk om andere ervaring. Bekijk welke werkzaamheden bij de specialismen horen. De salarisbedragen zijn indicaties; ervaring, functie en voorwaarden bepalen het concrete aanbod.
+          Van leerling schilder tot voorman: zo groei je in het schildersvak, en dit betaalt de cao voor elke stap. De bedragen zijn de bruto maandlonen van de {CAO_BRON} (37,5 uur per week), van de eerste tot de hoogste trede; je ervaring bepaalt waar je instapt.
+        </p>
+        <p className="meta" style={{ marginTop: 8 }}>
+          Voor glaszetters geldt dezelfde opbouw, van leerling tot allround glaszetter.
         </p>
       </section>
 
@@ -53,13 +56,15 @@ export default function SoortenSchilders() {
           {TYPES.map((t) => (
             <div key={t.naam} className="kaartje">
               <h3>{t.naam}</h3>
-              <p className="meta">Werkzaamheden en salarisindicatie</p>
+              <p className="meta">
+                {t.loongroep ? `Cao-loongroep ${t.loongroep}` : 'Leren en werken'}
+              </p>
               <p style={{ fontSize: 14.5 }}>{t.tekst}</p>
               {t.min ? (
                 <RangeBar min={t.min} max={t.max} />
               ) : (
                 <p className="meta" style={{ fontWeight: 700, color: 'var(--oranje-donker)' }}>
-                  {t.salaris} <em style={{ fontWeight: 400 }}>(indicatie)</em>
+                  {t.salaris}
                 </p>
               )}
               <p style={{ display: 'flex', gap: 14, marginTop: 4 }}>
