@@ -3,6 +3,7 @@ import Kruimel from '@/components/Kruimel';
 import StatStrip from '@/components/StatStrip';
 import TeamSectie from '@/components/TeamSectie';
 import VerhaalLijst from '@/components/VerhaalLijst';
+import AndrePortret from '@/components/AndrePortret';
 import { BASIS, ORG_ID, jsonLd } from '@/lib/schema';
 import { teamPersonSchema, TEAM_INTRO, TEAM_TELWOORD } from '@/lib/team';
 
@@ -72,7 +73,7 @@ export default function OverOns() {
       </section>
 
       <section className="sectie">
-        <div className="container kaartwrap" style={{ alignItems: 'start' }}>
+        <div className="container kaartwrap kaartwrap--portret" style={{ alignItems: 'start' }}>
           <div className="prose">
             <h2>André van der Hoogen</h2>
             <p>
@@ -97,7 +98,8 @@ export default function OverOns() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gap: 18 }}>
+          <div className="kaartwrap__zij">
+            <AndrePortret laden="lazy" />
             <div className="kaartje" style={{ padding: 26 }}>
               <span className="kicker">Verhalen van vakmensen</span>
               <h3>De mensen achter het werk</h3>

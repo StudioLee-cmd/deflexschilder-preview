@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Kruimel from '@/components/Kruimel';
 import { ARTIKELEN } from '@/lib/blog';
+import AndrePortret from '@/components/AndrePortret';
 import { BASIS, PERSOON_ID, jsonLd } from '@/lib/schema';
 
 export const metadata = {
@@ -22,7 +23,7 @@ const PROFIEL_SCHEMA = {
   '@id': `${BASIS}/auteur/andre#profiel`,
   mainEntity: { '@id': PERSOON_ID },
   inLanguage: 'nl',
-  dateModified: '2026-07-03',
+  dateModified: '2026-11-25',
 };
 
 export default function AuteurAndre() {
@@ -41,7 +42,7 @@ export default function AuteurAndre() {
       </section>
 
       <section className="sectie" style={{ paddingTop: 30 }}>
-        <div className="container kaartwrap" style={{ alignItems: 'start' }}>
+        <div className="container kaartwrap kaartwrap--portret" style={{ alignItems: 'start' }}>
           <div className="prose">
             <h2>Technische kennis bij de match</h2>
             <p>
@@ -79,15 +80,13 @@ export default function AuteurAndre() {
             </ul>
           </div>
 
-          <div style={{ display: 'grid', gap: 18 }}>
+          <div className="kaartwrap__zij">
+            <AndrePortret bijschrift={false} />
             <div className="kaartje">
               <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-                <span className="byline__avatar" style={{ width: 64, height: 64, fontSize: 26 }}>
-                  A
-                </span>
+                <h3 style={{ margin: 0 }}>André van der Hoogen</h3>
                 <img src="/branding_flexschilder.svg" alt="De Flexschilder" width={130} height={38} style={{ marginLeft: 'auto', height: 36, width: 'auto' }} />
               </div>
-              <h3 style={{ marginTop: 8 }}>André van der Hoogen</h3>
               <p className="meta">Eigenaar · technische achtergrond in verf en onderhoud</p>
               {/* Feiten zichtbaar — dezelfde data als het Person-schema */}
               <dl style={{ display: 'grid', gap: 6, fontSize: 14.5, marginTop: 4 }}>
