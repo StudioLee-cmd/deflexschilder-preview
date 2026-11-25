@@ -38,7 +38,7 @@ export const dynamic = 'force-dynamic';
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_SERVICE_KEY;
 const MELD_URL =
-  process.env.AANVRAAG_WEBHOOK_URL || 'https://n8n.aireclamestudio.nl/webhook/site-aanvraag';
+  process.env.AANVRAAG_WEBHOOK_URL || 'https://n8n.studiolee.nl/webhook/site-aanvraag';
 const CLIENT = 'deflexschilder';
 const DOMEIN = 'deflexschilder.nl';
 

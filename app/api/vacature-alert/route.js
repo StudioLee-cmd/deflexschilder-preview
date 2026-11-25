@@ -29,7 +29,7 @@ export const dynamic = 'force-dynamic';
 
 const MELD_URL =
   process.env.VACATURE_ALERT_WEBHOOK_URL ||
-  'https://n8n.aireclamestudio.nl/webhook/site-vacature-alert';
+  'https://n8n.studiolee.nl/webhook/site-vacature-alert';
 const CLIENT = 'deflexschilder';
 
 // n8n zit achter Cloudflare en weigert een kale bot-User-Agent met 403.
