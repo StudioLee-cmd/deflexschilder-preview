@@ -46,6 +46,9 @@ img { max-width: 100%; height: auto; }
 .container { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
 .sectie { padding-top: 60px; padding-bottom: 60px; }
 .sectie--vlak { background: var(--vlak); }
+/* Twee grijze secties na elkaar lopen als één vlak door: zonder kleurrand ertussen las 60 + 60 px als één groot gat
+   (homepage, "Schilders aanvragen" boven "Laatste vacatures", Tim 26-11). Zo blijft er één sectiestap over. */
+.sectie--vlak + .sectie--vlak { padding-top: 0; }
 .accent { color: var(--oranje); }
 
 .kicker {
