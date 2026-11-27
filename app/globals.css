@@ -303,7 +303,7 @@ img { max-width: 100%; height: auto; }
 }
 .zoek__tab.actief { background: var(--oranje); color: var(--wit); }
 
-.zoek__rij { display: grid; grid-template-columns: 1fr 140px auto; gap: 10px; align-items: end; }
+.zoek__rij { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: end; }
 .zoek__veld { display: flex; flex-direction: column; gap: 4px; position: relative; }
 .zoek__veld label {
   font-size: 12px;
@@ -312,7 +312,7 @@ img { max-width: 100%; height: auto; }
   letter-spacing: 0.05em;
   color: var(--tekst-licht);
 }
-.zoek input, .zoek select {
+.zoek input {
   font-family: inherit;
   font-size: 16px;
   height: 50px;
@@ -324,16 +324,8 @@ img { max-width: 100%; height: auto; }
   width: 100%;
   box-sizing: border-box;
 }
-.zoek select {
-  appearance: none;
-  -webkit-appearance: none;
-  padding-right: 36px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23fb8500' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 14px center;
-}
 .zoek .btn { height: 50px; }
-.zoek input:focus, .zoek select:focus { outline: none; border-color: var(--oranje); box-shadow: 0 0 0 3px rgba(251, 133, 0, 0.18); }
+.zoek input:focus { outline: none; border-color: var(--oranje); box-shadow: 0 0 0 3px rgba(251, 133, 0, 0.18); }
 
 .zoek__suggesties {
   position: absolute;
@@ -361,6 +353,7 @@ img { max-width: 100%; height: auto; }
 .zoek__suggestie .via { font-size: 13px; color: var(--tekst-licht); white-space: nowrap; }
 .zoek__suggestie.hl, .zoek__suggestie:hover { background: var(--oranje-zacht); }
 .zoek__resolutie { margin-top: 8px; font-size: 14px; color: var(--oranje-donker); font-weight: 600; }
+.zoek__uitleg { margin-top: 8px; font-size: 14px; color: var(--tekst-licht); }
 .zoek__form { display: grid; gap: 12px; }
 .zoek__formgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .zoek__form textarea {

@@ -3,11 +3,13 @@
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { CITIES, PLACES, nearestCity } from '@/lib/geo';
+import { CITIES, PLACES, WERKGEBIED_KM, citiesFor, nearestCity } from '@/lib/geo';
 import { TOESTEMMING } from '@/lib/toestemming';
 
 // Zoek-card met twee gezichten (Tim 03-07):
-//   • default-tab "Ik zoek werk"  → plaats+afstand-zoeker → vacature-lijst per stad
+//   • default-tab "Ik zoek werk"  → plaats-zoeker → vacature-lijst van de dichtstbijzijnde stad.
+//     Geen afstandskeuze meer (review code 27-11): elke stadspagina toont haar werkgebied, de
+//     plaatsen binnen WERKGEBIED_KM (lib/geo.js), dus een gekozen straal veranderde niets.
 //   • tab "Ik zoek schilders"     → DIRECT een aanvraagformulier IN de card
 //     (geen kies-lijst; plaats met dezelfde dorp→stad-resolutie)
 //
@@ -19,9 +21,38 @@ const ALLES = [
   ...CITIES.map((c) => ({ naam: c.name, type: 'stad', city: c, km: 0 })),
   ...PLACES.map((p) => {
     const n = nearestCity(p);
-    return { naam: p.name, type: 'dorp', city: n.city, km: n.km };
+    return { naam: p.name, type: 'dorp', city: n.city, km: n.km, steden: citiesFor(p) };
   }),
 ].sort((a, b) => a.naam.localeCompare(b.naam, 'nl'));
+
+// Bij welke steden een plaats hoort (lib/geo.js, regels 2 en 3), in gewone taal: binnen
+// WERKGEBIED_KM van twee steden staat hij bij allebei; de zoekknop opent de dichtstbijzijnde.
+function WerkgebiedZin({ plek }) {
+  const [eerste, ...andere] = plek.steden;
+  if (eerste.km > WERKGEBIED_KM) {
+    return (
+      <>
+        {plek.naam} ligt verder dan {WERKGEBIED_KM} km van onze steden. Je ziet het werk rond{' '}
+        <strong>{eerste.city.name}</strong>, de dichtstbijzijnde ({eerste.km} km).
+      </>
+    );
+  }
+  if (andere.length === 0) {
+    return (
+      <>
+        {plek.naam} hoort bij <strong>{eerste.city.name}</strong> ({eerste.km} km).
+      </>
+    );
+  }
+  const namen = andere.map((x) => `${x.city.name} (${x.km} km)`);
+  const rest = namen.length === 1 ? namen[0] : `${namen.slice(0, -1).join(', ')} en ${namen[namen.length - 1]}`;
+  return (
+    <>
+      {plek.naam} hoort bij <strong>{eerste.city.name}</strong> ({eerste.km} km) en ook bij {rest}. Je
+      ziet eerst het werk rond {eerste.city.name}.
+    </>
+  );
+}
 
 function norm(s) {
   return (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
@@ -39,6 +70,10 @@ function PlaatsVeld({ q, setQ, onKies, label = 'Plaats' }) {
     return [...start, ...bevat].slice(0, 7);
   }, [q]);
 
+  // Staat de plaats er al precies en is hij de enige keuze, dan valt er niets te kiezen: de lijst
+  // blijft dicht, zodat hij op de telefoon niet over de zoekknop eronder valt.
+  const alGekozen = suggesties.length === 1 && norm(suggesties[0].naam) === norm(q);
+
   function kies(s) {
     setQ(s.naam);
     setOpen(false);
@@ -46,7 +81,7 @@ function PlaatsVeld({ q, setQ, onKies, label = 'Plaats' }) {
   }
 
   function toets(e) {
-    if (!open || suggesties.length === 0) return;
+    if (!open || suggesties.length === 0 || alGekozen) return;
     if (e.key === 'ArrowDown') {
       e.preventDefault();
       setHl((h) => (h + 1) % suggesties.length);
@@ -79,7 +114,7 @@ function PlaatsVeld({ q, setQ, onKies, label = 'Plaats' }) {
         onKeyDown={toets}
         required
       />
-      {open && suggesties.length > 0 && (
+      {open && suggesties.length > 0 && !alGekozen && (
         <div className="zoek__suggesties" role="listbox">
           {suggesties.map((s, i) => (
             <div
@@ -122,7 +157,6 @@ export default function ZoekBalk({ mode: startMode = 'werk', toonTabs = true }) 
 
   function zoekWerk(e) {
     e.preventDefault();
-    const straal = e.target.straal?.value || '20';
     const keuze = plek || ALLES.find((p) => norm(p.naam).startsWith(norm(q)) && norm(q).length >= 3);
     if (!keuze) {
       setMelding(
@@ -133,10 +167,10 @@ export default function ZoekBalk({ mode: startMode = 'werk', toonTabs = true }) 
     setMelding('');
     const basis = `/vacatures/schilder-${keuze.city.slug}`;
     if (keuze.type === 'dorp') {
-      const params = new URLSearchParams({ van: keuze.naam, km: String(keuze.km), straal });
+      const params = new URLSearchParams({ van: keuze.naam, km: String(keuze.km) });
       router.push(`${basis}?${params.toString()}`);
     } else {
-      router.push(`${basis}?straal=${straal}`);
+      router.push(basis);
     }
   }
 
@@ -242,28 +276,21 @@ export default function ZoekBalk({ mode: startMode = 'werk', toonTabs = true }) 
         <>
           <form className="zoek__rij" onSubmit={zoekWerk}>
             <PlaatsVeld q={q} setQ={setQ} onKies={setGekozen} label="Plaats" />
-            <div className="zoek__veld">
-              <label htmlFor="straal">Afstand</label>
-              <select id="straal" name="straal" defaultValue="20">
-                <option value="5">5 km</option>
-                <option value="10">10 km</option>
-                <option value="15">15 km</option>
-                <option value="20">20 km</option>
-                <option value="25">25 km</option>
-                <option value="30">30 km</option>
-                <option value="40">40 km</option>
-                <option value="50">50 km</option>
-              </select>
-            </div>
             <button type="submit" className="btn btn--primair">
               Zoek vacatures
             </button>
           </form>
 
-          {plek && plek.type === 'dorp' && (
+          {plek && plek.type === 'dorp' ? (
             <p className="zoek__resolutie">
-              {plek.naam} valt onder <strong>{plek.city.name}</strong>, {plek.km} km verderop.
+              <WerkgebiedZin plek={plek} />
             </p>
+          ) : (
+            !melding && (
+              <p className="zoek__uitleg">
+                Je ziet het werk in de stad en in de plaatsen tot {WERKGEBIED_KM} km eromheen.
+              </p>
+            )
           )}
           {melding && <p className="zoek__resolutie">{melding}</p>}
 
