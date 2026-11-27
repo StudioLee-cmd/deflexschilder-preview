@@ -1,4 +1,4 @@
-import { placesWithin } from '@/lib/geo';
+import { WERKGEBIED_KM, werkgebied } from '@/lib/geo';
 
 // HET WERKGEBIED ROND EEN STAD — de eigen inhoud van /vacatures/schilder-<stad>.
 //
@@ -17,7 +17,7 @@ import { placesWithin } from '@/lib/geo';
 // 74%, en 100% van de toegevoegde woorden stond daar al.
 //
 // De kernen zijn wél werkzoekende-eigen, feitelijk en per stad verschillend: ze komen
-// uit de coordinaten die al in lib/geo.js staan, ze verschillen 14 tot 42 per stad, en
+// uit de coordinaten die al in lib/geo.js staan, ze verschillen per stad, en
 // ze beantwoorden de vraag die een schilder hier echt heeft — waar kom ik terecht als
 // ik reageer.
 //
@@ -31,8 +31,12 @@ import { placesWithin } from '@/lib/geo';
 // gerenderd. Let op de mechanica als je hier ooit tekst SCHRAPT: de overlap is
 // |A∩B|/|A|, dus een gedeeld woord weghalen verhoogt 'm en alleen stad-eigen tekst
 // toevoegen verlaagt 'm.
-export default function WerkgebiedRond({ stad, straal = 20, zichtbaar = 12 }) {
-  const plaatsen = placesWithin(stad, straal);
+//
+// ⚑ 27-11 (Tim): geen telling van kernen meer, en een plaats hoort bij ELKE stad binnen 20 km
+// (lib/geo.js, regels 2 en 3). De plaatsen staan bij naam met hun afstand; dat beantwoordt
+// "valt mijn dorp eronder, en hoe ver is het", een getal beantwoordt niets.
+export default function WerkgebiedRond({ stad, zichtbaar = 12 }) {
+  const plaatsen = werkgebied(stad);
   if (plaatsen.length === 0) return null;
 
   const getoond = plaatsen.slice(0, zichtbaar);
@@ -56,11 +60,14 @@ export default function WerkgebiedRond({ stad, straal = 20, zichtbaar = 12 }) {
         )}
 
         <p style={{ marginTop: 14, fontSize: 15, maxWidth: 720 }}>
-          Het werk op deze pagina ligt binnen {straal} km van {stad.name}, en dat is
-          meer dan de stad zelf. Komt er een opdracht binnen in {a.name} ({a.km} km)
-          {b ? ` of ${b.name} (${b.km} km)` : ''}, dan zie je die hier ook staan. In
-          totaal vallen {plaatsen.length} kernen in {stad.provincie} en omgeving binnen
-          die straal.
+          Het werk op deze pagina ligt in {stad.name} en in de plaatsen binnen{' '}
+          {WERKGEBIED_KM} km
+          {plaatsen.some((p) => p.verder)
+            ? `, en verderop in de plaatsen waarvoor ${stad.name} de dichtstbijzijnde stad is`
+            : ''}
+          . Komt er een opdracht binnen in {a.name} ({a.km} km)
+          {b ? ` of ${b.name} (${b.km} km)` : ''}, dan zie je die hier ook staan. Ligt je
+          plaats ook dicht bij een andere stad, dan staat het werk daar op allebei de pagina's.
         </p>
 
         <div className="stedenchips" style={{ marginTop: 16 }}>
@@ -71,14 +78,14 @@ export default function WerkgebiedRond({ stad, straal = 20, zichtbaar = 12 }) {
           ))}
         </div>
 
-        {/* Bij een stad als Drachten vallen er 42 kernen binnen de straal. Die alle 42
+        {/* Bij een stad als Drachten horen er ruim veertig plaatsen bij. Die allemaal
             uitschrijven maakt van een leesbare sectie een muur, dus gaat de staart in
             dezelfde uitklapper die de home-pagina al gebruikt (Tim 03-07). Dichtgeklapt
             staat de tekst wél gewoon in de HTML, dus voor een zoekmachine telt 'ie mee. */}
         {rest.length > 0 && (
           <details className="plaatsen" style={{ marginTop: 14 }}>
             <summary className="plaatsen__hoofdknop">
-              <strong>Nog {rest.length} kernen binnen {straal} km</strong>
+              <strong>Meer plaatsen rond {stad.name}</strong>
               <span className="meta">
                 van {rest[0].name} ({rest[0].km} km) tot {rest[rest.length - 1].name} (
                 {rest[rest.length - 1].km} km)

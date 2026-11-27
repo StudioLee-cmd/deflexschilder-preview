@@ -14,9 +14,15 @@ Gebouwd door StudioLee. **Noindex** — dit is een preview, niet de live site.
   soorten-schilders · vastgoedonderhoud-en-rgs) + over-ons + aanvraag + inschrijven.
 - **15 stad-hoofdpagina's** (alleen Noord-NL, Zwolle en noordelijker) ×
   2 intents + klikbare Noord-NL-kaart (alleen het noorden ingekleurd).
-- **Zoekbalk met kilometers** (10/20 km, default 20): URL volgt de locatie;
-  klein dorp → dichtstbijzijnde grote stad mét km-afstand zichtbaar
-  ("Wolvega → Heerenveen · 12 km"). Simpele plaats→stad-mapping, geen geo-API.
+- **Zoekbalk met kilometers**: URL volgt de locatie; klein dorp → de
+  dichtstbijzijnde grote stad mét km-afstand, en de banner noemt de andere steden
+  waar het dorp ook bij hoort. Simpele plaats→stad-data, geen geo-API.
+- **Werkgebied per stad** (`lib/geo.js`, de vijf regels bovenaan die file): een
+  plaats hoort bij élke stad binnen 20 km (Hasselt bij Zwolle én Kampen), verder
+  weg bij de dichtstbijzijnde; vacatures volgen dezelfde regel
+  (`vacaturesVoorStad` in `lib/ats.js`). De stadspagina's noemen de plaatsen bij
+  naam, nooit een telling; op `/schilders-inhuren/<stad>` opent elke plaats de
+  aanvraag met die plaats ingevuld.
 - **Generieke ATS-adapter** (`lib/ats.js`): wire-ready op de FlexSoftware/
   Uitzendplaats-API (key volgt — todo `flexschilder-ats-api-key`); tot die tijd
   demo-vacatures met demo-label. JobPosting-schema op vacaturedetails.
@@ -31,3 +37,12 @@ npm install && npm run dev
    endpoints/veldmapping in `lib/ats.js` invullen.
 2. Formulieren aansluiten (aanvraag → André; sollicitatie → ATS terugschrijven).
 3. Noindex verwijderen (`next.config.mjs` + `app/layout.jsx`).
+
+## Zelftoetsen
+Draai ze na elke wijziging aan steden, plaatsen, vacatures of de volgorde van de
+pagina's. Zonder adres toetsen ze de data; met een adres ook elke pagina daar
+(lokaal `npm run build && npx next start`, een preview, of de site zelf).
+```bash
+node scripts/werkgebied-check.mjs [adres]   # steden, plaatsen en vacatures; geen tellingen
+```
+`scripts/lib-laden.mjs` laat ze de echte modules uit `lib/` laden, zonder build.

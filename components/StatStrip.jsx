@@ -44,7 +44,7 @@ function Teller({ tot, suffix = '' }) {
 
 export default function StatStrip({ items }) {
   return (
-    <div className="statstrip">
+    <div className={items.length === 3 ? 'statstrip statstrip--3' : 'statstrip'}>
       {items.map((it) => (
         <div key={it.label} className="statstrip__item">
           <span className="statstrip__cijfer">

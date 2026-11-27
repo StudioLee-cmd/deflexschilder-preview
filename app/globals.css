@@ -417,6 +417,12 @@ img { max-width: 100%; height: auto; }
   margin-bottom: 20px;
 }
 .resolutie strong { color: var(--oranje-donker); }
+.resolutie a { color: var(--oranje-donker); font-weight: 700; text-decoration: underline; }
+
+/* ---------- "ook voor" (stad-inhurenpagina, onder de knoppen): de eerste plaatsen bij naam ---------- */
+.ookvoor { margin-top: 16px; font-size: 15px; color: var(--tekst-licht); max-width: 760px; }
+.ookvoor__link { color: var(--oranje-donker); font-weight: 700; white-space: nowrap; text-decoration: underline; }
+#werkgebied { scroll-margin-top: 90px; }
 
 /* ---------- breadcrumbs ---------- */
 .kruimel { font-size: 13.5px; color: var(--tekst-licht); padding-top: 14px; }
@@ -1004,6 +1010,9 @@ a.kaartje:hover .verder, .vacature:hover .verder { color: var(--oranje); }
 .statstrip__cijfer { font-size: clamp(24px, 3vw, 34px); font-weight: 800; color: var(--oranje); line-height: 1.1; }
 .statstrip__label { font-size: 13.5px; color: #d9d2cf; }
 @media (max-width: 720px) { .statstrip { grid-template-columns: repeat(2, 1fr); } }
+/* Drie cijfers: drie kolommen, op de telefoon onder elkaar (niet 2 + 1). */
+.statstrip--3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 720px) { .statstrip--3 { grid-template-columns: 1fr; } }
 
 /* ---------- plaatsenlijst (volledige dekking per stad — compacte uitklapper) ---------- */
 .plaatsen > .plaatsen__hoofdknop {

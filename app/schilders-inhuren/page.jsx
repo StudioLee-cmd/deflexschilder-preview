@@ -4,7 +4,7 @@ import ZoekBalk from '@/components/ZoekBalk';
 import ClusterBlok from '@/components/ClusterBlok';
 import BeeldAI from '@/components/BeeldAI';
 import StatStrip from '@/components/StatStrip';
-import { CITIES, PLACES } from '@/lib/geo';
+import { CITIES } from '@/lib/geo';
 
 export const metadata = {
   title: 'Schilders inhuren: flexibele schilderscapaciteit in Noordoost-Nederland',
@@ -99,8 +99,9 @@ export default function SchildersInhuren() {
         <StatStrip
           items={[
             { tot: 23, label: 'jaar technische vakkennis' },
-            { tot: CITIES.length, label: 'stadspagina’s in Noordoost-NL' },
-            { tot: PLACES.length, suffix: '+', label: 'plaatsen gedekt' },
+            // Geen telling van pagina's of plaatsen (Tim 27-11: een getal dat niets beantwoordt).
+            // Het werkgebied zelf is wat een bedrijf wil weten. Niet-brekend koppelteken (U+2011).
+            { vast: 'Noordoost‑NL', label: 'Groningen, Friesland, Drenthe en de kop van Overijssel' },
             { vast: 'SNA · VCU · ABU', label: 'gecertificeerd & aangesloten' },
           ]}
         />

@@ -1,16 +1,11 @@
 import Link from 'next/link';
-import { CITIES, PLACES, nearestCity } from '@/lib/geo';
+import { CITIES, werkgebied } from '@/lib/geo';
 
-// Volledige dekking zichtbaar (Tim 03-07): álle dorpen/kernen gegroepeerd onder
-// hun dichtstbijzijnde stad, uitklapbaar per stad. Elke plaats linkt door naar
-// de stadspagina mét de km-afstand in beeld — nooit "kan niet" binnen Noordoost-NL.
+// Volledige dekking zichtbaar (Tim 03-07): alle dorpen en kernen per stad, uitklapbaar per stad.
+// Sinds 27-11 per WERKGEBIED (lib/geo.js, regels 2 en 3): een plaats staat onder elke stad
+// binnen 20 km, dus Hasselt staat onder Zwolle én Kampen. Geen telling per stad (Tim 27-11:
+// een getal dat niets beantwoordt). Elke plaats linkt door naar de stadspagina, met de km.
 export default function PlaatsenLijst() {
-  const groepen = new Map(CITIES.map((c) => [c.slug, []]));
-  for (const p of PLACES) {
-    const n = nearestCity(p);
-    groepen.get(n.city.slug).push({ ...p, km: n.km });
-  }
-
   return (
     // Eén compacte uitklapper (Tim 03-07: sectie was te groot op de home) —
     // dichtgeklapt is dit één regel; open toont de volledige dekking.
@@ -18,20 +13,17 @@ export default function PlaatsenLijst() {
       <summary className="plaatsen__hoofdknop">
         <strong>Alle plaatsen in ons werkgebied</strong>
         <span className="meta">
-          {PLACES.length} kernen onder {CITIES.length} steden. Klik je dorp, elke
-          plaats valt onder de dichtstbijzijnde stad
+          Klik je plaats. Ligt hij dicht bij twee steden, dan staat hij onder allebei
         </span>
       </summary>
       <div className="plaatsen__grid">
         {CITIES.map((c) => {
-          const dorpen = groepen.get(c.slug).sort((a, b) => a.km - b.km);
+          const dorpen = werkgebied(c);
           return (
             <details key={c.slug} className="plaatsen__stad">
               <summary>
                 <strong>{c.name}</strong>
-                <span className="meta">
-                  {c.provincie} · {dorpen.length} plaatsen
-                </span>
+                <span className="meta">{c.provincie}</span>
               </summary>
               <div className="plaatsen__dorpen">
                 <Link href={`/schilders-inhuren/${c.slug}`} className="chip chip--stad">
@@ -40,7 +32,7 @@ export default function PlaatsenLijst() {
                 {dorpen.map((d) => (
                   <Link
                     key={d.name}
-                    href={`/schilders-inhuren/${c.slug}?van=${encodeURIComponent(d.name)}&km=${d.km}&straal=20`}
+                    href={`/schilders-inhuren/${c.slug}?van=${encodeURIComponent(d.name)}&km=${d.km}`}
                     className="chip"
                   >
                     {d.name} · {d.km} km

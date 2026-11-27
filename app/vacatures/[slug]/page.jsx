@@ -5,8 +5,8 @@ import ResolutieBanner from '@/components/ResolutieBanner';
 import VacatureCard from '@/components/VacatureCard';
 import DemoForm from '@/components/DemoForm';
 import WerkgebiedRond from '@/components/WerkgebiedRond';
-import { CITIES, getCity, nearbyCities, placesWithin, resolvePlace } from '@/lib/geo';
-import { getAtsAdapter, vacaturesBinnenStraal } from '@/lib/ats';
+import { CITIES, getCity, nearbyCities, resolvePlace, werkgebied } from '@/lib/geo';
+import { getAtsAdapter, vacaturesVoorStad } from '@/lib/ats';
 import { ORG_ID } from '@/lib/schema';
 
 // Deze route bedient TWEE templates (Strikt-engine, maar schilder-specialist):
@@ -29,6 +29,11 @@ export async function generateStaticParams() {
 // De vacature staat in een PLAATS, en niet elke plaats is een stadspagina (Havelte is een
 // dorp, Groningen een stad). resolvePlace koppelt beide aan de dichtstbijzijnde stadspagina,
 // zodat de "meer werk in de buurt"-link altijd ergens op uitkomt.
+// "A", "A en B", "A, B en C".
+function inZin(namen) {
+  return namen.length > 1 ? `${namen.slice(0, -1).join(', ')} en ${namen[namen.length - 1]}` : namen[0];
+}
+
 function stadBij(v) {
   const res = resolvePlace(v.plaats);
   return res ? res.city : null;
@@ -40,11 +45,11 @@ export async function generateMetadata({ params }) {
     // De description noemt de dichtstbijzijnde kernen, niet alleen de stad. Zonder dat
     // verschilden de 15 descriptions alleen in de stads- en provincienaam, terwijl het
     // juist de omliggende plaatsen zijn waarop een schilder zoekt ("werk in Hoogkerk").
-    const omheen = placesWithin(stad, 20).slice(0, 3).map((p) => p.name);
+    const omheen = werkgebied(stad).slice(0, 3).map((p) => p.name);
     return {
       title: `Vacatures schilder ${stad.name}: schilder gezocht in ${stad.name}`,
       description: omheen.length
-        ? `Schilder gezocht in ${stad.name}? Bekijk het werk binnen 20 km van ${stad.name}, ook in ${omheen.slice(0, -1).join(', ')} en ${omheen[omheen.length - 1]}. Structureel werk via De Flexschilder.`
+        ? `Schilder gezocht in ${stad.name}? Bekijk het werk in en rond ${stad.name}, ook in ${omheen.slice(0, -1).join(', ')} en ${omheen[omheen.length - 1]}. Structureel werk via De Flexschilder.`
         : `Schilder gezocht in ${stad.name}? Bekijk schildersvacatures in en rond ${stad.name} (${stad.provincie}) en werk structureel via De Flexschilder.`,
       alternates: { canonical: `/vacatures/${params.slug}` },
     };
@@ -65,26 +70,25 @@ export default async function VacatureOfStad({ params }) {
   if (params.slug.startsWith('schilder-')) {
     const stad = getCity(params.slug.slice('schilder-'.length));
     if (!stad) notFound();
-    const straal = 20;
-    const lokaal = vacaturesBinnenStraal(vacatures, stad, straal);
+    const lokaal = vacaturesVoorStad(vacatures, stad);
     const buren = nearbyCities(stad, 4);
-    const kernen = placesWithin(stad, straal);
+    // De plaatsen van deze stad (lib/geo.js, regels 2 en 3), bij naam en zonder telling.
+    const eerste = werkgebied(stad).slice(0, 3).map((p) => p.name);
 
     return (
       <>
         <Kruimel items={[{ naam: 'Vacatures', href: '/vacatures' }, { naam: stad.name }]} />
 
         <section className="paginakop container">
-          <ResolutieBanner stadNaam={stad.name} />
+          <ResolutieBanner stadNaam={stad.name} pad="/vacatures/schilder-" />
           <span className="kicker">Voor schilders · {stad.provincie}</span>
           <h1>Vacatures schilder in {stad.name}</h1>
-          {/* De em dash die hier stond is eruit (writing-style.md: geen em dashes in
-              klant-facing copy), en de lead noemt nu het aantal kernen. Dat aantal is
-              per stad anders en zegt een schilder meteen hoe ver deze pagina reikt. */}
+          {/* Geen em dash (writing-style.md) en geen telling van kernen (Tim 27-11): de lead
+              noemt de eerste plaatsen bij naam, want daarop zoekt een schilder. */}
           <p className="lead">
-            Schilder gezocht in {stad.name}? Hieronder staat het werk binnen {straal} km,
-            in {stad.name} zelf en in {kernen.length} kernen eromheen. Wij plannen het
-            werk zoveel mogelijk dicht bij huis.
+            Schilder gezocht in {stad.name}? Hieronder staat het werk in {stad.name} zelf
+            {eerste.length > 0 ? ` en in de plaatsen eromheen, zoals ${inZin(eerste)}` : ''}. Wij
+            plannen het werk zoveel mogelijk dicht bij huis.
           </p>
         </section>
 
@@ -100,9 +104,9 @@ export default async function VacatureOfStad({ params }) {
               <div className="kaartje" style={{ maxWidth: 640 }}>
                 <h3>Nu geen open vacature rond {stad.name}</h3>
                 <p>
-                  Er komt hier doorlopend werk bij, in {stad.name} en in de{' '}
-                  {kernen.length} kernen eromheen. Schrijf je in en we bellen zodra er
-                  een passende opdracht in {stad.provincie} is.
+                  Er komt hier doorlopend werk bij, in {stad.name} en in de plaatsen
+                  eromheen. Schrijf je in en we bellen zodra er een passende opdracht in{' '}
+                  {stad.provincie} is.
                 </p>
                 <Link href="/inschrijven" className="btn btn--primair" style={{ alignSelf: 'flex-start', marginTop: 8 }}>
                   Schrijf je in
@@ -115,7 +119,7 @@ export default async function VacatureOfStad({ params }) {
         {/* De eigen inhoud van deze pagina: het werkgebied. Staat er nu niets open, dan
             is dit wat de pagina alsnog beantwoordt — en dat is de normale toestand, want
             12 van de 15 steden hadden op 11-08 geen enkele vacature. */}
-        <WerkgebiedRond stad={stad} straal={straal} />
+        <WerkgebiedRond stad={stad} />
 
         <section className="sectie sectie--vlak">
           <div className="container">

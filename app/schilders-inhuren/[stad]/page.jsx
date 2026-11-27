@@ -2,13 +2,12 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import Kruimel from '@/components/Kruimel';
 import ResolutieBanner from '@/components/ResolutieBanner';
-import StatStrip from '@/components/StatStrip';
-import { CITIES, PLACES, getCity, nearbyCities, nearestCity } from '@/lib/geo';
-import { getAtsAdapter, vacaturesBinnenStraal } from '@/lib/ats';
+import { CITIES, WERKGEBIED_KM, getCity, nearbyCities, werkgebied } from '@/lib/geo';
+import { getAtsAdapter, vacaturesVoorStad } from '@/lib/ats';
 import { ORG_ID } from '@/lib/schema';
 import VacatureCard from '@/components/VacatureCard';
 
-// Vacatures veranderen; zonder dit bevroor het aantal op het moment van de build.
+// Vacatures veranderen; zonder dit bevroor de lijst op het moment van de build.
 export const revalidate = 300;
 
 // STAD-HOOFDPAGINA (opdrachtgeverkant) — de URL volgt de locatie:
@@ -28,24 +27,69 @@ export function generateMetadata({ params }) {
   };
 }
 
+// "A", "A en B", "A, B en C".
+function inZin(namen) {
+  return namen.length > 1 ? `${namen.slice(0, -1).join(', ')} en ${namen[namen.length - 1]}` : namen[0];
+}
+
+// Tot 16 plaatsen staan ze allemaal open; daarboven de eerste 12 en de rest in een uitklapper
+// (dichtgeklapt staan ze wel in de HTML).
+function PlaatsChips({ stad, plaatsen }) {
+  const alles = plaatsen.length <= 16;
+  const getoond = alles ? plaatsen : plaatsen.slice(0, 12);
+  const rest = alles ? [] : plaatsen.slice(12);
+  const chip = (p) => (
+    <Link
+      key={p.name}
+      href={`/aanvraag?plaats=${encodeURIComponent(p.name)}&stad=${encodeURIComponent(stad.name)}&km=${p.km}`}
+      className="chip"
+    >
+      {p.name} · {p.km} km
+    </Link>
+  );
+  return (
+    <>
+      <div className="stedenchips" style={{ marginTop: 16 }}>{getoond.map(chip)}</div>
+      {rest.length > 0 && (
+        <details className="plaatsen" style={{ marginTop: 14 }}>
+          <summary className="plaatsen__hoofdknop">
+            <strong>Meer plaatsen rond {stad.name}</strong>
+            <span className="meta">
+              van {rest[0].name} ({rest[0].km} km) tot {rest[rest.length - 1].name} ({rest[rest.length - 1].km} km)
+            </span>
+          </summary>
+          <div className="plaatsen__dorpen" style={{ padding: '14px 0 0' }}>{rest.map(chip)}</div>
+        </details>
+      )}
+    </>
+  );
+}
+
 export default async function StadPagina({ params }) {
   const stad = getCity(params.stad);
   if (!stad) notFound();
 
   const vacatures = await getAtsAdapter().getVacatures();
-  const lokaalWerk = vacaturesBinnenStraal(vacatures, stad, 20);
+  const lokaalWerk = vacaturesVoorStad(vacatures, stad);
   const buren = nearbyCities(stad, 4);
+  // De plaatsen die bij deze stad horen (lib/geo.js, regels 2 en 3), bij naam. Geen telling:
+  // een bedrijf wil weten of zijn eigen plaats erbij hoort, niet hoeveel het er zijn (Tim 27-11).
+  const plaatsen = werkgebied(stad);
+  const eerste = plaatsen.slice(0, 3).map((p) => p.name);
 
   const serviceSchema = {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: `Schilders inhuren in ${stad.name}`,
     provider: { '@id': ORG_ID },
-    areaServed: {
-      '@type': 'City',
-      name: stad.name,
-      geo: { '@type': 'GeoCoordinates', latitude: stad.lat, longitude: stad.lng },
-    },
+    areaServed: [
+      {
+        '@type': 'City',
+        name: stad.name,
+        geo: { '@type': 'GeoCoordinates', latitude: stad.lat, longitude: stad.lng },
+      },
+      ...plaatsen.map((p) => ({ '@type': 'Place', name: p.name })),
+    ],
     serviceType: 'Schilders-detachering, uitzenden en werving & selectie',
     audience: { '@type': 'BusinessAudience', name: 'Vastgoedbeheerders, aannemers, RGS-opdrachtgevers en bedrijven die flexibel schilders inhuren' },
   };
@@ -75,17 +119,12 @@ export default async function StadPagina({ params }) {
             ☎ 06 - 137 181 72
           </a>
         </div>
-      </section>
-
-      <section className="container" style={{ paddingTop: 26 }}>
-        <StatStrip
-          items={[
-            { tot: 23, label: 'jaar technische vakkennis' },
-            { tot: PLACES.filter((p) => nearestCity(p).city.slug === stad.slug).length, label: `plaatsen onder ${stad.name}` },
-            { tot: lokaalWerk.length, label: 'open vacatures binnen 20 km' },
-            { vast: stad.provincie, label: 'provincie' },
-          ]}
-        />
+        {eerste.length > 0 && (
+          <p className="ookvoor">
+            Ook voor bedrijven en projecten in {inZin(eerste)} en de andere plaatsen rond {stad.name}.{' '}
+            <a href="#werkgebied" className="ookvoor__link">Zie het werkgebied</a>
+          </p>
+        )}
       </section>
 
       <section className="sectie">
@@ -122,21 +161,21 @@ export default async function StadPagina({ params }) {
             <li>Een gesprek over het schilderwerk en de ervaring die daarvoor nodig is</li>
             <li>Bemiddeling bij structurele inzet en langere samenwerkingen</li>
             <li>Een regionaal netwerk in Noordoost-Nederland</li>
-            <li>Technische kennis van verf, onderhoud en uitvoering</li>
+            <li>23 jaar technische kennis van verf, onderhoud en uitvoering</li>
           </ul>
         </div>
       </section>
 
-      {/* Werkzoekende-kant: de open vacatures rond deze stad (zelfde straal-logica als
-          /vacatures/schilder-<stad>), met de volledige lijst op die eigen pagina. */}
+      {/* Werkzoekende-kant: de open vacatures van deze stad (zelfde regel als
+          /vacatures/schilder-<stad>, lib/geo.js regel 4), met de volledige lijst op die eigen pagina. */}
       <section className="sectie">
         <div className="container">
           <span className="kicker">Voor schilders</span>
           <h2 style={{ fontSize: 24 }}>Werk als schilder rond {stad.name}</h2>
           <p className="lead" style={{ marginTop: 10, maxWidth: 760 }}>
             {lokaalWerk.length > 0
-              ? `Er ${lokaalWerk.length === 1 ? 'staat nu 1 vacature' : `staan nu ${lokaalWerk.length} vacatures`} open binnen 20 km van ${stad.name}.`
-              : `Op dit moment staat er geen vacature open binnen 20 km van ${stad.name}. Er komt doorlopend werk bij: schrijf je in, dan neemt André contact met je op bij een passende opdracht.`}
+              ? `Er ${lokaalWerk.length === 1 ? 'staat nu 1 vacature' : `staan nu ${lokaalWerk.length} vacatures`} open in en rond ${stad.name}.`
+              : `Op dit moment staat er geen vacature open in en rond ${stad.name}. Er komt doorlopend werk bij: schrijf je in, dan neemt André contact met je op bij een passende opdracht.`}
           </p>
           {lokaalWerk.length > 0 && (
             <div className="grid grid--3" style={{ marginTop: 22 }}>
@@ -153,6 +192,24 @@ export default async function StadPagina({ params }) {
           </p>
         </div>
       </section>
+
+      {/* HET WERKGEBIED: de plaatsen die bij deze stad horen, bij naam, elk één tik van de
+          aanvraag met die plaats ingevuld. Een plaats kan op meer stadspagina's staan (Hasselt op
+          Zwolle én Kampen): dat is de regel, geen dubbeling (lib/geo.js). */}
+      {plaatsen.length > 0 && (
+        <section className="sectie sectie--vlak" id="werkgebied">
+          <div className="container">
+            <span className="kicker">Werkgebied</span>
+            <h2 style={{ fontSize: 24 }}>Schilders in {stad.name} en de plaatsen eromheen</h2>
+            <p className="lead" style={{ marginTop: 10, maxWidth: 760 }}>
+              Vanuit {stad.name} werken we in de stad zelf en in de plaatsen binnen {WERKGEBIED_KM} km
+              {plaatsen.some((p) => p.verder) ? `, en verderop de plaatsen waarvoor ${stad.name} de dichtstbijzijnde stad is` : ''}.
+              Staat jouw plaats erbij? Tik erop en je aanvraag staat klaar met die plaats ingevuld.
+            </p>
+            <PlaatsChips stad={stad} plaatsen={plaatsen} />
+          </div>
+        </section>
+      )}
 
       <section className="sectie" style={{ paddingTop: 0 }}>
         <div className="container kaartwrap">
