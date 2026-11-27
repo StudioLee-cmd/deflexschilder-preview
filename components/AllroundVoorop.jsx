@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import VacatureCard from '@/components/VacatureCard';
-import { ALLROUND, OVERIGE_IN_ZIN, euro } from '@/lib/salaris';
+import { OVERIGE_IN_ZIN } from '@/lib/salaris';
 import { ORGANISATIE } from '@/lib/schema';
 
 // ALLROUND VOOROP: het eerste blok op de home, op elke /schilders-inhuren/<stad> en op elke
@@ -9,9 +9,9 @@ import { ORGANISATIE } from '@/lib/schema';
 // first." Eén blok, drie kanten:
 //   kant="bedrijf"  (inhurenpagina's)  allround schilders inhuren in <stad>, één tik naar de
 //                                      aanvraag met allround en de stad ingevuld
-//   kant="schilder" (vacaturepagina's) de open allround vacatures; staat er geen open, dan wat de
-//                                      cao een allround schilder betaalt en een app of belletje
-//                                      naar André (nooit een nul)
+//   kant="schilder" (vacaturepagina's) de open allround vacatures; staat er geen open, dan een app of belletje
+//                                      naar André (nooit een nul, en geen loon of prijs: Tim 27-11,
+//                                      André noemt zelf zijn bedragen)
 //   kant="beide"    (home)             de twee naast elkaar
 // Welke vacature allround is beslist isAllround in lib/ats.js; de soorten en het loon komen uit
 // lib/salaris.js. Het inschrijfformulier staat hier bewust niet: dat verstuurt nog niets
@@ -88,11 +88,7 @@ function Schilder({ stad, vacatures, kop: Kop, max }) {
       ) : (
         <>
           <p>
-            Als allround schilder verdien je volgens de cao{' '}
-            <strong>
-              {euro(ALLROUND.min)} tot {euro(ALLROUND.max)} bruto per maand
-            </strong>{' '}
-            (loongroep {ALLROUND.loongroep}). Er komt doorlopend allround werk bij
+            Er komt doorlopend allround werk bij
             {stad ? ` in en rond ${stad.name}` : ''}: app of bel André, dan hoor je het als eerste.
           </p>
           <p className="allround__knoppen">
