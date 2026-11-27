@@ -21,7 +21,15 @@ t.toets(new Set(PLACES.map((p) => p.name)).size === PLACES.length, 'data: elke p
 t.toets(WERKGEBIED_KM === 20, `data: het werkgebied is 20 km (staat op ${WERKGEBIED_KM})`);
 const leeg = PLACES.filter((p) => citiesFor(p).length === 0).map((p) => p.name);
 t.toets(leeg.length === 0, `data: elke plaats hoort bij een stad (zonder stad: ${leeg.join(', ')})`);
-const nergens = PLACES.filter((p) => !CITIES.some((c) => werkgebied(c).some((x) => x.name === p.name))).map((p) => p.name);
+// Het werkgebied van elke stad één keer, als set namen: de toetsen hieronder lezen die, zodat de
+// toets plaatsen × steden kost en niet plaatsen × plaatsen (review code 27-11).
+const namenVan = new Map(CITIES.map((c) => [c.slug, new Set(werkgebied(c).map((x) => x.name))]));
+const ergens = new Set([...namenVan.values()].flatMap((s) => [...s]));
+const nergens = PLACES.filter((p) => !ergens.has(p.name)).map((p) => p.name);
+// De index (lib/geo.js) is gelijk aan opnieuw meten: dezelfde steden voor elke plaats, ook als
+// het punt geen plaats uit PLACES is (zo leest een vacature op die plek het).
+const anders = PLACES.filter((p) => slugs(citiesFor(p)).join() !== slugs(citiesFor({ lat: p.lat, lng: p.lng })).join()).map((p) => p.name);
+t.toets(anders.length === 0, `data: de index geeft elke plaats dezelfde steden als opnieuw meten (anders: ${anders.join(', ')})`);
 t.toets(nergens.length === 0, `data: elke plaats staat in het werkgebied van een stad (nergens: ${nergens.join(', ')})`);
 
 // Regel 2: elke stad binnen 20 km.
@@ -33,7 +41,7 @@ const meerdere = PLACES.filter((p) => citiesFor(p).length > 1).length;
 t.toets(meerdere > PLACES.length / 2, `regel 2: de meeste plaatsen horen bij meer steden (${meerdere} van ${PLACES.length})`);
 for (const c of CITIES) {
   const fout = werkgebied(c).filter((p) => !p.verder && p.km > WERKGEBIED_KM).map((p) => p.name);
-  const mist = PLACES.filter((p) => Math.round(geo.haversineKm(c, p)) <= WERKGEBIED_KM && !werkgebied(c).some((x) => x.name === p.name)).map((p) => p.name);
+  const mist = PLACES.filter((p) => Math.round(geo.haversineKm(c, p)) <= WERKGEBIED_KM && !namenVan.get(c.slug).has(p.name)).map((p) => p.name);
   t.toets(fout.length === 0 && mist.length === 0, `regel 2: ${c.name} draagt precies de plaatsen binnen 20 km (te ver: ${fout.join(', ')}; mist: ${mist.join(', ')})`);
 }
 // De oude regel (alleen de dichtstbijzijnde stad) gaf Zwolle 3 plaatsen; binnen 20 km zijn het er meer.
