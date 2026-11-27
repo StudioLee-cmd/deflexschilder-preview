@@ -5,8 +5,9 @@ import ResolutieBanner from '@/components/ResolutieBanner';
 import VacatureCard from '@/components/VacatureCard';
 import DemoForm from '@/components/DemoForm';
 import WerkgebiedRond from '@/components/WerkgebiedRond';
+import AllroundVoorop from '@/components/AllroundVoorop';
 import { CITIES, getCity, nearbyCities, resolvePlace, werkgebied } from '@/lib/geo';
-import { getAtsAdapter, vacaturesVoorStad } from '@/lib/ats';
+import { getAtsAdapter, isAllround, vacaturesVoorStad } from '@/lib/ats';
 import { ORG_ID } from '@/lib/schema';
 
 // Deze route bedient TWEE templates (Strikt-engine, maar schilder-specialist):
@@ -71,6 +72,9 @@ export default async function VacatureOfStad({ params }) {
     const stad = getCity(params.slug.slice('schilder-'.length));
     if (!stad) notFound();
     const lokaal = vacaturesVoorStad(vacatures, stad);
+    // Allround voorop (André 27-11): eerst de allround vacatures van deze stad, dan het andere werk.
+    const allround = lokaal.filter(isAllround);
+    const ander = lokaal.filter((v) => !isAllround(v));
     const buren = nearbyCities(stad, 4);
     // De plaatsen van deze stad (lib/geo.js, regels 2 en 3), bij naam en zonder telling.
     const eerste = werkgebied(stad).slice(0, 3).map((p) => p.name);
@@ -92,14 +96,22 @@ export default async function VacatureOfStad({ params }) {
           </p>
         </section>
 
+        <AllroundVoorop kant="schilder" stad={stad} vacatures={allround} />
+
+        {/* Onder het allround blok: het andere werk, of (staat er helemaal niets open) de
+            uitnodiging om je in te schrijven. Alleen allround werk: dan niets eronder. */}
+        {(ander.length > 0 || allround.length === 0) && (
         <section className="sectie" style={{ paddingTop: 28 }}>
           <div className="container">
-            {lokaal.length > 0 ? (
-              <div className="grid grid--2">
-                {lokaal.map((v) => (
-                  <VacatureCard key={v.slug} v={v} />
-                ))}
-              </div>
+            {ander.length > 0 ? (
+              <>
+                <h2 style={{ fontSize: 22 }}>Ander werk in en rond {stad.name}</h2>
+                <div className="grid grid--2" style={{ marginTop: 16 }}>
+                  {ander.map((v) => (
+                    <VacatureCard key={v.slug} v={v} />
+                  ))}
+                </div>
+              </>
             ) : (
               <div className="kaartje" style={{ maxWidth: 640 }}>
                 <h3>Nu geen open vacature rond {stad.name}</h3>
@@ -115,6 +127,7 @@ export default async function VacatureOfStad({ params }) {
             )}
           </div>
         </section>
+        )}
 
         {/* De eigen inhoud van deze pagina: het werkgebied. Staat er nu niets open, dan
             is dit wat de pagina alsnog beantwoordt — en dat is de normale toestand, want

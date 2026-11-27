@@ -4,7 +4,8 @@ import ZoekBalk from '@/components/ZoekBalk';
 import ClusterBlok from '@/components/ClusterBlok';
 import VacatureCard from '@/components/VacatureCard';
 import { CITIES } from '@/lib/geo';
-import { getAtsAdapter } from '@/lib/ats';
+import { getAtsAdapter, isAllround } from '@/lib/ats';
+import AllroundVoorop from '@/components/AllroundVoorop';
 
 export const metadata = {
   title: 'Vacatures voor schilders in Noordoost-Nederland',
@@ -21,6 +22,10 @@ export const revalidate = 300;
 // PILLAR — cluster 2 (kandidaatkant; "vacature schilder", "schilder gezocht").
 export default async function Vacatures() {
   const vacatures = await getAtsAdapter().getVacatures();
+  // Allround voorop (André 27-11): de groep "Allround schilder" (#allround) staat er altijd, ook
+  // zonder open allround vacature (dan met het cao-loon en André's nummer); daaronder ander werk.
+  const allround = vacatures.filter(isAllround);
+  const ander = vacatures.filter((v) => !isAllround(v));
 
   return (
     <>
@@ -44,22 +49,26 @@ export default async function Vacatures() {
         </div>
       </section>
 
-      <section className="sectie sectie--vlak" style={{ paddingTop: 44 }}>
-        <div className="container">
-          <h2>
-            Alle vacatures{' '}
-            <span style={{ fontSize: 15, fontWeight: 600, color: 'var(--tekst-licht)' }}>
-              ({vacatures.length})
-              {vacatures.some((v) => v.demo) && ', demo-data tot de ATS-koppeling live is'}
-            </span>
-          </h2>
-          <div className="grid grid--2" style={{ marginTop: 22 }}>
-            {vacatures.map((v) => (
-              <VacatureCard key={v.slug} v={v} />
-            ))}
+      <AllroundVoorop kant="schilder" vacatures={allround} kop="h2" id="allround" />
+
+      {ander.length > 0 && (
+        <section className="sectie sectie--vlak" style={{ paddingTop: 44 }}>
+          <div className="container">
+            <h2>
+              Ander werk{' '}
+              <span style={{ fontSize: 15, fontWeight: 600, color: 'var(--tekst-licht)' }}>
+                ({ander.length})
+                {vacatures.some((v) => v.demo) && ', demo-data tot de ATS-koppeling live is'}
+              </span>
+            </h2>
+            <div className="grid grid--2" style={{ marginTop: 22 }}>
+              {ander.map((v) => (
+                <VacatureCard key={v.slug} v={v} />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section className="sectie">
         <div className="container">

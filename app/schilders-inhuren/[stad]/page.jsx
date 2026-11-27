@@ -6,6 +6,7 @@ import { CITIES, WERKGEBIED_KM, getCity, nearbyCities, werkgebied } from '@/lib/
 import { getAtsAdapter, vacaturesVoorStad } from '@/lib/ats';
 import { ORG_ID } from '@/lib/schema';
 import VacatureCard from '@/components/VacatureCard';
+import AllroundVoorop, { aanvraag } from '@/components/AllroundVoorop';
 
 // Vacatures veranderen; zonder dit bevroor de lijst op het moment van de build.
 export const revalidate = 300;
@@ -112,8 +113,10 @@ export default async function StadPagina({ params }) {
           Zoek je voor je bedrijf in {stad.name} en omgeving structureel schilderscapaciteit? André brengt je in contact met vakmensen die passen bij het werk. Bespreek de gewenste ervaring, periode en planning.
         </p>
         <div style={{ display: 'flex', gap: 12, marginTop: 20, flexWrap: 'wrap' }}>
-          <Link href="/aanvraag" className="btn btn--primair">
-            Schilders aanvragen in {stad.name}
+          {/* Allround voorop, ook op het eerste scherm (André 27-11): de eerste knop is de
+              allround aanvraag. De gewone aanvraag staat in het menu ("Schilders aanvragen"). */}
+          <Link href={aanvraag(stad)} className="btn btn--primair">
+            Allround schilder aanvragen in {stad.name}
           </Link>
           <a className="btn btn--secundair" href="tel:+31613718172">
             ☎ 06 - 137 181 72
@@ -126,6 +129,8 @@ export default async function StadPagina({ params }) {
           </p>
         )}
       </section>
+
+      <AllroundVoorop kant="bedrijf" stad={stad} />
 
       <section className="sectie">
         <div className="container grid grid--3">

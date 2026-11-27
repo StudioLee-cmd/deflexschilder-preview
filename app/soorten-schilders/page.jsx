@@ -6,11 +6,12 @@ import BeeldAI from '@/components/BeeldAI';
 export const metadata = {
   title: 'Soorten schilders: van leerling tot voorman, met cao-salaris',
   description:
-    'Leerling schilder, Schilder 1 en 2, allround schilder, voorman/teamleider en industrieel schilder: wat elke functie doet en wat de cao SAVG 2026 ervoor betaalt.',
+    'De allround schilder voorop, dan leerling schilder, Schilder 1 en 2, voorman/teamleider en industrieel schilder: wat elke functie doet en wat de cao SAVG 2026 ervoor betaalt.',
   alternates: { canonical: '/soorten-schilders' },
 };
 
-import { SCHILDER_TYPES as TYPES, CAO_BRON } from '@/lib/salaris';
+import { SOORTEN as TYPES, ALLROUND, CAO_BRON } from '@/lib/salaris';
+import { aanvraag } from '@/components/AllroundVoorop';
 
 // PILLAR — cluster 3 (typepagina's). Salaris-range-bars = grafiek-template;
 // de ranges komen uit lib/salaris.js (één bron, gedeeld met de salarischecker).
@@ -39,12 +40,13 @@ export default function SoortenSchilders() {
       <Kruimel items={[{ naam: 'Soorten schilders' }]} />
 
       <section className="paginakop container">
-        <span className="kicker">Van leerling tot voorman</span>
+        <span className="kicker">Allround voorop, van leerling tot voorman</span>
         <h1>
           Soorten <span className="accent">schilders</span>
         </h1>
         <p className="lead">
-          Van leerling schilder tot voorman: zo groei je in het schildersvak, en dit betaalt de cao voor elke stap. De bedragen zijn de bruto maandlonen van de {CAO_BRON} (37,5 uur per week), van de eerste tot de hoogste trede; je ervaring bepaalt waar je instapt.
+          Voorop de allround schilder, de meest gevraagde kracht in ons netwerk. Daarna de
+          ladder van leerling schilder tot voorman: zo groei je in het schildersvak, en dit betaalt de cao voor elke stap. De bedragen zijn de bruto maandlonen van de {CAO_BRON} (37,5 uur per week), van de eerste tot de hoogste trede; je ervaring bepaalt waar je instapt.
         </p>
         <p className="meta" style={{ marginTop: 8 }}>
           Voor glaszetters geldt dezelfde opbouw, van leerling tot allround glaszetter.
@@ -54,7 +56,12 @@ export default function SoortenSchilders() {
       <section className="sectie" style={{ paddingTop: 30 }}>
         <div className="container grid grid--2">
           {TYPES.map((t) => (
-            <div key={t.naam} className="kaartje">
+            <div
+              key={t.naam}
+              id={t === ALLROUND ? 'allround' : undefined}
+              className={t === ALLROUND ? 'kaartje kaartje--accent' : 'kaartje'}
+            >
+              {t === ALLROUND && <span className="meta" style={{ color: 'var(--oranje-donker)', fontWeight: 700 }}>Meest gevraagd</span>}
               <h3>{t.naam}</h3>
               <p className="meta">
                 {t.loongroep ? `Cao-loongroep ${t.loongroep}` : 'Leren en werken'}
@@ -68,10 +75,10 @@ export default function SoortenSchilders() {
                 </p>
               )}
               <p style={{ display: 'flex', gap: 14, marginTop: 4 }}>
-                <Link href="/aanvraag" style={{ color: 'var(--oranje-donker)', fontWeight: 700, fontSize: 14.5 }}>
+                <Link href={t === ALLROUND ? aanvraag(null) : '/aanvraag'} style={{ color: 'var(--oranje-donker)', fontWeight: 700, fontSize: 14.5 }}>
                   Inhuren →
                 </Link>
-                <Link href="/vacatures" style={{ color: 'var(--oranje-donker)', fontWeight: 700, fontSize: 14.5 }}>
+                <Link href={t === ALLROUND ? '/vacatures#allround' : '/vacatures'} style={{ color: 'var(--oranje-donker)', fontWeight: 700, fontSize: 14.5 }}>
                   Vacatures →
                 </Link>
               </p>

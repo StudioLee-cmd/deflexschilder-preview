@@ -18,6 +18,9 @@ function FormInner() {
   const plaatsUitUrl = params.get('plaats') || '';
   const stad = params.get('stad') || '';
   const km = params.get('km');
+  // ?soort=allround: de allround knoppen (home, elke inhurenpagina, het allround blok) openen
+  // de aanvraag met de allround schilder al in het bericht; de bezoeker kan het aanpassen.
+  const allround = params.get('soort') === 'allround';
 
   const [bezig, setBezig] = useState(false);
   const [fout, setFout] = useState(null);
@@ -79,17 +82,19 @@ function FormInner() {
 
   return (
     <div>
-      {plaatsUitUrl && (
+      {(plaatsUitUrl || allround) && (
         <div className="resolutie" style={{ maxWidth: 560 }}>
-          Aanvraag voor <strong>{plaatsUitUrl}</strong>
-          {stad && stad !== plaatsUitUrl ? (
-            <>
-              , regio <strong>{stad}</strong>
-              {km ? ` (${km} km)` : ''}. Wij werken in uw omgeving.
-            </>
-          ) : (
-            <>. Wij werken in uw omgeving.</>
-          )}
+          Aanvraag voor {allround && <>een <strong>allround schilder</strong> in </>}
+          {plaatsUitUrl ? <strong>{plaatsUitUrl}</strong> : <>heel Noordoost-Nederland.</>}
+          {plaatsUitUrl &&
+            (stad && stad !== plaatsUitUrl ? (
+              <>
+                , regio <strong>{stad}</strong>
+                {km ? ` (${km} km)` : ''}. Wij werken in uw omgeving.
+              </>
+            ) : (
+              <>. Wij werken in uw omgeving.</>
+            ))}
         </div>
       )}
 
@@ -139,6 +144,7 @@ function FormInner() {
             rows={4}
             required
             placeholder="Soort werk, aantal schilders, periode…"
+            defaultValue={allround ? 'Ik zoek een allround schilder.' : undefined}
             maxLength={2000}
           />
         </label>

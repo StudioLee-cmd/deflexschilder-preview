@@ -1130,3 +1130,25 @@ a.kaartje:hover .verder, .vacature:hover .verder { color: var(--oranje); }
   .kaartwrap--portret > .kaartwrap__zij { display: contents; }
   .kaartwrap--portret .portret { order: -1; width: 100%; max-width: 440px; }
 }
+
+/* ---------- allround voorop (components/AllroundVoorop.jsx): het eerste blok op home en regio's ---------- */
+.allround { padding-top: 28px; padding-bottom: 8px; scroll-margin-top: 90px; }
+.allround__vak {
+  background: var(--oranje-zacht);
+  border: 1px solid #ffd9a8;
+  border-left: 4px solid var(--oranje);
+  border-radius: var(--radius);
+  padding: 24px 26px;
+  display: grid;
+  gap: 26px;
+}
+.allround__vak--twee { grid-template-columns: 1fr 1fr; }
+@media (max-width: 900px) { .allround__vak--twee { grid-template-columns: 1fr; } }
+.allround__kant { display: grid; gap: 10px; align-content: start; }
+.allround__kant > p { font-size: 15.5px; max-width: 680px; }
+.allround__kop { font-size: 24px; line-height: 1.2; }
+.allround__knoppen { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+.allround__ook { font-size: 14.5px; color: var(--tekst-licht); }
+.allround__lijst { display: grid; gap: 8px; }
+.allround__vacature { display: block; background: var(--wit); border: 1px solid var(--lijn); border-radius: var(--radius-klein); padding: 10px 14px; font-size: 15px; }
+.allround__vacature:hover { border-color: var(--oranje); }

@@ -4,7 +4,9 @@ import NoordMap from '@/components/NoordMap';
 import PlaatsenLijst from '@/components/PlaatsenLijst';
 import BeeldAI from '@/components/BeeldAI';
 import { CITIES } from '@/lib/geo';
-import { getAtsAdapter } from '@/lib/ats';
+import { getAtsAdapter, isAllround } from '@/lib/ats';
+import AllroundVoorop, { aanvraag } from '@/components/AllroundVoorop';
+import { OVERIGE_IN_ZIN } from '@/lib/salaris';
 import { ARTIKELEN } from '@/lib/blog';
 import { TEAM } from '@/lib/team';
 
@@ -17,6 +19,10 @@ export const metadata = {
 
 export default async function Home() {
   const vacatures = await getAtsAdapter().getVacatures();
+  // Allround voorop (André 27-11): de allround vacatures in het blok onder de hero, de
+  // "Laatste vacatures" daaronder tonen het nieuwste andere werk, zodat niets dubbel staat.
+  const allround = vacatures.filter(isAllround);
+  const ander = vacatures.filter((v) => !isAllround(v));
   const artikel = ARTIKELEN[0];
 
   return (
@@ -35,6 +41,10 @@ export default async function Home() {
               Je zoekt schilders die passen bij het werk en bij je ploeg. De Flexschilder brengt bedrijven en vakmensen bij elkaar voor structureel schilderwerk in Noordoost-Nederland. Met verstand van verf, onderhoud en de mensen die het uitvoeren.
             </p>
             <div className="hero__paden">
+              {/* Allround voorop, ook op het eerste scherm: het eerste pad is de allround aanvraag. */}
+              <Link href={aanvraag(null)} className="hero__pad">
+                Allround schilder aanvragen →
+              </Link>
               <Link href="/inschrijven" className="hero__pad">
                 Inschrijven als schilder →
               </Link>
@@ -46,6 +56,8 @@ export default async function Home() {
           </div>
         </div>
       </section>
+
+      <AllroundVoorop kant="beide" vacatures={allround} />
 
       {/* WAT WE DOEN — de B2B-propositie in één oogopslag (bron: brand.md,
           writing-style.md 21-10: structureel, terugkerend, langere inzet; geen
@@ -147,14 +159,16 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* LAATSTE VACATURES — grijs, oranje accentwoord, zoals live */}
+      {/* LAATSTE VACATURES — grijs, oranje accentwoord, zoals live. Het andere werk; staat er
+          alleen allround werk open, dan staat dat al in het blok onder de hero. */}
+      {ander.length > 0 && (
       <section className="sectie sectie--vlak">
         <div className="container">
           <h2>
             Laatste <span className="accent">vacatures</span>
           </h2>
           <div className="grid grid--3" style={{ marginTop: 24 }}>
-            {vacatures.slice(0, 3).map((v) => (
+            {ander.slice(0, 3).map((v) => (
               <div key={v.slug} className="vacature">
                 <span className="vacature__titel">
                   {v.titel} {(v.demo || v.voorbeeld) && <span className="demolabel">{v.voorbeeld ? 'voorbeeld' : 'demo'}</span>}
@@ -178,6 +192,7 @@ export default async function Home() {
           </p>
         </div>
       </section>
+      )}
 
       {/* WERKGEBIED — klikbare Noordoost-NL-kaart */}
       <section className="sectie" id="werkgebied">
@@ -230,11 +245,11 @@ export default async function Home() {
               <span className="verder">Bekijk →</span>
             </Link>
             <Link href="/soorten-schilders" className="kaartje">
-              <span className="meta">Van leerling tot voorman</span>
+              <span className="meta">Allround voorop, van leerling tot voorman</span>
               <h3>Soorten schilders</h3>
               <p style={{ fontSize: 14.5 }}>
-                Leerling, Schilder 1 en 2, allround, voorman en industrieel schilder:
-                wat elke functie doet en wat de cao betaalt.
+                Allround schilder voorop, dan {OVERIGE_IN_ZIN}: wat elke functie doet en wat
+                de cao betaalt.
               </p>
               <span className="verder">Bekijk →</span>
             </Link>

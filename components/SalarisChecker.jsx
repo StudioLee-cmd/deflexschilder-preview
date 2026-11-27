@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { SCHILDER_TYPES, UREN_PER_MAAND, CAO_BRON } from '@/lib/salaris';
+import { SCHILDER_TYPES, SOORTEN, ALLROUND, UREN_PER_MAAND, CAO_BRON } from '@/lib/salaris';
 
 // Salarischecker (Randstad-patroon): kies je functie → de cao-range (lib/salaris.js),
 // schakelbaar per maand of per uur. Zelfde databron als /soorten-schilders.
 export default function SalarisChecker() {
-  const metRange = SCHILDER_TYPES.filter((t) => t.min);
-  const [keuze, setKeuze] = useState(metRange[1]?.naam || metRange[0].naam);
+  // Opent op de allround schilder (allround voorop), en die staat ook eerst in de lijst.
+  const [keuze, setKeuze] = useState(ALLROUND.naam);
   const [eenheid, setEenheid] = useState('maand');
 
   const t = SCHILDER_TYPES.find((x) => x.naam === keuze);
@@ -33,7 +33,7 @@ export default function SalarisChecker() {
               onChange={(e) => setKeuze(e.target.value)}
               style={{ fontFamily: 'inherit', fontSize: 16, padding: '10px 12px', border: '1.5px solid #ffd9a8', borderRadius: 6, background: '#fff', width: '100%' }}
             >
-              {SCHILDER_TYPES.map((x) => (
+              {SOORTEN.map((x) => (
                 <option key={x.naam} value={x.naam}>
                   {x.naam}
                 </option>

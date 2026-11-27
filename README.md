@@ -23,6 +23,14 @@ Gebouwd door StudioLee. **Noindex** — dit is een preview, niet de live site.
   (`vacaturesVoorStad` in `lib/ats.js`). De stadspagina's noemen de plaatsen bij
   naam, nooit een telling; op `/schilders-inhuren/<stad>` opent elke plaats de
   aanvraag met die plaats ingevuld.
+- **Allround voorop** (André 27-11): op de home en op elke regio staat de allround
+  schilder eerst. De eerste knop in de kop van elke `/schilders-inhuren/<stad>` en het
+  eerste pad in de hero van de home zijn "Allround schilder aanvragen" (op het eerste
+  scherm); direct daaronder het blok `components/AllroundVoorop.jsx` (ook eerst op elke
+  `/vacatures/schilder-<stad>`, en als groep `#allround` op `/vacatures`). Allround
+  vacatures staan overal eerst: `isAllround` en `allroundEerst` in `lib/ats.js` (de
+  regel leest titel en functie, nooit de branchenaam van het ATS); de soorten in
+  `SOORTEN` van `lib/salaris.js`. De gewone aanvraag staat in het menu.
 - **Generieke ATS-adapter** (`lib/ats.js`): wire-ready op de FlexSoftware/
   Uitzendplaats-API (key volgt — todo `flexschilder-ats-api-key`); tot die tijd
   demo-vacatures met demo-label. JobPosting-schema op vacaturedetails.
@@ -44,5 +52,6 @@ pagina's. Zonder adres toetsen ze de data; met een adres ook elke pagina daar
 (lokaal `npm run build && npx next start`, een preview, of de site zelf).
 ```bash
 node scripts/werkgebied-check.mjs [adres]   # steden, plaatsen en vacatures; geen tellingen
+node scripts/allround-check.mjs [adres]     # wie allround is, en allround eerst op elke pagina
 ```
 `scripts/lib-laden.mjs` laat ze de echte modules uit `lib/` laden, zonder build.
