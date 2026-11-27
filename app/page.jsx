@@ -3,7 +3,7 @@ import ZoekBalk from '@/components/ZoekBalk';
 import NoordMap from '@/components/NoordMap';
 import PlaatsenLijst from '@/components/PlaatsenLijst';
 import BeeldAI from '@/components/BeeldAI';
-import { CITIES } from '@/lib/geo';
+import { CITIES, WERKGEBIED_KM } from '@/lib/geo';
 import { getAtsAdapter, isAllround } from '@/lib/ats';
 import AllroundVoorop, { aanvraag } from '@/components/AllroundVoorop';
 import { OVERIGE_IN_ZIN } from '@/lib/salaris';
@@ -203,7 +203,7 @@ export default async function Home() {
             <h2>Werkgebied: Noordoost-Nederland</h2>
             <p className="lead" style={{ marginTop: 12 }}>
               Groningen, Friesland, Drenthe en Overijssel. Klik een stad op de kaart of typ je eigen plaats in de
-              zoekbalk. Een kleinere plaats hoort bij elke stad binnen 20 km, met de afstand er
+              zoekbalk. Een kleinere plaats hoort bij elke stad binnen {WERKGEBIED_KM} km, met de afstand er
               eerlijk bij, dus vaak bij twee of drie steden tegelijk.
             </p>
             <div className="stedenchips">

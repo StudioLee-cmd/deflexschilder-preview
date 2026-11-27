@@ -6,7 +6,9 @@
 //                                                  (http://localhost:3000), een preview of de site
 //
 // Groen is exit 0 en "alles groen". Elke rode regel zegt wat er stond.
-import { laad, haal, Teller } from './lib-laden.mjs';
+import { readdirSync, readFileSync } from 'node:fs';
+import path from 'node:path';
+import { laad, haal, Teller, REPO } from './lib-laden.mjs';
 
 const geo = await laad('geo.js');
 const ats = await laad('ats.js');
@@ -80,6 +82,20 @@ t.toets(zw.length === 2 && zw[0] <= zw[1], 'regel 4: dichtstbijzijnde vacature e
 const r = resolvePlace('Hasselt');
 t.toets(r?.city.slug === 'zwolle' && slugs(r.cities).includes('kampen'), 'regel 5: Hasselt opent Zwolle, en weet dat Kampen er ook bij hoort');
 
+// Eén bron voor de straal: geen pagina of blok schrijft hem met de hand (review code 27-11: de home
+// schreef "binnen 20 km" terwijl de stadspagina's WERKGEBIED_KM lazen). Commentaar telt niet mee.
+const bronnen = (map) => readdirSync(path.join(REPO, map), { recursive: true })
+  .filter((f) => /\.(jsx?|mjs)$/.test(f)).map((f) => path.join(map, f));
+const metDeHand = new RegExp(`\\b${WERKGEBIED_KM}\\s*(km|kilometer)\\b`, 'i');
+const handwerk = [...bronnen('app'), ...bronnen('components')].filter((f) => {
+  const code = readFileSync(path.join(REPO, f), 'utf8').replace(/\/\*[\s\S]*?\*\//g, '').replace(/(^|\s)\/\/.*$/gm, '');
+  return metDeHand.test(code);
+});
+t.toets(handwerk.length === 0, `bron: de straal staat met de hand in ${handwerk.join(', ')} (lees WERKGEBIED_KM uit lib/geo.js)`);
+// De zoekbalk biedt geen afstand meer aan: een stadspagina toont altijd haar werkgebied.
+const zoekbalk = readFileSync(path.join(REPO, 'components/ZoekBalk.jsx'), 'utf8');
+t.toets(!/name="straal"|straal=/.test(zoekbalk), 'bron: de zoekbalk biedt nog een afstand aan die niets verandert');
+
 // --- De pagina's (alleen met een adres) ---
 const basis = process.argv[2];
 if (basis) {
@@ -107,6 +123,8 @@ if (basis) {
     t.toets(!/kernen onder|valt onder de dichtstbijzijnde|vallen automatisch onder/.test(tekst), '/: de home zegt nog dat een plaats onder één stad valt');
     t.toets(!/·\s*\d+\s*plaatsen/.test(tekst), '/: de home telt plaatsen per stad');
     t.toets(html.includes('/schilders-inhuren/zwolle?van=Hasselt') && html.includes('/schilders-inhuren/kampen?van=Hasselt'), '/: Hasselt staat in de plaatsenlijst onder Zwolle én Kampen');
+    t.toets(!/name="straal"/.test(html), '/: de zoekbalk biedt nog een afstand aan');
+    t.toets(tekst.includes(`binnen ${WERKGEBIED_KM} km`) && tekst.includes(`tot ${WERKGEBIED_KM} km eromheen`), `/: de home noemt het werkgebied van ${WERKGEBIED_KM} km`);
   } catch (e) { t.toets(false, `/: ${e.message}`); }
   try {
     const { tekst } = await haal(basis, '/schilders-inhuren');

@@ -15,14 +15,16 @@ Gebouwd door StudioLee. **Noindex** — dit is een preview, niet de live site.
 - **15 stad-hoofdpagina's** (alleen Noord-NL, Zwolle en noordelijker) ×
   2 intents + klikbare Noord-NL-kaart (alleen het noorden ingekleurd).
 - **Zoekbalk met kilometers**: URL volgt de locatie; klein dorp → de
-  dichtstbijzijnde grote stad mét km-afstand, en de banner noemt de andere steden
-  waar het dorp ook bij hoort. Simpele plaats→stad-data, geen geo-API.
+  dichtstbijzijnde grote stad mét km-afstand, en de zoekbalk en de banner noemen de
+  andere steden waar het dorp ook bij hoort. Geen afstandskeuze: elke stadspagina toont
+  haar hele werkgebied. Simpele plaats→stad-data, geen geo-API.
 - **Werkgebied per stad** (`lib/geo.js`, de vijf regels bovenaan die file): een
-  plaats hoort bij élke stad binnen 20 km (Hasselt bij Zwolle én Kampen), verder
+  plaats hoort bij élke stad binnen `WERKGEBIED_KM` (20 km; Hasselt bij Zwolle én Kampen), verder
   weg bij de dichtstbijzijnde; vacatures volgen dezelfde regel
   (`vacaturesVoorStad` in `lib/ats.js`). De stadspagina's noemen de plaatsen bij
   naam, nooit een telling; op `/schilders-inhuren/<stad>` opent elke plaats de
-  aanvraag met die plaats ingevuld.
+  aanvraag met die plaats ingevuld. De straal staat alleen in `WERKGEBIED_KM`; elke
+  pagina leest hem daar (de werkgebied-toets kijkt of niemand hem met de hand schrijft).
 - **Allround voorop** (André 27-11): op de home en op elke regio staat de allround
   schilder eerst. De eerste knop in de kop van elke `/schilders-inhuren/<stad>` en het
   eerste pad in de hero van de home zijn "Allround schilder aanvragen" (op het eerste
@@ -56,6 +58,7 @@ node scripts/allround-check.mjs [adres]     # wie allround is, en allround eerst
 node scripts/eerste-scherm-check.mjs <adres> [--fotos <map>]
                                             # allround op het eerste scherm, 390 en 1280 breed
 ```
+Ze vragen Node 22.15 of nieuwer (`registerHooks` uit `node:module`).
 `scripts/lib-laden.mjs` laat ze de echte modules uit `lib/` laden, zonder build;
 `scripts/cdp.mjs` start voor de eerste-schermtoets een headless Chrome (geen extra
 pakket; `CHROME=<pad>` als hij er geen vindt).
