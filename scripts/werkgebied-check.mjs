@@ -79,6 +79,8 @@ const zw = ats.vacaturesVoorStad([vac('a', plek('Hasselt')), vac('b', plek('Hein
 t.toets(zw.length === 2 && zw[0] <= zw[1], 'regel 4: dichtstbijzijnde vacature eerst');
 
 // Regel 5: de zoekbalk kiest één stad (de dichtstbijzijnde) en kent de andere.
+const scheef = PLACES.filter((p) => citiesFor(p)[0].city.slug !== geo.nearestCity(p).city.slug).map((p) => p.name);
+t.toets(scheef.length === 0, `regel 5: de eerste stad van elke plaats is de stad die de zoekbalk opent (anders: ${scheef.join(', ')})`);
 const r = resolvePlace('Hasselt');
 t.toets(r?.city.slug === 'zwolle' && slugs(r.cities).includes('kampen'), 'regel 5: Hasselt opent Zwolle, en weet dat Kampen er ook bij hoort');
 
