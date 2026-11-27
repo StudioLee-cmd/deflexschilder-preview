@@ -53,5 +53,9 @@ pagina's. Zonder adres toetsen ze de data; met een adres ook elke pagina daar
 ```bash
 node scripts/werkgebied-check.mjs [adres]   # steden, plaatsen en vacatures; geen tellingen
 node scripts/allround-check.mjs [adres]     # wie allround is, en allround eerst op elke pagina
+node scripts/eerste-scherm-check.mjs <adres> [--fotos <map>]
+                                            # allround op het eerste scherm, 390 en 1280 breed
 ```
-`scripts/lib-laden.mjs` laat ze de echte modules uit `lib/` laden, zonder build.
+`scripts/lib-laden.mjs` laat ze de echte modules uit `lib/` laden, zonder build;
+`scripts/cdp.mjs` start voor de eerste-schermtoets een headless Chrome (geen extra
+pakket; `CHROME=<pad>` als hij er geen vindt).
